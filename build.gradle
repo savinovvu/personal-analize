@@ -1,0 +1,92 @@
+import com.sun.org.apache.xalan.internal.xsltc.cmdline.Compile
+
+group 'ru.inbox.savinov_vu'
+version '1.0-SNAPSHOT'
+
+buildscript {
+    repositories {
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+    dependencies {
+        classpath "com.bmuschko:gradle-tomcat-plugin:2.2.5"
+    }
+}
+
+
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'application'
+apply plugin: 'war'
+apply plugin: 'com.bmuschko.tomcat'
+
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
+
+mainClassName = 'ConfigApp'
+
+tasks.withType(Compile) {
+    options.encoding = 'UTF-8'
+}
+
+compileJava.options.encoding = 'UTF-8'
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '3.2.1'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+
+    /*Jackson*/
+    def jacksonVersion = '2.8.4'
+    compile "com.fasterxml.jackson.core:jackson-core:${jacksonVersion}"
+    compile "com.fasterxml.jackson.core:jackson-databind:${jacksonVersion}"
+    compile "com.fasterxml.jackson.core:jackson-annotations:${jacksonVersion}"
+
+    /*Hibernate*/
+    def hibernateVersion = '5.2.3.Final'
+    def hibernateJpaPersistanceVersion = '1.0.0.Final'
+    compile "org.hibernate:hibernate-core:${hibernateVersion}"
+    compile "org.hibernate:hibernate-entitymanager:${hibernateVersion}"
+    compile "org.hibernate.javax.persistence:hibernate-jpa-2.1-api:${hibernateJpaPersistanceVersion}"
+
+    /*Spring*/
+    def springVersion = '4.3.3.RELEASE'
+    compile "org.springframework:spring-core:${springVersion}"
+    compile "org.springframework:spring-webmvc:${springVersion}"
+    compile "org.springframework:spring-orm:${springVersion}"
+    compile "org.springframework:spring-context:${springVersion}"
+    compile "org.springframework.data:spring-data-jpa:1.2.0.RELEASE"
+
+    /*jstl*/
+    compile 'jstl:jstl:1.2'
+
+    /*JavaxServlet-API*/
+    def javaxServletVersion = '3.0.1'
+    compile 'javax.servlet:javax.servlet-api:' + javaxServletVersion
+
+    /*DB and DataSource*/
+    compile 'org.hsqldb:hsqldb:2.3.4'
+    compile 'org.apache.tomcat:tomcat-jdbc:9.0.0.M11'
+
+    /*pdf Generation*/
+    compile 'com.itextpdf:itextpdf:5.5.10'
+    compile 'org.bouncycastle:bcprov-jdk15on:1.55'
+
+
+    /*tomcat*/
+    def tomcatVersion = '7.0.73'
+    tomcat "org.apache.tomcat.embed:tomcat-embed-core:${tomcatVersion}",
+            "org.apache.tomcat.embed:tomcat-embed-logging-juli:${tomcatVersion}",
+            "org.apache.tomcat.embed:tomcat-embed-jasper:${tomcatVersion}"
+
+    testCompile 'junit:junit:4.5'
+}
+tomcatRun.contextPath = '/'
+tomcatRunWar.contextPath = '/'
