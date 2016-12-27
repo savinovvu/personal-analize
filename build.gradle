@@ -54,6 +54,7 @@ dependencies {
     def hibernateJpaPersistanceVersion = '1.0.0.Final'
     compile "org.hibernate:hibernate-core:${hibernateVersion}"
     compile "org.hibernate:hibernate-entitymanager:${hibernateVersion}"
+    compile "org.hibernate:hibernate-validator:${hibernateVersion}"
     compile "org.hibernate.javax.persistence:hibernate-jpa-2.1-api:${hibernateJpaPersistanceVersion}"
 
     /*Spring*/
