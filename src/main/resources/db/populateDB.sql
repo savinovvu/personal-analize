@@ -1,8 +1,6 @@
-DELETE FROM locals;
-DELETE FROM users;
-DELETE FROM orders;
-DELETE FROM products;
-DELETE FROM currentstatus;
+DELETE FROM groups;
+DELETE FROM persons;
+
 
 
 INSERT INTO users (id, userName, roles, active) VALUES
