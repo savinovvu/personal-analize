@@ -1,4 +1,6 @@
 package ru.inbox.savinov_vu.model.personal;
 
-public class Group {
+import ru.inbox.savinov_vu.model.abstratModel.NamedEntity;
+
+public class Group extends NamedEntity{
 }

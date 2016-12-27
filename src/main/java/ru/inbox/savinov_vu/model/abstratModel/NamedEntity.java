@@ -11,7 +11,7 @@ import javax.persistence.MappedSuperclass;
  * Date: 22.08.2014
  */
 @MappedSuperclass
-public class NamedEntity extends BaseEntity {
+public abstract class NamedEntity extends BaseEntity {
 
     @NotEmpty
     @Column(name = "name", nullable = false)
