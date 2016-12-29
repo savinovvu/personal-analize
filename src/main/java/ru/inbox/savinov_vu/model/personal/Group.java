@@ -8,7 +8,8 @@ import java.util.List;
 
 @Entity
 /*@NamedEntityGraph(name = Group.GRAPH_WITH_PERSON, attributeNodes = {@NamedAttributeNode("persons")})*/
-@Table(name = "groups")
+@Table(name = "groups" +
+        "")
 public class Group extends NamedEntity{
   /*  public static final String GRAPH_WITH_PERSON = "Group.withPersons";*/
 

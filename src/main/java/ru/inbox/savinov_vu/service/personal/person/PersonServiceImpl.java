@@ -1,5 +1,33 @@
 package ru.inbox.savinov_vu.service.personal.person;
 
 
-public class PersonServiceImpl {
+import org.springframework.beans.factory.annotation.Autowired;
+import ru.inbox.savinov_vu.model.personal.Person;
+import ru.inbox.savinov_vu.repository.PersonRepository;
+
+import java.util.List;
+
+public class PersonServiceImpl implements PersonService{
+    @Autowired
+    PersonRepository repository;
+
+    @Override
+    public List<Person> getAllPersons() {
+        return repository.findAll();
+    }
+
+    @Override
+    public List<Person> getPersonWithGroup() {
+        return null;
+    }
+
+    @Override
+    public void addPerson(Person person) {
+        repository.saveAndFlush(person);
+    }
+
+    @Override
+    public void deletePerson(Person person) {
+        repository.delete(person);
+    }
 }

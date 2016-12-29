@@ -17,6 +17,16 @@ public class StartController {
         return "start/start";
     }
 
+    @GetMapping("/personal/person")
+    public String personalPerson(Model model) {
+        return "personal/person";
+    }
+
+    @GetMapping("/personal/group")
+    public String personalGroup(Model model) {
+        return "personal/group";
+    }
+
 
 
 

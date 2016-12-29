@@ -15,9 +15,17 @@
 <body>
 <div class="parent">
 <div class="menu">
-    <form action="/editUser" method="get">
-        <input class="btn btn-primary" type="submit" name="viewAllUsers" value="Добро пожаловать">
+    <form action="personal/person" method="get">
+        <input class="btn btn-primary" type="submit" name="viewAllUsers" value="Люди">
     </form>
+
+    <form action="personal/group" method="get">
+        <input class="btn btn-primary" type="submit" name="viewAllUsers" value="Отделы">
+    </form>
+
+
+
+
 
 
 </div>
