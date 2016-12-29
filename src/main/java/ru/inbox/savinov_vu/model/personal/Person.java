@@ -13,7 +13,7 @@ public class Person extends NamedEntity {
 
 
     @JsonIgnore
-    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.ALL, CascadeType.PERSIST})
     @JoinColumn(name = "group_id", nullable = false)
     private Group group;
 
