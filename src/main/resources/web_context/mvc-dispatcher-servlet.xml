@@ -53,7 +53,10 @@
 
 
 
-    <mvc:resources mapping="/resources/**" location="/static/"/>
+    <mvc:resources mapping="/resources/**" location="/public/"/>
+    <mvc:resources mapping="/public/**" location="classpath:/public/"/>
+
+
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"
           p:prefix="/WEB-INF/views/"
           p:suffix=".jsp"

@@ -17,12 +17,12 @@ public class StartController {
         return "start/start";
     }
 
-    @GetMapping("/personal/person")
+    @GetMapping("editPerson")
     public String personalPerson(Model model) {
         return "personal/person";
     }
 
-    @GetMapping("/personal/group")
+    @GetMapping("editGroup")
     public String personalGroup(Model model) {
         return "personal/group";
     }
