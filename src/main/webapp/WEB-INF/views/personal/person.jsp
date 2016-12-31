@@ -12,11 +12,15 @@
 
     <link href="/public/css/personal/admin.css" rel="stylesheet">
     <script src="<c:url value="/public/js/personal/person.js"/>" type="text/javascript"></script>
-    <script src="/public/js/plugins/jquery.min.js"></script>
-    <script src="/public/js/plugins/bootstrap/bootstrap.min.js"></script>
+    <script type="text/javascript" src="webjars/jquery/3.1.1-1/jquery.min.js"></script>
+    <script type="text/javascript" src="webjars/bootstrap/3.3.7-1/js/bootstrap.min.js"></script>
+
+
     <script src="/public/js/personal/util.js" type="text/javascript"></script>
 </head>
-<body onload="getActive()">
+
+<%--onload="getActive()"--%>
+<body >
 
 
 <div class="view-box">
@@ -60,7 +64,7 @@
             <!-- Основная часть модального окна, содержащая форму для регистрации -->
             <div class="modal-body">
                 <!-- Форма для регистрации -->
-                <form role="form" class="form-horizontal">
+                <form role="form" class="form-horizontal" onsubmit="putUser()">
 
                     <!-- Блок для ввода id -->
                     <div class="changeDivId">
@@ -117,13 +121,15 @@
                         <input type="hidden" id="active" name="active" value="true">
                     </div>
                     <%--Конец признака активного пользователя--%>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Отмена</button>
+                        <input id="save" type="submit" class="btn btn-primary" value="Готово">
+                    </div>
                 </form>
             </div>
             <!-- Нижняя часть модального окна -->
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-dismiss="modal">Отмена</button>
-                <button id="save" type="button" onclick="putUser()" class="btn btn-primary">Готово</button>
-            </div>
+
         </div>
     </div>
 </div>

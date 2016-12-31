@@ -6,10 +6,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>StartManage</title>
-    <link rel='stylesheet' media='screen' href='/public/stylesheets/bootstrap.min.css'>
-
-   <%-- <link rel="stylesheet" href="/static/css/plugins/bootstrap.css">--%>
+    <title>StartPage</title>
     <link rel="stylesheet" href="webjars/bootstrap/3.3.7-1/css/bootstrap.min.css">
     <link href="/public/css/start/start.css" rel="stylesheet">
 

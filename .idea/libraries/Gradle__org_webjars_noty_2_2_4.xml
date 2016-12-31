@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: org.webjars:noty:2.2.4">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.webjars/noty/2.2.4/76483a7132a4c6eba4fafad9e907e93458def5b4/noty-2.2.4.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.webjars/noty/2.2.4/76965eaa791066306595e12a8072cce82e7852a9/noty-2.2.4-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
