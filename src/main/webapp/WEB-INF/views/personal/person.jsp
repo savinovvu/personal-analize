@@ -11,16 +11,13 @@
     <link rel="stylesheet" href="webjars/bootstrap/3.3.7-1/css/bootstrap.min.css">
 
     <link href="/public/css/personal/admin.css" rel="stylesheet">
-    <script src="<c:url value="/public/js/personal/person.js"/>" type="text/javascript"></script>
     <script type="text/javascript" src="webjars/jquery/3.1.1-1/jquery.min.js"></script>
     <script type="text/javascript" src="webjars/bootstrap/3.3.7-1/js/bootstrap.min.js"></script>
-
-
     <script src="/public/js/personal/util.js" type="text/javascript"></script>
+    <script src="/public/js/personal/person.js" type="text/javascript"></script>
 </head>
 
-<%--onload="getActive()"--%>
-<body >
+<body onload="getAll()">
 
 
 <div class="view-box">
@@ -39,13 +36,12 @@
         </div>
     </div>
 
-    <table id="userT">
+    <table id="personT">
 
         <thead>
         <tr>
             <td>id</td>
-            <td>Имя</td>
-            <td>Роль</td>
+            <td>ФИО</td>
             <td></td>
         </tr>
         </thead>

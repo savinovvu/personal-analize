@@ -1,38 +1,12 @@
-function changeActive(id, active) {
-    var data = {};
-
-    data["id"] = $("#id-" + id).val();
-    data["userName"] = $("#userName-" + id).val();
-    data["roles"] = $("#roles-" + id).val();
-    data["active"] = active;
-    send("/users", "POST", data);
-    changeAllToActiveButton();
-}
 
 
 function getAll() {
-    send("/users/all", "GET");
-    changeAllToActiveButton();
+    send("/personal/person/all", "GET");
 }
 
-function changeAllToActiveButton() {
-    $("#showUser").remove();
-    var output = '<form id="showUser"  action="javascript:void(null);" onsubmit="getActive()">';
-    output += '<input type="submit" class="btn btn-lg btn-info custombtn" id="showUsers" value="Показать активных пользователей"></form> ';
-    $(".showUserDiv").append(output);
-}
 
-function getActive() {
-    send("/users", "GET");
-    changeActiveToALLButton();
-}
 
-function changeActiveToALLButton() {
-    $("#showUser").remove();
-    var output = '<form id="showUser"    action="javascript:void(null);" onsubmit="getAll()">';
-    output += '<input type="submit" id="showUsers" class="btn btn-lg btn-info custombtn" value="Показать всех пользователей"></form> ';
-    $(".showUserDiv").append(output);
-}
+
 
 
 function putUser(id) {
@@ -46,13 +20,7 @@ function putUser(id) {
     data["userName"] = $("#name").val();
     data["roles"] = $("#roles").val();
     data["active"] = $("#active").val();
-
-
     send("/users", "PUT", data);
-    addBlock('none');
-    changeActiveToALLButton();
-
-
 }
 
 
@@ -78,10 +46,14 @@ function send(url, type, jsonData) {
     return false;
 }
 
-
+//TODO
 function view(data) {
+    $.("personT").dataTable({
+        "aaData:"
+    });
 
-    $(".data").remove();
+
+  /*  $(".data").remove();
     $.each(data, function (key, val) {
 
         var output = "";
@@ -127,5 +99,7 @@ function view(data) {
         $("#userT").append(output);
 
 
-    });
+    });*/
+
+
 }
