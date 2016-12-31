@@ -8,12 +8,13 @@
 <head>
     <meta charset="UTF-8">
     <title>UserManage</title>
-    <link rel="stylesheet" href="/static/css/plugins/bootstrap.css">
-    <link href="/static/css/personal/admin.css" rel="stylesheet">
-    <script src="<c:url value="/static/js/personal/person.js"/>" type="text/javascript"></script>
-    <script src="/static/js/plugins/jquery.min.js"></script>
-    <script src="/static/js/plugins/bootstrap/bootstrap.min.js"></script>
-    <script src="/static/js/personal/util.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="webjars/bootstrap/3.3.7-1/css/bootstrap.min.css">
+
+    <link href="/public/css/personal/admin.css" rel="stylesheet">
+    <script src="<c:url value="/public/js/personal/person.js"/>" type="text/javascript"></script>
+    <script src="/public/js/plugins/jquery.min.js"></script>
+    <script src="/public/js/plugins/bootstrap/bootstrap.min.js"></script>
+    <script src="/public/js/personal/util.js" type="text/javascript"></script>
 </head>
 <body onload="getActive()">
 

@@ -82,6 +82,11 @@ dependencies {
 
     /*webJars*/
     compile "org.webjars:bootstrap:3.3.7-1"
+    compile "org.webjars:jquery:3.1.1-1"
+    compile "org.webjars:datetimepicker:2.5.1"
+    compile "org.webjars:noty:2.2.4"
+    compile "org.webjars:datatables:1.9.4-2"
+
 
 
     /*tomcat*/

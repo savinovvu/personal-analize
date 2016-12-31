@@ -54,7 +54,7 @@
 
 
     <mvc:resources mapping="/resources/**" location="/public/"/>
-    <mvc:resources mapping="/public/**" location="classpath:/public/"/>
+    <mvc:resources mapping="/webjars/**" location="classpath:/META-INF/resources/webjars/"/>
 
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"
