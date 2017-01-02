@@ -20,10 +20,7 @@
 
 <body onload="getAll()">
 
-<button type="button" class="btn btn-lg btn-success "
-         onclick="getAll()">
-    hahahahahaah
-</button>
+
 
 <div class="view-box">
     <div class="menu">
@@ -47,6 +44,8 @@
         <tr>
             <td>id</td>
             <td>name</td>
+            <td></td>
+            <%--<td></td>--%>
 
         </tr>
         </thead>

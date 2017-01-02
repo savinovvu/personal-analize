@@ -10,12 +10,13 @@
     <title>UserManage</title>
     <link rel="stylesheet" href="webjars/bootstrap/3.3.7-1/css/bootstrap.min.css">
 
-    <link href="/public/css/personal/admin.css" rel="stylesheet">
     <link rel="stylesheet" href="webjars/datatables/1.10.12/css/dataTables.bootstrap.min.css">
+    <link href="/public/css/personal/admin.css" rel="stylesheet">
+
     <script src="<c:url value="/public/js/personal/person.js"/>" type="text/javascript"></script>
     <script type="text/javascript" src="webjars/jquery/2.2.4/jquery.min.js"></script>
     <script type="text/javascript" src="webjars/bootstrap/3.3.7-1/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="webjars/datatables/1.10.12/js/jquery.dataTables.min.js">
+    <link rel="stylesheet" href="webjars/datatables/1.10.12/js/jquery.dataTables.min.css">
 
 
 

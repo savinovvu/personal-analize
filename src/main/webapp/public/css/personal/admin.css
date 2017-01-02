@@ -6,6 +6,7 @@ table {
     background-color: white;
     width: 80%;
     margin: auto;
+
     border-spacing: 0px 0px;
     font-family: 'Open Sans', sans-serif;
     font-weight: normal;
@@ -23,8 +24,11 @@ thead tr {
 }
 
 td {
+
     vertical-align: middle;
     padding: 10px;
+    padding-left: 20%;
+    padding-right: 2%;
     font-size: 14px;
     border: 1px solid #56433D;
     border-left: none;
@@ -39,6 +43,8 @@ input {
     background: white;
     border: transparent;
 }
+
+
 
 input:read-only {
     border-color: transparent;

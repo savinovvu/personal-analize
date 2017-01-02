@@ -1,22 +1,21 @@
-
 function mydownloadTable() {
     alert("hahahaah");
 
- $('personT').DataTable({
-     "bServerSide": true,
+    $('personT').DataTable({
+        "bServerSide": true,
         "ajax": {
-        "url":"/personal/person/all",
+            "url": "/personal/person/all",
             "contentType": "application/json",
             "type": "GET",
-            "data": function ( d ) {
+            "data": function (d) {
                 alert("данные получены");
-                return JSON.stringify( d );
+                return JSON.stringify(d);
             }
         }
 
-     ,
+        ,
         "sAjaxSource": "data.json",
-        "sAjaxDataProp":"",
+        "sAjaxDataProp": "",
         "bPaginate": false,
         "bInfo": false,
         "aoColumns": [
@@ -33,15 +32,9 @@ function mydownloadTable() {
 }
 
 
-
-
 function getAll() {
     send("/personal/person/all", "GET");
 }
-
-
-
-
 
 
 function putUser(id) {
@@ -81,67 +74,95 @@ function send(url, type, jsonData) {
     return false;
 }
 
+/*
+ function renderEditBtn(data, type, row) {
+ if (type == 'display') {
+ return '<a class="btn btn-xs btn-primary" onclick="updateRow(' + row.id + ');">'+i18n['common.update']+'</a>';
+ }
+ }
 
-
+ function renderDeleteBtn(data, type, row) {
+ if (type == 'display') {
+ return '<a class="btn btn-xs btn-danger" onclick="deleteRow(' + row.id + ');">'+i18n['common.delete']+'</a>';
+ }
+ }*/
 
 function view(data) {
     alert("во вьюхе");
 
     $('#personT').DataTable({
-        data: data,
-        columns: [
-            {data: "id"},
-            {data: "name"}
+        "data": data,
+        "columns": [
+            {"data": "id"},
+            {"data": "name"},
+
+            {
+                "defaultContent": "",
+                "orderable": false,
+                "render": function (row, data, dataIndex) {
+                    return '<a class="btn btn-xs btn-primary  " ">Обновить</a>' +
+                        '<a class="btn btn-xs btn-danger  " ">Удалить</a>'
+                }
+            },
+
+           /* {
+                "defaultContent": "",
+                "orderable": false,
+                "render": function (row, data, dataIndex) {
+                    return  '<a class="btn btn-xs btn-danger" ">Удалить</a>'
+                }
+
+             }*/
         ]
     });
 
-   /* $(".data").remove();
-    $.each(data, function (key, val) {
+    /* $(".data").remove();
+     $.each(data, function (key, val) {
 
-        var output = "";
+     var output = "";
 
-        output = "<tr class='data'>" +
-            "<form id=\"form-" + val.id + "\">";
+     output = "<tr class='data'>" +
+     "<form id=\"form-" + val.id + "\">";
 
-        output += "<td>";
-        output += "<input type=\"text\"  name=\"id\" id=\"id-" + val.id + "\" value=\"" + val.id + "\" readonly />";
-        output += "</td>";
+     output += "<td>";
+     output += "<input type=\"text\"  name=\"id\" id=\"id-" + val.id + "\" value=\"" + val.id + "\" readonly />";
+     output += "</td>";
 
-        output += "<td>";
-        output += "<input type=\"text\"  name=\"userName\" id=\"userName-" + val.id + "\" value=\"" + val.userName + "\"  readonly/>";
-        output += "</td>";
+     output += "<td>";
+     output += "<input type=\"text\"  name=\"userName\" id=\"userName-" + val.id + "\" value=\"" + val.userName + "\"  readonly/>";
+     output += "</td>";
 
-        output += "<td>";
-        output += "<input type=\"text\"  name=\"roles\" id=\"roles-" + val.id + "\" value=\"" + val.roles + "\"  readonly/>";
-        output += "</td>";
-
-
-        if (val.active == true) {
-            output += "<td>" +
-                "<input type=\"button\" value=\"Запретить\" class=\"btn btn-danger\" onclick=\"changeActive(" + val.id + " , false)\">" +
-                "</td>";
-        }
-
-        if (val.active == false) {
-            output += "<td>" +
-                "<input type=\"button\" value=\"Разрешить\" class=\"btn btn-success\" onclick=\"changeActive(" + val.id + ", true)\">" +
-                "</td>";
-        }
+     output += "<td>";
+     output += "<input type=\"text\"  name=\"roles\" id=\"roles-" + val.id + "\" value=\"" + val.roles + "\"  readonly/>";
+     output += "</td>";
 
 
-       
-        output += '<td>' +
-            '<button type="button" class="btn btn-success" onclick="addBlockAndNullName(' + val.id + ')"  data-toggle="modal"  data-target="#myModal"' +
-            '>Обновить</button>' +
-            '</td>';
+     if (val.active == true) {
+     output += "<td>" +
+     "<input type=\"button\" value=\"Запретить\" class=\"btn btn-danger\" onclick=\"changeActive(" + val.id + " , false)\">" +
+     "</td>";
+     }
 
-        output += "</form> " +
-            "</tr>";
+     if (val.active == false) {
+     output += "<td>" +
+     "<input type=\"button\" value=\"Разрешить\" class=\"btn btn-success\" onclick=\"changeActive(" + val.id + ", true)\">" +
+     "</td>";
+     }
 
-        $("#userT").append(output);
 
 
-    });*/
+     output += '<td>' +
+     '<button type="button" class="btn btn-success" onclick="addBlockAndNullName(' + val.id + ')"  data-toggle="modal"  data-target="#myModal"' +
+     '>Обновить</button>' +
+     '</td>';
+
+     output += "</form> " +
+     "</tr>";
+
+     $("#userT").append(output);
+
+
+     });*/
 
 
 }
