@@ -13,12 +13,17 @@
     <link href="/public/css/personal/admin.css" rel="stylesheet">
     <script type="text/javascript" src="webjars/jquery/3.1.1-1/jquery.min.js"></script>
     <script type="text/javascript" src="webjars/bootstrap/3.3.7-1/js/bootstrap.min.js"></script>
-    <script src="/public/js/personal/util.js" type="text/javascript"></script>
+    <script type="text/javascript" src="webjars/datatables/1.10.12/js/jquery.dataTables.min.js"></script>
+    <script  type="text/javascript" src="/public/js/personal/util.js"></script>
     <script src="/public/js/personal/person.js" type="text/javascript"></script>
 </head>
 
 <body onload="getAll()">
 
+<button type="button" class="btn btn-lg btn-success "
+         onclick="getAll()">
+    hahahahahaah
+</button>
 
 <div class="view-box">
     <div class="menu">
@@ -41,8 +46,8 @@
         <thead>
         <tr>
             <td>id</td>
-            <td>ФИО</td>
-            <td></td>
+            <td>name</td>
+
         </tr>
         </thead>
     </table>

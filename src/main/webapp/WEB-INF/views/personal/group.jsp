@@ -8,14 +8,11 @@
 <head>
     <meta charset="UTF-8">
     <title>UserManage</title>
-   <%-- <link rel="stylesheet" href="/public/css/plugins/bootstrap.css">--%>
     <link rel="stylesheet" href="webjars/bootstrap/3.3.7-1/css/bootstrap.min.css">
 
     <link href="/public/css/personal/admin.css" rel="stylesheet">
     <link rel="stylesheet" href="webjars/datatables/1.10.12/css/dataTables.bootstrap.min.css">
     <script src="<c:url value="/public/js/personal/person.js"/>" type="text/javascript"></script>
-   <%-- <script src="/public/js/plugins/jquery.min.js"></script>--%>
-  <%--  <script src="/public/js/plugins/bootstrap/bootstrap.min.js"></script>--%>
     <script type="text/javascript" src="webjars/jquery/2.2.4/jquery.min.js"></script>
     <script type="text/javascript" src="webjars/bootstrap/3.3.7-1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="webjars/datatables/1.10.12/js/jquery.dataTables.min.js">
@@ -35,7 +32,7 @@
         <!-- Кнопка для открытия модального окна -->
         <button type="button" class="btn btn-lg btn-success custombtn" data-toggle="modal"
                 data-target="#myModal" onclick="addBlockAndNullinput()">
-            Добавить пользователя
+            Добавить группу
         </button>
 
 

@@ -1,4 +1,39 @@
 
+function mydownloadTable() {
+    alert("hahahaah");
+
+ $('personT').DataTable({
+     "bServerSide": true,
+        "ajax": {
+        "url":"/personal/person/all",
+            "contentType": "application/json",
+            "type": "GET",
+            "data": function ( d ) {
+                alert("данные получены");
+                return JSON.stringify( d );
+            }
+        }
+
+     ,
+        "sAjaxSource": "data.json",
+        "sAjaxDataProp":"",
+        "bPaginate": false,
+        "bInfo": false,
+        "aoColumns": [
+            {
+                "mData": "id"
+            },
+            {
+                "mData": "name"
+            }
+
+
+        ]
+    });
+}
+
+
+
 
 function getAll() {
     send("/personal/person/all", "GET");
@@ -46,14 +81,21 @@ function send(url, type, jsonData) {
     return false;
 }
 
-//TODO
+
+
+
 function view(data) {
-    $.("personT").dataTable({
-        "aaData:"
+    alert("во вьюхе");
+
+    $('#personT').DataTable({
+        data: data,
+        columns: [
+            {data: "id"},
+            {data: "name"}
+        ]
     });
 
-
-  /*  $(".data").remove();
+   /* $(".data").remove();
     $.each(data, function (key, val) {
 
         var output = "";

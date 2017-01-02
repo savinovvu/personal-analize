@@ -20,6 +20,14 @@ public class PersonRestController {
 
     @GetMapping(value = "/all")
     public List<Person> getAllPerson(){
+        System.out.println("пумпурумпу-пум");
+        System.out.println("пумпурумпу-пум");
+        System.out.println("пумпурумпу-пум");
+        System.out.println("пумпурумпу-пум");
+        System.out.println("пумпурумпу-пум");
+        System.out.println("пумпурумпу-пум");
+        System.out.println("пумпурумпу-пум");
+        System.out.println("пумпурумпу-пум");
         return service.getAllPersons();
     }
 
