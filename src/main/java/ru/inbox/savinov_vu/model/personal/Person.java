@@ -1,6 +1,6 @@
 package ru.inbox.savinov_vu.model.personal;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import ru.inbox.savinov_vu.model.abstratModel.NamedEntity;
 
 import javax.persistence.*;
@@ -12,8 +12,7 @@ public class Person extends NamedEntity {
 
 
 
-  //  @JsonProperty("group")
-    @JsonIgnore
+    @JsonProperty("group")
     @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.ALL, CascadeType.PERSIST})
     @JoinColumn(name = "group_id", nullable = false)
     private Group group;

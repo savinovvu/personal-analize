@@ -14,7 +14,8 @@
     <script type="text/javascript" src="webjars/jquery/3.1.1-1/jquery.min.js"></script>
     <script type="text/javascript" src="webjars/bootstrap/3.3.7-1/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="webjars/datatables/1.10.12/js/jquery.dataTables.min.js"></script>
-    <script  type="text/javascript" src="/public/js/personal/util.js"></script>
+     <script type="text/javascript" src="webjars/datatables/1.10.12/js/dataTables.bootstrap.min.js"></script>
+
     <script src="/public/js/personal/person.js" type="text/javascript"></script>
 </head>
 
@@ -43,9 +44,10 @@
         <thead>
         <tr>
             <td>id</td>
-            <td>name</td>
-            <td></td>
-            <%--<td></td>--%>
+            <td>ФИО</td>
+            <td>Отдел</td>
+            <td>Действие</td>
+
 
         </tr>
         </thead>
@@ -101,15 +103,17 @@
 
                     <%--Блок ввод Должности--%>
                     <div class="form-group has-feedback">
-                        <label for="roles" class="control-label col-xs-3">Должность</label>
+                        <label for="groups" class="control-label col-xs-3">Отдел</label>
 
                         <div class="col-xs-6">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                <select id="roles" class="form-control" name="roles" required>
+                                <select id="groups" class="form-control" name="groups" required>
+                                    <div id="delGroup">
                                     <option value="Продавец">Продавец</option>
                                     <option value="Снабженец">Снабженец</option>
                                     <option value="Руководитель">Руководитель</option>
+                                    </div>
                                 </select>
                             </div>
                         </div>

@@ -1,36 +1,11 @@
-function mydownloadTable() {
-    alert("hahahaah");
-
-    $('personT').DataTable({
-        "bServerSide": true,
-        "ajax": {
-            "url": "/personal/person/all",
-            "contentType": "application/json",
-            "type": "GET",
-            "data": function (d) {
-                alert("данные получены");
-                return JSON.stringify(d);
-            }
-        }
-
-        ,
-        "sAjaxSource": "data.json",
-        "sAjaxDataProp": "",
-        "bPaginate": false,
-        "bInfo": false,
-        "aoColumns": [
-            {
-                "mData": "id"
-            },
-            {
-                "mData": "name"
-            }
-
-
-        ]
-    });
+function downloadPage() {
+    getAll();
+    getGroup()
 }
 
+function getGroup() {
+    sendGetGroup("/personal/person/all", "GET");
+}
 
 function getAll() {
     send("/personal/person/all", "GET");
@@ -74,27 +49,42 @@ function send(url, type, jsonData) {
     return false;
 }
 
-/*
- function renderEditBtn(data, type, row) {
- if (type == 'display') {
- return '<a class="btn btn-xs btn-primary" onclick="updateRow(' + row.id + ');">'+i18n['common.update']+'</a>';
- }
- }
+function sendGetGroup(url, type, jsonData) {
 
- function renderDeleteBtn(data, type, row) {
- if (type == 'display') {
- return '<a class="btn btn-xs btn-danger" onclick="deleteRow(' + row.id + ');">'+i18n['common.delete']+'</a>';
- }
- }*/
+    $.ajax({
+
+        url: url,
+        type: type,
+        contentType: 'application/json',
+        data: JSON.stringify(jsonData),
+        success: function (data) {
+
+            view(data);
+
+        },
+        error: function (x) {
+            alert("error");
+
+        }
+
+    });
+    return false;
+}
+
 
 function view(data) {
-    alert("во вьюхе");
 
     $('#personT').DataTable({
         "data": data,
         "columns": [
             {"data": "id"},
             {"data": "name"},
+            {
+                "data": "group",
+                "render": function (row, data, dataIndex) {
+                    return row.name;
+                }
+            },
 
             {
                 "defaultContent": "",
@@ -104,22 +94,18 @@ function view(data) {
                         '<a class="btn btn-xs btn-danger  " ">Удалить</a>'
                 }
             },
-
-           /* {
-                "defaultContent": "",
-                "orderable": false,
-                "render": function (row, data, dataIndex) {
-                    return  '<a class="btn btn-xs btn-danger" ">Удалить</a>'
-                }
-
-             }*/
         ]
     });
 
-    /* $(".data").remove();
+}
+
+function viewGroup(data) {
+
+     $("#delGroup").remove();
+    var output = "<div id='delGroup'>";
      $.each(data, function (key, val) {
 
-     var output = "";
+     
 
      output = "<tr class='data'>" +
      "<form id=\"form-" + val.id + "\">";
@@ -159,10 +145,16 @@ function view(data) {
      output += "</form> " +
      "</tr>";
 
-     $("#userT").append(output);
+    
 
 
-     });*/
-
-
+     });
+    output += "<div>";
+    $("#userT").append(output);
+    
 }
+
+
+
+
+
