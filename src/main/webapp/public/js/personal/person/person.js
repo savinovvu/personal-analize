@@ -4,7 +4,7 @@ function downloadPage() {
 }
 
 function getGroup() {
-    sendGetGroup("/personal/person/all", "GET");
+    sendGetGroup("/personal/group/all", "GET");
 }
 
 function getAll() {
@@ -59,7 +59,7 @@ function sendGetGroup(url, type, jsonData) {
         data: JSON.stringify(jsonData),
         success: function (data) {
 
-            view(data);
+            viewGroup(data);
 
         },
         error: function (x) {
@@ -100,57 +100,14 @@ function view(data) {
 }
 
 function viewGroup(data) {
-
-     $("#delGroup").remove();
-    var output = "<div id='delGroup'>";
+    alert("во вьюхе777777777");
+     $(".delGroup").remove();
+    var output = "";
      $.each(data, function (key, val) {
-
-     
-
-     output = "<tr class='data'>" +
-     "<form id=\"form-" + val.id + "\">";
-
-     output += "<td>";
-     output += "<input type=\"text\"  name=\"id\" id=\"id-" + val.id + "\" value=\"" + val.id + "\" readonly />";
-     output += "</td>";
-
-     output += "<td>";
-     output += "<input type=\"text\"  name=\"userName\" id=\"userName-" + val.id + "\" value=\"" + val.userName + "\"  readonly/>";
-     output += "</td>";
-
-     output += "<td>";
-     output += "<input type=\"text\"  name=\"roles\" id=\"roles-" + val.id + "\" value=\"" + val.roles + "\"  readonly/>";
-     output += "</td>";
-
-
-     if (val.active == true) {
-     output += "<td>" +
-     "<input type=\"button\" value=\"Запретить\" class=\"btn btn-danger\" onclick=\"changeActive(" + val.id + " , false)\">" +
-     "</td>";
-     }
-
-     if (val.active == false) {
-     output += "<td>" +
-     "<input type=\"button\" value=\"Разрешить\" class=\"btn btn-success\" onclick=\"changeActive(" + val.id + ", true)\">" +
-     "</td>";
-     }
-
-
-
-     output += '<td>' +
-     '<button type="button" class="btn btn-success" onclick="addBlockAndNullName(' + val.id + ')"  data-toggle="modal"  data-target="#myModal"' +
-     '>Обновить</button>' +
-     '</td>';
-
-     output += "</form> " +
-     "</tr>";
-
-    
-
-
+         output += "<option class='delGroup' value='" + val.name + "'>" + val.name + "</option>";
      });
-    output += "<div>";
-    $("#userT").append(output);
+
+    $("#groups").append(output);
     
 }
 

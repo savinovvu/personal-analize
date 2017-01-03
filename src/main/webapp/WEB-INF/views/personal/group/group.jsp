@@ -10,17 +10,21 @@
     <title>UserManage</title>
     <link rel="stylesheet" href="webjars/bootstrap/3.3.7-1/css/bootstrap.min.css">
 
+    <link rel="stylesheet" href="webjars/datatables/1.10.12/css/dataTables.bootstrap.min.css">
     <link href="/public/css/personal/admin.css" rel="stylesheet">
-    <script type="text/javascript" src="webjars/jquery/3.1.1-1/jquery.min.js"></script>
+
+    <script src="<c:url value="/public/js/personal/person/person.js"/>" type="text/javascript"></script>
+    <script type="text/javascript" src="webjars/jquery/2.2.4/jquery.min.js"></script>
     <script type="text/javascript" src="webjars/bootstrap/3.3.7-1/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="webjars/datatables/1.10.12/js/jquery.dataTables.min.js"></script>
-     <script type="text/javascript" src="webjars/datatables/1.10.12/js/dataTables.bootstrap.min.js"></script>
+    <link rel="stylesheet" href="webjars/datatables/1.10.12/js/jquery.dataTables.min.css">
 
-    <script src="/public/js/personal/person.js" type="text/javascript"></script>
+
+
+    <script src="/public/js/personal/util.js" type="text/javascript"></script>
+
+
 </head>
-
-<body onload="getAll()">
-
+<body onload="getActive()">
 
 
 <div class="view-box">
@@ -29,7 +33,7 @@
         <!-- Кнопка для открытия модального окна -->
         <button type="button" class="btn btn-lg btn-success custombtn" data-toggle="modal"
                 data-target="#myModal" onclick="addBlockAndNullinput()">
-            Добавить пользователя
+            Добавить группу
         </button>
 
 
@@ -39,16 +43,14 @@
         </div>
     </div>
 
-    <table id="personT">
+    <table id="userT">
 
         <thead>
         <tr>
             <td>id</td>
-            <td>ФИО</td>
-            <td>Отдел</td>
-            <td>Действие</td>
-
-
+            <td>Имя</td>
+            <td>Роль</td>
+            <td></td>
         </tr>
         </thead>
     </table>
@@ -66,7 +68,7 @@
             <!-- Основная часть модального окна, содержащая форму для регистрации -->
             <div class="modal-body">
                 <!-- Форма для регистрации -->
-                <form role="form" class="form-horizontal" onsubmit="putUser()">
+                <form role="form" class="form-horizontal">
 
                     <!-- Блок для ввода id -->
                     <div class="changeDivId">
@@ -103,17 +105,15 @@
 
                     <%--Блок ввод Должности--%>
                     <div class="form-group has-feedback">
-                        <label for="groups" class="control-label col-xs-3">Отдел</label>
+                        <label for="roles" class="control-label col-xs-3">Должность</label>
 
                         <div class="col-xs-6">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                <select id="groups" class="form-control" name="groups" required>
-                                    <div id="delGroup">
+                                <select id="roles" class="form-control" name="roles" required>
                                     <option value="Продавец">Продавец</option>
                                     <option value="Снабженец">Снабженец</option>
                                     <option value="Руководитель">Руководитель</option>
-                                    </div>
                                 </select>
                             </div>
                         </div>
@@ -125,15 +125,13 @@
                         <input type="hidden" id="active" name="active" value="true">
                     </div>
                     <%--Конец признака активного пользователя--%>
-
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" data-dismiss="modal">Отмена</button>
-                        <input id="save" type="submit" class="btn btn-primary" value="Готово">
-                    </div>
                 </form>
             </div>
             <!-- Нижняя часть модального окна -->
-
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Отмена</button>
+                <button id="save" type="button" onclick="putUser()" class="btn btn-primary">Готово</button>
+            </div>
         </div>
     </div>
 </div>
