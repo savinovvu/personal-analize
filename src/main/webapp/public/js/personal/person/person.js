@@ -82,7 +82,8 @@ function view(data) {
             {
                 "data": "group",
                 "render": function (row, data, dataIndex) {
-                    return row.name;
+                    //
+                    return dataIndex.id;
                 }
             },
 
@@ -90,8 +91,9 @@ function view(data) {
                 "defaultContent": "",
                 "orderable": false,
                 "render": function (row, data, dataIndex) {
-                    return '<a class="btn btn-xs btn-primary  " ">Обновить</a>' +
-                        '<a class="btn btn-xs btn-danger  " ">Удалить</a>'
+
+                    return '<a class="btn btn-xs btn-primary" onclick="getModal(' + dataIndex.id + ')" data-toggle="modal" data-target="#myModal">Обновить</a>' +
+                        '<a class="btn btn-xs btn-danger">Удалить</a>'
                 }
             },
         ]
@@ -100,15 +102,14 @@ function view(data) {
 }
 
 function viewGroup(data) {
-    alert("во вьюхе777777777");
-     $(".delGroup").remove();
-    var output = "";
-     $.each(data, function (key, val) {
-         output += "<option class='delGroup' value='" + val.name + "'>" + val.name + "</option>";
-     });
 
+    $(".delGroup").remove();
+    var output = "";
+    $.each(data, function (key, val) {
+        output += "<option class='delGroup' value='" + val.name + "'>" + val.name + "</option>";
+    });
     $("#groups").append(output);
-    
+
 }
 
 

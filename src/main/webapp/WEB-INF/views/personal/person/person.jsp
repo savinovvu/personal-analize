@@ -17,6 +17,7 @@
      <script type="text/javascript" src="webjars/datatables/1.10.12/js/dataTables.bootstrap.min.js"></script>
 
     <script src="/public/js/personal/person/person.js" type="text/javascript"></script>
+    <script src="/public/js/personal/person/util.js" type="text/javascript"></script>
 </head>
 
 <body onload="downloadPage()">
@@ -28,7 +29,7 @@
 
         <!-- Кнопка для открытия модального окна -->
         <button type="button" class="btn btn-lg btn-success custombtn" data-toggle="modal"
-                data-target="#myModal" onclick="addBlockAndNullinput()">
+                data-target="#myModal" onclick="getModal(0)">
             Добавить пользователя
         </button>
 
@@ -47,8 +48,6 @@
             <td>ФИО</td>
             <td>Отдел</td>
             <td>Действие</td>
-
-
         </tr>
         </thead>
     </table>
@@ -61,7 +60,7 @@
             <!-- Заголовок модального окна -->
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">×</button>
-                <h4 class="modal-title" id="myModalLabel">Добавление/Обновление пользователя</h4>
+                <h4 class="modal-title text-center" id="myModalLabel">Добавление/Обновление пользователя</h4>
             </div>
             <!-- Основная часть модального окна, содержащая форму для регистрации -->
             <div class="modal-body">
@@ -72,14 +71,13 @@
                     <div class="changeDivId">
                         <%--<div class="form-group" id="divId">--%>
                         <div class="form-group has-feedback" id="divId">
-                            <label for="userId" class="control-label col-xs-3">id:</label>
+                       <%--     <label for="personId" class="control-label col-xs-3">id:</label>--%>
                             <div class="col-xs-6">
                                 <div class="input-group">
-                                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                       <%--             <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>--%>
 
 
-                                    <input type="text" class="form-control" id="userId" name="id" required
-                                           pattern="[0-9]{4}">
+                                    <input type="hidden" class="form-control" id="personId" name="id" required>
                                 </div>
                             </div>
                         </div>

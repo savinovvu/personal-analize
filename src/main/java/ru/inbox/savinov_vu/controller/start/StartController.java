@@ -19,12 +19,12 @@ public class StartController {
 
     @GetMapping("editPerson")
     public String personalPerson(Model model) {
-        return "personal/person";
+        return "personal/person/person";
     }
 
     @GetMapping("editGroup")
     public String personalGroup(Model model) {
-        return "personal/group";
+        return "personal/group/group";
     }
 
 
