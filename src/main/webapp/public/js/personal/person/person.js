@@ -1,3 +1,8 @@
+
+function getGroupData(){
+    alert("показываю");
+}
+
 function downloadPage() {
     getAll();
     getGroup()
@@ -12,18 +17,14 @@ function getAll() {
 }
 
 
-function putUser(id) {
+function putUser() {
     var data = {};
-    if (id > 0) {
-        data["id"] = id;
-    } else {
-        data["id"] = $("#userId").val();
-    }
+    data["id"] = $("#personId").val();
+    data["name"] = $("#name").val();
+    data["group"] = $("#group").val();
+    alert("data: " + data);
 
-    data["userName"] = $("#name").val();
-    data["roles"] = $("#roles").val();
-    data["active"] = $("#active").val();
-    send("/users", "PUT", data);
+    send("/personal/person", "PUT", data);
 }
 
 
@@ -83,7 +84,7 @@ function view(data) {
                 "data": "group",
                 "render": function (row, data, dataIndex) {
                     //
-                    return dataIndex.id;
+                    return row.name;
                 }
             },
 
@@ -109,6 +110,14 @@ function viewGroup(data) {
         output += "<option class='delGroup' value='" + val.name + "'>" + val.name + "</option>";
     });
     $("#groups").append(output);
+    output = "";
+
+    $(".hidden").remove();
+    $.each(data, function (key, val) {
+        output += "<input type='text' class='delGroupId' value='" + val.id + "'disabled>";
+    });
+    $("#hiddenGroupDiv").append(output);
+
 
 }
 

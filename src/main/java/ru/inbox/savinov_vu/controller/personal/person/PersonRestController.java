@@ -34,10 +34,13 @@ public class PersonRestController {
 
 
     @PutMapping
-    public List<Person> putPerson(Model model, @RequestBody Person person) throws IOException {
-
-        service.addPerson(person);
-        return service.getAllPersons();
+    public List<Person> putPerson(Model model, @RequestBody String person) throws IOException {
+        System.out.println("пришло");
+        System.out.println("пришло");
+        System.out.println("пришло");
+        System.out.println(person);
+       // service.addPerson(person);
+        return null;
 
     }
 

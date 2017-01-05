@@ -1,3 +1,11 @@
+
+function TransferPerson() {
+    
+}
+function TransferGroup() {
+
+}
+
 function deletePriceDuringDate() {
     var data = {};
     data["id"] = 0;

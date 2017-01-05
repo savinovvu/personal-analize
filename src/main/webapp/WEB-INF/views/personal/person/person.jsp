@@ -14,10 +14,11 @@
     <script type="text/javascript" src="webjars/jquery/3.1.1-1/jquery.min.js"></script>
     <script type="text/javascript" src="webjars/bootstrap/3.3.7-1/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="webjars/datatables/1.10.12/js/jquery.dataTables.min.js"></script>
-     <script type="text/javascript" src="webjars/datatables/1.10.12/js/dataTables.bootstrap.min.js"></script>
-
+    <script type="text/javascript" src="webjars/datatables/1.10.12/js/dataTables.bootstrap.min.js"></script>
+    <script src="/public/js/util/model/model.js" type="text/javascript"></script>
     <script src="/public/js/personal/person/person.js" type="text/javascript"></script>
     <script src="/public/js/personal/person/util.js" type="text/javascript"></script>
+
 </head>
 
 <body onload="downloadPage()">
@@ -99,30 +100,28 @@
                     <!-- Конец блока для ввода ФИО-->
 
 
-                    <%--Блок ввод Должности--%>
+                    <%--Блок ввод отдела--%>
                     <div class="form-group has-feedback">
                         <label for="groups" class="control-label col-xs-3">Отдел</label>
 
                         <div class="col-xs-6">
                             <div class="input-group">
-                                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                <select id="groups" class="form-control" name="groups" required>
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
 
-                                    <option class="delGroup" value="Продавец">Продавец</option>
-                                    <option class="delGroup" value="Снабженец">Снабженец</option>
-                                    <option class="delGroup" value="Руководитель">Руководитель</option>
+                                <select id="groups" class="form-control" name="group"  required>
+
+
 
                                 </select>
                             </div>
                         </div>
                     </div>
-                    <!-- Конец блока для ввода Должности-->
+                    <!-- Конец блока для ввода отдела-->
+                    <%--Скрытый блог данных об отделах--%>
+                    <div class="hiddenGroupDiv" id="hiddenGroupDiv">
 
-                    <%--Признак активного пользователя--%>
-                    <div class="form-group">
-                        <input type="hidden" id="active" name="active" value="true">
                     </div>
-                    <%--Конец признака активного пользователя--%>
+
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-primary" data-dismiss="modal">Отмена</button>

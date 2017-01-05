@@ -19,6 +19,8 @@ public abstract  class BaseEntity implements Persistable<Integer> {
     @Access(value = AccessType.PROPERTY)
     protected Integer id;
 
+
+
     protected BaseEntity() {
     }
 
