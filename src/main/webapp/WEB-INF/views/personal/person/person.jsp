@@ -102,13 +102,13 @@
 
                     <%--Блок ввод отдела--%>
                     <div class="form-group has-feedback">
-                        <label for="groups" class="control-label col-xs-3">Отдел</label>
+                        <label for="group" class="control-label col-xs-3">Отдел</label>
 
                         <div class="col-xs-6">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
 
-                                <select id="groups" class="form-control" name="group"  required>
+                                <select id="group" class="form-control" name="group"  required>
 
 
 
@@ -117,11 +117,12 @@
                         </div>
                     </div>
                     <!-- Конец блока для ввода отдела-->
+
                     <%--Скрытый блог данных об отделах--%>
-                    <div class="hiddenGroupDiv" id="hiddenGroupDiv">
+                 <%--   <div class="hiddenGroupDiv" id="hiddenGroupDiv">
 
                     </div>
-
+--%>
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-primary" data-dismiss="modal">Отмена</button>

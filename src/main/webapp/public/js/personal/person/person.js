@@ -18,13 +18,17 @@ function getAll() {
 
 
 function putUser() {
+    var group = new Group($('#group').val());
+    var person = new Person(
+        $("#personId").val(),
+        $("#name").val(),
+        group
+    );
     var data = {};
-    data["id"] = $("#personId").val();
-    data["name"] = $("#name").val();
-    data["group"] = $("#group").val();
-    alert("data: " + data);
 
-    send("/personal/person", "PUT", data);
+    alert("data: " + JSON.stringify(person));
+
+    send("/personal/person", "PUT", person);
 }
 
 
@@ -103,20 +107,19 @@ function view(data) {
 }
 
 function viewGroup(data) {
-
     $(".delGroup").remove();
     var output = "";
     $.each(data, function (key, val) {
         output += "<option class='delGroup' value='" + val.name + "'>" + val.name + "</option>";
     });
-    $("#groups").append(output);
-    output = "";
+    $("#group").append(output);
+/*    output = "";
 
     $(".hidden").remove();
     $.each(data, function (key, val) {
         output += "<input type='text' class='delGroupId' value='" + val.id + "'disabled>";
     });
-    $("#hiddenGroupDiv").append(output);
+    $("#hiddenGroupDiv").append(output);*/
 
 
 }
