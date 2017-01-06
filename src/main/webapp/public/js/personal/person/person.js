@@ -25,10 +25,11 @@ function putUser() {
         group
     );
     var data = {};
+    data["name"] ="userName";
 
-    alert("data: " + JSON.stringify(person));
-
-    send("/personal/person", "PUT", person);
+    //alert("data: " + JSON.stringify(person));
+    //alert(JSON.stringify(data));
+    send("/personal/person", "POST", person);
 }
 
 
@@ -38,7 +39,7 @@ function send(url, type, jsonData) {
 
         url: url,
         type: type,
-        contentType: 'application/json',
+        contentType: 'application/text',
         data: JSON.stringify(jsonData),
         success: function (data) {
 
@@ -53,6 +54,8 @@ function send(url, type, jsonData) {
     });
     return false;
 }
+
+
 
 function sendGetGroup(url, type, jsonData) {
 
