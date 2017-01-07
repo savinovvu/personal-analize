@@ -14,7 +14,6 @@ function getAll() {
 
 
 function putUser() {
-    alert("это число- "+ $('#group').val());
     var group = new Group(
         Number($('#group').val()),
          $('#group option:selected').text());
@@ -25,8 +24,6 @@ function putUser() {
         group
     );
 
-
-    alert("data: " + JSON.stringify(person));
     send("/personal/person", "POST", person);
 }
 
