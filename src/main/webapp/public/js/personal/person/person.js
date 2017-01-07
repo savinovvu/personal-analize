@@ -18,17 +18,18 @@ function getAll() {
 
 
 function putUser() {
-    var group = new Group($('#group').val());
+    getSelectedValue();
+    var group = new Group(
+        Number($('#group').val()),
+         $('#group option:selected').text())
     var person = new Person(
-        $("#personId").val(),
+        Number($("#personId").val()),
         $("#name").val(),
         group
     );
-    var data = {};
-    data["name"] ="userName";
 
-    //alert("data: " + JSON.stringify(person));
-    //alert(JSON.stringify(data));
+
+    alert("data: " + JSON.stringify(person));
     send("/personal/person", "POST", person);
 }
 
@@ -39,7 +40,7 @@ function send(url, type, jsonData) {
 
         url: url,
         type: type,
-        contentType: 'application/text',
+        contentType: 'application/json',
         data: JSON.stringify(jsonData),
         success: function (data) {
 
@@ -113,7 +114,7 @@ function viewGroup(data) {
     $(".delGroup").remove();
     var output = "";
     $.each(data, function (key, val) {
-        output += "<option class='delGroup' value='" + val.name + "'>" + val.name + "</option>";
+        output += "<option class='delGroup' value='" + val.id + "'>" + val.name + "</option>";
     });
     $("#group").append(output);
 /*    output = "";

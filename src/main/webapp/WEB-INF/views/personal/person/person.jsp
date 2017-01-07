@@ -108,7 +108,7 @@
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
 
-                                <select id="group" class="form-control" name="group"  required>
+                                <select id="group" class="form-control" name="group" onChange="getSelectedValue()"  required>
 
 
 
@@ -118,11 +118,10 @@
                     </div>
                     <!-- Конец блока для ввода отдела-->
 
-                    <%--Скрытый блог данных об отделах--%>
-                 <%--   <div class="hiddenGroupDiv" id="hiddenGroupDiv">
-
-                    </div>
---%>
+                   <%-- Скрытый блог данных об отделах--%>
+                    <%--<div>
+                        <input type="hidden" class="form-control" id="group-id" name="name">
+                    </div>--%>
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-primary" data-dismiss="modal">Отмена</button>

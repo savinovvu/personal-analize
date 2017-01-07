@@ -33,6 +33,8 @@ public abstract   class NamedEntity extends BaseEntity {
 
     @Override
     public String toString() {
-        return name;
+        return "NamedEntity{" +
+                "name='" + name + '\'' +
+                '}';
     }
 }

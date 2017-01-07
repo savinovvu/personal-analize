@@ -1,5 +1,5 @@
-function Group(name) {
-    this.id = -1;
+function Group(id, name) {
+    this.id = id;
     this.name = name;
 }
 

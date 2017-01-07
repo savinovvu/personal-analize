@@ -17,7 +17,14 @@ public class Person extends NamedEntity {
     @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.ALL, CascadeType.PERSIST})
     @JoinColumn(name = "group_id", nullable = false)
     private Group group;
+
 public Person(){}
 
+    @Override
+    public String toString() {
 
+        return super.toString()+"Person{" +
+                "group=" + group +
+                '}';
+    }
 }

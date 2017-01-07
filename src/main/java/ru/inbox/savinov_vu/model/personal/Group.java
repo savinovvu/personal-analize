@@ -15,4 +15,6 @@ public class Group extends NamedEntity{
     @OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER, mappedBy = "group")
     @JsonIgnore
     private List<Person> persons;
+
+
 }
