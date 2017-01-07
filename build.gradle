@@ -86,6 +86,10 @@ dependencies {
     compile "org.webjars:datetimepicker:2.5.1"
     compile "org.webjars:noty:2.2.4"
     compile "org.webjars:datatables:1.10.12-1"
+    /*jsoup*/
+    compile "org.jsoup:jsoup:1.10.2"
+
+
 
 
 

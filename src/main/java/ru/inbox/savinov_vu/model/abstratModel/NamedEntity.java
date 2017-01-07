@@ -8,7 +8,8 @@ import javax.persistence.MappedSuperclass;
 
 
 @MappedSuperclass
-public abstract   class NamedEntity extends BaseEntity {
+
+public abstract class NamedEntity extends BaseEntity {
 
     @NotEmpty
     @Column(name = "name", nullable = false)
@@ -16,6 +17,7 @@ public abstract   class NamedEntity extends BaseEntity {
     protected String name;
 
     public NamedEntity() {
+        super();
     }
 
     protected NamedEntity(Integer id, String name) {
@@ -33,7 +35,7 @@ public abstract   class NamedEntity extends BaseEntity {
 
     @Override
     public String toString() {
-        return "NamedEntity{" +
+        return super.toString() + "{" +
                 "name='" + name + '\'' +
                 '}';
     }

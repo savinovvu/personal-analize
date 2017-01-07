@@ -33,6 +33,7 @@
     <orderEntry type="library" name="Gradle: org.webjars:datetimepicker:2.5.1" level="project" />
     <orderEntry type="library" name="Gradle: org.webjars:noty:2.2.4" level="project" />
     <orderEntry type="library" name="Gradle: org.webjars:datatables:1.10.12-1" level="project" />
+    <orderEntry type="library" name="Gradle: org.jsoup:jsoup:1.10.2" level="project" />
     <orderEntry type="library" name="Gradle: junit:junit:4.5" level="project" />
     <orderEntry type="library" name="Gradle: org.jboss.logging:jboss-logging:3.3.0.Final" level="project" />
     <orderEntry type="library" name="Gradle: org.javassist:javassist:3.20.0-GA" level="project" />

@@ -1,11 +1,7 @@
 
-function getGroupData(){
-    alert("показываю");
-}
-
 function downloadPage() {
     getAll();
-    getGroup()
+    getGroup();
 }
 
 function getGroup() {
@@ -18,10 +14,11 @@ function getAll() {
 
 
 function putUser() {
-    getSelectedValue();
+    alert("это число- "+ $('#group').val());
     var group = new Group(
         Number($('#group').val()),
-         $('#group option:selected').text())
+         $('#group option:selected').text());
+
     var person = new Person(
         Number($("#personId").val()),
         $("#name").val(),
@@ -117,14 +114,6 @@ function viewGroup(data) {
         output += "<option class='delGroup' value='" + val.id + "'>" + val.name + "</option>";
     });
     $("#group").append(output);
-/*    output = "";
-
-    $(".hidden").remove();
-    $.each(data, function (key, val) {
-        output += "<input type='text' class='delGroupId' value='" + val.id + "'disabled>";
-    });
-    $("#hiddenGroupDiv").append(output);*/
-
 
 }
 

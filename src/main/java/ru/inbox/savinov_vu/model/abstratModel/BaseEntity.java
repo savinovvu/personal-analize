@@ -1,23 +1,34 @@
 package ru.inbox.savinov_vu.model.abstratModel;
 
 import org.hibernate.Hibernate;
-import org.springframework.data.domain.Persistable;
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.validator.constraints.NotEmpty;
+import org.hibernate.validator.constraints.SafeHtml;
 
 import javax.persistence.*;
 
 @MappedSuperclass
+@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
 // http://stackoverflow.com/questions/594597/hibernate-annotations-which-is-better-field-or-property-access
 @Access(AccessType.FIELD)
-//@JsonAutoDetect(fieldVisibility = ANY, getterVisibility = NONE, isGetterVisibility = NONE, setterVisibility = NONE)
-public abstract  class BaseEntity implements Persistable<Integer> {
+/*@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY, getterVisibility = JsonAutoDetect.Visibility.NONE,
+        isGetterVisibility = JsonAutoDetect.Visibility.NONE, setterVisibility = JsonAutoDetect.Visibility.NONE)*/
+public abstract  class BaseEntity /*implements Persistable<Integer> */{
     //public static final int START_SEQ = 100000;
 
     @Id
     @SequenceGenerator(name = "GLOBAL_SEQ", sequenceName = "GLOBAL_SEQ", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "GLOBAL_SEQ")
+    @GenericGenerator(name= "increment", strategy= "increment")
     // PROPERTY access for id due to bug: https://hibernate.atlassian.net/browse/HHH-3718
     @Access(value = AccessType.PROPERTY)
     protected Integer id;
+
+    @NotEmpty
+    @Column(name = "name", nullable = false)
+    @SafeHtml
+    protected String name;
+
 
 
 
@@ -32,12 +43,12 @@ public abstract  class BaseEntity implements Persistable<Integer> {
         this.id = id;
     }
 
-    @Override
+   // @Override
     public Integer getId() {
         return id;
     }
 
-    @Override
+   // @Override
     public boolean isNew() {
         return (getId() == null);
     }
@@ -58,6 +69,13 @@ public abstract  class BaseEntity implements Persistable<Integer> {
     @Override
     public int hashCode() {
         return (getId() == null) ? 0 : getId();
+    }
+
+    @Override
+    public String toString() {
+        return "{" +
+                "id=" + id +
+                '}';
     }
 }
 

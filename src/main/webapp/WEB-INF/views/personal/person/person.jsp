@@ -30,7 +30,7 @@
 
         <!-- Кнопка для открытия модального окна -->
         <button type="button" class="btn btn-lg btn-success custombtn" data-toggle="modal"
-                data-target="#myModal" onclick="getModal(0)">
+                data-target="#myModal" onclick="getModal()">
             Добавить пользователя
         </button>
 
@@ -108,7 +108,7 @@
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
 
-                                <select id="group" class="form-control" name="group" onChange="getSelectedValue()"  required>
+                                <select id="group" class="form-control" name="group">
 
 
 

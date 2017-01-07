@@ -15,4 +15,7 @@ public interface PersonRepository extends JpaRepository<Person, Integer> {
 
     @Query("SELECT p FROM Person p WHERE p.group.id=:group_id")
     List<Person> getPersonWithGroup(@Param("group_id") Group group);
+
+
+
 }

@@ -21,17 +21,10 @@ public class PersonRestController {
     }
 
 
-   /* @GetMapping
-    public List<Person> getAllActivePersons(Model model) throws JsonProcessingException {
-        return service.getAllPersons();
-
-    }*/
-
 
     @PostMapping
-    public List<Person> putPerson(@RequestBody Person str) {
-        System.out.println("пришло");
-        System.out.println(str);
+    public List<Person> putPerson(@RequestBody Person person) {
+        service.addPerson(person);
         return service.getAllPersons();
 
     }
