@@ -1,20 +1,16 @@
 function downloadPage() {
     getAll();
-    getGroup();
 }
 
 function delDepartment() {
     var person = new Person(Number($("#personDelId").val()),null,new Group(null, null));
-    send("/personal/person", "DELETE", person);
+    send("/personal/department", "DELETE", person);
 
 }
 
-function getGroup() {
-    sendGetGroup("/personal/group/all", "GET");
-}
 
 function getAll() {
-    send("/personal/person/all", "GET");
+    send("/personal/department/all", "GET");
 }
 
 
@@ -28,7 +24,7 @@ function putDepartment() {
         $("#name").val(),
         group
     );
-    send("/personal/person", "PUT", person);
+    send("/personal/department", "PUT", person);
 }
 
 
@@ -55,29 +51,6 @@ function send(url, type, jsonData) {
 }
 
 
-function sendGetGroup(url, type, jsonData) {
-
-    $.ajax({
-
-        url: url,
-        type: type,
-        contentType: 'application/json',
-        data: JSON.stringify(jsonData),
-        success: function (data) {
-
-            viewGroup(data);
-
-        },
-        error: function (x) {
-            //   alert("error");
-
-        }
-
-    });
-    return false;
-}
-
-
 function view(data) {
 
     $('#departmentT').DataTable({
@@ -87,18 +60,11 @@ function view(data) {
             {
                 "data": "name",
                 "render": function (row, data, dataIndex) {
-                    return                         '<p id="name-' + dataIndex.id + '">' + dataIndex.name + '</p>';
+                    return '<p id="name-' + dataIndex.id + '">' + dataIndex.name + '</p>';
 
                 }
             },
 
-            {
-                "data": "group",
-                "render": function (row, data, dataIndex) {
-                    //
-                    return row.name;
-                }
-            },
 
             {
                 "defaultContent": "",
@@ -108,8 +74,6 @@ function view(data) {
 
                     return '<a class="btn btn-xs btn-primary" onclick="getModal(' + dataIndex.id + ')" data-toggle="modal" data-target="#myModal">Обновить</a>' +
                         '<a  class="btn btn-xs btn-danger" onclick="getDelModal(' + dataIndex.id + ')" data-toggle="modal" data-target="#myDelModal">Удалить</a>';
-
-
                 }
             },
         ]
@@ -117,15 +81,7 @@ function view(data) {
 
 }
 
-function viewGroup(data) {
-    $(".delGroup").remove();
-    var output = "";
-    $.each(data, function (key, val) {
-        output += "<option class='delGroup' value='" + val.id + "'>" + val.name + "</option>";
-    });
-    $("#group").append(output);
 
-}
 
 
 
