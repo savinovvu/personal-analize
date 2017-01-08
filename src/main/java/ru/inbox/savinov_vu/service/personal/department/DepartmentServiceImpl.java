@@ -21,11 +21,12 @@ public class DepartmentServiceImpl implements DepartmentService {
 
     @Override
     public void addDepartment(Department department) {
+        repository.saveAndFlush(department);
 
     }
 
     @Override
     public void deleteDepartment(Department department) {
-
+        repository.delete(department.getId());
     }
 }
