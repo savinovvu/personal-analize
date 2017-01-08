@@ -3,7 +3,7 @@ function downloadPage() {
     getGroup();
 }
 
-function delPerson() {
+function delDepartment() {
     var person = new Person(Number($("#personDelId").val()),null,new Group(null, null));
     send("/personal/person", "DELETE", person);
 
@@ -18,7 +18,7 @@ function getAll() {
 }
 
 
-function putPerson() {
+function putDepartment() {
     var group = new Group(
         Number($('#group').val()),
         $('#group option:selected').text());
@@ -80,7 +80,7 @@ function sendGetGroup(url, type, jsonData) {
 
 function view(data) {
 
-    $('#personT').DataTable({
+    $('#departmentT').DataTable({
         "data": data,
         "columns": [
             {"data": "id"},

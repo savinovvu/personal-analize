@@ -16,13 +16,12 @@
     <script type="text/javascript" src="webjars/datatables/1.10.12/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="webjars/datatables/1.10.12/js/dataTables.bootstrap.min.js"></script>
     <script src="/public/js/util/model/model.js" type="text/javascript"></script>
-    <script src="/public/js/personal/group/group.js" type="text/javascript"></script>
-    <script src="/public/js/personal/group/util.js" type="text/javascript"></script>
+    <script src="/public/js/personal/department/department.js" type="text/javascript"></script>
+    <script src="/public/js/personal/department/util.js" type="text/javascript"></script>
 
 </head>
 
 <body onload="downloadPage()">
-
 
 
 <div class="view-box">
@@ -31,22 +30,17 @@
         <!-- Кнопка для открытия модального окна -->
         <button type="button" class="btn btn-lg btn-success custombtn" data-toggle="modal"
                 data-target="#myModal" onclick="getModal()">
-            Добавить пользователя
+            Добавить Подразделение
         </button>
 
 
-        <div class="showUserDiv">
-            <form id="showUser"></form>
-
-        </div>
     </div>
 
-    <table id="personT">
+    <table id="departmentT">
 
         <thead>
         <tr>
             <td>id</td>
-            <td>Группа</td>
             <td>Подразделение</td>
             <td>Действие</td>
         </tr>
@@ -61,12 +55,12 @@
             <!-- Заголовок модального окна -->
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">×</button>
-                <h4 class="modal-title text-center" id="myModalLabel">Добавление/Обновление пользователя</h4>
+                <h4 class="modal-title text-center" id="myModalLabel">Добавление/Обновление подразделения</h4>
             </div>
             <!-- Основная часть модального окна, содержащая форму для регистрации -->
             <div class="modal-body">
                 <!-- Форма для регистрации -->
-                <form role="form" class="form-horizontal" onsubmit="putPerson()">
+                <form role="form" class="form-horizontal" onsubmit="putDepartment()">
 
                     <!-- Блок для ввода id -->
                     <div class="changeDivId">
@@ -78,17 +72,17 @@
                                     <%--             <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>--%>
 
 
-                                    <input type="hidden" class="form-control" id="personId" name="id" required>
+                                    <input type="hidden" class="form-control" id="departmentId" name="id" required>
                                 </div>
                             </div>
                         </div>
                     </div>
 
 
-                    <!-- Блок для ввода ФИО -->
+                    <!-- Блок для ввода названия -->
 
                     <div class="form-group has-feedback">
-                        <label for="name" class="control-label col-xs-3">ФИО:</label>
+                        <label for="name" class="control-label col-xs-3">Наименование:</label>
                         <div class="col-xs-6">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
@@ -99,24 +93,6 @@
                     </div>
                     <!-- Конец блока для ввода ФИО-->
 
-
-                    <%--Блок ввод отдела--%>
-                    <div class="form-group has-feedback">
-                        <label for="group" class="control-label col-xs-3">Отдел</label>
-
-                        <div class="col-xs-6">
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
-
-                                <select id="group" class="form-control" name="group">
-
-
-
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Конец блока для ввода отдела-->
 
                     <%-- Скрытый блог данных об отделах--%>
                     <%--<div>
@@ -143,35 +119,34 @@
             <!-- Заголовок модального окна -->
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">×</button>
-                <h4 class="modal-title text-center" id="myDelModalLabel">Удаление пользователя</h4>
+                <h4 class="modal-title text-center" id="myDelModalLabel">Удаление подразделения</h4>
             </div>
             <!-- Основная часть модального окна, содержащая форму для удаления -->
             <div class="modal-body">
                 <!-- Форма для регистрации -->
-                <form role="form" class="form-horizontal" onsubmit="delPerson()">
+                <form role="form" class="form-horizontal" onsubmit="delDepartment()">
 
 
-                    <!-- Блок для ввода ФИО -->
+                    <!-- Блок для ввода Наименования -->
 
                     <div class="form-group has-feedback">
                         <label for="name" class="control-label col-xs-3">ФИО:</label>
                         <div class="col-xs-6">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-info-sign"></i></span>
-                                <input type="hidden" class="form-control" id="personDelId" name="id" readonly required>
-                                <input type="text" class="form-control" id="delName" name="name"  readonly  required/>
+                                <input type="hidden" class="form-control" id="departmentDelId" name="id" readonly
+                                       required>
+                                <input type="text" class="form-control" id="delName" name="name" readonly required/>
                             </div>
 
                         </div>
                     </div>
-                    <!-- Конец блока для ввода ФИО-->
-
-
+                    <!-- Конец блока для ввода Наименования-->
 
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-primary" data-dismiss="modal">Отмена</button>
-                        <input  type="submit" class="btn btn-danger" value="Удалить">
+                        <input type="submit" class="btn btn-danger" value="Удалить">
                     </div>
                 </form>
             </div>
@@ -180,7 +155,6 @@
         </div>
     </div>
 </div>
-
 
 
 </body>

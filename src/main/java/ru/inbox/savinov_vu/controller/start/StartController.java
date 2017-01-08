@@ -17,15 +17,22 @@ public class StartController {
         return "start/start";
     }
 
-    @GetMapping("editPerson")
-    public String personalPerson(Model model) {
-        return "personal/person/person";
+    @GetMapping("editDepartment")
+    public String personalDepartment(Model model) {
+        return "personal/department/department";
     }
 
     @GetMapping("editGroup")
     public String personalGroup(Model model) {
         return "personal/group/group";
     }
+
+    @GetMapping("editPerson")
+    public String personalPerson(Model model) {
+        return "personal/person/person";
+    }
+
+
 
 
 

@@ -35,10 +35,6 @@
         </button>
 
 
-        <div class="showUserDiv">
-            <form id="showUser"></form>
-
-        </div>
     </div>
 
     <table id="personT">

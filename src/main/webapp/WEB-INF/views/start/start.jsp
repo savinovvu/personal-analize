@@ -14,13 +14,23 @@
 <body>
 <div class="parent">
 <div class="menu">
-    <form action="editPerson" method="get">
-        <input class="btn btn-primary" type="submit" name="viewAllUsers" value="Люди">
+
+    <form action="editDepartment" method="get">
+        <input class="btn btn-primary" type="submit" name="viewAllUsers" value="Подразделения">
     </form>
 
     <form action="editGroup" method="get">
         <input class="btn btn-primary" type="submit" name="viewAllUsers" value="Отделы">
     </form>
+
+
+    <form action="editPerson" method="get">
+        <input class="btn btn-primary" type="submit" name="viewAllUsers" value="Люди">
+    </form>
+
+
+
+
 
 
 
