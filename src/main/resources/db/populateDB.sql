@@ -2,13 +2,10 @@ DELETE FROM groups;
 DELETE FROM persons;
 
 
-
-
 INSERT INTO groups (name) VALUES
   ('otdel1'),
   ('otdel2'),
   ('otdel3');
-
 
 
 INSERT INTO persons (name, group_id) VALUES

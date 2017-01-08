@@ -130,7 +130,7 @@
             <!-- Нижняя часть модального окна -->
             <div class="modal-footer">
                 <button type="button" class="btn btn-primary" data-dismiss="modal">Отмена</button>
-                <button id="save" type="button" onclick="putUser()" class="btn btn-primary">Готово</button>
+                <button id="save" type="button" onclick="putPerson()" class="btn btn-primary">Готово</button>
             </div>
         </div>
     </div>

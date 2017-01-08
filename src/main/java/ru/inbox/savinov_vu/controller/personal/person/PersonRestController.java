@@ -21,11 +21,18 @@ public class PersonRestController {
     }
 
 
-
-    @PostMapping
+    @PutMapping
     public List<Person> putPerson(@RequestBody Person person) {
         service.addPerson(person);
         return service.getAllPersons();
+
+    }
+
+    @DeleteMapping
+    public List<Person> deletePerson(@RequestBody Person person) {
+        service.deletePerson(person);
+        return service.getAllPersons();
+
 
     }
 

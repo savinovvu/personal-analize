@@ -66,7 +66,7 @@
             <!-- Основная часть модального окна, содержащая форму для регистрации -->
             <div class="modal-body">
                 <!-- Форма для регистрации -->
-                <form role="form" class="form-horizontal" onsubmit="putUser()">
+                <form role="form" class="form-horizontal" onsubmit="putPerson()">
 
                     <!-- Блок для ввода id -->
                     <div class="changeDivId">
@@ -134,6 +134,53 @@
         </div>
     </div>
 </div>
+
+<%--Блок удаления--%>
+
+<div class="modal fade" id="myDelModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Заголовок модального окна -->
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">×</button>
+                <h4 class="modal-title text-center" id="myDelModalLabel">Удаление пользователя</h4>
+            </div>
+            <!-- Основная часть модального окна, содержащая форму для удаления -->
+            <div class="modal-body">
+                <!-- Форма для регистрации -->
+                <form role="form" class="form-horizontal" onsubmit="delPerson()">
+
+
+                    <!-- Блок для ввода ФИО -->
+
+                    <div class="form-group has-feedback">
+                        <label for="name" class="control-label col-xs-3">ФИО:</label>
+                        <div class="col-xs-6">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-info-sign"></i></span>
+                                <input type="hidden" class="form-control" id="personDelId" name="id" readonly required>
+                                <input type="text" class="form-control" id="delName" name="name"  readonly  required/>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- Конец блока для ввода ФИО-->
+
+
+
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Отмена</button>
+                        <input  type="submit" class="btn btn-danger" value="Удалить">
+                    </div>
+                </form>
+            </div>
+            <!-- Нижняя часть модального окна -->
+
+        </div>
+    </div>
+</div>
+
 
 
 </body>
