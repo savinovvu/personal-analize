@@ -5,6 +5,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
+import ru.inbox.savinov_vu.model.personal.Department;
 import ru.inbox.savinov_vu.model.personal.Group;
 import ru.inbox.savinov_vu.service.personal.group.GroupService;
 
@@ -23,8 +24,8 @@ public class GroupRestController {
     }
 
     @GetMapping("/department")
-    public List<Group> getDepartmentGroups(){
-        return service.getAllGroups();
+    public List<Group> getDepartmentWithGroups(@RequestBody Department department){
+        return service.getDepartmentWithGroups(department);
     }
 
 
