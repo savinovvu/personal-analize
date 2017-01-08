@@ -2,10 +2,11 @@ function downloadPage() {
     getAll();
 }
 
-function delDepartment() {
-    var person = new Person(Number($("#personDelId").val()),null,new Group(null, null));
-    send("/personal/department", "DELETE", person);
-
+function delDepartment(id) {
+    var department = new Department(
+        $("#departmentDelId").val(),null
+    );
+    send("/personal/department", "DELETE", department);
 }
 
 
@@ -19,15 +20,6 @@ function putDepartment() {
         Number($('#departmentId').val()),
         $("#name").val()
     );
-   /* var group = new Group(
-        Number($('#group').val()),
-        $('#group option:selected').text());
-
-    var person = new Person(
-        Number($("#personId").val()),
-        $("#name").val(),
-        group
-    );*/
     send("/personal/department", "PUT", department);
 }
 

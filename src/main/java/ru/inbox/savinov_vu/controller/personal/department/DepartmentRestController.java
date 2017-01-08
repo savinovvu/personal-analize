@@ -17,17 +17,23 @@ public class DepartmentRestController {
     DepartmentService service;
 
     @GetMapping(value = "/all")
-    public List<Department> getAllDepartments(){
+    public List<Department> getAllDepartments() {
         return service.getAllDepartments();
     }
 
     @PutMapping
-    public List<Department> addDepartment( @RequestBody Department department){
+    public List<Department> addDepartment(@RequestBody Department department) {
         service.addDepartment(department);
         return service.getAllDepartments();
-
     }
 
+    @DeleteMapping
+    public List<Department> deleteDepartment(@RequestBody Department department) {
+        service.deleteDepartment(department);
+        return service.getAllDepartments();
 
+
+
+    }
 
 }
