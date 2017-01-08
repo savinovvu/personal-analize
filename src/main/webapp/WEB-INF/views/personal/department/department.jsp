@@ -94,10 +94,7 @@
                     <!-- Конец блока для ввода ФИО-->
 
 
-                    <%-- Скрытый блог данных об отделах--%>
-                    <%--<div>
-                        <input type="hidden" class="form-control" id="group-id" name="name">
-                    </div>--%>
+
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-primary" data-dismiss="modal">Отмена</button>
