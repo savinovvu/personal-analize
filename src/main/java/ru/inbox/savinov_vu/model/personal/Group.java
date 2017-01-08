@@ -1,6 +1,7 @@
 package ru.inbox.savinov_vu.model.personal;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.hibernate.validator.constraints.SafeHtml;
 import org.springframework.data.domain.Persistable;
@@ -9,7 +10,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "groups")
+@Table(name = "groups", uniqueConstraints = {@UniqueConstraint(columnNames = {"department_id"}, name = "departments_unique_group_idx")})
 public class Group implements Persistable<Integer> {
 
     @Id
@@ -22,6 +23,12 @@ public class Group implements Persistable<Integer> {
     @Column(name = "name", nullable = false)
     @SafeHtml
     protected String name;
+
+
+    @JsonProperty("department")
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "department_id", nullable = false)
+    private Department department;
 
 
     @JsonIgnore
