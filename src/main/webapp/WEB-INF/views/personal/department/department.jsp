@@ -69,9 +69,6 @@
                             <%--     <label for="personId" class="control-label col-xs-3">id:</label>--%>
                             <div class="col-xs-6">
                                 <div class="input-group">
-                                    <%--             <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>--%>
-
-
                                     <input type="hidden" class="form-control" id="departmentId" name="id" required>
                                 </div>
                             </div>

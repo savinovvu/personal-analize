@@ -15,7 +15,11 @@ function getAll() {
 
 
 function putDepartment() {
-    var group = new Group(
+    var department = new Department(
+        Number($('#departmentId').val()),
+        $("#name").val()
+    );
+   /* var group = new Group(
         Number($('#group').val()),
         $('#group option:selected').text());
 
@@ -23,8 +27,8 @@ function putDepartment() {
         Number($("#personId").val()),
         $("#name").val(),
         group
-    );
-    send("/personal/department", "PUT", person);
+    );*/
+    send("/personal/department", "PUT", department);
 }
 
 
