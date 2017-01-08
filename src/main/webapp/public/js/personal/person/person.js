@@ -4,7 +4,7 @@ function downloadPage() {
 }
 
 function delPerson() {
-    var person = new Person(Number($("#personDelId").val()),null,new Group(null, null));
+    var person = new Person(Number($("#personDelId").val()), null, new Group(null, null));
     send("/personal/person", "DELETE", person);
 
 }
@@ -46,7 +46,7 @@ function send(url, type, jsonData) {
 
         },
         error: function (x) {
-          //  alert("error");
+            //  alert("error");
 
         }
 
@@ -69,7 +69,7 @@ function sendGetGroup(url, type, jsonData) {
 
         },
         error: function (x) {
-         //   alert("error");
+            //   alert("error");
 
         }
 
@@ -87,7 +87,7 @@ function view(data) {
             {
                 "data": "name",
                 "render": function (row, data, dataIndex) {
-return                         '<p id="name-' + dataIndex.id + '">' + dataIndex.name + '</p>';
+                    return '<p id="name-' + dataIndex.id + '">' + dataIndex.name + '</p>';
 
                 }
             },
@@ -95,21 +95,24 @@ return                         '<p id="name-' + dataIndex.id + '">' + dataIndex.
             {
                 "data": "group",
                 "render": function (row, data, dataIndex) {
-                    //
                     return row.name;
                 }
             },
 
             {
+                "data": "group",
+                "render": function (row, data, dataIndex) {
+                    return row.department.name;
+                }
+            },
+
+
+            {
                 "defaultContent": "",
                 "orderable": false,
                 "render": function (row, data, dataIndex) {
-
-
                     return '<a class="btn btn-xs btn-primary" onclick="getModal(' + dataIndex.id + ')" data-toggle="modal" data-target="#myModal">Обновить</a>' +
                         '<a  class="btn btn-xs btn-danger" onclick="getDelModal(' + dataIndex.id + ')" data-toggle="modal" data-target="#myDelModal">Удалить</a>';
-
-
                 }
             },
         ]

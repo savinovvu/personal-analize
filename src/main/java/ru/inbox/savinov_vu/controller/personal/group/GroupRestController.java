@@ -18,7 +18,12 @@ public class GroupRestController {
     GroupService service;
 
     @GetMapping(value = "/all")
-    public List<Group> getAllPerson(){
+    public List<Group> getAllGroups(){
+        return service.getAllGroups();
+    }
+
+    @GetMapping("/department")
+    public List<Group> getDepartmentGroups(){
         return service.getAllGroups();
     }
 
