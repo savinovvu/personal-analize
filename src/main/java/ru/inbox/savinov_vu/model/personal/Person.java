@@ -10,8 +10,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "persons", uniqueConstraints = {@UniqueConstraint(columnNames = {"group_id"}, name = "persons_unique_group_idx")})
-public class Person implements Persistable<Integer> {
-
+public class Person  implements Persistable<Integer> {
     @Id
     @SequenceGenerator(name = "GLOBAL_SEQ", sequenceName = "GLOBAL_SEQ", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "GLOBAL_SEQ")
@@ -47,7 +46,6 @@ public class Person implements Persistable<Integer> {
     public void setGroup(Group group) {
         this.group = group;
     }
-
     public Integer getId() {
         return id;
     }

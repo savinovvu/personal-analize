@@ -1,9 +1,9 @@
 package ru.inbox.savinov_vu.model.abstratModel;
 
 import org.hibernate.Hibernate;
-import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.hibernate.validator.constraints.SafeHtml;
+import org.springframework.data.domain.Persistable;
 
 import javax.persistence.*;
 
@@ -13,14 +13,12 @@ import javax.persistence.*;
 @Access(AccessType.FIELD)
 /*@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY, getterVisibility = JsonAutoDetect.Visibility.NONE,
         isGetterVisibility = JsonAutoDetect.Visibility.NONE, setterVisibility = JsonAutoDetect.Visibility.NONE)*/
-public abstract  class BaseEntity /*implements Persistable<Integer> */{
+public abstract  class BaseEntity implements Persistable<Integer> {
     //public static final int START_SEQ = 100000;
 
     @Id
     @SequenceGenerator(name = "GLOBAL_SEQ", sequenceName = "GLOBAL_SEQ", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "GLOBAL_SEQ")
-    @GenericGenerator(name= "increment", strategy= "increment")
-    // PROPERTY access for id due to bug: https://hibernate.atlassian.net/browse/HHH-3718
     @Access(value = AccessType.PROPERTY)
     protected Integer id;
 

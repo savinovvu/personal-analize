@@ -28,7 +28,6 @@ function putPerson() {
         $("#name").val(),
         group
     );
-
     send("/personal/person", "PUT", person);
 }
 

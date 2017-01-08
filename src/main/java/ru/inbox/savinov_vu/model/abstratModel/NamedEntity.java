@@ -8,7 +8,6 @@ import javax.persistence.MappedSuperclass;
 
 
 @MappedSuperclass
-
 public abstract class NamedEntity extends BaseEntity {
 
     @NotEmpty
