@@ -9,8 +9,8 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "groups")
-public class Group implements Persistable<Integer> {
+@Table(name = "department")
+public class Department  implements Persistable<Integer> {
 
     @Id
     @SequenceGenerator(name = "GLOBAL_SEQ", sequenceName = "GLOBAL_SEQ", allocationSize = 1)
@@ -23,19 +23,12 @@ public class Group implements Persistable<Integer> {
     @SafeHtml
     protected String name;
 
-
     @JsonIgnore
-    @OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER, mappedBy = "group")
-    private List<Person> persons;
+    @OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER, mappedBy = "department")
+    private List<Group> groups;
 
-    public List<Person> getPersons() {
-        return persons;
-    }
 
-    public void setPersons(List<Person> persons) {
-        this.persons = persons;
-    }
-
+    @Override
     public Integer getId() {
         return id;
     }
@@ -52,6 +45,14 @@ public class Group implements Persistable<Integer> {
         this.name = name;
     }
 
+    public List<Group> getGroups() {
+        return groups;
+    }
+
+    public void setGroups(List<Group> groups) {
+        this.groups = groups;
+    }
+
     @Override
     public boolean isNew() {
         return (getId() == null);
@@ -59,9 +60,10 @@ public class Group implements Persistable<Integer> {
 
     @Override
     public String toString() {
-        return "Group{" +
+        return "Department{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", groups=" + groups +
                 '}';
     }
 
@@ -70,16 +72,18 @@ public class Group implements Persistable<Integer> {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Group group = (Group) o;
+        Department that = (Department) o;
 
-        if (id != null ? !id.equals(group.id) : group.id != null) return false;
-        return name != null ? name.equals(group.name) : group.name == null;
+        if (id != null ? !id.equals(that.id) : that.id != null) return false;
+        if (name != null ? !name.equals(that.name) : that.name != null) return false;
+        return groups != null ? groups.equals(that.groups) : that.groups == null;
     }
 
     @Override
     public int hashCode() {
         int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + (groups != null ? groups.hashCode() : 0);
         return result;
     }
 }
