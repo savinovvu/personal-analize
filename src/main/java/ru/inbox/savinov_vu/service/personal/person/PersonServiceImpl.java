@@ -5,8 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.inbox.savinov_vu.model.personal.Group;
 import ru.inbox.savinov_vu.model.personal.Person;
-import ru.inbox.savinov_vu.repository.GroupRepository;
-import ru.inbox.savinov_vu.repository.PersonRepository;
+import ru.inbox.savinov_vu.repository.personal.GroupRepository;
+import ru.inbox.savinov_vu.repository.personal.PersonRepository;
 
 import java.util.List;
 

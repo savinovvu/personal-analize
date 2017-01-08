@@ -1,4 +1,4 @@
-package ru.inbox.savinov_vu.repository;
+package ru.inbox.savinov_vu.repository.personal;
 
 
 import org.springframework.data.jpa.repository.JpaRepository;

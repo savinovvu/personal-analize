@@ -3,7 +3,7 @@ package ru.inbox.savinov_vu.service.personal.department;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.inbox.savinov_vu.model.personal.Department;
-import ru.inbox.savinov_vu.repository.DepartmentRepository;
+import ru.inbox.savinov_vu.repository.personal.DepartmentRepository;
 
 import java.util.List;
 

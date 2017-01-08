@@ -3,7 +3,7 @@ package ru.inbox.savinov_vu.service.personal.group;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.inbox.savinov_vu.model.personal.Group;
-import ru.inbox.savinov_vu.repository.GroupRepository;
+import ru.inbox.savinov_vu.repository.personal.GroupRepository;
 
 import java.util.List;
 
