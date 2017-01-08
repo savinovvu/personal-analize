@@ -18,12 +18,13 @@ public class GroupServiceImpl implements GroupService {
     }
 
     @Override
-    public void addGroup(Group Group) {
+    public void addGroup(Group group) {
+        repository.saveAndFlush(group);
 
     }
 
     @Override
     public void deleteGroup(Group group) {
-
+        repository.delete(group.getId());
     }
 }

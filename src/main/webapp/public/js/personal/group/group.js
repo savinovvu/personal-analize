@@ -1,34 +1,35 @@
 function downloadPage() {
     getAll();
-    getGroup();
+    getDepartment();
 }
 
-function delPerson() {
-    var person = new Person(Number($("#personDelId").val()),null,new Group(null, null));
-    send("/personal/person", "DELETE", person);
+function delGroup() {
+    var group = new Group(Number($("#groupDelId").val()), null, new Department(null, null));
+    send("/personal/group", "DELETE", group);
 
 }
 
-function getGroup() {
-    sendGetGroup("/personal/group/all", "GET");
+function getDepartment() {
+    sendGetDepartment("/personal/department/all", "GET");
 }
 
 function getAll() {
-    send("/personal/person/all", "GET");
+    send("/personal/group/all", "GET");
 }
 
 
-function putPerson() {
-    var group = new Group(
-        Number($('#group').val()),
-        $('#group option:selected').text());
+function putGroup() {
+    var department = new Department(
+        Number($('#department').val()),
+        $('#department option:selected').text());
 
-    var person = new Person(
-        Number($("#personId").val()),
+    var group = new Group(
+        Number($("#groupId").val()),
         $("#name").val(),
-        group
+        department
     );
-    send("/personal/person", "PUT", person);
+
+    send("/personal/group", "PUT", group);
 }
 
 
@@ -55,7 +56,7 @@ function send(url, type, jsonData) {
 }
 
 
-function sendGetGroup(url, type, jsonData) {
+function sendGetDepartment(url, type, jsonData) {
 
     $.ajax({
 
@@ -87,15 +88,14 @@ function view(data) {
             {
                 "data": "name",
                 "render": function (row, data, dataIndex) {
-                    return                         '<p id="name-' + dataIndex.id + '">' + dataIndex.name + '</p>';
+                    return '<p id="name-' + dataIndex.id + '">' + dataIndex.name + '</p>';
 
                 }
             },
 
             {
-                "data": "group",
+                "data": "department",
                 "render": function (row, data, dataIndex) {
-                    //
                     return row.name;
                 }
             },
@@ -118,12 +118,12 @@ function view(data) {
 }
 
 function viewGroup(data) {
-    $(".delGroup").remove();
+    $(".delDepartment").remove();
     var output = "";
     $.each(data, function (key, val) {
-        output += "<option class='delGroup' value='" + val.id + "'>" + val.name + "</option>";
+        output += "<option class='delDepartment' value='" + val.id + "'>" + val.name + "</option>";
     });
-    $("#group").append(output);
+    $("#department").append(output);
 
 }
 

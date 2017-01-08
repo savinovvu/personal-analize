@@ -31,7 +31,7 @@
         <!-- Кнопка для открытия модального окна -->
         <button type="button" class="btn btn-lg btn-success custombtn" data-toggle="modal"
                 data-target="#myModal" onclick="getModal()">
-            Добавить пользователя
+            Добавить группу
         </button>
 
 
@@ -61,24 +61,19 @@
             <!-- Заголовок модального окна -->
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">×</button>
-                <h4 class="modal-title text-center" id="myModalLabel">Добавление/Обновление пользователя</h4>
+                <h4 class="modal-title text-center" id="myModalLabel">Добавление/Обновление группы</h4>
             </div>
             <!-- Основная часть модального окна, содержащая форму для регистрации -->
             <div class="modal-body">
                 <!-- Форма для регистрации -->
-                <form role="form" class="form-horizontal" onsubmit="putPerson()">
+                <form role="form" class="form-horizontal" onsubmit="putGroup()">
 
                     <!-- Блок для ввода id -->
                     <div class="changeDivId">
-                        <%--<div class="form-group" id="divId">--%>
                         <div class="form-group has-feedback" id="divId">
-                            <%--     <label for="personId" class="control-label col-xs-3">id:</label>--%>
                             <div class="col-xs-6">
                                 <div class="input-group">
-                                    <%--             <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>--%>
-
-
-                                    <input type="hidden" class="form-control" id="personId" name="id" required>
+                                    <input type="hidden" class="form-control" id="groupId" name="id" required>
                                 </div>
                             </div>
                         </div>
@@ -88,7 +83,7 @@
                     <!-- Блок для ввода ФИО -->
 
                     <div class="form-group has-feedback">
-                        <label for="name" class="control-label col-xs-3">ФИО:</label>
+                        <label for="name" class="control-label col-xs-3">Группа:</label>
                         <div class="col-xs-6">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
@@ -102,13 +97,13 @@
 
                     <%--Блок ввод отдела--%>
                     <div class="form-group has-feedback">
-                        <label for="group" class="control-label col-xs-3">Отдел</label>
+                        <label for="department" class="control-label col-xs-3">Подразделение</label>
 
                         <div class="col-xs-6">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
 
-                                <select id="group" class="form-control" name="group">
+                                <select id="department" class="form-control" name="department">
 
 
 
@@ -119,9 +114,7 @@
                     <!-- Конец блока для ввода отдела-->
 
                     <%-- Скрытый блог данных об отделах--%>
-                    <%--<div>
-                        <input type="hidden" class="form-control" id="group-id" name="name">
-                    </div>--%>
+
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-primary" data-dismiss="modal">Отмена</button>
@@ -143,22 +136,22 @@
             <!-- Заголовок модального окна -->
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">×</button>
-                <h4 class="modal-title text-center" id="myDelModalLabel">Удаление пользователя</h4>
+                <h4 class="modal-title text-center" id="myDelModalLabel">Удаление Группы</h4>
             </div>
             <!-- Основная часть модального окна, содержащая форму для удаления -->
             <div class="modal-body">
                 <!-- Форма для регистрации -->
-                <form role="form" class="form-horizontal" onsubmit="delPerson()">
+                <form role="form" class="form-horizontal" onsubmit="delGroup()">
 
 
                     <!-- Блок для ввода ФИО -->
 
                     <div class="form-group has-feedback">
-                        <label for="name" class="control-label col-xs-3">ФИО:</label>
+                        <label for="name" class="control-label col-xs-3">Группа:</label>
                         <div class="col-xs-6">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-info-sign"></i></span>
-                                <input type="hidden" class="form-control" id="personDelId" name="id" readonly required>
+                                <input type="hidden" class="form-control" id="groupDelId" name="id" readonly required>
                                 <input type="text" class="form-control" id="delName" name="name"  readonly  required/>
                             </div>
 
