@@ -31,9 +31,6 @@ public class DepartmentRestController {
     public List<Department> deleteDepartment(@RequestBody Department department) {
         service.deleteDepartment(department);
         return service.getAllDepartments();
-
-
-
     }
 
 }
