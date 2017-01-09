@@ -9,23 +9,17 @@
     <title>StartPage</title>
     <link rel="stylesheet" href="webjars/bootstrap/3.3.7-1/css/bootstrap.min.css">
     <link href="/public/css/start/start.css" rel="stylesheet">
+    <link href="/public/css/common/common.css" rel="stylesheet">
 
 </head>
 <body>
 <div class="parent">
 <div class="menu">
 
-    <form action="editDepartment" method="get">
-        <input class="btn btn-primary" type="submit" name="viewAllUsers" value="Подразделения">
-    </form>
-
-    <form action="editGroup" method="get">
-        <input class="btn btn-primary" type="submit" name="viewAllUsers" value="Отделы">
-    </form>
 
 
     <form action="editPerson" method="get">
-        <input class="btn btn-primary" type="submit" name="viewAllUsers" value="Люди">
+        <input class="btn btn-primary" type="submit" name="viewAllUsers" value="Персонал">
     </form>
 
 

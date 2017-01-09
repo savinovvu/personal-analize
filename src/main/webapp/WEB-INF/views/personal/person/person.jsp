@@ -9,6 +9,8 @@
     <meta charset="UTF-8">
     <title>UserManage</title>
     <link rel="stylesheet" href="webjars/bootstrap/3.3.7-1/css/bootstrap.min.css">
+    <link href="/public/css/common/common.css" rel="stylesheet">
+
 
     <link href="/public/css/personal/admin.css" rel="stylesheet">
     <script type="text/javascript" src="webjars/jquery/3.1.1-1/jquery.min.js"></script>
@@ -22,16 +24,36 @@
 </head>
 
 <body onload="downloadPage()">
+<label class="btn btn-info mynav" for="start"><i class="glyphicon glyphicon-home label-info "></i>&nbsp Главная</label>
+<label class="btn btn-info mynav" for="navDepartment"><i class="glyphicon glyphicon-wrench label-info"></i>&nbsp Подразделения</label>
+<label class="btn btn-info mynav" for="navGroup"><i class="glyphicon glyphicon-th-list label-info"></i>&nbsp Группы</label>
+<label class="btn btn-info mynav" for="navPerson"><i class="glyphicon glyphicon-user label-info"></i>&nbsp Персонал</label>
 
+<nav class="personal-nav">
+    <form action="/" method="get">
+        <input id="start" class="hidden" type="submit" name="viewAllUsers" value="Подразделения">
+    </form>
+
+    <form action="editDepartment" method="get">
+        <input id="navDepartment" class="hidden" type="submit" name="viewAllUsers" value="Подразделения">
+    </form>
+    <form action="editGroup" method="get">
+        <input id="navGroup" class="hidden" type="submit" name="viewAllUsers" value="Отделы">
+    </form>
+
+    <form action="editPerson" method="get">
+        <input id="navPerson" class="hidden" type="submit" name="viewAllUsers" value="Люди">
+    </form>
+</nav>
 
 
 <div class="view-box">
     <div class="menu">
 
         <!-- Кнопка для открытия модального окна -->
-        <button type="button" class="btn btn-lg btn-success custombtn" data-toggle="modal"
+        <button type="button" class="btn btn-lg btn-success custombtn " data-toggle="modal"
                 data-target="#myModal" onclick="getModal()">
-            Добавить пользователя
+            Добавить сотрудника
         </button>
 
 
@@ -58,21 +80,21 @@
             <!-- Заголовок модального окна -->
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">×</button>
-                <h4 class="modal-title text-center" id="myModalLabel">Добавление/Обновление пользователя</h4>
+                <h4 class="modal-title text-center" id="myModalLabel">Добавление/Обновление сотрудника</h4>
             </div>
             <!-- Основная часть модального окна, содержащая форму для регистрации -->
             <div class="modal-body">
                 <!-- Форма для регистрации -->
-                <form role="form" class="form-horizontal" onsubmit="putPerson()">
+                <form role="form" class="form-horizontal" id="putPerson">
 
                     <!-- Блок для ввода id -->
                     <div class="changeDivId">
                         <%--<div class="form-group" id="divId">--%>
                         <div class="form-group has-feedback" id="divId">
-                       <%--     <label for="personId" class="control-label col-xs-3">id:</label>--%>
+                            <%--     <label for="personId" class="control-label col-xs-3">id:</label>--%>
                             <div class="col-xs-6">
                                 <div class="input-group">
-                       <%--             <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>--%>
+                                    <%--             <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>--%>
 
 
                                     <input type="hidden" class="form-control" id="personId" name="id" required>
@@ -99,14 +121,15 @@
 
                     <%--Блок ввод Департамента--%>
                     <div class="form-group has-feedback">
-                        <label for="group" class="control-label col-xs-3">Отдел</label>
+                        <label for="group" class="control-label col-xs-3">Подразделение:</label>
 
                         <div class="col-xs-6">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
 
-                                <select id="department" class="form-control" name="group" onchange="getGroupWithDepartment()">
-                                    <option disabled selected>Выберите Подразделение</option>
+                                <select id="department" class="form-control" name="group"
+                                        onchange="getGroupWithDepartment()">
+                                    <option disabled selected>Подразделение</option>
 
 
                                 </select>
@@ -117,7 +140,7 @@
 
 
                     <div class="form-group has-feedback">
-                        <label for="group" class="control-label col-xs-3">Отдел</label>
+                        <label for="group" class="control-label col-xs-3">Отдел:</label>
 
                         <div class="col-xs-6">
                             <div class="input-group">
@@ -126,21 +149,20 @@
                                 <select id="group" class="form-control" name="group">
 
 
-
                                 </select>
                             </div>
                         </div>
                     </div>
                     <!-- Конец блока для ввода отдела-->
 
-                   <%-- Скрытый блог данных об отделах--%>
+                    <%-- Скрытый блог данных об отделах--%>
                     <%--<div>
                         <input type="hidden" class="form-control" id="group-id" name="name">
                     </div>--%>
 
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" data-dismiss="modal">Отмена</button>
-                        <input id="save" type="submit" class="btn btn-primary" value="Готово">
+                        <input id="save1" type="submit" class="btn btn-primary" value="Выполнить">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Завершить</button>
                     </div>
                 </form>
             </div>
@@ -163,7 +185,7 @@
             <!-- Основная часть модального окна, содержащая форму для удаления -->
             <div class="modal-body">
                 <!-- Форма для регистрации -->
-                <form role="form" class="form-horizontal" onsubmit="delPerson()">
+                <form role="form" class="form-horizontal" id="delPerson">
 
 
                     <!-- Блок для ввода ФИО -->
@@ -174,7 +196,7 @@
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-info-sign"></i></span>
                                 <input type="hidden" class="form-control" id="personDelId" name="id" readonly required>
-                                <input type="text" class="form-control" id="delName" name="name"  readonly  required/>
+                                <input type="text" class="form-control" id="delName" name="name" readonly required/>
                             </div>
 
                         </div>
@@ -182,11 +204,11 @@
                     <!-- Конец блока для ввода ФИО-->
 
 
-
-
                     <div class="modal-footer">
                         <button type="button" class="btn btn-primary" data-dismiss="modal">Отмена</button>
-                        <input  type="submit" class="btn btn-danger" value="Удалить">
+                        <input id="del1" type="submit" class="btn btn-danger" value="Удалить">
+                        <input id="dismissButton" type="button" class="hidden" data-dismiss="modal">
+
                     </div>
                 </form>
             </div>
@@ -195,7 +217,6 @@
         </div>
     </div>
 </div>
-
 
 
 </body>

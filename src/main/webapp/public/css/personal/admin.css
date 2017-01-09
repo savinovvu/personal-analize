@@ -1,6 +1,3 @@
-body {
-    background-color: #513b56;
-}
 
 table {
     background-color: white;
@@ -70,6 +67,50 @@ input:read-only {
     box-shadow: 2px 2px 10px 2px black;
 
 }
+
+
+
+/* line 7, ../sass/_components.sass */
+.personal-nav {
+    width: 100px;
+    background-color: transparent;
+    display: inline-block;
+}
+/* line 10, ../sass/_components.sass */
+.personal-nav .personal-nav-item {
+    display: inline;
+    padding: 10px 0;
+/*    text-transform: lowercase;*/
+    font-size: 11px;
+    line-height: 1;
+    text-align: center;
+    color: #5dd39e;
+    transition: all 0.3s ease-in;
+}
+/* line 19, ../sass/_components.sass */
+.personal-nav .personal-nav-item i {
+    margin-bottom: 5px;
+    font-size: 30px;
+}
+/* line 22, ../sass/_components.sass */
+.personal-nav .personal-nav-item:hover {
+    background-color: #3c2940;
+}
+
+.fa {
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.mynav {
+    width: 150px;
+}
+
+
 
 
 

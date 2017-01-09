@@ -9,6 +9,7 @@
     <meta charset="UTF-8">
     <title>UserManage</title>
     <link rel="stylesheet" href="webjars/bootstrap/3.3.7-1/css/bootstrap.min.css">
+    <link href="/public/css/common/common.css" rel="stylesheet">
 
     <link href="/public/css/personal/admin.css" rel="stylesheet">
     <script type="text/javascript" src="webjars/jquery/3.1.1-1/jquery.min.js"></script>
@@ -23,8 +24,27 @@
 
 <body onload="downloadPage()">
 
+<label class="btn btn-info mynav" for="start"><i class="glyphicon glyphicon-home label-info "></i>&nbsp Главная</label>
+<label class="btn btn-info mynav" for="navDepartment"><i class="glyphicon glyphicon-wrench label-info"></i>&nbsp Подразделения</label>
+<label class="btn btn-info mynav" for="navGroup"><i class="glyphicon glyphicon-th-list label-info"></i>&nbsp Группы</label>
+<label class="btn btn-info mynav" for="navPerson"><i class="glyphicon glyphicon-user label-info"></i>&nbsp Персонал</label>
 
+<nav class="personal-nav">
+    <form action="/" method="get">
+        <input id="start" class="hidden" type="submit" name="viewAllUsers" value="Подразделения">
+    </form>
 
+    <form action="editDepartment" method="get">
+        <input id="navDepartment" class="hidden" type="submit" name="viewAllUsers" value="Подразделения">
+    </form>
+    <form action="editGroup" method="get">
+        <input id="navGroup" class="hidden" type="submit" name="viewAllUsers" value="Отделы">
+    </form>
+
+    <form action="editPerson" method="get">
+        <input id="navPerson" class="hidden" type="submit" name="viewAllUsers" value="Люди">
+    </form>
+</nav>
 <div class="view-box">
     <div class="menu">
 
