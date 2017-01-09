@@ -65,8 +65,7 @@ function sendGetDepartment(url, type, jsonData) {
         contentType: 'application/json',
         data: JSON.stringify(jsonData),
         success: function (data) {
-
-            viewGroup(data);
+            viewDepartment(data);
 
         },
         error: function (x) {
@@ -117,7 +116,8 @@ function view(data) {
 
 }
 
-function viewGroup(data) {
+function viewDepartment(data) {
+
     $(".delDepartment").remove();
     var output = "";
     $.each(data, function (key, val) {
@@ -126,6 +126,20 @@ function viewGroup(data) {
     $("#department").append(output);
 
 }
+
+
+/*function viewGroup(data) {
+    $(".delGroup").remove();
+    var output = "";
+    $.each(data, function (key, val) {
+        output += "<option class='delGroup' value='" + val.id + "'>" + val.name + "</option>";
+    });
+    $("#group").append(output);
+
+}*/
+
+
+
 
 
 

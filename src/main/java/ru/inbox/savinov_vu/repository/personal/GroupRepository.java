@@ -14,7 +14,7 @@ import java.util.List;
 public interface GroupRepository extends JpaRepository<Group, Integer> {
 
     @Query("SELECT p FROM ru.inbox.savinov_vu.model.personal.Group p WHERE p.department.id=:department_id")
-    List<Group> getGroupWithDepartment(@Param("department_id") Department department);
+    List<Group> getGroupWithDepartment(@Param("department_id") Integer id);
 
 
 }

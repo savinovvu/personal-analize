@@ -97,7 +97,25 @@
                     <!-- Конец блока для ввода ФИО-->
 
 
-                    <%--Блок ввод отдела--%>
+                    <%--Блок ввод Департамента--%>
+                    <div class="form-group has-feedback">
+                        <label for="group" class="control-label col-xs-3">Отдел</label>
+
+                        <div class="col-xs-6">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+
+                                <select id="department" class="form-control" name="group" onchange="getGroupWithDepartment()">
+                                    <option disabled selected>Выберите Подразделение</option>
+
+
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Конец блока для ввода Департамента-->
+
+
                     <div class="form-group has-feedback">
                         <label for="group" class="control-label col-xs-3">Отдел</label>
 

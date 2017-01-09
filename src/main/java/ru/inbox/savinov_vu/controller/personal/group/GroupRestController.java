@@ -23,8 +23,22 @@ public class GroupRestController {
         return service.getAllGroups();
     }
 
-    @GetMapping("/department")
+    @PostMapping("/department")
     public List<Group> getDepartmentWithGroups(@RequestBody Department department){
+        System.out.println("пришло");
+        System.out.println("пришло");
+        System.out.println("пришло");
+        System.out.println("пришло");
+        System.out.println("пришло");
+        System.out.println("пришло");
+        System.out.println("пришло");
+        System.out.println("пришло");
+        System.out.println("пришло");
+        System.out.println("пришло");
+        System.out.println("пришло");
+        System.out.println("пришло");
+        System.out.println("пришло");
+        System.out.println(service.getDepartmentWithGroups(department));
         return service.getDepartmentWithGroups(department);
     }
 

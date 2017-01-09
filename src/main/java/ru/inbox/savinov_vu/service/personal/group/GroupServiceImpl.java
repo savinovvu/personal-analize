@@ -20,7 +20,7 @@ public class GroupServiceImpl implements GroupService {
 
     @Override
     public List<Group> getDepartmentWithGroups(Department department) {
-        return repository.getGroupWithDepartment(department);
+        return repository.getGroupWithDepartment(department.getId());
     }
 
     @Override

@@ -1,6 +1,6 @@
 function downloadPage() {
     getAll();
-    getGroup();
+    getDepartment();
 }
 
 function delPerson() {
@@ -9,9 +9,20 @@ function delPerson() {
 
 }
 
-function getGroup() {
-    sendGetGroup("/personal/group/all", "GET");
+function getDepartment() {
+    sendGetDepartment("/personal/department/all", "GET");
 }
+
+
+function getGroupWithDepartment(){
+    var department = new Department(
+        Number($('#department').val()),
+        $('#department option:selected').text()
+    );
+
+    sendGetGroup("/personal/group/department", "POST", department);
+}
+
 
 function getAll() {
     send("/personal/person/all", "GET");
@@ -64,8 +75,29 @@ function sendGetGroup(url, type, jsonData) {
         contentType: 'application/json',
         data: JSON.stringify(jsonData),
         success: function (data) {
-
             viewGroup(data);
+
+        },
+        error: function (x) {
+            //   alert("error");
+
+        }
+
+    });
+    return false;
+}
+
+function sendGetDepartment (url, type, jsonData) {
+
+    $.ajax({
+
+        url: url,
+        type: type,
+        contentType: 'application/json',
+        data: JSON.stringify(jsonData),
+        success: function (data) {
+
+            viewDepartment(data);
 
         },
         error: function (x) {
@@ -120,6 +152,17 @@ function view(data) {
 
 }
 
+function viewDepartment(data) {
+
+    $(".delDepartment").remove();
+    var output = "";
+    $.each(data, function (key, val) {
+        output += "<option class='delDepartment' value='" + val.id + "'>" + val.name + "</option>";
+    });
+    $("#department").append(output);
+
+}
+
 function viewGroup(data) {
     $(".delGroup").remove();
     var output = "";
@@ -127,7 +170,6 @@ function viewGroup(data) {
         output += "<option class='delGroup' value='" + val.id + "'>" + val.name + "</option>";
     });
     $("#group").append(output);
-
 }
 
 
