@@ -23,9 +23,12 @@
 
 <body onload="downloadPage()">
 <label class="btn btn-info mynav" for="start"><i class="glyphicon glyphicon-home label-info "></i>&nbsp Главная</label>
-<label class="btn btn-info mynav" for="navDepartment"><i class="glyphicon glyphicon-wrench label-info"></i>&nbsp Подразделения</label>
-<label class="btn btn-info mynav" for="navGroup"><i class="glyphicon glyphicon-th-list label-info"></i>&nbsp Группы</label>
-<label class="btn btn-info mynav" for="navPerson"><i class="glyphicon glyphicon-user label-info"></i>&nbsp Персонал</label>
+<label class="btn btn-info mynav" for="navDepartment"><i class="glyphicon glyphicon-wrench label-info"></i>&nbsp
+    Подразделения</label>
+<label class="btn btn-info mynav" for="navGroup"><i class="glyphicon glyphicon-th-list label-info"></i>&nbsp
+    Группы</label>
+<label class="btn btn-info mynav" for="navPerson"><i class="glyphicon glyphicon-user label-info"></i>&nbsp
+    Персонал</label>
 
 <nav class="personal-nav">
     <form action="/" method="get">
@@ -80,7 +83,7 @@
             <!-- Основная часть модального окна, содержащая форму для регистрации -->
             <div class="modal-body">
                 <!-- Форма для регистрации -->
-                <form role="form" class="form-horizontal" onsubmit="putDepartment()">
+                <form role="form" class="form-horizontal" id="putDepartment">
 
                     <!-- Блок для ввода id -->
                     <div class="changeDivId">
@@ -108,14 +111,12 @@
 
                         </div>
                     </div>
-                    <!-- Конец блока для ввода ФИО-->
-
-
+                    <!-- Конец блока для ввода названия-->
 
 
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" data-dismiss="modal">Отмена</button>
-                        <input id="save" type="submit" class="btn btn-primary" value="Готово">
+                        <input id="save" type="submit" class="btn btn-primary" value="Выполнить">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Завершить</button>
                     </div>
                 </form>
             </div>
@@ -138,7 +139,7 @@
             <!-- Основная часть модального окна, содержащая форму для удаления -->
             <div class="modal-body">
                 <!-- Форма для регистрации -->
-                <form role="form" class="form-horizontal" onsubmit="delDepartment()">
+                <form role="form" class="form-horizontal" id="delDepartment">
 
 
                     <!-- Блок для ввода Наименования -->
@@ -161,11 +162,12 @@
                     <div class="modal-footer">
                         <button type="button" class="btn btn-primary" data-dismiss="modal">Отмена</button>
                         <input type="submit" class="btn btn-danger" value="Удалить">
+                        <input id="dismissButton" type="button" class="hidden" data-dismiss="modal">
+
                     </div>
                 </form>
             </div>
             <!-- Нижняя часть модального окна -->
-
 
 
         </div>

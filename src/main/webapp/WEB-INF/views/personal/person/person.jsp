@@ -25,9 +25,12 @@
 
 <body onload="downloadPage()">
 <label class="btn btn-info mynav" for="start"><i class="glyphicon glyphicon-home label-info "></i>&nbsp Главная</label>
-<label class="btn btn-info mynav" for="navDepartment"><i class="glyphicon glyphicon-wrench label-info"></i>&nbsp Подразделения</label>
-<label class="btn btn-info mynav" for="navGroup"><i class="glyphicon glyphicon-th-list label-info"></i>&nbsp Группы</label>
-<label class="btn btn-info mynav" for="navPerson"><i class="glyphicon glyphicon-user label-info"></i>&nbsp Персонал</label>
+<label class="btn btn-info mynav" for="navDepartment"><i class="glyphicon glyphicon-wrench label-info"></i>&nbsp
+    Подразделения</label>
+<label class="btn btn-info mynav" for="navGroup"><i class="glyphicon glyphicon-th-list label-info"></i>&nbsp
+    Группы</label>
+<label class="btn btn-info mynav" for="navPerson"><i class="glyphicon glyphicon-user label-info"></i>&nbsp
+    Персонал</label>
 
 <nav class="personal-nav">
     <form action="/" method="get">

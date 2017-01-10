@@ -25,9 +25,12 @@
 <body onload="downloadPage()">
 
 <label class="btn btn-info mynav" for="start"><i class="glyphicon glyphicon-home label-info "></i>&nbsp Главная</label>
-<label class="btn btn-info mynav" for="navDepartment"><i class="glyphicon glyphicon-wrench label-info"></i>&nbsp Подразделения</label>
-<label class="btn btn-info mynav" for="navGroup"><i class="glyphicon glyphicon-th-list label-info"></i>&nbsp Группы</label>
-<label class="btn btn-info mynav" for="navPerson"><i class="glyphicon glyphicon-user label-info"></i>&nbsp Персонал</label>
+<label class="btn btn-info mynav" for="navDepartment"><i class="glyphicon glyphicon-wrench label-info"></i>&nbsp
+    Подразделения</label>
+<label class="btn btn-info mynav" for="navGroup"><i class="glyphicon glyphicon-th-list label-info"></i>&nbsp
+    Группы</label>
+<label class="btn btn-info mynav" for="navPerson"><i class="glyphicon glyphicon-user label-info"></i>&nbsp
+    Персонал</label>
 
 <nav class="personal-nav">
     <form action="/" method="get">
@@ -61,7 +64,7 @@
         </div>
     </div>
 
-    <table id="personT">
+    <table id="groupT">
 
         <thead>
         <tr>
@@ -86,7 +89,7 @@
             <!-- Основная часть модального окна, содержащая форму для регистрации -->
             <div class="modal-body">
                 <!-- Форма для регистрации -->
-                <form role="form" class="form-horizontal" onsubmit="putGroup()">
+                <form role="form" class="form-horizontal" id="putGroup">
 
                     <!-- Блок для ввода id -->
                     <div class="changeDivId">
@@ -126,7 +129,6 @@
                                 <select id="department" class="form-control" name="department">
 
 
-
                                 </select>
                             </div>
                         </div>
@@ -137,8 +139,8 @@
 
 
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" data-dismiss="modal">Отмена</button>
                         <input id="save" type="submit" class="btn btn-primary" value="Готово">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Отмена</button>
                     </div>
                 </form>
             </div>
@@ -161,7 +163,7 @@
             <!-- Основная часть модального окна, содержащая форму для удаления -->
             <div class="modal-body">
                 <!-- Форма для регистрации -->
-                <form role="form" class="form-horizontal" onsubmit="delGroup()">
+                <form role="form" class="form-horizontal" id="delGroup">
 
 
                     <!-- Блок для ввода ФИО -->
@@ -172,7 +174,7 @@
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-info-sign"></i></span>
                                 <input type="hidden" class="form-control" id="groupDelId" name="id" readonly required>
-                                <input type="text" class="form-control" id="delName" name="name"  readonly  required/>
+                                <input type="text" class="form-control" id="delName" name="name" readonly required/>
                             </div>
 
                         </div>
@@ -180,11 +182,11 @@
                     <!-- Конец блока для ввода ФИО-->
 
 
-
-
                     <div class="modal-footer">
                         <button type="button" class="btn btn-primary" data-dismiss="modal">Отмена</button>
-                        <input  type="submit" class="btn btn-danger" value="Удалить">
+                        <input type="submit" class="btn btn-danger" value="Удалить">
+                        <input id="dismissButton" type="button" class="hidden" data-dismiss="modal">
+
                     </div>
                 </form>
             </div>
@@ -193,7 +195,6 @@
         </div>
     </div>
 </div>
-
 
 
 </body>

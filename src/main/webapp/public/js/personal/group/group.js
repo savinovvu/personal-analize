@@ -3,11 +3,16 @@ function downloadPage() {
     getDepartment();
 }
 
-function delGroup() {
-    var group = new Group(Number($("#groupDelId").val()), null, new Department(null, null));
-    send("/personal/group", "DELETE", group);
 
-}
+jQuery(function ($) {
+    $("#delGroup").submit(function (e) {
+        e.preventDefault();
+        $("#dismissButton").click();
+        var group = new Group(Number($("#groupDelId").val()), null, new Department(null, null));
+        send("/personal/group", "DELETE", group);
+
+    });
+});
 
 function getDepartment() {
     sendGetDepartment("/personal/department/all", "GET");
@@ -18,19 +23,22 @@ function getAll() {
 }
 
 
-function putGroup() {
-    var department = new Department(
-        Number($('#department').val()),
-        $('#department option:selected').text());
+jQuery(function ($) {
+    $("#putGroup").submit(function (e) {
+        e.preventDefault();
+        var department = new Department(
+            Number($('#department').val()),
+            $('#department option:selected').text());
 
-    var group = new Group(
-        Number($("#groupId").val()),
-        $("#name").val(),
-        department
-    );
-
-    send("/personal/group", "PUT", group);
-}
+        var group = new Group(
+            Number($("#groupId").val()),
+            $("#name").val(),
+            department
+        );
+        send("/personal/group", "PUT", group);
+        document.getElementById('name').value = "";
+    });
+});
 
 
 function send(url, type, jsonData) {
@@ -79,8 +87,10 @@ function sendGetDepartment(url, type, jsonData) {
 
 
 function view(data) {
+    var table = $('#groupT').DataTable();
+    table.destroy();
 
-    $('#personT').DataTable({
+    $('#groupT').DataTable({
         "data": data,
         "columns": [
             {"data": "id"},
@@ -128,15 +138,7 @@ function viewDepartment(data) {
 }
 
 
-/*function viewGroup(data) {
-    $(".delGroup").remove();
-    var output = "";
-    $.each(data, function (key, val) {
-        output += "<option class='delGroup' value='" + val.id + "'>" + val.name + "</option>";
-    });
-    $("#group").append(output);
 
-}*/
 
 
 
