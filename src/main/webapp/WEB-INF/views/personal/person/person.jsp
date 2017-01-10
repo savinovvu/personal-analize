@@ -25,7 +25,7 @@
 
 <body onload="downloadPage()">
 <label class="btn btn-info mynav" for="start"><i class="glyphicon glyphicon-home label-info "></i>&nbsp Главная</label>
-<label class="btn btn-info mynav" for="navDepartment"><i class="glyphicon glyphicon-wrench label-info"></i>&nbsp
+<label class="btn btn-info mynav" for="navDepartment"><i class="glyphicon glyphicon-th-large label-info"></i>&nbsp
     Подразделения</label>
 <label class="btn btn-info mynav" for="navGroup"><i class="glyphicon glyphicon-th-list label-info"></i>&nbsp
     Группы</label>
