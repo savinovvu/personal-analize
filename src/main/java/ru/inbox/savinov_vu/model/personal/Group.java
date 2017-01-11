@@ -11,12 +11,12 @@ import java.util.List;
 
 @Entity
 @Table(name = "groups", uniqueConstraints = {@UniqueConstraint(columnNames = {"department_id"}, name = "departments_unique_group_idx")})
+@Access(value = AccessType.FIELD)
 public class Group implements Persistable<Integer> {
 
     @Id
     @SequenceGenerator(name = "GLOBAL_SEQ", sequenceName = "GLOBAL_SEQ", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "GLOBAL_SEQ")
-    @Access(value = AccessType.PROPERTY)
     protected Integer id;
 
     @NotEmpty

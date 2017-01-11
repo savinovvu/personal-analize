@@ -10,6 +10,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "testings")
+@Access(value = AccessType.FIELD)
 public class Testing implements Persistable<Integer> {
 
     private static int subNumber = 0;
@@ -18,7 +19,6 @@ public class Testing implements Persistable<Integer> {
     @Id
     @SequenceGenerator(name = "GLOBAL_SEQ", sequenceName = "GLOBAL_SEQ", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "GLOBAL_SEQ")
-    @Access(value = AccessType.PROPERTY)
     protected Integer id;
 
     @NotEmpty

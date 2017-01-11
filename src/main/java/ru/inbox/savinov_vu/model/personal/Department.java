@@ -10,12 +10,12 @@ import java.util.List;
 
 @Entity
 @Table(name = "department")
+@Access(value = AccessType.FIELD)
 public class Department  implements Persistable<Integer> {
 
     @Id
     @SequenceGenerator(name = "GLOBAL_SEQ", sequenceName = "GLOBAL_SEQ", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "GLOBAL_SEQ")
-    @Access(value = AccessType.PROPERTY)
     protected Integer id;
 
     @NotEmpty

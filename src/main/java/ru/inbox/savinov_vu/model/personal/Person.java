@@ -10,11 +10,11 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "persons", uniqueConstraints = {@UniqueConstraint(columnNames = {"group_id"}, name = "persons_unique_group_idx")})
+@Access(value = AccessType.FIELD)
 public class Person  implements Persistable<Integer> {
     @Id
     @SequenceGenerator(name = "GLOBAL_SEQ", sequenceName = "GLOBAL_SEQ", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "GLOBAL_SEQ")
-    @Access(value = AccessType.PROPERTY)
     protected Integer id;
 
     @NotEmpty

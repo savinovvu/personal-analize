@@ -11,6 +11,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "questions", uniqueConstraints = {@UniqueConstraint(columnNames = {"questionnaire_id"}, name = "questions_unique_questionnaire_idx")})
+@Access(value = AccessType.FIELD)
 public class Question implements Persistable<Integer> {
 
     private static int subNumber = 0;
@@ -18,7 +19,6 @@ public class Question implements Persistable<Integer> {
     @Id
     @SequenceGenerator(name = "GLOBAL_SEQ", sequenceName = "GLOBAL_SEQ", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "GLOBAL_SEQ")
-    @Access(value = AccessType.PROPERTY)
     protected Integer id;
 
     @NotEmpty
