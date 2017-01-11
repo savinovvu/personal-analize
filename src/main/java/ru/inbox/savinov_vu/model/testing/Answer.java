@@ -21,12 +21,10 @@ public class Answer implements Persistable<Integer> {
     @SafeHtml
     protected String name;
     @Transient
-    private int number;
-
+    private int number = Question.getSubNumber();
 
 
     public Answer() {
-        number = Question.getSubNumber();
     }
 
     @JsonProperty("question")

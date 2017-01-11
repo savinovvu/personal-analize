@@ -25,7 +25,8 @@ public class Question implements Persistable<Integer> {
     @Column(name = "name", nullable = false)
     @SafeHtml
     protected String name;
-    private int number;
+    private int number = Questionnaire.getSubNumber();
+    ;
 
     @JsonIgnore
     @OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER, mappedBy = "question")
@@ -37,7 +38,6 @@ public class Question implements Persistable<Integer> {
     private Questionnaire questionnaire;
 
     public Question() {
-        number = Questionnaire.getSubNumber();
     }
 
 

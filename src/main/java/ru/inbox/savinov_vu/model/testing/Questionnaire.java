@@ -12,7 +12,7 @@ import java.util.List;
 @Entity
 @Table(name = "questionnaires", uniqueConstraints = {@UniqueConstraint(columnNames = {"testing_id"}, name = "questionnaires_unique_testing_idx")})
 @Access(value = AccessType.FIELD)
-public class Questionnaire  implements Persistable<Integer> {
+public class Questionnaire implements Persistable<Integer> {
 
     private static int subNumber = 0;
 
@@ -27,7 +27,8 @@ public class Questionnaire  implements Persistable<Integer> {
     @SafeHtml
     protected String name;
 
-    private int number;
+    private int number = Testing.getSubNumber();
+    ;
 
     @JsonIgnore
     @OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER, mappedBy = "questionnaire")
@@ -39,9 +40,7 @@ public class Questionnaire  implements Persistable<Integer> {
     private Testing testing;
 
 
-
     Questionnaire() {
-        number = Testing.getSubNumber();
     }
 
 
