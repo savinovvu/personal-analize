@@ -1,7 +1,8 @@
 package ru.inbox.savinov_vu.controller.personal.group;
 
 
-import com.fasterxml.jackson.core.JsonProcessingException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -18,51 +19,38 @@ public class GroupRestController {
     @Autowired
     GroupService service;
 
+    private static final Logger LOG = LoggerFactory.getLogger(GroupRestController.class);
+
     @GetMapping(value = "/all")
-    public List<Group> getAllGroups(){
+    public List<Group> getAllGroups() {
+        LOG.info("get all groups");
         return service.getAllGroups();
+
     }
 
     @PostMapping("/department")
-    public List<Group> getDepartmentWithGroups(@RequestBody Department department){
-        System.out.println("пришло");
-        System.out.println("пришло");
-        System.out.println("пришло");
-        System.out.println("пришло");
-        System.out.println("пришло");
-        System.out.println("пришло");
-        System.out.println("пришло");
-        System.out.println("пришло");
-        System.out.println("пришло");
-        System.out.println("пришло");
-        System.out.println("пришло");
-        System.out.println("пришло");
-        System.out.println("пришло");
-        System.out.println(service.getDepartmentWithGroups(department));
+    public List<Group> getDepartmentWithGroups(@RequestBody Department department) {
+        LOG.info("get all groups where department= {}", department);
         return service.getDepartmentWithGroups(department);
+
     }
-
-
-
-    @GetMapping
-    public List<Group> getAllActiveGroups() throws JsonProcessingException {
-        return service.getAllGroups();
-    }
-
 
 
     @PutMapping
     public List<Group> putGroup(@RequestBody Group group) throws IOException {
+        LOG.info("put group {}", group);
         service.addGroup(group);
         return service.getAllGroups();
+
     }
 
 
-
-   @DeleteMapping
+    @DeleteMapping
     public List<Group> deleteGroup(@RequestBody Group group) throws IOException {
-          service.deleteGroup(group);
+        LOG.info("delete group {}", group);
+        service.deleteGroup(group);
         return service.getAllGroups();
+
     }
 
 

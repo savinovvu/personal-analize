@@ -1,6 +1,8 @@
 package ru.inbox.savinov_vu.controller.personal.department;
 
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -16,21 +18,29 @@ public class DepartmentRestController {
     @Autowired
     DepartmentService service;
 
+    private static final Logger LOG = LoggerFactory.getLogger(DepartmentRestController.class);
+
     @GetMapping(value = "/all")
     public List<Department> getAllDepartments() {
+        LOG.info("get all departments");
         return service.getAllDepartments();
+
     }
 
     @PutMapping
     public List<Department> addDepartment(@RequestBody Department department) {
+        LOG.info("put department {}", department);
         service.addDepartment(department);
         return service.getAllDepartments();
+
     }
 
     @DeleteMapping
     public List<Department> deleteDepartment(@RequestBody Department department) {
+        LOG.info("delete department {}", department);
         service.deleteDepartment(department);
         return service.getAllDepartments();
+
     }
 
 }
