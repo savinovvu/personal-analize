@@ -43,6 +43,12 @@ repositories {
 
 dependencies {
 
+    /*Logging*/
+    def slf4jVersion = '1.7.21'
+    compile "org.slf4j:slf4j-api:${slf4jVersion}"
+    compile "org.slf4j:jcl-over-slf4j:${slf4jVersion}"
+    compile "ch.qos.logback:logback-classic:1.1.7"
+
     /*Jackson*/
     def jacksonVersion = '2.8.4'
     compile "com.fasterxml.jackson.core:jackson-core:${jacksonVersion}"
