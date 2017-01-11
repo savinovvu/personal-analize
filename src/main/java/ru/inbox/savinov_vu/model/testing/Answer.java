@@ -1,20 +1,15 @@
 package ru.inbox.savinov_vu.model.testing;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.hibernate.validator.constraints.SafeHtml;
 import org.springframework.data.domain.Persistable;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
-@Table(name = "testings")
-public class Testing implements Persistable<Integer> {
-
-    private static int subNumber = 0;
-
-
+@Table(name = "answers", uniqueConstraints = {@UniqueConstraint(columnNames = {"question_id"}, name = "answers_unique_question_idx")})
+public class Answer implements Persistable<Integer> {
     @Id
     @SequenceGenerator(name = "GLOBAL_SEQ", sequenceName = "GLOBAL_SEQ", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "GLOBAL_SEQ")
@@ -25,15 +20,19 @@ public class Testing implements Persistable<Integer> {
     @Column(name = "name", nullable = false)
     @SafeHtml
     protected String name;
-
-    @JsonIgnore
-    @OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER, mappedBy = "testing")
-    private List<Questionnaire> questionnaire;
+    @Transient
+    private int number;
 
 
-    public static int getSubNumber() {
-        return ++subNumber;
+
+    public Answer() {
+        number = Question.getSubNumber();
     }
+
+    @JsonProperty("question")
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "question_id", nullable = false)
+    private Question question;
 
     public void setId(Integer id) {
         this.id = id;
@@ -48,6 +47,5 @@ public class Testing implements Persistable<Integer> {
     public boolean isNew() {
         return (getId() == null);
     }
-
 
 }

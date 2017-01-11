@@ -10,10 +10,11 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "questions", uniqueConstraints = {@UniqueConstraint(columnNames = {"questionnaire_id"}, name = "questions_unique_questionnaire_idx")})
-public class Question implements Persistable<Integer> {
+@Table(name = "questionnaires", uniqueConstraints = {@UniqueConstraint(columnNames = {"testing_id"}, name = "questionnaires_unique_testing_idx")})
+public class Questionnaire  implements Persistable<Integer> {
 
     private static int subNumber = 0;
+
 
     @Id
     @SequenceGenerator(name = "GLOBAL_SEQ", sequenceName = "GLOBAL_SEQ", allocationSize = 1)
@@ -25,19 +26,22 @@ public class Question implements Persistable<Integer> {
     @Column(name = "name", nullable = false)
     @SafeHtml
     protected String name;
+
     private int number;
 
     @JsonIgnore
-    @OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER, mappedBy = "question")
-    private List<Answer> answer;
+    @OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER, mappedBy = "questionnaire")
+    private List<Question> question;
 
-    @JsonProperty("questionnaire")
+    @JsonProperty("testing")
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "questionnaire_id", nullable = false)
-    private Questionnaire questionnaire;
+    @JoinColumn(name = "testing_id", nullable = false)
+    private Testing testing;
 
-    public Question() {
-        number = Questionnaire.getSubNumber();
+
+
+    Questionnaire() {
+        number = Testing.getSubNumber();
     }
 
 
