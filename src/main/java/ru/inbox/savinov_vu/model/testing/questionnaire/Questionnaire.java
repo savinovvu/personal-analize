@@ -5,9 +5,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.hibernate.validator.constraints.SafeHtml;
 import org.springframework.data.domain.Persistable;
-import ru.inbox.savinov_vu.model.testing.testing.Testing;
 import ru.inbox.savinov_vu.model.testing.question.Question;
-import ru.inbox.savinov_vu.util.model.Counter;
+import ru.inbox.savinov_vu.model.testing.testing.Testing;
 
 import javax.persistence.*;
 import java.util.List;
@@ -39,8 +38,7 @@ public class Questionnaire implements Persistable<Integer> {
     @JoinColumn(name = "testing_id", nullable = false)
     private Testing testing;
 
-    @Transient
-    private int number = Counter.getQuestionnaireNumber();
+
 
 
     Questionnaire() {
@@ -61,6 +59,10 @@ public class Questionnaire implements Persistable<Integer> {
     @Override
     public boolean isNew() {
         return (getId() == null);
+
     }
+
+
+
 
 }

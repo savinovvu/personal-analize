@@ -5,7 +5,6 @@ import org.hibernate.validator.constraints.NotEmpty;
 import org.hibernate.validator.constraints.SafeHtml;
 import org.springframework.data.domain.Persistable;
 import ru.inbox.savinov_vu.model.testing.question.Question;
-import ru.inbox.savinov_vu.util.model.Counter;
 
 import javax.persistence.*;
 
@@ -23,22 +22,15 @@ public class Answer implements Persistable<Integer> {
     @SafeHtml
     protected String name;
 
-    @Transient
-    private int number = Counter.getAnswerNumber();
-
-    @Enumerated(EnumType.STRING)
-    @Column(name = "answerType")
-    @JsonProperty("answerType")
-    private AnswerType answerType;
-
-
-    public Answer() {
-    }
-
     @JsonProperty("question")
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "question_id", nullable = false)
     private Question question;
+
+    public Answer() {
+    }
+
+
 
     public void setId(Integer id) {
         this.id = id;

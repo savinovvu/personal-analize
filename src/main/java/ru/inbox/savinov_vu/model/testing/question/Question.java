@@ -5,9 +5,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.hibernate.validator.constraints.SafeHtml;
 import org.springframework.data.domain.Persistable;
-import ru.inbox.savinov_vu.model.testing.questionnaire.Questionnaire;
 import ru.inbox.savinov_vu.model.testing.answer.Answer;
-import ru.inbox.savinov_vu.util.model.Counter;
+import ru.inbox.savinov_vu.model.testing.questionnaire.Questionnaire;
 
 import javax.persistence.*;
 import java.util.List;
@@ -38,8 +37,11 @@ public class Question implements Persistable<Integer> {
     @JoinColumn(name = "questionnaire_id", nullable = false)
     private Questionnaire questionnaire;
 
-    @Transient
-    private int number = Counter.getQuestionNumber();
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "answerType")
+    @JsonProperty("answerType")
+    private AnswerType answerType;
 
     public Question() {
     }
@@ -60,5 +62,10 @@ public class Question implements Persistable<Integer> {
     public boolean isNew() {
         return (getId() == null);
     }
+
+
+
+
+
 
 }
