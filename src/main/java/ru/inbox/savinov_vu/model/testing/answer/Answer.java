@@ -1,9 +1,11 @@
-package ru.inbox.savinov_vu.model.testing;
+package ru.inbox.savinov_vu.model.testing.answer;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.hibernate.validator.constraints.SafeHtml;
 import org.springframework.data.domain.Persistable;
+import ru.inbox.savinov_vu.model.testing.question.Question;
+import ru.inbox.savinov_vu.util.model.Counter;
 
 import javax.persistence.*;
 
@@ -20,8 +22,14 @@ public class Answer implements Persistable<Integer> {
     @Column(name = "name", nullable = false)
     @SafeHtml
     protected String name;
+
     @Transient
-    private int number = Question.getSubNumber();
+    private int number = Counter.getAnswerNumber();
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "answerType")
+    @JsonProperty("answerType")
+    private AnswerType answerType;
 
 
     public Answer() {

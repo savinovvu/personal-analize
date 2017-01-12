@@ -1,20 +1,21 @@
-package ru.inbox.savinov_vu.model.testing;
+package ru.inbox.savinov_vu.model.testing.question;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.hibernate.validator.constraints.SafeHtml;
 import org.springframework.data.domain.Persistable;
+import ru.inbox.savinov_vu.model.testing.questionnaire.Questionnaire;
+import ru.inbox.savinov_vu.model.testing.answer.Answer;
+import ru.inbox.savinov_vu.util.model.Counter;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "questionnaires", uniqueConstraints = {@UniqueConstraint(columnNames = {"testing_id"}, name = "questionnaires_unique_testing_idx")})
+@Table(name = "questions", uniqueConstraints = {@UniqueConstraint(columnNames = {"questionnaire_id"}, name = "questions_unique_questionnaire_idx")})
 @Access(value = AccessType.FIELD)
-public class Questionnaire implements Persistable<Integer> {
-
-    private static int subNumber = 0;
+public class Question implements Persistable<Integer> {
 
 
     @Id
@@ -27,26 +28,23 @@ public class Questionnaire implements Persistable<Integer> {
     @SafeHtml
     protected String name;
 
-    private int number = Testing.getSubNumber();
-    ;
 
     @JsonIgnore
-    @OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER, mappedBy = "questionnaire")
-    private List<Question> question;
+    @OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER, mappedBy = "question")
+    private List<Answer> answer;
 
-    @JsonProperty("testing")
+    @JsonProperty("questionnaire")
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "testing_id", nullable = false)
-    private Testing testing;
+    @JoinColumn(name = "questionnaire_id", nullable = false)
+    private Questionnaire questionnaire;
 
+    @Transient
+    private int number = Counter.getQuestionNumber();
 
-    Questionnaire() {
+    public Question() {
     }
 
 
-    public static int getSubNumber() {
-        return ++subNumber;
-    }
 
     public Integer getId() {
         return id;

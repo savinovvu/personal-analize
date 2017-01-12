@@ -1,20 +1,23 @@
-package ru.inbox.savinov_vu.model.testing;
+package ru.inbox.savinov_vu.model.testing.questionnaire;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.hibernate.validator.constraints.SafeHtml;
 import org.springframework.data.domain.Persistable;
+import ru.inbox.savinov_vu.model.testing.testing.Testing;
+import ru.inbox.savinov_vu.model.testing.question.Question;
+import ru.inbox.savinov_vu.util.model.Counter;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "questions", uniqueConstraints = {@UniqueConstraint(columnNames = {"questionnaire_id"}, name = "questions_unique_questionnaire_idx")})
+@Table(name = "questionnaires", uniqueConstraints = {@UniqueConstraint(columnNames = {"testing_id"}, name = "questionnaires_unique_testing_idx")})
 @Access(value = AccessType.FIELD)
-public class Question implements Persistable<Integer> {
+public class Questionnaire implements Persistable<Integer> {
 
-    private static int subNumber = 0;
+
 
     @Id
     @SequenceGenerator(name = "GLOBAL_SEQ", sequenceName = "GLOBAL_SEQ", allocationSize = 1)
@@ -25,25 +28,25 @@ public class Question implements Persistable<Integer> {
     @Column(name = "name", nullable = false)
     @SafeHtml
     protected String name;
-    private int number = Questionnaire.getSubNumber();
-    ;
+
 
     @JsonIgnore
-    @OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER, mappedBy = "question")
-    private List<Answer> answer;
+    @OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER, mappedBy = "questionnaire")
+    private List<Question> question;
 
-    @JsonProperty("questionnaire")
+    @JsonProperty("testing")
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "questionnaire_id", nullable = false)
-    private Questionnaire questionnaire;
+    @JoinColumn(name = "testing_id", nullable = false)
+    private Testing testing;
 
-    public Question() {
+    @Transient
+    private int number = Counter.getQuestionnaireNumber();
+
+
+    Questionnaire() {
     }
 
 
-    public static int getSubNumber() {
-        return ++subNumber;
-    }
 
     public Integer getId() {
         return id;
