@@ -24,15 +24,17 @@
 </head>
 
 <body onload="downloadPage()">
-<label class="btn btn-info mynav" for="start"><i class="glyphicon glyphicon-home label-info "></i>&nbsp Главная</label>
-<label class="btn btn-info mynav" for="navDepartment"><i class="glyphicon glyphicon-th-large label-info"></i>&nbsp
-    Подразделения</label>
-<label class="btn btn-info mynav" for="navGroup"><i class="glyphicon glyphicon-th-list label-info"></i>&nbsp
-    Группы</label>
-<label class="btn btn-info mynav" for="navPerson"><i class="glyphicon glyphicon-user label-info"></i>&nbsp
-    Персонал</label>
 
-<nav class="personal-nav">
+<nav class="navbar navbar-form">
+
+    <label class="btn btn-info mynav" for="start"><i class="glyphicon glyphicon-home label-info "></i>&nbsp Главная</label>
+    <label class="btn btn-info mynav icon-prev" for="navDepartment"><i class="glyphicon glyphicon-th-large label-info"></i>&nbsp
+        Подразделения</label>
+    <label class="btn btn-info mynav icon-bar" for="navGroup"><i class="glyphicon glyphicon-th-list label-info"></i>&nbsp
+        Группы</label>
+    <label class="btn btn-info mynav" for="navPerson"><i class="glyphicon glyphicon-user label-info"></i>&nbsp
+        Персонал</label>
+
     <form action="/" method="get">
         <input id="start" class="hidden" type="submit" name="viewAllUsers" value="Подразделения">
     </form>
