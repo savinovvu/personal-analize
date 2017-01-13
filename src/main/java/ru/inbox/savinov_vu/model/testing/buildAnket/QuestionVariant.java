@@ -12,13 +12,24 @@ public class QuestionVariant {
 
     private Map<String, AnswerSource> questions;
 
-    private QuestionVariant() throws IOException {
-        List<String> fileStrings = Files.readAllLines(Paths.get("settings/questions"), StandardCharsets.UTF_8);
+    private QuestionVariant()  {
+        List<String> fileStrings = null;
+        try {
+            fileStrings = Files.readAllLines(Paths.get("settings/questions"), StandardCharsets.UTF_8);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         questions = new HashMap<>();
         for (int i = 0; i < fileStrings.size(); i=i+2){
             questions.put(fileStrings.get(i), AnswerSource.valueOf(fileStrings.get(i+1).toUpperCase()));
         }
     }
+
+    public static QuestionVariant  getInstance(){
+        return new QuestionVariant();
+    }
+
+
 
     public Map<String, AnswerSource> getQuestions() {
         return questions;
