@@ -38,10 +38,6 @@ public class Question implements Persistable<Integer> {
     private Questionnaire questionnaire;
 
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "answerType")
-    @JsonProperty("answerType")
-    private AnswerType answerType;
 
     public Question() {
     }
