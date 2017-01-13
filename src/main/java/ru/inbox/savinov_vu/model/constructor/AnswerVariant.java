@@ -1,4 +1,4 @@
-package ru.inbox.savinov_vu.model.testing.buildAnket;
+package ru.inbox.savinov_vu.model.constructor;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;

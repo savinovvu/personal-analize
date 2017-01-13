@@ -7,7 +7,7 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import ru.inbox.savinov_vu.model.testing.buildAnket.AnswerVariant;
+import ru.inbox.savinov_vu.model.constructor.AnswerVariant;
 
 import java.util.List;
 
