@@ -1,4 +1,4 @@
-package ru.inbox.savinov_vu.controller.testing.buildAnket;
+package ru.inbox.savinov_vu.controller.constructor.answer;
 
 
 import org.slf4j.Logger;
@@ -7,7 +7,6 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import ru.inbox.savinov_vu.model.constructor.AnswerVariant;
 
 import java.util.List;
 
@@ -21,7 +20,7 @@ public class AnswerVariantRestController {
     public List<String> getAllAnswerVariant() {
 
         LOG.info("get all groups");
-        return AnswerVariant.getInstance().getAnswer();
+        return null;
 
     }
 }
