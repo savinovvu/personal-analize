@@ -31,13 +31,18 @@ public class AnswerKit {
     @JsonProperty("source")
     private AnswerSource AnswerSource;
 
+    @Enumerated(EnumType.STRING)
+    @Column(name = "type")
+    @JsonProperty("type")
+    private AnswerSource AnswerType;
+
 
     @JsonIgnore
     @OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY, mappedBy = "answerKit")
     private List<QuestionVar> questionVars;
 
-    @JsonIgnore
-    @OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY, mappedBy = "answerKit")
+    @JsonProperty("answers")
+    @OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER, mappedBy = "answerKit")
     private List<AnswerVar> answerVars;
 
 

@@ -21,6 +21,15 @@ public class StartController {
         return "start/start";
     }
 
+    @GetMapping("editQuestionKit")
+    public String editQuestionnaire(Model model) {
+        LOG.info("get editQuestionnaire");
+        return "constructor/questionKit/questionKit";
+    }
+
+
+
+
     @GetMapping("editDepartment")
     public String personalDepartment(Model model) {
         LOG.info("get editDepartment page");
