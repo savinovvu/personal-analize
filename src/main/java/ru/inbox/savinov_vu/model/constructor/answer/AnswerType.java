@@ -2,6 +2,6 @@ package ru.inbox.savinov_vu.model.constructor.answer;
 
 public enum AnswerType {
 
-    CHECKBOX, RADIO, SELECT
+    CHECKBOX, RADIO, SELECT ,FREE
 
 }

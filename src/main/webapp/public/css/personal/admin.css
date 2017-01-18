@@ -24,9 +24,6 @@ td {
 
     vertical-align: middle;
     padding: 10px;
-/*   padding-left: 10%;*/
-/*    margin:80%;*/
-   /* padding-right: 2%;*/
     font-size: 14px;
     border: 1px solid #56433D;
     border-left: none;
@@ -105,12 +102,6 @@ input:read-only {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
-
-.mynav {
-    width: 150px;
-}
-
-
 
 
 

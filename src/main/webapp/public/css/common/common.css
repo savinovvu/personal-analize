@@ -2,3 +2,113 @@ body {
     background-color: #F5D5C2;
     /*background-color: #858585;*/
 }
+
+
+
+table {
+    background-color: white;
+    width: 80%;
+    margin: auto;
+
+    border-spacing: 0px 0px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: normal;
+    box-shadow: 2px 2px 10px 2px black;
+}
+
+tr {
+    color: black;
+
+}
+
+thead tr {
+    color: black;
+    font-weight: bold;
+}
+
+td {
+
+    vertical-align: middle;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #56433D;
+    border-left: none;
+    border-right: none;
+    text-align: center;
+
+}
+
+input {
+    text-align: center;
+    font-size: 14px;
+    background: white;
+    border: transparent;
+}
+
+
+
+input:read-only {
+    border-color: transparent;
+    background: transparent;
+}
+
+.menu {
+
+    margin: auto;
+    background-color: transparent;
+
+
+    width: 50%;
+
+}
+
+.custombtn {
+    text-align: center;
+    font-size: 14px;
+    width: 100%;
+    margin: 5% auto;
+    box-shadow: 2px 2px 10px 2px black;
+
+}
+
+
+
+/* line 7, ../sass/_components.sass */
+.my-nav {
+    width: 100px;
+    background-color: transparent;
+    display: inline-block;
+}
+/* line 10, ../sass/_components.sass */
+.my-nav .my-nav-item {
+    display: inline;
+    padding: 10px 0;
+    /*    text-transform: lowercase;*/
+    font-size: 11px;
+    line-height: 1;
+    text-align: center;
+    color: #5dd39e;
+    transition: all 0.3s ease-in;
+}
+/* line 19, ../sass/_components.sass */
+.my-nav .my-nav-item i {
+    margin-bottom: 5px;
+    font-size: 30px;
+}
+/* line 22, ../sass/_components.sass */
+.my-nav .my-nav-item:hover {
+    background-color: #3c2940;
+}
+
+.fa {
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.mynav {
+    width: 150px;
+}

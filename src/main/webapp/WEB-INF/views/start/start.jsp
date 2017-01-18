@@ -8,8 +8,8 @@
     <meta charset="UTF-8">
     <title>StartPage</title>
     <link rel="stylesheet" href="webjars/bootstrap/3.3.7-1/css/bootstrap.min.css">
-    <link href="/public/css/start/start.css" rel="stylesheet">
     <link href="/public/css/common/common.css" rel="stylesheet">
+    <link href="/public/css/start/start.css" rel="stylesheet">
 
 </head>
 <body>

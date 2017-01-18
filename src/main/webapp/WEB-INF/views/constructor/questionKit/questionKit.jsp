@@ -10,7 +10,6 @@
     <title>UserManage</title>
     <link rel="stylesheet" href="webjars/bootstrap/3.3.7-1/css/bootstrap.min.css">
     <link href="/public/css/common/common.css" rel="stylesheet">
-    <link href="/public/css/personal/admin.css" rel="stylesheet">
     <script type="text/javascript" src="webjars/jquery/3.1.1-1/jquery.min.js"></script>
     <script type="text/javascript" src="webjars/bootstrap/3.3.7-1/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="webjars/datatables/1.10.12/js/jquery.dataTables.min.js"></script>
@@ -24,27 +23,41 @@
 <body onload="downloadPage()">
 <nav class="navbar navbar-form">
 
-    <label class="btn btn-info mynav" for="start"><i class="glyphicon glyphicon-home label-info "></i>&nbsp Главная</label>
-    <label class="btn btn-info mynav icon-prev" for="navDepartment"><i class="glyphicon glyphicon-th-large label-info"></i>&nbsp
-        Подразделения</label>
-    <label class="btn btn-info mynav icon-bar" for="navGroup"><i class="glyphicon glyphicon-th-list label-info"></i>&nbsp
-        Группы</label>
-    <label class="btn btn-info mynav" for="navPerson"><i class="glyphicon glyphicon-user label-info"></i>&nbsp
-        Персонал</label>
+    <label class="btn btn-info mynav" for="start"><i class="glyphicon glyphicon-home label-info "></i>&nbsp
+        Главная</label>
+
+    <label class="btn btn-info mynav icon-prev" for="navQuestionKit"><i
+            class="glyphicon glyphicon-lock label-info"></i>&nbsp
+        Типы анкет</label>
+
+    <label class="btn btn-info mynav icon-prev" for="navQuestionVar"><i
+            class="glyphicon glyphicon-question-sign label-info"></i>&nbsp
+        Вопросы</label>
+
+    <label class="btn btn-info mynav icon-bar" for="navAnswerKit"><i class="glyphicon glyphicon-cog label-info"></i>&nbsp
+        Наборы ответов</label>
+
+    <label class="btn btn-info mynav" for="navAnswerVar"><i class="glyphicon glyphicon-ok label-info"></i>&nbsp
+        Ответы</label>
 
     <form action="/" method="get">
-        <input id="start" class="hidden" type="submit" name="viewAllUsers" value="Подразделения">
+        <input id="start" class="hidden" type="submit" name="viewAllUsers" value="Главная">
     </form>
 
-    <form action="editDepartment" method="get">
-        <input id="navDepartment" class="hidden" type="submit" name="viewAllUsers" value="Подразделения">
-    </form>
-    <form action="editGroup" method="get">
-        <input id="navGroup" class="hidden" type="submit" name="viewAllUsers" value="Отделы">
+    <form action="editQuestionKit" method="get">
+        <input id="navQuestionKit" class="hidden" type="submit" name="viewAllUsers" value="Название анкет">
     </form>
 
-    <form action="editPerson" method="get">
-        <input id="navPerson" class="hidden" type="submit" name="viewAllUsers" value="Люди">
+    <form action="editQuestionVar" method="get">
+        <input id="navQuestionVar" class="hidden" type="submit" name="viewAllUsers" value="Вопросы">
+    </form>
+
+    <form action="editAnswerKit" method="get">
+        <input id="navAnswerKit" class="hidden" type="submit" name="viewAllUsers" value="Наборы ответов">
+    </form>
+
+    <form action="editAnswerVar" method="get">
+        <input id="navAnswerVar" class="hidden" type="submit" name="viewAllUsers" value="Ответы">
     </form>
 </nav>
 
@@ -53,8 +66,8 @@
 
         <!-- Кнопка для открытия модального окна -->
         <button type="button" class="btn btn-lg btn-success custombtn" data-toggle="modal"
-                data-target="#myModal" onclick="getModal()">
-            Добавить Подразделение
+                data-target="#myModal" onclick="getModal()"><i class="glyphicon glyphicon-plus label-info "></i>&nbsp
+            Добавить
         </button>
 
 

@@ -22,11 +22,28 @@ public class StartController {
     }
 
     @GetMapping("editQuestionKit")
-    public String editQuestionnaire(Model model) {
-        LOG.info("get editQuestionnaire");
+    public String editQuestionKit(Model model) {
+        LOG.info("get editQuestionKit");
         return "constructor/questionKit/questionKit";
     }
 
+    @GetMapping("editQuestionVar")
+    public String editQuestionVar(Model model) {
+        LOG.info("get editQuestionVar");
+        return "constructor/questionVar/questionVar";
+    }
+
+    @GetMapping("editAnswerKit")
+    public String editAnswerKit(Model model) {
+        LOG.info("get editAnswerKit");
+        return "constructor/answerKit/answerKit";
+    }
+
+    @GetMapping("editAnswerVar")
+    public String editAnswerVar(Model model) {
+        LOG.info("get editAnswerVar");
+        return "constructor/answerVar/answerVar";
+    }
 
 
 
