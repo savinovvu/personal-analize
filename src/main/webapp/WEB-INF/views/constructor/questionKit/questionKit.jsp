@@ -15,8 +15,14 @@
     <script type="text/javascript" src="webjars/datatables/1.10.12/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="webjars/datatables/1.10.12/js/dataTables.bootstrap.min.js"></script>
     <script src="/public/js/util/model/model.js" type="text/javascript"></script>
-    <script src="/public/js/personal/department/department.js" type="text/javascript"></script>
-    <script src="/public/js/personal/department/util.js" type="text/javascript"></script>
+
+    <script src="/public/js/constructor/common/ajax/ajax.js" type="text/javascript"></script>
+    <script src="/public/js/constructor/common/service/service.js" type="text/javascript"></script>
+    <script src="/public/js/constructor/common/view/view.js" type="text/javascript"></script>
+
+    <script src="/public/js/constructor/common/ajax/ajax.js" type="text/javascript"></script>
+    <script src="/public/js/constructor/common/service/service.js" type="text/javascript"></script>
+    <script src="/public/js/constructor/common/view/view.js" type="text/javascript"></script>
 
 </head>
 
@@ -67,18 +73,18 @@
         <!-- Кнопка для открытия модального окна -->
         <button type="button" class="btn btn-lg btn-success custombtn" data-toggle="modal"
                 data-target="#myModal" onclick="getModal()"><i class="glyphicon glyphicon-plus label-info "></i>&nbsp
-            Добавить
+            Добавить тип анкеты
         </button>
 
 
     </div>
 
-    <table id="departmentT">
+    <table id="entityT">
 
         <thead>
         <tr>
             <td>id</td>
-            <td>Подразделение</td>
+            <td>наименование</td>
             <td>Действие</td>
         </tr>
         </thead>
@@ -89,31 +95,23 @@
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
-            <!-- Заголовок модального окна -->
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">×</button>
-                <h4 class="modal-title text-center" id="myModalLabel">Добавление/Обновление подразделения</h4>
+                <h4 class="modal-title text-center" id="myModalLabel">Добавление/Обновление типа анкеты</h4>
             </div>
-            <!-- Основная часть модального окна, содержащая форму для регистрации -->
             <div class="modal-body">
-                <!-- Форма для регистрации -->
-                <form role="form" class="form-horizontal" id="putDepartment">
 
-                    <!-- Блок для ввода id -->
+                <form role="form" class="form-horizontal" id="putEntity">
+
                     <div class="changeDivId">
-                        <%--<div class="form-group" id="divId">--%>
                         <div class="form-group has-feedback" id="divId">
-                            <%--     <label for="personId" class="control-label col-xs-3">id:</label>--%>
                             <div class="col-xs-6">
                                 <div class="input-group">
-                                    <input type="hidden" class="form-control" id="departmentId" name="id" required>
+                                    <input type="hidden" class="form-control" id="id" name="id" required>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-
-                    <!-- Блок для ввода названия -->
 
                     <div class="form-group has-feedback">
                         <label for="name" class="control-label col-xs-3">Наименование:</label>
@@ -125,7 +123,6 @@
 
                         </div>
                     </div>
-                    <!-- Конец блока для ввода названия-->
 
 
                     <div class="modal-footer">
@@ -134,44 +131,32 @@
                     </div>
                 </form>
             </div>
-            <!-- Нижняя часть модального окна -->
-
         </div>
     </div>
 </div>
 
-<%--Блок удаления--%>
 
 <div class="modal fade" id="myDelModal" tabindex="-1" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
-            <!-- Заголовок модального окна -->
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">×</button>
-                <h4 class="modal-title text-center" id="myDelModalLabel">Удаление подразделения</h4>
+                <h4 class="modal-title text-center" id="myDelModalLabel">Удаление типа Анкеты</h4>
             </div>
-            <!-- Основная часть модального окна, содержащая форму для удаления -->
             <div class="modal-body">
-                <!-- Форма для регистрации -->
                 <form role="form" class="form-horizontal" id="delDepartment">
 
-
-                    <!-- Блок для ввода Наименования -->
-
                     <div class="form-group has-feedback">
-                        <label for="name" class="control-label col-xs-3">ФИО:</label>
+                        <label for="name" class="control-label col-xs-3">Наименование:</label>
                         <div class="col-xs-6">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-info-sign"></i></span>
-                                <input type="hidden" class="form-control" id="departmentDelId" name="id" readonly
-                                       required>
+                                <input type="hidden" class="form-control" id="delId" name="id" readonly required>
                                 <input type="text" class="form-control" id="delName" name="name" readonly required/>
                             </div>
 
                         </div>
                     </div>
-                    <!-- Конец блока для ввода Наименования-->
-
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-primary" data-dismiss="modal">Отмена</button>
@@ -181,9 +166,6 @@
                     </div>
                 </form>
             </div>
-            <!-- Нижняя часть модального окна -->
-
-
         </div>
     </div>
 </div>
