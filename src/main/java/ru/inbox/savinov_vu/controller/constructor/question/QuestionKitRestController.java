@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ru.inbox.savinov_vu.model.constructor.question.QuestionKit;
-import ru.inbox.savinov_vu.service.constructor.quesiontKit.QuesitionKitService;
+import ru.inbox.savinov_vu.service.constructor.quesiontKit.QuestionKitService;
 
 import java.util.List;
 
@@ -18,7 +18,7 @@ import java.util.List;
 public class QuestionKitRestController {
 
     @Autowired
-    private QuesitionKitService service;
+    private QuestionKitService service;
 
     private static final Logger LOG = LoggerFactory.getLogger(QuestionKitRestController.class);
 
