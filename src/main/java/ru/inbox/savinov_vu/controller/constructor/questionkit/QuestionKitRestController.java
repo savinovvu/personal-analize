@@ -24,8 +24,8 @@ public class QuestionKitRestController {
 
     @GetMapping(value = "/all")
     public List<QuestionKit> getAllAnswerVariant() {
-        LOG.info("get all groups");
-        return null;
+        LOG.info("get all questionkits");
+        return service.getAllQuestionKits();
 
     }
 
