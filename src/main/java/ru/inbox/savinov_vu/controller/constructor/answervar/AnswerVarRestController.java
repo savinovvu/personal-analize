@@ -1,4 +1,4 @@
-package ru.inbox.savinov_vu.controller.constructor.answer;
+package ru.inbox.savinov_vu.controller.constructor.answervar;
 
 
 import org.slf4j.Logger;
@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import ru.inbox.savinov_vu.service.constructor.AnswerVar.AnswerVarService;
 
 @RestController
-@RequestMapping(value = "/constructor/answer/answerVar", produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = "/constructor/answerVar", produces = MediaType.APPLICATION_JSON_VALUE)
 public class AnswerVarRestController {
 
     @Autowired

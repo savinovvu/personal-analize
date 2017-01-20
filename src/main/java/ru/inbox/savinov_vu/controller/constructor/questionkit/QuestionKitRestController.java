@@ -1,4 +1,4 @@
-package ru.inbox.savinov_vu.controller.constructor.question;
+package ru.inbox.savinov_vu.controller.constructor.questionkit;
 
 
 import org.slf4j.Logger;
@@ -14,7 +14,7 @@ import ru.inbox.savinov_vu.service.constructor.quesiontKit.QuestionKitService;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/constructor/question/questionKit", produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = "/constructor/questionKit", produces = MediaType.APPLICATION_JSON_VALUE)
 public class QuestionKitRestController {
 
     @Autowired
