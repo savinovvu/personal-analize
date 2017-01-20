@@ -14,7 +14,7 @@ import ru.inbox.savinov_vu.service.constructor.quesiontKit.QuesitionKitService;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/buildAnket/question/questionKit", produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = "/constructor/question/questionKit", produces = MediaType.APPLICATION_JSON_VALUE)
 public class QuestionKitRestController {
 
     @Autowired
