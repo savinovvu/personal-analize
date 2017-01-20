@@ -29,13 +29,7 @@ public class AnswerKit {
     @Enumerated(EnumType.STRING)
     @Column(name = "source")
     @JsonProperty("source")
-    private AnswerSource AnswerSource;
-
-    @Enumerated(EnumType.STRING)
-    @Column(name = "type")
-    @JsonProperty("type")
-    private AnswerSource AnswerType;
-
+    private ru.inbox.savinov_vu.model.constructor.question.AnswerSource AnswerSource;
 
     @JsonIgnore
     @OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY, mappedBy = "answerKit")
