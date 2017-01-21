@@ -34,6 +34,11 @@ public class QuestionVar implements Persistable<Integer> {
     @JoinColumn(name = "answerkit_id", nullable = false)
     private AnswerKit answerKit;
 
+    @Enumerated(EnumType.STRING)
+    @Column(name = "source")
+    @JsonProperty("source")
+    private AnswerSource answerSource;
+
 
     @JsonProperty("questionkit")
     @ManyToOne(fetch = FetchType.EAGER)

@@ -2,7 +2,6 @@ package ru.inbox.savinov_vu.model.constructor.question;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.hibernate.validator.constraints.SafeHtml;
 import org.springframework.data.domain.Persistable;
@@ -25,12 +24,6 @@ public class QuestionKit implements Persistable<Integer> {
     @Column(name = "name", nullable = false)
     @SafeHtml
     protected String name;
-
-    @Enumerated(EnumType.STRING)
-    @Column(name = "type")
-    @JsonProperty("type")
-    private AnswerSource AnswerType;
-
 
     @JsonIgnore
     @OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY, mappedBy = "questionKit")

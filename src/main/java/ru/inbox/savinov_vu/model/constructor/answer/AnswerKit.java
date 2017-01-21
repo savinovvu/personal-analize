@@ -27,9 +27,9 @@ public class AnswerKit {
 
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "source")
-    @JsonProperty("source")
-    private ru.inbox.savinov_vu.model.constructor.question.AnswerSource AnswerSource;
+    @Column(name = "type")
+    @JsonProperty("type")
+    private AnswerType answerType;
 
     @JsonIgnore
     @OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY, mappedBy = "answerKit")
