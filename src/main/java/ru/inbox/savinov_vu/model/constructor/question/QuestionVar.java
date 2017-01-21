@@ -10,7 +10,7 @@ import javax.persistence.*;
 
 
 @Entity
-@Table(name = "qustionvar", uniqueConstraints =
+@Table(name = "questionvars", uniqueConstraints =
         {@UniqueConstraint(columnNames = {"questionkit_id"}, name = "questionvar_unique_questionkit_idx"),
         @UniqueConstraint(columnNames = {"answerkit_id"}, name = "questionvar_unique_answerkit_idx")
         })
@@ -19,8 +19,8 @@ public class QuestionVar implements Persistable<Integer> {
 
 
     @Id
-    @SequenceGenerator(name = "GLOBAL_SEQ", sequenceName = "GLOBAL_SEQ", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "GLOBAL_SEQ")
+    @SequenceGenerator(name = "CONSTRUCTOR_SEQ", sequenceName = "CONSTRUCTOR_SEQ", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "CONSTRUCTOR_SEQ")
     protected Integer id;
 
     @NotEmpty
@@ -35,8 +35,8 @@ public class QuestionVar implements Persistable<Integer> {
     private AnswerKit answerKit;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "source")
-    @JsonProperty("source")
+    @Column(name = "answerSource")
+    @JsonProperty("answerSource")
     private AnswerSource answerSource;
 
 

@@ -16,8 +16,8 @@ import java.util.List;
 public class AnswerKit {
 
     @Id
-    @SequenceGenerator(name = "GLOBAL_SEQ", sequenceName = "GLOBAL_SEQ", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "GLOBAL_SEQ")
+    @SequenceGenerator(name = "CONSTRUCTOR_SEQ", sequenceName = "CONSTRUCTOR_SEQ", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "CONSTRUCTOR_SEQ")
     protected Integer id;
 
     @NotEmpty
@@ -27,8 +27,8 @@ public class AnswerKit {
 
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "type")
-    @JsonProperty("type")
+    @Column(name = "answerType")
+    @JsonProperty("answerType")
     private AnswerType answerType;
 
     @JsonIgnore
