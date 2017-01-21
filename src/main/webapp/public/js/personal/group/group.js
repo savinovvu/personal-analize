@@ -55,7 +55,7 @@ function send(url, type, jsonData) {
 
         },
         error: function (x) {
-            //  alert("error");
+              alert("error");
 
         }
 
@@ -77,7 +77,7 @@ function sendGetDepartment(url, type, jsonData) {
 
         },
         error: function (x) {
-            //   alert("error");
+               alert("error");
 
         }
 

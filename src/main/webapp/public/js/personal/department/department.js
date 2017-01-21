@@ -46,7 +46,7 @@ jQuery(function ($) {
 
             },
             error: function (x) {
-                //  alert("error");
+                  alert("error");
 
             }
 

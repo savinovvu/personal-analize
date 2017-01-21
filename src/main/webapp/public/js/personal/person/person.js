@@ -74,7 +74,7 @@ $(document).ready()
 
             },
             error: function (x) {
-                //  alert("error");
+                  alert("error");
 
             }
 
@@ -96,7 +96,7 @@ $(document).ready()
 
             },
             error: function (x) {
-                //   alert("error");
+                   alert("error");
 
             }
 
