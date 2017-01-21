@@ -16,4 +16,27 @@ public class QuestionVarRestController {
     private QuestionVarService service;
     private static final Logger LOG = LoggerFactory.getLogger(QuestionVarRestController.class);
 
+  /*  @GetMapping(value = "/all")
+    public List<QuestionKit> getAllQuestionKits() {
+        LOG.info("get all questionkits");
+        return service.getAllQuestionKits();
+
+    }
+
+    @PutMapping
+    public List<QuestionKit> addQuestionKit(@RequestBody QuestionKit questionKit) {
+        LOG.info("put questionKit {}", questionKit);
+        service.addQuestionKit(questionKit);
+        return service.getAllQuestionKits();
+
+    }
+
+    @DeleteMapping
+    public List<QuestionKit> deleteQuestionKit(@RequestBody QuestionKit questionKit) {
+        LOG.info("delete questionKit {}", questionKit);
+        service.deleteQuestionKit(questionKit);
+        return service.getAllQuestionKits();
+
+    }*/
+
 }

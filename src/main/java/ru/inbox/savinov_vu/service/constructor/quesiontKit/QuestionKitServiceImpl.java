@@ -25,6 +25,6 @@ public class QuestionKitServiceImpl implements QuestionKitService {
 
     @Override
     public void deleteQuestionKit(QuestionKit questionKit) {
-        repository.delete(questionKit);
+        repository.delete(questionKit.getId());
     }
 }

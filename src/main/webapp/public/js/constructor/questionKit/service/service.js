@@ -7,26 +7,28 @@ function getAll() {
 }
 
 jQuery(function ($) {
-    $("#delDepartment").submit(function (e) {
+    $("#delEntity").submit(function (e) {
         e.preventDefault();
         $("#dismissButton").click();
-        var department = new Department(
+        var questionKit = new QuestionKit(
             $("#delId").val(), null
         );
-        send("/personal/department", "DELETE", department);
+        send("/constructor/questionKit", "DELETE", questionKit);
     });
 });
 
 
 jQuery(function ($) {
-    $("#putDepartment").submit(function (e) {
+    $("#putEntity").submit(function (e) {
         e.preventDefault();
 
-        var department = new Department(
-            Number($('#id').val()),
+        var questionKit = new QuestionKit(
+            $('#id').val(),
             $("#name").val()
         );
-        send("/personal/department", "PUT", department);
+
+        alert(JSON.stringify(questionKit));
+        send("/constructor/questionKit", "PUT", questionKit);
         document.getElementById('name').value = "";
     });
 });

@@ -144,7 +144,7 @@
                 <h4 class="modal-title text-center" id="myDelModalLabel">Удаление типа Анкеты</h4>
             </div>
             <div class="modal-body">
-                <form role="form" class="form-horizontal" id="delDepartment">
+                <form role="form" class="form-horizontal" id="delEntity">
 
                     <div class="form-group has-feedback">
                         <label for="name" class="control-label col-xs-3">Наименование:</label>
