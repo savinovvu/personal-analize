@@ -1,6 +1,7 @@
 package ru.inbox.savinov_vu.model.constructor.answer;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.hibernate.validator.constraints.SafeHtml;
 import org.springframework.data.domain.Persistable;
@@ -20,6 +21,7 @@ public class AnswerVar implements Persistable<Integer> {
     @NotEmpty
     @Column(name = "name", nullable = false)
     @SafeHtml
+    @JsonProperty("name")
     protected String name;
 
     @JsonIgnore

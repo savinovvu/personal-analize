@@ -26,6 +26,7 @@ public class QuestionVar implements Persistable<Integer> {
     @NotEmpty
     @Column(name = "name", nullable = false)
     @SafeHtml
+    @JsonProperty("name")
     protected String name;
 
 

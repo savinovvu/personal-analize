@@ -1,5 +1,4 @@
 function send(url, type, jsonData) {
-
     $.ajax({
 
         url: url,

@@ -20,9 +20,9 @@
     <script src="/public/js/constructor/common/service/service.js" type="text/javascript"></script>
     <script src="/public/js/constructor/common/view/view.js" type="text/javascript"></script>
 
-    <script src="/public/js/constructor/common/ajax/ajax.js" type="text/javascript"></script>
-    <script src="/public/js/constructor/common/service/service.js" type="text/javascript"></script>
-    <script src="/public/js/constructor/common/view/view.js" type="text/javascript"></script>
+    <script src="/public/js/constructor/questionKit/service/service.js" type="text/javascript"></script>
+    <script src="/public/js/constructor/questionKit/ajax/ajax.js" type="text/javascript"></script>
+    <script src="/public/js/constructor/questionKit/view/view.js" type="text/javascript"></script>
 
 </head>
 
