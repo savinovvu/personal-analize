@@ -40,5 +40,9 @@ public class AnswerKit {
     @OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER, mappedBy = "answerKit")
     private List<AnswerVar> answerVars;
 
+    public Integer getId() {
+        return id;
+    }
+
 
 }

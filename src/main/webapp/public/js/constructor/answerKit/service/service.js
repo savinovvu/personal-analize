@@ -3,7 +3,7 @@ function downloadPage() {
 }
 
 function getAll() {
-    send("/constructor/questionKit/all", "GET");
+    send("/constructor/answerKit/all", "GET");
 }
 
 jQuery(function ($) {
@@ -13,7 +13,7 @@ jQuery(function ($) {
         var questionKit = new QuestionKit(
             $("#delId").val(), null
         );
-        send("/constructor/questionKit", "DELETE", questionKit);
+        send("/constructor/answerKit", "DELETE", questionKit);
     });
 });
 
@@ -26,8 +26,7 @@ jQuery(function ($) {
             $('#id').val(),
             $("#name").val()
         );
-
-        send("/constructor/questionKit", "PUT", questionKit);
+        send("/constructor/answerKit", "PUT", questionKit);
         document.getElementById('name').value = "";
     });
 });

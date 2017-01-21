@@ -63,11 +63,6 @@ public class QuestionVar implements Persistable<Integer> {
     }
 
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-
     @Override
     public boolean isNew() {
         return (getId() == null);
