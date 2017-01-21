@@ -1,5 +1,3 @@
-$(document).ready()
- {
 
 
 
@@ -12,7 +10,7 @@ $(document).ready()
             $("#delPerson").submit(function (e) {
                 e.preventDefault();
                 $("#dismissButton").click();
-                var person = new Person(Number($("#personDelId").val()), null, new Group(null, null));
+                var person = new Person($("#personDelId").val(), null, new Group(null, null));
                 send("/personal/person", "DELETE", person);
 
             });
@@ -27,7 +25,7 @@ $(document).ready()
 
     function getGroupWithDepartment() {
         var department = new Department(
-            Number($('#department').val()),
+            $('#department').val(),
             $('#department option:selected').text()
         );
 
@@ -45,11 +43,11 @@ $(document).ready()
              e.preventDefault();
 
              var group = new Group(
-                 Number($('#group').val()),
+                 $('#group').val(),
                  $('#group option:selected').text());
 
              var person = new Person(
-                 Number($("#personId").val()),
+                 $("#personId").val(),
                  $("#name").val(),
                  group
              );
@@ -118,7 +116,7 @@ $(document).ready()
 
             },
             error: function (x) {
-                //   alert("error");
+                   alert("error");
 
             }
 
@@ -192,5 +190,5 @@ $(document).ready()
     }
 
 
-}
+
 

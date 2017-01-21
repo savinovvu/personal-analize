@@ -24,7 +24,7 @@ jQuery(function ($) {
         e.preventDefault();
 
         var department = new Department(
-            Number($('#departmentId').val()),
+            $('#departmentId').val(),
             $("#name").val()
         );
         send("/personal/department", "PUT", department);

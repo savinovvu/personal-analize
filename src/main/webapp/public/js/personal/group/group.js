@@ -8,7 +8,7 @@ jQuery(function ($) {
     $("#delGroup").submit(function (e) {
         e.preventDefault();
         $("#dismissButton").click();
-        var group = new Group(Number($("#groupDelId").val()), null, new Department(null, null));
+        var group = new Group($("#groupDelId").val(), null, new Department(null, null));
         send("/personal/group", "DELETE", group);
 
     });
@@ -27,11 +27,11 @@ jQuery(function ($) {
     $("#putGroup").submit(function (e) {
         e.preventDefault();
         var department = new Department(
-            Number($('#department').val()),
+            $('#department').val(),
             $('#department option:selected').text());
 
         var group = new Group(
-            Number($("#groupId").val()),
+            $("#groupId").val(),
             $("#name").val(),
             department
         );
