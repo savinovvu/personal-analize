@@ -1,4 +1,3 @@
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -66,7 +65,6 @@
 </nav>
 
 
-
 <div class="view-box">
     <div class="menu">
         <select id="superEntity" class="form-control" name="group"
@@ -125,7 +123,23 @@
                         <div class="col-xs-6">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                <input type="text" class="form-control" id="name" name="name"  required />
+                                <input type="text" class="form-control" id="name" name="name" required/>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="form-group has-feedback">
+                        <label for="name" class="control-label col-xs-3">Набор ответов:</label>
+                        <div class="col-xs-6">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+
+                                <select id="answerKits" class="form-control" name="group" required>
+                                    <option disabled selected>Выберете набор ответов</option>
+
+
+                                </select>
                             </div>
 
                         </div>
@@ -176,7 +190,6 @@
         </div>
     </div>
 </div>
-
 
 
 </body>

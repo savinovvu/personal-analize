@@ -1,10 +1,11 @@
 function downloadPage() {
     sendGetQuestionKits("/constructor/questionKit/all", "GET");
+    sendGetAnswerKits("/constructor/answerKit/all", "GET");
 
 }
 
 function getQuestionVarsfromQuestionKit() {
-    send("/constructor/questionVar/" + getSelectedAnswerKit().id, "GET")
+    send("/constructor/questionVar/" + getSelectedQuestionKit().id, "GET")
 }
 
 
@@ -14,12 +15,11 @@ jQuery(function ($) {
         $("#dismissButton").click();
 
 
-        var answerVar = new AnswerVar(
-            $("#delId").val(), null, getSelectedAnswerKit()
+        var questionVar = new QuestionVar(
+            $("#delId").val(), null, null, getSelectedQuestionKit()
         );
 
-
-        send("/constructor/answerVar", "DELETE", answerVar);
+        send("/constructor/questionVar", "DELETE", questionVar);
     });
 });
 
@@ -28,13 +28,14 @@ jQuery(function ($) {
     $("#putEntity").submit(function (e) {
         e.preventDefault();
 
-        var answerVar = new AnswerVar(
+        var questionVar = new QuestionVar(
             $('#id').val(),
             $("#name").val(),
-            getSelectedAnswerKit()
+            getSelectedAnswerKit(),
+            getSelectedQuestionKit()
         );
 
-        send("/constructor/answerVar", "PUT", answerVar);
+        send("/constructor/questionVar", "PUT", questionVar);
         document.getElementById('name').value = "";
     });
 });
@@ -42,8 +43,17 @@ jQuery(function ($) {
 function getSelectedAnswerKit() {
 
     var answerKit = new AnswerKit(
+        $('#answerKits').val(),
+        $('#answerKits option:selected').text()
+    );
+    return answerKit;
+}
+
+function getSelectedQuestionKit() {
+
+    var questionKit = new QuestionKit(
         $('#superEntity').val(),
         $('#superEntity option:selected').text()
     );
-    return answerKit;
+    return questionKit;
 }

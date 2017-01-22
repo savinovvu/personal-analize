@@ -30,13 +30,13 @@ public class QuestionVar implements Persistable<Integer> {
     protected String name;
 
 
-    @JsonProperty("answerkit")
+    @JsonProperty("answerKit")
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "answerkit_id", nullable = false)
     private AnswerKit answerKit;
 
 
-    @JsonProperty("questionkit")
+    @JsonProperty("questionKit")
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "questionkit_id", nullable = false)
     private QuestionKit questionKit;

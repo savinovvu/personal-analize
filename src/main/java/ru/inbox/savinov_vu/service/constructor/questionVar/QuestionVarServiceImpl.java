@@ -24,6 +24,6 @@ public class QuestionVarServiceImpl implements QuestionVarService {
 
     @Override
     public void deleteQuestionVar(QuestionVar questionVar) {
-        repository.saveAndFlush(questionVar);
+        repository.delete(questionVar.getId());
     }
 }

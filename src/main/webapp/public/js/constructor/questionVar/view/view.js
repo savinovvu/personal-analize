@@ -15,7 +15,7 @@ function view(data) {
             },
 
             {
-                "data": "answerkit",
+                "data": "answerKit",
                 "render": function (row, data, dataIndex) {
                     return '<p id="name-' + dataIndex.id + '">' + row.name + '</p>';
 
@@ -46,5 +46,16 @@ function viewGetQuestionKits(data) {
             output += "<option class='delSuperEntity' value='" + val.id + "'>" + val.name + "</option>";
         });
         $("#superEntity").append(output);
+
+}
+
+function viewGetAnswerKits(data) {
+
+    $(".delAnswerKits").remove();
+    var output = "";
+    $.each(data, function (key, val) {
+        output += "<option class='delAnswerKits' value='" + val.id + "'>" + val.name + "</option>";
+    });
+    $("#answerKits").append(output);
 
 }
