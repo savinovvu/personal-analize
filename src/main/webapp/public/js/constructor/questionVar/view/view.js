@@ -15,6 +15,15 @@ function view(data) {
             },
 
             {
+                "data": "answerkit",
+                "render": function (row, data, dataIndex) {
+                    return '<p id="name-' + dataIndex.id + '">' + row.name + '</p>';
+
+                }
+            },
+
+
+            {
                 "defaultContent": "",
                 "orderable": false,
                 "render": function (row, data, dataIndex) {

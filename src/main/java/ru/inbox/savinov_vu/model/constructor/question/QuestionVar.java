@@ -12,7 +12,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "questionvars", uniqueConstraints =
         {@UniqueConstraint(columnNames = {"questionkit_id"}, name = "questionvar_unique_questionkit_idx"),
-        @UniqueConstraint(columnNames = {"answerkit_id"}, name = "questionvar_unique_answerkit_idx")
+                @UniqueConstraint(columnNames = {"answerkit_id"}, name = "questionvar_unique_answerkit_idx")
         })
 @Access(value = AccessType.FIELD)
 public class QuestionVar implements Persistable<Integer> {
@@ -36,24 +36,18 @@ public class QuestionVar implements Persistable<Integer> {
     private AnswerKit answerKit;
 
 
-
-
     @JsonProperty("questionkit")
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "questionkit_id", nullable = false)
     private QuestionKit questionKit;
 
 
-
-
-
-
-
-
-
     public QuestionVar() {
     }
 
+    public QuestionKit getQuestionKit() {
+        return questionKit;
+    }
 
     public Integer getId() {
         return id;
