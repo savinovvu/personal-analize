@@ -103,7 +103,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">×</button>
-                <h4 class="modal-title text-center" id="myModalLabel">Добавление/Обновление типа анкеты</h4>
+                <h4 class="modal-title text-center" id="myModalLabel">Добавление/Обновление ответа</h4>
             </div>
             <div class="modal-body">
 
@@ -147,7 +147,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">×</button>
-                <h4 class="modal-title text-center" id="myDelModalLabel">Удаление типа Анкеты</h4>
+                <h4 class="modal-title text-center" id="myDelModalLabel">Удаление ответа</h4>
             </div>
             <div class="modal-body">
                 <form role="form" class="form-horizontal" id="delEntity">

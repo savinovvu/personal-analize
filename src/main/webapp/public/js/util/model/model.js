@@ -17,9 +17,10 @@ function Person(id, name, group) {
 }
 
 
-function AnswerKit(id, name) {
+function AnswerKit(id, name, answerType) {
     this.id = Number(id);
     this.name = name;
+    this.answerType = answerType;
 }
 
 function QuestionKit(id, name) {

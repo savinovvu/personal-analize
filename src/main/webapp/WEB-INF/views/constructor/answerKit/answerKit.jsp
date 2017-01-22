@@ -73,7 +73,7 @@
         <!-- Кнопка для открытия модального окна -->
         <button type="button" class="btn btn-lg btn-success custombtn" data-toggle="modal"
                 data-target="#myModal" onclick="getModal()"><i class="glyphicon glyphicon-plus label-info "></i>&nbsp
-            Добавить тип анкеты
+            Добавить набор ответов
         </button>
 
 
@@ -85,6 +85,7 @@
         <tr>
             <td>id</td>
             <td>наименование</td>
+            <td>тип набора</td>
             <td>Действие</td>
         </tr>
         </thead>
@@ -97,7 +98,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">×</button>
-                <h4 class="modal-title text-center" id="myModalLabel">Добавление/Обновление типа анкеты</h4>
+                <h4 class="modal-title text-center" id="myModalLabel">Добавление/Обновление набора ответов</h4>
             </div>
             <div class="modal-body">
 
@@ -124,6 +125,28 @@
                         </div>
                     </div>
 
+                    <div class="form-group has-feedback">
+                        <label for="name" class="control-label col-xs-3">Наименование:</label>
+                        <div class="col-xs-6">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+
+                                <select id="answerType" class="form-control" name="group" required>
+                                    <option disabled selected>Выберете тип набора</option>
+                                    <option value="CHECKBOX">Несколько ответов</option>
+                                    <option value="RADIO">Единственный ответ</option>
+                                    <option value="SELECT">Вылетающий список</option>
+                                    <option value="FREE">Свободный ввод</option>
+                                    <option value="EMPTY">Пустой</option>
+                                    <option value="NAME">База имен</option>
+
+
+                                </select>
+                            </div>
+
+                        </div>
+                    </div>
+
 
                     <div class="modal-footer">
                         <input id="save" type="submit" class="btn btn-primary" value="Выполнить">
@@ -141,7 +164,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">×</button>
-                <h4 class="modal-title text-center" id="myDelModalLabel">Удаление типа Анкеты</h4>
+                <h4 class="modal-title text-center" id="myDelModalLabel">Удаление набора ответов</h4>
             </div>
             <div class="modal-body">
                 <form role="form" class="form-horizontal" id="delEntity">
