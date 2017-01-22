@@ -2,7 +2,6 @@ package ru.inbox.savinov_vu.service.constructor.AnswerVar;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ru.inbox.savinov_vu.model.constructor.answer.AnswerKit;
 import ru.inbox.savinov_vu.model.constructor.answer.AnswerVar;
 import ru.inbox.savinov_vu.repository.constructor.AnswerVarRepository;
 
@@ -15,8 +14,8 @@ public class AnswerVarServiceImpl implements AnswerVarService {
     AnswerVarRepository repository;
 
     @Override
-    public List<AnswerVar> getAnswerVarWithAnswerKit(AnswerKit answerKit) {
-        return repository.getAnswerVarWithAnswerKit(answerKit.getId());
+    public List<AnswerVar> getAnswerVarWithAnswerKit(Integer id) {
+        return repository.getAnswerVarWithAnswerKit(id);
     }
 
     @Override

@@ -1,6 +1,5 @@
 package ru.inbox.savinov_vu.model.constructor.answer;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.hibernate.validator.constraints.SafeHtml;
@@ -24,7 +23,7 @@ public class AnswerVar implements Persistable<Integer> {
     @JsonProperty("name")
     protected String name;
 
-    @JsonIgnore
+    @JsonProperty("answerKit")
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "answerkit_id", nullable = false)
     private AnswerKit answerKit;
@@ -32,6 +31,9 @@ public class AnswerVar implements Persistable<Integer> {
     public AnswerVar() {
     }
 
+    public AnswerKit getAnswerKit() {
+        return answerKit;
+    }
 
     public Integer getId() {
         return id;

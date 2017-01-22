@@ -36,7 +36,7 @@ public class AnswerKit {
     @OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY, mappedBy = "answerKit")
     private List<QuestionVar> questionVars;
 
-    @JsonProperty("answers")
+    @JsonIgnore
     @OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER, mappedBy = "answerKit")
     private List<AnswerVar> answerVars;
 

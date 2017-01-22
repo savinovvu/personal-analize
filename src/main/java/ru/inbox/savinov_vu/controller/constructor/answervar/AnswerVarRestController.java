@@ -6,7 +6,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
-import ru.inbox.savinov_vu.model.constructor.answer.AnswerKit;
 import ru.inbox.savinov_vu.model.constructor.answer.AnswerVar;
 import ru.inbox.savinov_vu.service.constructor.AnswerVar.AnswerVarService;
 
@@ -21,21 +20,23 @@ public class AnswerVarRestController {
 
     private static final Logger LOG = LoggerFactory.getLogger(AnswerVarRestController.class);
 
-    @PostMapping
-    public List<AnswerVar> getAnswerVarWithAnswerKit(@RequestBody AnswerKit answerKit) {
-        LOG.info("get answerVar with {}", answerKit);
-        return service.getAnswerVarWithAnswerKit(answerKit);
+    @GetMapping("/{id}")
+    public List<AnswerVar> getAnswerVarWithAnswerKit(@PathVariable("id") Integer id) {
+              service.getAnswerVarWithAnswerKit(id);
+        return service.getAnswerVarWithAnswerKit(id);
     }
 
     @PutMapping
-    public void addAnswerVar(@RequestBody AnswerVar answerVar) {
+    public List<AnswerVar> addAnswerVar(@RequestBody AnswerVar answerVar) {
         LOG.info("add answerVar with {}", answerVar);
         service.addAnswerVar(answerVar);
+        return service.getAnswerVarWithAnswerKit(answerVar.getAnswerKit().getId());
     }
 
     @DeleteMapping
-    public void deleteAnswerVar(@RequestBody AnswerVar answerVar) {
+    public List<AnswerVar> deleteAnswerVar(@RequestBody AnswerVar answerVar) {
         LOG.info("delete answerVar with id = {}", answerVar.getId());
         service.deleteAnswerVar(answerVar);
+        return service.getAnswerVarWithAnswerKit(answerVar.getAnswerKit().getId());
     }
 }
