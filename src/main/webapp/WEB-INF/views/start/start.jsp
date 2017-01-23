@@ -14,34 +14,23 @@
 </head>
 <body>
 <div class="parent">
-<div class="menu">
+    <div class="menu">
+
+        <form action="conductSurvey" method="get">
+            <input class="btn btn-primary" type="submit" name="viewAllUsers" value="Тестирование">
+        </form>
+
+        <form action="editQuestionKit" method="get">
+            <input class="btn btn-primary" type="submit" name="viewAllUsers" value="Конструирование">
+        </form>
+
+        <form action="editPerson" method="get">
+            <input class="btn btn-primary" type="submit" name="viewAllUsers" value="Персонал">
+        </form>
 
 
-
-    <form action="editQuestionKit" method="get">
-        <input class="btn btn-primary" type="submit" name="viewAllUsers" value="Конструирование">
-    </form>
-
-    <form action="editPerson" method="get">
-        <input class="btn btn-primary" type="submit" name="viewAllUsers" value="Персонал">
-    </form>
-
-
-
-
-
-
-
-
-
-
-
-
+    </div>
 </div>
-</div>
-
-
-
 
 
 </body>
