@@ -20,6 +20,10 @@
             <input class="btn btn-primary" type="submit" name="viewAllUsers" value="Тестирование">
         </form>
 
+        <form action="conductSurvey" method="get">
+            <input class="btn btn-primary" type="submit" name="viewAllUsers" value="Архив">
+        </form>
+
         <form action="editQuestionKit" method="get">
             <input class="btn btn-primary" type="submit" name="viewAllUsers" value="Конструирование">
         </form>
