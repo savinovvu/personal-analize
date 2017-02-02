@@ -5,7 +5,7 @@ function downloadPage() {
 
 
 function getQuestionVarsfromQuestionKit() {
-    send("/constructor/questionVar/" + getSelectedQuestionKit().id, "GET", null, )
+    send("/constructor/questionVar/" + getSelectedQuestionKit().id, "GET", null )
 }
 
 
