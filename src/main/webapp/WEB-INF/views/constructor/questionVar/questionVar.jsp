@@ -15,9 +15,9 @@
     <script type="text/javascript" src="webjars/datatables/1.10.12/js/dataTables.bootstrap.min.js"></script>
     <script src="/public/js/util/model/model.js" type="text/javascript"></script>
 
-    <script src="/public/js/constructor/common/ajax/ajax.js" type="text/javascript"></script>
-    <script src="/public/js/constructor/common/service/service.js" type="text/javascript"></script>
-    <script src="/public/js/constructor/common/view/view.js" type="text/javascript"></script>
+    <script src="/public/js/common/ajax/ajax.js" type="text/javascript"></script>
+    <script src="/public/js/common/service/service.js" type="text/javascript"></script>
+    <script src="/public/js/common/view/view.js" type="text/javascript"></script>
 
     <script src="/public/js/constructor/questionVar/service/service.js" type="text/javascript"></script>
     <script src="/public/js/constructor/questionVar/ajax/ajax.js" type="text/javascript"></script>
