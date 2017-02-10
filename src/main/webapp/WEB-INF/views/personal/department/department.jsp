@@ -16,17 +16,20 @@
     <script type="text/javascript" src="webjars/datatables/1.10.12/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="webjars/datatables/1.10.12/js/dataTables.bootstrap.min.js"></script>
     <script src="/public/js/common/model/model.js" type="text/javascript"></script>
+    <script src="/public/js/common/ajax/ajax.js" type="text/javascript"></script>
 
-    <script src="/public/js/personal/department/department.js" type="text/javascript"></script>
-    <script src="/public/js/personal/department/util.js" type="text/javascript"></script>
+
+    <script src="/public/js/personal/department/service/departmentService.js" type="text/javascript"></script>
+    <script src="/public/js/personal/department/view/departmentView.js" type="text/javascript"></script>
 
 </head>
 
 <body onload="downloadPage()">
 <nav class="navbar navbar-form">
-
-    <label class="btn btn-info mynav" for="start"><i class="glyphicon glyphicon-home label-info "></i>&nbsp Главная</label>
-    <label class="btn btn-info mynav icon-prev" for="navDepartment"><i class="glyphicon glyphicon-th-large label-info"></i>&nbsp
+    <label class="btn btn-info mynav" for="start"><i class="glyphicon glyphicon-home label-info "></i>&nbsp
+        Главная</label>
+    <label class="btn btn-info mynav icon-prev" for="navDepartment"><i
+            class="glyphicon glyphicon-th-large label-info"></i>&nbsp
         Подразделения</label>
     <label class="btn btn-info mynav icon-bar" for="navGroup"><i class="glyphicon glyphicon-th-list label-info"></i>&nbsp
         Группы</label>
@@ -61,7 +64,7 @@
 
     </div>
 
-    <table id="departmentT">
+    <table id="entityT">
 
         <thead>
         <tr>
@@ -85,16 +88,15 @@
             <!-- Основная часть модального окна, содержащая форму для регистрации -->
             <div class="modal-body">
                 <!-- Форма для регистрации -->
-                <form role="form" class="form-horizontal" id="putDepartment">
+                <form role="form" class="form-horizontal" id="putEntity">
 
                     <!-- Блок для ввода id -->
                     <div class="changeDivId">
-                        <%--<div class="form-group" id="divId">--%>
                         <div class="form-group has-feedback" id="divId">
                             <%--     <label for="personId" class="control-label col-xs-3">id:</label>--%>
                             <div class="col-xs-6">
                                 <div class="input-group">
-                                    <input type="hidden" class="form-control" id="departmentId" name="id" required>
+                                    <input type="hidden" class="form-control" id="id" name="id" required>
                                 </div>
                             </div>
                         </div>
@@ -141,7 +143,7 @@
             <!-- Основная часть модального окна, содержащая форму для удаления -->
             <div class="modal-body">
                 <!-- Форма для регистрации -->
-                <form role="form" class="form-horizontal" id="delDepartment">
+                <form role="form" class="form-horizontal" id="delEntity">
 
 
                     <!-- Блок для ввода Наименования -->
@@ -151,7 +153,7 @@
                         <div class="col-xs-6">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-info-sign"></i></span>
-                                <input type="hidden" class="form-control" id="departmentDelId" name="id" readonly
+                                <input type="hidden" class="form-control" id="delId" name="id" readonly
                                        required>
                                 <input type="text" class="form-control" id="delName" name="name" readonly required/>
                             </div>

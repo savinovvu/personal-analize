@@ -26,7 +26,6 @@ var ajaxAPI = {
 
 
 function send(url, type, jsonData, viewFunction) {
-
     $.ajax({
 
         url: url,

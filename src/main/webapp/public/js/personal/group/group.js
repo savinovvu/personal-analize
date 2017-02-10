@@ -9,17 +9,17 @@ jQuery(function ($) {
         e.preventDefault();
         $("#dismissButton").click();
         var group = new Group($("#groupDelId").val(), null, new Department(null, null));
-        send("/personal/group", "DELETE", group);
+        send("/personal/group", "DELETE", group, view);
 
     });
 });
 
 function getDepartment() {
-    sendGetDepartment("/personal/department/all", "GET");
+    sendGetDepartment("/personal/department/all", "GET", null, view);
 }
 
 function getAll() {
-    send("/personal/group/all", "GET");
+    send("/personal/group/all", "GET", null, view);
 }
 
 
@@ -35,7 +35,7 @@ jQuery(function ($) {
             $("#name").val(),
             department
         );
-        send("/personal/group", "PUT", group);
+        send("/personal/group", "PUT", group, view);
         document.getElementById('name').value = "";
     });
 });
