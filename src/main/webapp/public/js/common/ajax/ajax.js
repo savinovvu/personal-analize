@@ -14,6 +14,7 @@ var ajaxAPI = {
         "department" : "/personal/department",
         "departmentAll": "/personal/department/all",
         "group": "/personal/group",
+        "groupAll": "/personal/group/all",
         "person": "/personal/person",
         "personAll": "/personal/person/all",
     }

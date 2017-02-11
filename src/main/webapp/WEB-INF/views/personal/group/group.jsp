@@ -17,9 +17,10 @@
     <script type="text/javascript" src="webjars/datatables/1.10.12/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="webjars/datatables/1.10.12/js/dataTables.bootstrap.min.js"></script>
     <script src="/public/js/common/model/model.js" type="text/javascript"></script>
+    <script src="/public/js/common/ajax/ajax.js" type="text/javascript"></script>
 
-    <script src="/public/js/personal/group/group.js" type="text/javascript"></script>
-    <script src="/public/js/personal/group/util.js" type="text/javascript"></script>
+    <script src="/public/js/personal/group/service/groupService.js" type="text/javascript"></script>
+    <script src="/public/js/personal/group/view/groupView.js" type="text/javascript"></script>
 
 </head>
 
@@ -27,8 +28,10 @@
 
 <nav class="navbar navbar-form">
 
-    <label class="btn btn-info mynav" for="start"><i class="glyphicon glyphicon-home label-info "></i>&nbsp Главная</label>
-    <label class="btn btn-info mynav icon-prev" for="navDepartment"><i class="glyphicon glyphicon-th-large label-info"></i>&nbsp
+    <label class="btn btn-info mynav" for="start"><i class="glyphicon glyphicon-home label-info "></i>&nbsp
+        Главная</label>
+    <label class="btn btn-info mynav icon-prev" for="navDepartment"><i
+            class="glyphicon glyphicon-th-large label-info"></i>&nbsp
         Подразделения</label>
     <label class="btn btn-info mynav icon-bar" for="navGroup"><i class="glyphicon glyphicon-th-list label-info"></i>&nbsp
         Группы</label>
@@ -53,7 +56,6 @@
 <div class="view-box">
     <div class="menu">
 
-        <!-- Кнопка для открытия модального окна -->
         <button type="button" class="btn btn-lg btn-success custombtn" data-toggle="modal"
                 data-target="#myModal" onclick="getModal()">
             Добавить группу
@@ -66,7 +68,7 @@
         </div>
     </div>
 
-    <table id="groupT">
+    <table id="entityT">
 
         <thead>
         <tr>
@@ -83,29 +85,23 @@
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
-            <!-- Заголовок модального окна -->
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">×</button>
                 <h4 class="modal-title text-center" id="myModalLabel">Добавление/Обновление группы</h4>
             </div>
-            <!-- Основная часть модального окна, содержащая форму для регистрации -->
             <div class="modal-body">
-                <!-- Форма для регистрации -->
-                <form role="form" class="form-horizontal" id="putGroup">
+                <form role="form" class="form-horizontal" id="putEntity">
 
-                    <!-- Блок для ввода id -->
                     <div class="changeDivId">
                         <div class="form-group has-feedback" id="divId">
                             <div class="col-xs-6">
                                 <div class="input-group">
-                                    <input type="hidden" class="form-control" id="groupId" name="id" required>
+                                    <input type="hidden" class="form-control" id="id" name="id" required>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-
-                    <!-- Блок для ввода ФИО -->
 
                     <div class="form-group has-feedback">
                         <label for="name" class="control-label col-xs-3">Группа:</label>
@@ -117,27 +113,22 @@
 
                         </div>
                     </div>
-                    <!-- Конец блока для ввода ФИО-->
 
 
-                    <%--Блок ввод отдела--%>
                     <div class="form-group has-feedback">
-                        <label for="department" class="control-label col-xs-3">Подразделение</label>
+                        <label for="superEntity" class="control-label col-xs-3">Подразделение</label>
 
                         <div class="col-xs-6">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
 
-                                <select id="department" class="form-control" name="department">
+                                <select id="superEntity" class="form-control" name="superEntity">
 
 
                                 </select>
                             </div>
                         </div>
                     </div>
-                    <!-- Конец блока для ввода отдела-->
-
-                    <%-- Скрытый блог данных об отделах--%>
 
 
                     <div class="modal-footer">
@@ -146,42 +137,34 @@
                     </div>
                 </form>
             </div>
-            <!-- Нижняя часть модального окна -->
 
         </div>
     </div>
 </div>
 
-<%--Блок удаления--%>
 
 <div class="modal fade" id="myDelModal" tabindex="-1" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
-            <!-- Заголовок модального окна -->
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">×</button>
                 <h4 class="modal-title text-center" id="myDelModalLabel">Удаление Группы</h4>
             </div>
-            <!-- Основная часть модального окна, содержащая форму для удаления -->
             <div class="modal-body">
-                <!-- Форма для регистрации -->
-                <form role="form" class="form-horizontal" id="delGroup">
+                <form role="form" class="form-horizontal" id="delEntity">
 
-
-                    <!-- Блок для ввода ФИО -->
 
                     <div class="form-group has-feedback">
                         <label for="name" class="control-label col-xs-3">Группа:</label>
                         <div class="col-xs-6">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-info-sign"></i></span>
-                                <input type="hidden" class="form-control" id="groupDelId" name="id" readonly required>
+                                <input type="hidden" class="form-control" id="delId" name="id" readonly required>
                                 <input type="text" class="form-control" id="delName" name="name" readonly required/>
                             </div>
 
                         </div>
                     </div>
-                    <!-- Конец блока для ввода ФИО-->
 
 
                     <div class="modal-footer">
@@ -192,7 +175,6 @@
                     </div>
                 </form>
             </div>
-            <!-- Нижняя часть модального окна -->
 
         </div>
     </div>
