@@ -6,7 +6,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
-import ru.inbox.savinov_vu.model.personal.Department;
 import ru.inbox.savinov_vu.model.personal.Group;
 import ru.inbox.savinov_vu.service.personal.group.GroupService;
 
@@ -28,10 +27,10 @@ public class GroupRestController {
 
     }
 
-    @PostMapping("/department")
-    public List<Group> getDepartmentWithGroups(@RequestBody Department department) {
-        LOG.info("get all groups where department= {}", department);
-        return service.getDepartmentWithGroups(department);
+    @GetMapping("/{id}")
+    public List<Group> getGroupsWithDepartment(@PathVariable("id") Integer id) {
+        LOG.info("get all groups where department id= {}", id);
+        return service.getGroupsWithDepartment(id);
 
     }
 
