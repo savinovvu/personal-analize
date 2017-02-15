@@ -38,7 +38,7 @@ public class QuestionSub implements Persistable<Integer> {
     @JsonProperty("questionVar")
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "questionvar_id", nullable = false)
-    private QuestionKit questionVar;
+    private QuestionVar questionVar;
 
 
     public QuestionSub() {
@@ -48,7 +48,7 @@ public class QuestionSub implements Persistable<Integer> {
         return id;
     }
 
-    public QuestionKit getQuestionVar() {
+    public QuestionVar getQuestionVar() {
         return questionVar;
     }
 
