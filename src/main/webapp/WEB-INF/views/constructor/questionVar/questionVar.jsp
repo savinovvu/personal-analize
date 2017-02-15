@@ -74,7 +74,6 @@
 
         </select>
 
-        <!-- Кнопка для открытия модального окна -->
         <button type="button" class="btn btn-lg btn-success custombtn" data-toggle="modal"
                 data-target="#myModal" onclick="getModal()"><i class="glyphicon glyphicon-plus label-info "></i>&nbsp
             Добавить вопрос к анкете
