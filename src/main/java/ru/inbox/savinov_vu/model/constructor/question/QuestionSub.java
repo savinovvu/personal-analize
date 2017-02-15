@@ -48,6 +48,9 @@ public class QuestionSub implements Persistable<Integer> {
         return id;
     }
 
+    public QuestionKit getQuestionVar() {
+        return questionVar;
+    }
 
     @Override
     public boolean isNew() {
