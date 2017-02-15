@@ -1,11 +1,11 @@
 function downloadPage() {
-    sendGetQuestionKits("/constructor/questionKit/all", "GET");
-    sendGetAnswerKits("/constructor/answerKit/all", "GET");
+    sendGetQuestionKits(ajaxAPI.constructor.questionKitAll, "GET");
+    sendGetAnswerKits(ajaxAPI.constructor.answerKitAll, "GET");
 
 }
 
 function getQuestionVarsfromQuestionKit() {
-    send("/constructor/questionVar/" + getSelectedQuestionKit().id, "GET")
+    send(ajaxAPI.constructor.questionVar + "/" + getSelectedQuestionKit().id, "GET")
 }
 
 
@@ -19,7 +19,7 @@ jQuery(function ($) {
             $("#delId").val(), null, null, getSelectedQuestionKit()
         );
 
-        send("/constructor/questionVar", "DELETE", questionVar);
+        send(ajaxAPI.constructor.questionVar, "DELETE", questionVar);
     });
 });
 
@@ -35,7 +35,7 @@ jQuery(function ($) {
             getSelectedQuestionKit()
         );
 
-        send("/constructor/questionVar", "PUT", questionVar);
+        send(ajaxAPI.constructor.questionVar, "PUT", questionVar);
         document.getElementById('name').value = "";
     });
 });
