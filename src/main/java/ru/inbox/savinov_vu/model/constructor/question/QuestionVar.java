@@ -45,13 +45,18 @@ public class QuestionVar implements Persistable<Integer> {
     public QuestionVar() {
     }
 
+    public Integer getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
     public QuestionKit getQuestionKit() {
         return questionKit;
     }
 
-    public Integer getId() {
-        return id;
-    }
 
 
     @Override
