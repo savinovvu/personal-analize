@@ -41,5 +41,14 @@ function QuestionVar(id, name, answerKit, questionKit) {
     this.questionKit = questionKit;
 }
 
+function QuestionSub(id, name, answerKit, questionVar) {
+    this.id = Number(id);
+    this.name = name;
+    this.answerKit = answerKit;
+    this.questionVar = questionVar;
+}
+
+
+
 
 

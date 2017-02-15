@@ -8,7 +8,8 @@ var ajaxAPI = {
         "answerVar": "/constructor/answerVar",
         "questionKit": "/constructor/questionKit",
         "questionKitAll": "/constructor/questionKit/all",
-        "questionVar": "/constructor/questionVar"
+        "questionVar": "/constructor/questionVar",
+        "questionSub": "/constructor/questionSub",
     },
     "personal": {
         "department" : "/personal/department",
