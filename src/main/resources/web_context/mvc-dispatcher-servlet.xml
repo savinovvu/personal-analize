@@ -7,9 +7,6 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
-  <!--  <bean class="ru.javawebinar.topjava.web.json.JacksonObjectMapper" id="objectMapper" factory-method="getMapper"/>-->
-
-    <!-- serve static resources (*.html, ...) from src/main/webapp/ -->
     <mvc:default-servlet-handler/>
     <context:component-scan base-package="ru.inbox.savinov_vu.controller"/>
     <mvc:annotation-driven conversion-service="conversionService">
@@ -39,8 +36,6 @@
     </bean>
 
 
-
-
     <bean id="contentNegotiationManager" class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
         <property name="parameterName" value="type"/>
         <property name="favorParameter" value="true"/>
@@ -48,9 +43,6 @@
         <property name="ignoreAcceptHeader" value="false"/>
         <property name="useJaf" value="true"/>
     </bean>
-
-
-
 
 
     <mvc:resources mapping="/resources/**" location="/public/"/>
@@ -63,27 +55,16 @@
     />
 
     <mvc:view-resolvers>
-
         <mvc:content-negotiation>
-
             <mvc:default-views>
                 <bean class="ru.inbox.savinov_vu.util.pdf.ItextPdfView"/>
-
-
-
             </mvc:default-views>
         </mvc:content-negotiation>
-
         <mvc:jsp prefix="/WEB-INF/views/" suffix=".jsp"/>
-
-
     </mvc:view-resolvers>
 
 
-
-
-
-    </beans>
+</beans>
 
 
 
