@@ -16,7 +16,7 @@ var ajaxAPI = {
         "group": "/personal/group",
         "groupAll": "/personal/group/all",
         "person": "/personal/person",
-        "personAll": "/personal/person/all",
+        "personAll": "/personal/person/all"
     }
 
 

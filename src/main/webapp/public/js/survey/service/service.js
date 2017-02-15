@@ -1,11 +1,11 @@
 function downloadPage() {
-     send("/constructor/questionKit/all", "GET", null, viewGetQuestionKits);
+     send(ajaxAPI.constructor.questionKitAll, "GET", null, viewQuestionKits);
 }
 
 
 
 function getQuestionVarsfromQuestionKit() {
-    send("/constructor/questionVar/" + getSelectedQuestionKit().id, "GET", null )
+    send(ajaxAPI.constructor.questionVar +"/" + getSelectedQuestionKit().id, "GET", null, viewSurvey )
 }
 
 
@@ -13,8 +13,8 @@ function getQuestionVarsfromQuestionKit() {
 function getSelectedQuestionKit() {
 
     var questionKit = new QuestionKit(
-        $('#superEntity').val(),
-        $('#superEntity option:selected').text()
+        $('#kit').val(),
+        $('#kit option:selected').text()
     );
     return questionKit;
 }

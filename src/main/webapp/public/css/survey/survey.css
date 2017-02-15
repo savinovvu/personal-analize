@@ -1,0 +1,12 @@
+li{
+    height:auto;
+    font-size: medium;
+}
+
+
+.select-box {
+    width: 30%;
+    position: absolute;
+    right: 50px;
+}
+
