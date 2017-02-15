@@ -19,7 +19,7 @@ public class QuestionVarRestController {
     private static final Logger LOG = LoggerFactory.getLogger(QuestionVarRestController.class);
 
     @GetMapping("/{id}")
-    public List<QuestionVar> getQuestionVarWithQuestionit(@PathVariable("id") Integer id) {
+    public List<QuestionVar> getQuestionVarWithQuestionKit(@PathVariable("id") Integer id) {
         return service.getQuestionVarWithQuestionKit(id);
     }
 
