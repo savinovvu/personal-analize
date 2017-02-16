@@ -33,7 +33,7 @@
 
 <div class="select-box">
     <select id="kit" class="form-control" name="group"
-            onchange="getQuestionVarsfromQuestionKit()">
+            onchange="getQuestionVarsWithQuestionKit()">
         <option disabled selected>Выберете анкету</option>
     </select>
 </div>
