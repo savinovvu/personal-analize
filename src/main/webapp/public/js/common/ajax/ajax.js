@@ -1,8 +1,6 @@
-
-
 var ajaxAPI = {
 
-    "constructor" : {
+    "constructor": {
         "answerKit": "/constructor/answerKit",
         "answerKitAll": "/constructor/answerKit/all",
         "answerVar": "/constructor/answerVar",
@@ -12,7 +10,7 @@ var ajaxAPI = {
         "questionSub": "/constructor/questionSub",
     },
     "personal": {
-        "department" : "/personal/department",
+        "department": "/personal/department",
         "departmentAll": "/personal/department/all",
         "group": "/personal/group",
         "groupAll": "/personal/group/all",
@@ -21,14 +19,32 @@ var ajaxAPI = {
     }
 
 
-
-
 };
 
 
-
-function send(url, type, jsonData, viewFunction) {
+function send(url, type, jsonData, viewFunction, additionData) {
     $.ajax({
+
+        url: url,
+        type: type,
+        contentType: 'application/json',
+        data: JSON.stringify(jsonData),
+        success: function (data) {
+
+            viewFunction(data, additionData);
+
+        },
+        error: function (x) {
+            alert("error");
+
+        }
+
+    });
+    return false;
+}
+
+function sendSynch(url, type, jsonData, viewFunction) {
+ return  $.ajax({
 
         url: url,
         type: type,
@@ -44,6 +60,5 @@ function send(url, type, jsonData, viewFunction) {
 
         }
 
-    });
-    return false;
+    }).responseText;
 }
