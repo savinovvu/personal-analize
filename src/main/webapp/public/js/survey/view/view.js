@@ -61,7 +61,7 @@ function viewAnswer(data, question) {
             viewAnswerSelect(data, question.id, question.prefix);
             break;
         case "FREE":
-            viewAnswerFree(data, question.id, question.prefix);
+            viewAnswerFree(question.id, question.prefix);
             break;
         case "EMPTY":
             return;
@@ -83,8 +83,6 @@ function viewAnswerCheckbox(answerVars, questionId, prefix) {
         var output = "<div class='checkbox'><label>" + input + val.name + " </label></div>";
         $("#form" + prefix + questionId).append(output);
     });
-
-
 }
 
 function viewAnswerRadio(answerVars, questionId, prefix) {
@@ -92,18 +90,17 @@ function viewAnswerRadio(answerVars, questionId, prefix) {
         var input = "<input type='radio' name='" + questionId + "' value='" + val.name + "'>";
         var output = "<div class='radio'><label>" + input + val.name + " </label></div>";
         $("#form" + prefix + questionId).append(output);
-
     });
 }
 function viewAnswerSelect(answerVars, questionId, prefix) {
 
-}
-function viewAnswerFree(answerVars, questionId, prefix) {
-    $.each(answerVars, function (key, val) {
-        var output = "<input type='input' name='" + questionId + "'>";
-        $("#form" + prefix + questionId).append(output);
 
-    });
+}
+
+function viewAnswerFree(questionId, prefix) {
+    var input = '<textarea class="form-control" rows="2" name="' + questionId + '"></textarea>';
+    var output = '<div><div class="form-group">' + input + '</div></div>';
+    $("#form" + prefix + questionId).append(output);
 }
 
 function viewAnswerName(answerVars, questionId, prefix) {
