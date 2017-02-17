@@ -125,8 +125,6 @@
                                 <select id="grandSuperEntity" class="form-control" name="department"
                                         onchange="getGroupWithDepartment()">
                                     <option disabled selected>Подразделение</option>
-
-
                                 </select>
                             </div>
                         </div>
