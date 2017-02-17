@@ -32,6 +32,12 @@
             <input class="btn btn-primary" type="submit" name="viewAllUsers" value="Персонал">
         </form>
 
+        <form action="import" method="get">
+            <input class="btn btn-primary" type="submit" name="viewAllUsers" value="Импорт и экспорт БД">
+        </form>
+
+
+
 
     </div>
 </div>
