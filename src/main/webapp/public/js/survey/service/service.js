@@ -22,5 +22,5 @@ function getSelectedQuestionKit() {
 
 
 function getAnswer(question) {
-    send(ajaxAPI.constructor.answerVar + "/" +question.answerKit.id, "GET", null, viewAnswer, question);
+        send(ajaxAPI.constructor.answerVar + "/" + question.answerKit.id, "GET", null, viewAnswer, question);
 }

@@ -29,8 +29,8 @@ function viewQuestionSub(data) {
         var prefix = "subQuestion-";
         var questionVarId = data[0].questionVar.id;
         var subQuestionListId = "subQuestionList-" + questionVarId;
-        $("#"+ subQuestionListId).remove();
-        $("#question-" + data[0].questionVar.id).append("<ol id='"+subQuestionListId+"'></ol>");
+        $("#" + subQuestionListId).remove();
+        $("#question-" + data[0].questionVar.id).append("<ol id='" + subQuestionListId + "'></ol>");
         $.each(data, function (key, val) {
             var output = "";
             output += "<li id='subQuestion-" + val.id + "' class='delSubQuestion'>";
@@ -44,42 +44,72 @@ function viewQuestionSub(data) {
     }
 }
 
-/*    CHECKBOX, RADIO, SELECT , FREE, EMPTY, NAME*/
-var i = 0;
-function viewAnswer(/*data,*/ question, prefixId) {
- /*   if(i == 0){
-        i++
-        alert(JSON.stringify(data));
-    }*/
- var data = null;
 
-    viewForm(question, prefixId);
+var i = 0;
+function viewAnswer(data, question) {
+
+    viewForm(question, question.prefix);
     switch (question.answerKit.answerType) {
         case "CHECKBOX" :
-            viewAnswerCheckbox(data, question.id, prefixId);
+            viewAnswerCheckbox(data, question.id, question.prefix);
             break;
         case "RADIO":
-            viewAnswerRadio(data, question.id, prefixId);
+
+            viewAnswerRadio(data, question.id, question.prefix);
             break;
         case "SELECT":
-            viewAnswerSelect(data, question.id, prefixId);
+            viewAnswerSelect(data, question.id, question.prefix);
             break;
         case "FREE":
-            viewAnswerFree(data, question.id, prefixId);
+            viewAnswerFree(data, question.id, question.prefix);
             break;
         case "EMPTY":
-            viewAnswerEmpty(data, question.id, prefixId);
-            break;
+            return;
         case "NAME":
-            viewAnswerName(data, question.id, prefixId);
+            viewAnswerName(data, question.id, question.prefix);
             break;
     }
 }
 
 function viewForm(question, prefixId) {
-    var output = "<form id='form"+prefixId+ question.id +"'></form>";
-    $("#"+prefixId + question.id).append(output);
+    var output = "<form id='form" + prefixId + question.id + "'></form>";
+    $("#" + prefixId + question.id).append(output);
 }
+
+
+function viewAnswerCheckbox(answerVars, questionId, prefix) {
+    $.each(answerVars, function (key, val) {
+        var input = "<input type='checkbox' name='" + questionId + "' value='" + val.name + "'>";
+        var output = "<div class='checkbox'><label>" + input + val.name + " </label></div>";
+        $("#form" + prefix + questionId).append(output);
+    });
+
+
+}
+
+function viewAnswerRadio(answerVars, questionId, prefix) {
+    $.each(answerVars, function (key, val) {
+        var input = "<input type='radio' name='" + questionId + "' value='" + val.name + "'>";
+        var output = "<div class='radio'><label>" + input + val.name + " </label></div>";
+        $("#form" + prefix + questionId).append(output);
+
+    });
+}
+function viewAnswerSelect(answerVars, questionId, prefix) {
+
+}
+function viewAnswerFree(answerVars, questionId, prefix) {
+    $.each(answerVars, function (key, val) {
+        var output = "<input type='input' name='" + questionId + "'>";
+        $("#form" + prefix + questionId).append(output);
+
+    });
+}
+
+function viewAnswerName(answerVars, questionId, prefix) {
+
+}
+
 
 
 
