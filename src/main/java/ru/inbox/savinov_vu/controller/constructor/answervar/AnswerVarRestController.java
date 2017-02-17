@@ -22,6 +22,7 @@ public class AnswerVarRestController {
 
     @GetMapping("/{id}")
     public List<AnswerVar> getAnswerVarWithAnswerKit(@PathVariable("id") Integer id) {
+        LOG.info("get answerVars with answerKit_id = {}", id);
         return service.getAnswerVarWithAnswerKit(id);
     }
 
