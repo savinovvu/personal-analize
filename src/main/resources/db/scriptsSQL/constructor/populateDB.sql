@@ -11,7 +11,8 @@ INSERT INTO answerkits (id, name, answerType) VALUES
   (3, 'лишнее животное', 'SELECT'),
   (4, 'набор ответов3', 'FREE'),
   (5, 'пустой набор', 'EMPTY'),
-  (6, 'хорошо, плохо', 'RADIO');
+  (6, 'хорошо, плохо', 'RADIO'),
+  (7, 'люди', 'NAME');
 
 INSERT INTO questionkits (id, name) VALUES
   (1, 'набор вопросов1'),
@@ -46,7 +47,8 @@ INSERT INTO answervars (id,name, answerkit_id) VALUES
 (8,'Как вас зовут?', 4, 2),
 (9,'Из какого вы города?', 4, 2),
 (10,'Вы каждый день выпиваете?', 2, 2),
-(11,'Хорошо или плохо каждый день вставать в 6 утра', 6 , 2);
+(11,'Хорошо или плохо каждый день вставать в 6 утра', 6 , 2),
+(12,'С кем бы вы пошли в разведку?', 7 , 2);
 
 INSERT INTO questionsubs (id, NAME, answerkit_id, questionvar_id) VALUES
   (1,'друзьями?', 6, 4),
