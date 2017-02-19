@@ -26,6 +26,13 @@ public class PersonRestController {
 
     }
 
+    @GetMapping("/{id}")
+    public List<Person> getPersonWithGroup(@PathVariable("id") Integer id) {
+        LOG.info("get all persons where group id= {}", id);
+        return service.getPersonWithGroup(id);
+
+    }
+
 
     @PutMapping
     public List<Person> putPerson(@RequestBody Person person) {
