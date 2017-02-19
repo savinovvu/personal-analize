@@ -39,7 +39,7 @@ INSERT INTO answervars (id,name, answerkit_id) VALUES
   INSERT INTO questionvars (id, NAME, answerkit_id, questionkit_id) VALUES
 (1,'Как дела?', 6, 1),
 (2,'Хороший сегодня день?', 2, 1),
-(3,'Уберите лишнее?', 3, 1),
+(3,'Выберете лишнее?', 3, 1),
 (4,'Как ваши дела в коллективе c...?', 5, 1),
 (5,'Жить хорошо?', 2, 1),
 (6,'А хорошо жить ещё лучше c...?', 5, 1),
