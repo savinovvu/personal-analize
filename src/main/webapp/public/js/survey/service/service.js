@@ -22,5 +22,27 @@ function getSelectedQuestionKit() {
 
 
 function getAnswer(question) {
-        send(ajaxAPI.constructor.answerVar + "/" + question.answerKit.id, "GET", null, viewAnswer, question);
+    send(ajaxAPI.constructor.answerVar + "/" + question.answerKit.id, "GET", null, viewAnswer, question);
+}
+
+function getDepartment(department) {
+    send(ajaxAPI.personal.departmentAll, "GET", null, viewOption, "department" + department);
+}
+
+
+
+function getGroup(question) {
+    var department = new Department(
+        $('#department'+question).val(),
+        $('#department'+question +' option:selected').text()
+    );
+    send(ajaxAPI.personal.group + "/"+ department.id , "GET", null, viewOption, "group" + question);
+}
+
+function getPerson(question) {
+    var group = new Group(
+        $('#group'+question).val(),
+        $('#group'+question +' option:selected').text()
+    );
+    send(ajaxAPI.personal.person + "/"+ group.id , "GET", null, viewOption, "person" + question);
 }

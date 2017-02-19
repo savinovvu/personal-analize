@@ -66,7 +66,7 @@ function viewAnswer(data, question) {
         case "EMPTY":
             return;
         case "NAME":
-            viewAnswerName(data, question.id, question.prefix);
+            viewAnswerName(question.id, question.prefix);
             break;
     }
 }
@@ -92,20 +92,64 @@ function viewAnswerRadio(answerVars, questionId, prefix) {
         $("#form" + prefix + questionId).append(output);
     });
 }
-function viewAnswerSelect(answerVars, questionId, prefix) {
 
-
+function viewAnswerSelect(questionId, prefix) {
+    var output = "<select id='department" + prefix + questionId + "' onchange='getGroups()'></select>";
+    output += "<select id='group" + prefix + questionId + "' onchange='getPerson()'></select>";
+    output += "<select id='person" + prefix + questionId + "' name='" + questionId + "'></select>";
+    $("#form" + prefix + questionId).append(output);
+    getDepartment();
 }
 
 function viewAnswerFree(questionId, prefix) {
-    var input = '<textarea class="form-control" rows="2" name="' + questionId + '"></textarea>';
-    var output = '<div><div class="form-group">' + input + '</div></div>';
+    var input = '<span class="input-group-addon"><i class="glyphicon glyphicon-question-sign"></i></span>';
+    input += '<textarea class="form-control" rows="2" name="' + questionId + '"></textarea>';
+    var output = '<div><div class="input-group">' + input + '</div></div>';
     $("#form" + prefix + questionId).append(output);
 }
 
-function viewAnswerName(answerVars, questionId, prefix) {
+function viewAnswerName(questionId, prefix) {
+
+    var output = "<div class=''><div class='form-group has-feedback'><div class='col-xs-7'><div class='input-group'>" + getInputDepartment(questionId, prefix) + "</div></div></div>";
+    output += "<div class='form-group has-feedback'><div class='col-xs-7'><div class='input-group'>" + getInputGroup(questionId, prefix) + "</div></div></div>";
+    output += "<div class='form-group has-feedback'><div class='col-xs-7'><div class='input-group'>" + getInputPerson(questionId, prefix) + "</div></div></div></div>";
+    alert("hahaha1");
+    $("#form" + prefix + questionId).append(output);
+    getDepartment(prefix + questionId);
 
 }
+
+function getInputDepartment(questionId, prefix) {
+    var inputDepartment = '<span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>';
+    inputDepartment += "<select id='department" + prefix + questionId + "' onchange='getGroup(\"" + prefix + questionId + "\")' class='form-control'></select>";
+    return inputDepartment;
+}
+
+function getInputGroup(questionId, prefix) {
+    var inputGroup = '<span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>';
+    inputGroup += "<select id='group" + prefix + questionId + "' onchange='getPerson(\"" + prefix + questionId + "\")' class='form-control'></select>";
+    return inputGroup;
+}
+
+function getInputPerson(questionId, prefix) {
+    var inputPerson = '<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>';
+    inputPerson += "<select id='person" + prefix + questionId + "' name='" + questionId + "' class='form-control'></select>";
+    return inputPerson;
+}
+
+
+function viewOption(data, selectId) {
+    $("." + selectId).remove();
+    var output = "<option disabled selected>сделайте выбор</option>";
+    $.each(data, function (key, val) {
+        output += "<option class='" + selectId + "' value='" + val.id + "'>" + val.name + "</option>";
+    });
+    $("#" + selectId).append(output);
+}
+
+
+
+
 
 
 
