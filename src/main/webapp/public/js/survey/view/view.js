@@ -93,12 +93,15 @@ function viewAnswerRadio(answerVars, questionId, prefix) {
     });
 }
 
-function viewAnswerSelect(questionId, prefix) {
-    var output = "<select id='department" + prefix + questionId + "' onchange='getGroups()'></select>";
-    output += "<select id='group" + prefix + questionId + "' onchange='getPerson()'></select>";
-    output += "<select id='person" + prefix + questionId + "' name='" + questionId + "'></select>";
+function viewAnswerSelect(answerVars, questionId, prefix) {
+    var output = '<div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>';
+    output += "<select class='form-control' name='" + questionId + "'>";
+
+    $.each(answerVars, function (key, val) {
+        output += "<option value='" + val.id + "'>" + val.name + "</option>";
+    });
+    output += "</select></div>";
     $("#form" + prefix + questionId).append(output);
-    getDepartment();
 }
 
 function viewAnswerFree(questionId, prefix) {
@@ -113,7 +116,6 @@ function viewAnswerName(questionId, prefix) {
     var output = "<div class=''><div class='form-group has-feedback'><div class='col-xs-7'><div class='input-group'>" + getInputDepartment(questionId, prefix) + "</div></div></div>";
     output += "<div class='form-group has-feedback'><div class='col-xs-7'><div class='input-group'>" + getInputGroup(questionId, prefix) + "</div></div></div>";
     output += "<div class='form-group has-feedback'><div class='col-xs-7'><div class='input-group'>" + getInputPerson(questionId, prefix) + "</div></div></div></div>";
-    alert("hahaha1");
     $("#form" + prefix + questionId).append(output);
     getDepartment(prefix + questionId);
 
