@@ -51,10 +51,10 @@ INSERT INTO questionvars (id, NAME, answerkit_id, questionkit_id) VALUES
   (13, 'В "Лошадь"?', 2, 2);
 
 
-INSERT INTO questionsubs (id, NAME, answerkit_id, questionvar_id) VALUES
-  (1, 'друзьями?', 6, 4),
-  (2, 'коллегами?', 6, 4),
-  (3, 'выберете животное', 3, 6),
-  (4, 'Согласны что вопрос нормальный?', 2, 6),
-  (5, 'Что вы сейчас чувствуете?', 4, 6);
+INSERT INTO questionsubs (NAME, answerkit_id, questionvar_id) VALUES
+  ( 'друзьями?', 6, 4),
+  ( 'коллегами?', 6, 4),
+  ( 'выберете животное', 3, 6),
+  ( 'Согласны что вопрос нормальный?', 2, 6),
+  ( 'Что вы сейчас чувствуете?', 4, 6);
 
