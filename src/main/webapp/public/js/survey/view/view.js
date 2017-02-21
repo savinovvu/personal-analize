@@ -112,10 +112,9 @@ function viewAnswerFree(questionId, prefix) {
 }
 
 function viewAnswerName(questionId, prefix) {
-
-    var output = "<div class=''><div class='form-group has-feedback'><div class='col-xs-7'><div class='input-group'>" + getInputDepartment(questionId, prefix) + "</div></div></div>";
-    output += "<div class='form-group has-feedback'><div class='col-xs-7'><div class='input-group'>" + getInputGroup(questionId, prefix) + "</div></div></div>";
-    output += "<div class='form-group has-feedback'><div class='col-xs-7'><div class='input-group'>" + getInputPerson(questionId, prefix) + "</div></div></div></div>";
+    var output = "<div class='input-group'>" + getInputDepartment(questionId, prefix) + "</div>";
+    output += "<div class='input-group'>" + getInputGroup(questionId, prefix) + "</div>";
+    output += "<div class='input-group'>" + getInputPerson(questionId, prefix) + "</div>";
     $("#form" + prefix + questionId).append(output);
     getDepartment(prefix + questionId);
 
