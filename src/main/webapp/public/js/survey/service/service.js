@@ -26,7 +26,7 @@ function getAnswer(question) {
 }
 
 function getDepartment(department) {
-    send(ajaxAPI.personal.departmentAll, "GET", null, viewGroup, "department" + department);
+    send(ajaxAPI.personal.departmentAll, "GET", null, viewGroupAndDepartment, "department" + department);
 }
 
 
@@ -36,7 +36,7 @@ function getGroup(question) {
         $('#department'+question).val(),
         $('#department'+question +' option:selected').text()
     );
-    send(ajaxAPI.personal.group + "/"+ department.id , "GET", null, viewGroup, "group" + question);
+    send(ajaxAPI.personal.group + "/"+ department.id , "GET", null, viewGroupAndDepartment, "group" + question);
 }
 
 function getPerson(question) {

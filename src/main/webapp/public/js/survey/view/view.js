@@ -50,22 +50,22 @@ function viewAnswer(data, question) {
     viewAnswerDiv(question, question.prefix);
     switch (question.answerKit.answerType) {
         case "CHECKBOX" :
-            viewAnswerCheckbox(data, question.id, question.prefix);
+            viewAnswerCheckbox(data, question, question.prefix);
             break;
         case "RADIO":
 
-            viewAnswerRadio(data, question.id, question.prefix);
+            viewAnswerRadio(data, question, question.prefix);
             break;
         case "SELECT":
-            viewAnswerSelect(data, question.id, question.prefix);
+            viewAnswerSelect(data, question, question.prefix);
             break;
         case "FREE":
-            viewAnswerFree(question.id, question.prefix);
+            viewAnswerFree(question, question.prefix);
             break;
         case "EMPTY":
             return;
         case "NAME":
-            viewAnswerName(question.id, question.prefix);
+            viewAnswerName(question, question.prefix);
             break;
     }
 }
@@ -76,47 +76,46 @@ function viewAnswerDiv(question, prefixId) {
 }
 
 
-function viewAnswerCheckbox(answerVars, questionId, prefix) {
+function viewAnswerCheckbox(answerVars, question, prefix) {
     $.each(answerVars, function (key, val) {
-        var input = "<input type='checkbox' name='" + questionId + "' value='" + val.name + "'>";
+        var input = "<input type='checkbox' name='" + question.name + "' value='" + val.name + "'>";
         var output = "<div class='checkbox'><label>" + input + val.name + " </label></div>";
-        $("#answerDiv" + prefix + questionId).append(output);
+        $("#answerDiv" + prefix + question.id).append(output);
     });
 }
 
-function viewAnswerRadio(answerVars, questionId, prefix) {
+function viewAnswerRadio(answerVars, question, prefix) {
     $.each(answerVars, function (key, val) {
-        var input = "<input type='radio' name='" + questionId + "' value='" + val.name + "'>";
+        var input = "<input type='radio' name='" + question.name + "' value='" + val.name + "'>";
         var output = "<div class='radio'><label>" + input + val.name + " </label></div>";
-        $("#answerDiv" + prefix + questionId).append(output);
+        $("#answerDiv" + prefix + question.id).append(output);
     });
 }
 
-function viewAnswerSelect(answerVars, questionId, prefix) {
+function viewAnswerSelect(answerVars, question, prefix) {
     var output = '<div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>';
-    output += "<select class='form-control' name='" + questionId + "'>";
+    output += "<select class='form-control' name='" + question.name + "'>";
 
     $.each(answerVars, function (key, val) {
         output += "<option value='" + val.id + "'>" + val.name + "</option>";
     });
     output += "</select></div>";
-    $("#answerDiv" + prefix + questionId).append(output);
+    $("#answerDiv" + prefix + question.id).append(output);
 }
 
-function viewAnswerFree(questionId, prefix) {
+function viewAnswerFree(question, prefix) {
     var input = '<span class="input-group-addon"><i class="glyphicon glyphicon-question-sign"></i></span>';
-    input += '<textarea class="form-control" rows="2" name="' + questionId + '"></textarea>';
+    input += '<textarea class="form-control" rows="2" name="' + question.name + '"></textarea>';
     var output = '<div><div class="input-group">' + input + '</div></div>';
-    $("#answerDiv" + prefix + questionId).append(output);
+    $("#answerDiv" + prefix + question.id).append(output);
 }
 
-function viewAnswerName(questionId, prefix) {
-    var output = "<div class='input-group'>" + getInputDepartment(questionId, prefix) + "</div>";
-    output += "<div class='input-group'>" + getInputGroup(questionId, prefix) + "</div>";
-    alert("halo3");
-    output += "<div class='input-group'>" + getInputPerson(questionId, prefix) + "</div>";
-    $("#answerDiv" + prefix + questionId).append(output);
-    getDepartment(prefix + questionId);
+function viewAnswerName(question, prefix) {
+    var output = "<div class='input-group'>" + getInputDepartment(question.id, prefix) + "</div>";
+    output += "<div class='input-group'>" + getInputGroup(question.id, prefix) + "</div>";
+    output += "<div class='input-group'>" + getInputPerson(question, prefix) + "</div>";
+    $("#answerDiv" + prefix + question.id).append(output);
+    getDepartment(prefix + question.id);
 
 }
 
@@ -132,16 +131,16 @@ function getInputGroup(questionId, prefix) {
     return inputGroup;
 }
 
-function getInputPerson(questionId, prefix) {
+function getInputPerson(question, prefix) {
 
     var inputPerson = '<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>';
     var  option = "<option value='нет ответа' selected>нет ответа</option>";
-    inputPerson += "<select id='person" + prefix + questionId + "' name='" + questionId + "' class='form-control'>"+option+"</select>";
+    inputPerson += "<select id='person" + prefix + question.id + "' name='" + question.name + "' class='form-control'>"+option+"</select>";
     return inputPerson;
 }
 
 
-function viewGroup(data, selectId) {
+function viewGroupAndDepartment(data, selectId) {
     $("." + selectId).remove();
     var output = "<option value='' disabled selected>сделайте выбор</option>";
     $.each(data, function (key, val) {
