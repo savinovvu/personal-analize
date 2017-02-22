@@ -113,6 +113,7 @@ function viewAnswerFree(questionId, prefix) {
 function viewAnswerName(questionId, prefix) {
     var output = "<div class='input-group'>" + getInputDepartment(questionId, prefix) + "</div>";
     output += "<div class='input-group'>" + getInputGroup(questionId, prefix) + "</div>";
+    alert("halo3");
     output += "<div class='input-group'>" + getInputPerson(questionId, prefix) + "</div>";
     $("#answerDiv" + prefix + questionId).append(output);
     getDepartment(prefix + questionId);
@@ -121,35 +122,43 @@ function viewAnswerName(questionId, prefix) {
 
 function getInputDepartment(questionId, prefix) {
     var inputDepartment = '<span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>';
-    var  option = "<option value='нет ответа' selected>сделайте выбор</option>";
-    inputDepartment += "<select id='department" + prefix + questionId + "' onchange='getGroup(\"" + prefix + questionId + "\")' class='form-control'>"+option+"</select>";
+    inputDepartment += "<select id='department" + prefix + questionId + "' onchange='getGroup(\"" + prefix + questionId + "\")' class='form-control'></select>";
     return inputDepartment;
 }
 
 function getInputGroup(questionId, prefix) {
     var inputGroup = '<span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>';
-    var  option = "<option value='нет ответа' selected>сделайте выбор</option>";
-    inputGroup += "<select id='group" + prefix + questionId + "' onchange='getPerson(\"" + prefix + questionId + "\")' class='form-control'>"+option+"</select>";
+    inputGroup += "<select id='group" + prefix + questionId + "' onchange='getPerson(\"" + prefix + questionId + "\")' class='form-control'></select>";
     return inputGroup;
 }
 
 function getInputPerson(questionId, prefix) {
 
     var inputPerson = '<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>';
-    var  option = "<option value='нет ответа' selected>сделайте выбор</option>";
+    var  option = "<option value='нет ответа' selected>нет ответа</option>";
     inputPerson += "<select id='person" + prefix + questionId + "' name='" + questionId + "' class='form-control'>"+option+"</select>";
     return inputPerson;
 }
 
 
-function viewOption(data, selectId) {
+function viewGroup(data, selectId) {
     $("." + selectId).remove();
-    var output = "";
+    var output = "<option value='' disabled selected>сделайте выбор</option>";
     $.each(data, function (key, val) {
         output += "<option class='" + selectId + "' value='" + val.id + "'>" + val.name + "</option>";
     });
     $("#" + selectId).append(output);
 }
+
+function viewPerson(data, selectId) {
+    $("." + selectId).remove();
+    var output = "";
+    $.each(data, function (key, val) {
+        output += "<option class='" + selectId + "' value='" + val.name + "'>" + val.name + "</option>";
+    });
+    $("#" + selectId).append(output);
+}
+
 
 
 
