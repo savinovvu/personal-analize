@@ -72,7 +72,7 @@ function viewAnswer(data, question) {
 }
 
 function viewForm(question, prefixId) {
-    var output = "<form id='form" + prefixId + question.id + "'></form>";
+    var output = "<div id='form" + prefixId + question.id + "'></div>";
     $("#" + prefixId + question.id).append(output);
 }
 

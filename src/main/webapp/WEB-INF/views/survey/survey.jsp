@@ -41,14 +41,17 @@
 <br>
 <br>
 
+
 <form id="surveyForm">
     <input type="submit" class="btn btn-primary right-position" value="Готово">
     <br>
     <br>
 
-<ol id="questionList">
+    <ol id="questionList">
 
-</ol>
+    </ol>
+
+
 </form>
 
 

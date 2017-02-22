@@ -46,3 +46,13 @@ function getPerson(question) {
     );
     send(ajaxAPI.personal.person + "/"+ group.id , "GET", null, viewOption, "person" + question);
 }
+
+jQuery(function ($) {
+    $('#surveyForm').submit(function (e) {
+        e.preventDefault();
+        alert(JSON.stringify($('#surveyForm').serializeArray()));
+
+    });
+});
+
+
