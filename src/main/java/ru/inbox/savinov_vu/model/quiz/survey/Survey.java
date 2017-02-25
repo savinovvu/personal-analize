@@ -35,8 +35,8 @@ public class Survey implements Persistable<Integer> {
     private List<Questionnaire> questionnaire;
 
 
-    @Column(name = "startDate")
-    @JsonProperty("startDate")
+    @Column(name = "createDate")
+    @JsonProperty("createDate")
     @JsonSerialize(using = JsonDateSerializer.class)
     private LocalDate date;
 
