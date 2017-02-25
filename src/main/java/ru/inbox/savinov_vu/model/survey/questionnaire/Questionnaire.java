@@ -17,17 +17,16 @@ import java.util.List;
 public class Questionnaire implements Persistable<Integer> {
 
 
-
     @Id
     @SequenceGenerator(name = "GLOBAL_SEQ", sequenceName = "GLOBAL_SEQ", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "GLOBAL_SEQ")
-    protected Integer id;
+    private Integer id;
 
     @NotEmpty
-    @Column(name = "name", nullable = false)
+    @Column(name = "number", nullable = false)
     @SafeHtml
-    @JsonProperty("name")
-    protected String name;
+    @JsonProperty("number")
+    private Integer number;
 
 
     @JsonIgnore
@@ -40,11 +39,8 @@ public class Questionnaire implements Persistable<Integer> {
     private Survey survey;
 
 
-
-
-    Questionnaire() {
+    public Questionnaire() {
     }
-
 
 
     public Integer getId() {
@@ -62,8 +58,6 @@ public class Questionnaire implements Persistable<Integer> {
         return (getId() == null);
 
     }
-
-
 
 
 }
