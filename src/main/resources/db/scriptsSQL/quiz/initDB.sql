@@ -1,0 +1,4 @@
+DROP TABLE answers IF EXISTS ;
+DROP TABLE questions IF EXISTS ;
+DROP TABLE questionnaires IF EXISTS ;
+DROP TABLE surveys IF EXISTS ;
