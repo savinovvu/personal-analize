@@ -1,12 +1,12 @@
-package ru.inbox.savinov_vu.model.survey.question;
+package ru.inbox.savinov_vu.model.quiz.question;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.hibernate.validator.constraints.SafeHtml;
 import org.springframework.data.domain.Persistable;
-import ru.inbox.savinov_vu.model.survey.answer.Answer;
-import ru.inbox.savinov_vu.model.survey.questionnaire.Questionnaire;
+import ru.inbox.savinov_vu.model.quiz.answer.Answer;
+import ru.inbox.savinov_vu.model.quiz.questionnaire.Questionnaire;
 
 import javax.persistence.*;
 import java.util.List;

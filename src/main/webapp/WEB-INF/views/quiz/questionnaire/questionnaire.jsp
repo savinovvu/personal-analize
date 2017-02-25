@@ -17,9 +17,9 @@
     <script src="/public/js/common/model/model.js" type="text/javascript"></script>
     <script src="/public/js/common/ajax/ajax.js" type="text/javascript"></script>
 
-    <script src="/public/js/survey/service/service.js" type="text/javascript"></script>
-    <script src="/public/js/survey/view/view.js" type="text/javascript"></script>
-    <script src="/public/js/survey/util/util.js" type="text/javascript"></script>
+    <script src="/public/js/quiz/questionnaire/service/service.js" type="text/javascript"></script>
+    <script src="/public/js/quiz/questionnaire/view/view.js" type="text/javascript"></script>
+    <script src="/public/js/quiz/questionnaire/util/util.js" type="text/javascript"></script>
 
 </head>
 <body onload=downloadPage()>

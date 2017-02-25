@@ -1,11 +1,11 @@
-package ru.inbox.savinov_vu.model.survey.survey;
+package ru.inbox.savinov_vu.model.quiz.survey;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import org.springframework.data.domain.Persistable;
 import ru.inbox.savinov_vu.model.constructor.question.QuestionKit;
-import ru.inbox.savinov_vu.model.survey.questionnaire.Questionnaire;
+import ru.inbox.savinov_vu.model.quiz.questionnaire.Questionnaire;
 import ru.inbox.savinov_vu.util.json.JsonDateSerializer;
 
 import javax.persistence.*;
@@ -13,7 +13,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Entity
-@Table(name = "testings")
+@Table(name = "surveys")
 @Access(value = AccessType.FIELD)
 public class Survey implements Persistable<Integer> {
 

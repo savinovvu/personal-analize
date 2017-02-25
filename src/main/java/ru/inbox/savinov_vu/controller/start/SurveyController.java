@@ -14,7 +14,7 @@ public class SurveyController {
 
     @GetMapping("/conductSurvey")
     public String start(Model model) {
-        LOG.info("get survey page");
-        return "survey/survey";
+        LOG.info("get quiz page");
+        return "quiz/survey/survey";
     }
 }

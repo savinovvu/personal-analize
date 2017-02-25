@@ -1,12 +1,12 @@
-package ru.inbox.savinov_vu.model.survey.questionnaire;
+package ru.inbox.savinov_vu.model.quiz.questionnaire;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.hibernate.validator.constraints.SafeHtml;
 import org.springframework.data.domain.Persistable;
-import ru.inbox.savinov_vu.model.survey.question.Question;
-import ru.inbox.savinov_vu.model.survey.survey.Survey;
+import ru.inbox.savinov_vu.model.quiz.question.Question;
+import ru.inbox.savinov_vu.model.quiz.survey.Survey;
 
 import javax.persistence.*;
 import java.util.List;
@@ -33,7 +33,7 @@ public class Questionnaire implements Persistable<Integer> {
     @OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER, mappedBy = "questionnaire")
     private List<Question> question;
 
-    @JsonProperty("survey")
+    @JsonProperty("quiz")
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "survey_id", nullable = false)
     private Survey survey;

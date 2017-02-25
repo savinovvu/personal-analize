@@ -1,10 +1,10 @@
-package ru.inbox.savinov_vu.model.survey.answer;
+package ru.inbox.savinov_vu.model.quiz.answer;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.hibernate.validator.constraints.SafeHtml;
 import org.springframework.data.domain.Persistable;
-import ru.inbox.savinov_vu.model.survey.question.Question;
+import ru.inbox.savinov_vu.model.quiz.question.Question;
 
 import javax.persistence.*;
 
