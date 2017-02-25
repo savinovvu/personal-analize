@@ -37,7 +37,7 @@
 
         <button type="button" class="btn btn-lg btn-success custombtn " data-toggle="modal"
                 data-target="#myModal" onclick="getModal()">
-            Добавить сотрудника
+            Новое тестирование
         </button>
 
 
@@ -53,6 +53,7 @@
             <td>Количество анкет</td>
             <td>Подразделение</td>
             <td>Отдел</td>
+            <td>Комментарий</td>
             <td>Действие</td>
         </tr>
         </thead>
@@ -65,7 +66,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">×</button>
-                <h4 class="modal-title text-center" id="myModalLabel">Добавление/Обновление сотрудника</h4>
+                <h4 class="modal-title text-center" id="myModalLabel">Начать новое тестирование</h4>
             </div>
             <div class="modal-body">
                 <form role="form" class="form-horizontal" id="putEntity">
@@ -142,7 +143,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">×</button>
-                <h4 class="modal-title text-center" id="myDelModalLabel">Удаление пользователя</h4>
+                <h4 class="modal-title text-center" id="myDelModalLabel">Удаление Тестирвания</h4>
             </div>
             <div class="modal-body">
                 <form role="form" class="form-horizontal" id="delEntity">
@@ -169,7 +170,6 @@
                     </div>
                 </form>
             </div>
-
         </div>
     </div>
 </div>
