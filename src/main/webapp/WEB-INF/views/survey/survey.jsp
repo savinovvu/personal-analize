@@ -19,6 +19,7 @@
 
     <script src="/public/js/survey/service/service.js" type="text/javascript"></script>
     <script src="/public/js/survey/view/view.js" type="text/javascript"></script>
+    <script src="/public/js/survey/util/util.js" type="text/javascript"></script>
 
 </head>
 <body onload=downloadPage()>
