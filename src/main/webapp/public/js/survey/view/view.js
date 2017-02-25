@@ -85,12 +85,15 @@ function viewAnswerCheckbox(answerVars, question, prefix) {
 }
 
 function viewAnswerRadio(answerVars, question, prefix) {
-    $.each(answerVars, function (key, val) {
-        var input = "<input type='radio' name='" + question.name + "' value='" + val.name + "'>";
-        var output = "<div class='radio'><label>" + input + val.name + " </label></div>";
-        $("#answerDiv" + prefix + question.id).append(output);
-    });
+    var input = "<input type='radio' name='" + question.name + "' value='нет ответа' checked>";
+    var output = "<div class='radio'><label>" + input + "нет ответа</label></div>";
+        $.each(answerVars, function (key, val) {
+            input = "<input type='radio' name='" + question.name + "' value='" + val.name + "'>";
+            output += "<div class='radio'><label>" + input + val.name + " </label></div>";
+        });
+    $("#answerDiv" + prefix + question.id).append(output);
 }
+
 
 function viewAnswerSelect(answerVars, question, prefix) {
     var output = '<div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>';
@@ -134,8 +137,8 @@ function getInputGroup(questionId, prefix) {
 function getInputPerson(question, prefix) {
 
     var inputPerson = '<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>';
-    var  option = "<option value='нет ответа' selected>нет ответа</option>";
-    inputPerson += "<select id='person" + prefix + question.id + "' name='" + question.name + "' class='form-control'>"+option+"</select>";
+    var option = "<option value='нет ответа' selected>нет ответа</option>";
+    inputPerson += "<select id='person" + prefix + question.id + "' name='" + question.name + "' class='form-control'>" + option + "</select>";
     return inputPerson;
 }
 
