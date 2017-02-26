@@ -20,7 +20,7 @@ function view(data) {
             {
                 "data": "createDate",
                 "render": function (row, data, dataIndex) {
-                    return '<p id="name-' + dataIndex.id + '">' + row + '</p>';
+                    return '<p id="date-' + dataIndex.id + '">' + row + '</p>';
 
                 }
             },
@@ -28,7 +28,7 @@ function view(data) {
             {
                 "data": "count",
                 "render": function (row, data, dataIndex) {
-                    return '<p id="name-' + dataIndex.id + '">' + row + '</p>';
+                    return '<p id="count-' + dataIndex.id + '">' + row + '</p>';
 
                 }
             },
@@ -36,21 +36,18 @@ function view(data) {
             {
                 "data": "department",
                 "render": function (row, data, dataIndex) {
-                    if (row !== null) {
-                        return '<p id="name-' + dataIndex.id + '">' + row.name + '</p>';
-                    } else return null;
-                }
-            },
-
-            {
-                "data": "group",
-                "render": function (row, data, dataIndex) {
-                    if (row !== null) {
-                        return '<p id="name-' + dataIndex.id + '">' + row.name + '</p>';
-                    } else return null;
+                    if (row === null) {
+                        return null;
+                    }
+                    if (dataIndex.group === null) {
+                        return '<p id="department-' + dataIndex.id + '">' + row.name + '</p>';
+                    }
+                    return '<p id="department-' + dataIndex.id + '">' + row.name + '</p>' +
+                        '<p id="group-' + dataIndex.id + '">' + dataIndex.group.name+ '</p>';
 
                 }
             },
+
 
             {
                 "data": "comment",
@@ -66,8 +63,10 @@ function view(data) {
                 "render": function (row, data, dataIndex) {
 
 
-                    return '<a class="btn btn-xs btn-primary" onclick="getModal(' + dataIndex.id + ')" data-toggle="modal" data-target="#myModal">Обновить</a>' +
-                        '<a  class="btn btn-xs btn-danger" onclick="getDelModal(' + dataIndex.id + ')" data-toggle="modal" data-target="#myDelModal">Удалить</a>';
+                    return '<a class="btn btn-xs btn-primary cuctombtnwithoutshadow" onclick="getModal(' + dataIndex.id + ')" data-toggle="modal" data-target="#myModal">Продолжить</a>' +
+                        '<a  class="btn btn-xs btn-info cuctombtnwithoutshadow" onclick="getDelModal(' + dataIndex.id + ')" data-toggle="modal" data-target="#myDelModal">PDF</a>' +
+                        '<a  class="btn btn-xs btn-danger cuctombtnwithoutshadow" onclick="getDelModal(' + dataIndex.id + ')" data-toggle="modal" data-target="#myDelModal">Удалить</a>';
+
                 }
             },
         ]
