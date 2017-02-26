@@ -36,15 +36,18 @@ function view(data) {
             {
                 "data": "department",
                 "render": function (row, data, dataIndex) {
-                    return '<p id="name-' + dataIndex.id + '">' + row + '</p>';
-
+                    if (row !== null) {
+                        return '<p id="name-' + dataIndex.id + '">' + row.name + '</p>';
+                    } else return null;
                 }
             },
 
             {
                 "data": "group",
                 "render": function (row, data, dataIndex) {
-                    return '<p id="name-' + dataIndex.id + '">' + row + '</p>';
+                    if (row !== null) {
+                        return '<p id="name-' + dataIndex.id + '">' + row.name + '</p>';
+                    } else return null;
 
                 }
             },
