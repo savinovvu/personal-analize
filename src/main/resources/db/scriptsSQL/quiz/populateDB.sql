@@ -5,7 +5,8 @@ DELETE FROM surveys;
 
 
 INSERT INTO surveys (id, comment, createDate, questionkit_id, department_id, group_id) VALUES
-  (1, 'комментарий1', '2011-01-11', 1, NULL, NULL),
+  (1, 'Самый большой в мире комментарий призванный обрадовать любителя читать самые большие в мире комментарии',
+   '2011-01-11', 1, NULL, NULL),
   (2, 'комментарий2', '2012-02-12', 2, 2, 2);
 
 
