@@ -4,9 +4,9 @@ DELETE FROM questionnaires;
 DELETE FROM surveys;
 
 
-INSERT INTO surveys (id, comment, createDate, questionkit_id) VALUES
-  (1, 'комментарий1', '2011-01-11', 1),
-  (2, 'комментарий2', '2012-02-12', 2);
+INSERT INTO surveys (id, comment, createDate, questionkit_id, department_id, group_id) VALUES
+  (1, 'комментарий1', '2011-01-11', 1, NULL, NULL),
+  (2, 'комментарий2', '2012-02-12', 2, 2, 2);
 
 
 INSERT INTO questionnaires (id, number, createDate, survey_id) VALUES
@@ -17,9 +17,9 @@ INSERT INTO questionnaires (id, number, createDate, survey_id) VALUES
 
 
 INSERT INTO questions (id, name, questionnaire_id) VALUES
-  (1, 'Как дела?',  1),
+  (1, 'Как дела?', 1),
   (2, 'Хороший сегодня день?', 1),
-  (3, 'Как дела?',  2),
+  (3, 'Как дела?', 2),
   (4, 'Хороший сегодня день?', 2),
   (5, 'Как вас зовут?', 3),
   (6, 'Из какого вы города?', 3),
@@ -27,9 +27,9 @@ INSERT INTO questions (id, name, questionnaire_id) VALUES
   (8, 'Из какого вы города?', 4);
 
 INSERT INTO answers (id, name, question_id) VALUES
-  (1, 'хорошо',  1),
+  (1, 'хорошо', 1),
   (2, 'прекрасный', 2),
-  (3, 'так себе',  3),
+  (3, 'так себе', 3),
   (4, 'холодновато', 4),
   (5, 'Иван Федорович Крузенштерн', 5),
   (6, 'Из Бангладеша', 6),
