@@ -32,7 +32,7 @@ public class Group implements Persistable<Integer> {
 
 
     @JsonIgnore
-    @OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER, mappedBy = "group")
+    @OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY, mappedBy = "group")
     private List<Person> persons;
 
     public List<Person> getPersons() {

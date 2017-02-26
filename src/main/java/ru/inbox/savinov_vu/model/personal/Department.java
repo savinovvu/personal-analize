@@ -24,7 +24,7 @@ public class Department  implements Persistable<Integer> {
     protected String name;
 
     @JsonIgnore
-    @OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER, mappedBy = "department")
+    @OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY, mappedBy = "department")
     private List<Group> groups;
 
 
