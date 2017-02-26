@@ -16,6 +16,16 @@ var ajaxAPI = {
         "groupAll": "/personal/group/all",
         "person": "/personal/person",
         "personAll": "/personal/person/all"
+    },
+    "quiz": {
+        "survey": "/quiz/survey",
+        "surveyAll": "/quiz/survey/all",
+        "questionnaire": "/quiz/questionnaire",
+        "questionnaireAll": "/quiz/questionnaire/all",
+        "question": "/quiz/question",
+        "questionAll": "/quiz/question/all",
+        "answer": "/quiz/answer",
+        "answerAll": "/quiz/answer/all",
     }
 
 

@@ -26,20 +26,20 @@ public class QuestionnaireRestController {
     }
 
     @GetMapping("/{id}")
-    public List<Questionnaire> getAnswerVarWithAnswerKit(@PathVariable("id") Integer id) {
+    public List<Questionnaire> getQuestionnairesWithSurvey(@PathVariable("id") Integer id) {
         LOG.info("get Questionnaires with Survey id = {}", id);
         return service.getQuestionnairesWithSurvey(id);
     }
 
     @PutMapping
-    public List<Questionnaire> addAnswerVar(@RequestBody Questionnaire questionnaire) {
+    public List<Questionnaire> addQuestionnaire(@RequestBody Questionnaire questionnaire) {
         LOG.info("add questionnaire with {}", questionnaire);
         service.addQuestionnaire(questionnaire);
         return service.getAllQuestionnaires();
     }
 
     @DeleteMapping
-    public List<Questionnaire> deleteAnswerVar(@RequestBody Questionnaire questionnaire) {
+    public List<Questionnaire> deleteQuestionnaire(@RequestBody Questionnaire questionnaire) {
         LOG.info("delete questionnaire with id = {}", questionnaire.getId());
         service.deleteQuestionnaire(questionnaire);
         return service.getAllQuestionnaires();
