@@ -5,6 +5,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import org.springframework.data.domain.Persistable;
 import ru.inbox.savinov_vu.model.constructor.question.QuestionKit;
+import ru.inbox.savinov_vu.model.personal.Department;
+import ru.inbox.savinov_vu.model.personal.Group;
 import ru.inbox.savinov_vu.model.quiz.questionnaire.Questionnaire;
 import ru.inbox.savinov_vu.util.json.JsonDateSerializer;
 
@@ -45,6 +47,18 @@ public class Survey implements Persistable<Integer> {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "questionKit_id", nullable = false)
     private QuestionKit questionKit;
+
+    @JsonProperty("department")
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "department_id", nullable = false)
+    private Department department;
+
+    @JsonProperty("group")
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "group_id", nullable = false)
+    private Group group;
+
+
 
     public Survey() {}
     public void setId(Integer id) {
