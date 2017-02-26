@@ -3,5 +3,6 @@ function downloadPage() {
 }
 
 function getAll() {
-    
+    send(ajaxAPI.quiz.surveyAll, "GET", null, view);
+
 }
