@@ -9,7 +9,7 @@ function view(data) {
             {
                 "data": "name",
                 "render": function (row, data, dataIndex) {
-                    var output = '<label for="form-' + dataIndex.id + '" id="name-' + dataIndex.id + '">' + dataIndex.name + '</label>';
+                    var output = '<label class="btn btn-link" for="form-' + dataIndex.id + '" id="name-' + dataIndex.id + '">' + dataIndex.name + '</label>';
                     output += '<form class="hidden"  action="/editQuestionSub" method="get">';
                     output += '<input name="id" value="' + dataIndex.id + '">';
                     output += '<input id="form-' + dataIndex.id + '" type="submit">';
