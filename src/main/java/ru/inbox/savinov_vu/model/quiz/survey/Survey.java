@@ -30,10 +30,10 @@ public class Survey implements Persistable<Integer> {
 
     @JsonProperty("count")
     @Transient
-    private String count;
+    private Long count;
 
     @JsonIgnore
-    @OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER, mappedBy = "survey")
+    @OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY, mappedBy = "survey")
     private List<Questionnaire> questionnaire;
 
 
@@ -50,17 +50,18 @@ public class Survey implements Persistable<Integer> {
 
     @JsonProperty("department")
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "department_id", nullable = false)
+    @JoinColumn(name = "department_id", nullable = true)
     private Department department;
 
     @JsonProperty("group")
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "group_id", nullable = false)
+    @JoinColumn(name = "group_id", nullable = true)
     private Group group;
 
 
+    public Survey() {
+    }
 
-    public Survey() {}
     public void setId(Integer id) {
         this.id = id;
     }
@@ -74,6 +75,7 @@ public class Survey implements Persistable<Integer> {
     public boolean isNew() {
         return (getId() == null);
     }
+
 
 
 }
