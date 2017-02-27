@@ -12,7 +12,7 @@
        http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
 
 
-
+    <context:annotation-config/>
     <context:property-placeholder location="classpath:db/settings/db.properties"/>
 
     <jdbc:initialize-database data-source="dataSource" enabled="${database.init}" >
