@@ -31,6 +31,12 @@ public class QuestionnaireRestController {
         return service.getQuestionnairesWithSurvey(id);
     }
 
+    @GetMapping("/count/{id}")
+    public Long getcountQuestionnairesWithSurvey(@PathVariable("id") Integer id) {
+        LOG.info("get countQuestionnaires with Survey id = {}", id);
+        return service.countQuestionnairesWithSurvey(id);
+    }
+
     @PutMapping
     public List<Questionnaire> addQuestionnaire(@RequestBody Questionnaire questionnaire) {
         LOG.info("add questionnaire with {}", questionnaire);

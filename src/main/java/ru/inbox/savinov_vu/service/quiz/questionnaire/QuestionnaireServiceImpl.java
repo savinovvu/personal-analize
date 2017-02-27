@@ -23,6 +23,11 @@ public class QuestionnaireServiceImpl implements QuestionnaireService {
     }
 
     @Override
+    public Long countQuestionnairesWithSurvey(Integer id) {
+        return repository.countQuestionnairesWithSurvey(id);
+    }
+
+    @Override
     public void addQuestionnaire(Questionnaire questionnaire) {
         repository.saveAndFlush(questionnaire);
     }
@@ -31,4 +36,6 @@ public class QuestionnaireServiceImpl implements QuestionnaireService {
     public void deleteQuestionnaire(Questionnaire questionnaire) {
         repository.delete(questionnaire.getId());
     }
+
+
 }
