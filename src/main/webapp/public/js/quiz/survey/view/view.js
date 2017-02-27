@@ -77,11 +77,29 @@ function view(data) {
 }
 
 function viewQuestionKits(data) {
-        $(".delKit").remove();
+        $(".delquestionKit").remove();
         var output = "";
         $.each(data, function (key, val) {
-            output += "<option class='delKit' value='" + val.id + "'>" + val.name + "</option>";
+            output += "<option class='delquestionKit' value='" + val.id + "'>" + val.name + "</option>";
         });
         $("#questionKit").append(output);
+}
 
+function viewDepartment(data) {
+    $(".delDepartment").remove();
+    var output = "";
+    $.each(data, function (key, val) {
+        output += "<option class='delDepartment' value='" + val.id + "'>" + val.name + "</option>";
+    });
+    $("#department").append(output);
+
+}
+
+function viewGroupWithDepartment(data) {
+    $(".delGroup").remove();
+    var output = "";
+    $.each(data, function (key, val) {
+        output += "<option class='delGroup' value='" + val.id + "'>" + val.name + "</option>";
+    });
+    $("#group").append(output);
 }

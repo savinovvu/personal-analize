@@ -52,7 +52,7 @@
             <td>Дата</td>
             <td>Заполнено</td>
             <td>Подразделение</td>
-             <td>Комментарий</td>
+            <td>Комментарий</td>
             <td>Действие</td>
         </tr>
         </thead>
@@ -130,7 +130,7 @@
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
 
                                 <select id="group" class="form-control" name="group">
-
+                                    <option disabled selected>Группа</option>
 
                                 </select>
                             </div>
