@@ -9,11 +9,7 @@ function view(data) {
             {
                 "data": "questionKit",
                 "render": function (row, data, dataIndex) {
-                    var output = '<label for="form-' + dataIndex.id + '" id="name-' + dataIndex.id + '">' + row.name + '</label>';
-                    output += '<form class="hidden"  action="quiz/pdf/' + id + '" method="get">';
-                    output += '<input id="form-' + dataIndex.id + '" type="submit">';
-                    output += '<form>';
-                    return output;
+                    return '<p id="name-' + dataIndex.id + '">' + row.name + '</p>';
                 }
             },
 
@@ -28,7 +24,12 @@ function view(data) {
             {
                 "data": "count",
                 "render": function (row, data, dataIndex) {
-                    return '<p id="count-' + dataIndex.id + '">' + row + '</p>';
+                    var output ='<label class="btn btn-link" for="form-' + dataIndex.id + '" id="count-' + dataIndex.id + '">' + row + '</label>';
+
+                    output += '<form class="hidden"  action="quiz/pdf/' + id + '" method="get">';
+                    output += '<input id="form-' + dataIndex.id + '" type="submit">';
+                    output += '<form>';
+                    return output;
 
                 }
             },
@@ -65,11 +66,22 @@ function view(data) {
 
                     return '<a class="btn btn-xs btn-primary cuctombtnwithoutshadow" onclick="getModal(' + dataIndex.id + ')" data-toggle="modal" data-target="#myModal">Продолжить</a>' +
                         '<a  class="btn btn-xs btn-info cuctombtnwithoutshadow" onclick="getDelModal(' + dataIndex.id + ')" data-toggle="modal" data-target="#myDelModal">PDF</a>' +
+                        '<a  class="btn btn-xs btn-warning cuctombtnwithoutshadow" onclick="getDelModal(' + dataIndex.id + ')" data-toggle="modal" data-target="#myDelModal">Обновить</a>' +
                         '<a  class="btn btn-xs btn-danger cuctombtnwithoutshadow" onclick="getDelModal(' + dataIndex.id + ')" data-toggle="modal" data-target="#myDelModal">Удалить</a>';
 
                 }
             },
         ]
     });
+
+}
+
+function viewQuestionKits(data) {
+        $(".delKit").remove();
+        var output = "";
+        $.each(data, function (key, val) {
+            output += "<option class='delKit' value='" + val.id + "'>" + val.name + "</option>";
+        });
+        $("#questionKit").append(output);
 
 }
