@@ -59,6 +59,8 @@ public class Survey implements Persistable<Integer> {
     private Group group;
 
 
+
+
     public Survey() {
     }
 
@@ -76,6 +78,7 @@ public class Survey implements Persistable<Integer> {
         return (getId() == null);
     }
 
-
-
+    public void setCount(Long count) {
+        this.count = count;
+    }
 }
