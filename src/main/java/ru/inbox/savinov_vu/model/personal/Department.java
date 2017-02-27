@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.hibernate.validator.constraints.SafeHtml;
 import org.springframework.data.domain.Persistable;
+import ru.inbox.savinov_vu.model.quiz.survey.Survey;
 
 import javax.persistence.*;
 import java.util.List;
@@ -28,6 +29,15 @@ public class Department  implements Persistable<Integer> {
     private List<Group> groups;
 
 
+    @JsonIgnore
+    @OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY, mappedBy = "department")
+    private List<Survey> surveys;
+
+
+    public Department() {
+    }
+
+
     @Override
     public Integer getId() {
         return id;
@@ -45,13 +55,7 @@ public class Department  implements Persistable<Integer> {
         this.name = name;
     }
 
-    public List<Group> getGroups() {
-        return groups;
-    }
 
-    public void setGroups(List<Group> groups) {
-        this.groups = groups;
-    }
 
     @Override
     public boolean isNew() {
@@ -63,7 +67,6 @@ public class Department  implements Persistable<Integer> {
         return "Department{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", groups=" + groups +
                 '}';
     }
 
