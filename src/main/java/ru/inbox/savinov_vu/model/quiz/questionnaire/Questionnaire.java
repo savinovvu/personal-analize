@@ -38,7 +38,7 @@ public class Questionnaire implements Persistable<Integer> {
 
 
     @JsonIgnore
-    @OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER, mappedBy = "questionnaire")
+    @OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY, mappedBy = "questionnaire")
     private List<Question> question;
 
     @JsonProperty("quiz")
