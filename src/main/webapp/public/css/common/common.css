@@ -52,12 +52,15 @@ input:read-only {
 }
 
 .menu {
-
     margin: auto;
     background-color: transparent;
-
-
     width: 50%;
+
+}
+.menu2 {
+    margin: auto;
+    background-color: transparent;
+    width: 95%;
 
 }
 

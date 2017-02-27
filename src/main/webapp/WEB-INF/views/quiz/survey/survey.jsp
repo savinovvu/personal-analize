@@ -32,7 +32,7 @@
     </form>
 </nav>
 
-<div class="view-box">
+<div class="view-box menu2">
     <div class="menu">
 
         <button type="button" class="btn btn-lg btn-success custombtn " data-toggle="modal"
@@ -43,10 +43,10 @@
 
     </div>
 
-    <table id="entityT">
+    <table id="entityT" class="table table-bordered table-stripped table-hover table-condensed">
 
         <thead>
-        <tr>
+        <tr class="success">
             <td>id</td>
             <td>Методика</td>
             <td>Дата</td>
@@ -82,11 +82,24 @@
 
 
                     <div class="form-group has-feedback">
-                        <label for="name" class="control-label col-xs-3">ФИО:</label>
+                        <label for="questionKit" class="control-label col-xs-3"> Методика:</label>
                         <div class="col-xs-6">
                             <div class="input-group">
-                                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                <input type="text" class="form-control" id="name" name="name" required/>
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+                                <select id="questionKit" name="questionKit" class="form-control" required>
+                                    <option disabled selected>выберете методику</option>
+                                </select>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="form-group has-feedback">
+                        <label for="questionKit" class="control-label col-xs-3"> Дата:</label>
+                        <div class="col-xs-6">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+                                <input type="date" name="createDate" class="form-control">
                             </div>
 
                         </div>
@@ -94,13 +107,13 @@
 
 
                     <div class="form-group has-feedback">
-                        <label for="grandSuperEntity" class="control-label col-xs-3">Подразделение:</label>
+                        <label for="department" class="control-label col-xs-3">Подразделение:</label>
 
                         <div class="col-xs-6">
                             <div class="input-group">
-                                <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
 
-                                <select id="grandSuperEntity" class="form-control" name="department"
+                                <select id="department" class="form-control" name="department"
                                         onchange="getGroupWithDepartment()">
                                     <option disabled selected>Подразделение</option>
                                 </select>
@@ -110,16 +123,28 @@
 
 
                     <div class="form-group has-feedback">
-                        <label for="superEntity" class="control-label col-xs-3">Отдел:</label>
+                        <label for="group" class="control-label col-xs-3">Отдел:</label>
+
+                        <div class="col-xs-6">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+
+                                <select id="group" class="form-control" name="group">
+
+
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group has-feedback">
+                        <label for="comment" class="control-label col-xs-3">Комментарий:</label>
 
                         <div class="col-xs-6">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+                                <textarea name="comment" rows="10" class="form-control" id="comment"></textarea>
 
-                                <select id="superEntity" class="form-control" name="group">
-
-
-                                </select>
                             </div>
                         </div>
                     </div>
@@ -149,7 +174,7 @@
 
 
                     <div class="form-group has-feedback">
-                        <label for="name" class="control-label col-xs-3">ФИО:</label>
+                        <label for="delName" class="control-label col-xs-3">ФИО:</label>
                         <div class="col-xs-6">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-info-sign"></i></span>
