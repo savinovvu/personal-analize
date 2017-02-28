@@ -27,8 +27,17 @@
 
     <label class="btn btn-info mynav" for="start"><i class="glyphicon glyphicon-home label-info "></i>&nbsp
         Главная</label>
+
+    <label class="btn btn-info mynav" for="survey"><i class="glyphicon glyphicon-list label-info "></i>&nbsp
+        Тестирование</label>
+
     <form action="/" method="get">
         <input id="start" class="hidden" type="submit" name="viewAllUsers" value="Главная">
+    </form>
+
+
+    <form action="conductSurvey" method="get">
+        <input id="survey" class="hidden" type="submit" name="viewAllUsers">
     </form>
 </nav>
 

@@ -36,7 +36,7 @@
     <div class="menu">
 
         <button type="button" class="btn btn-lg btn-success custombtn " data-toggle="modal"
-                data-target="#myModal" onclick="getModal()">
+                data-target="#myModal" onclick="getModal(0)">
             Новое тестирование
         </button>
 
@@ -68,7 +68,7 @@
                 <h4 class="modal-title text-center" id="myModalLabel">Начать новое тестирование</h4>
             </div>
             <div class="modal-body">
-                <form role="form" class="form-horizontal" id="putEntity">
+                <form role="form" class="form-horizontal" method="get" action="beginNewSurvey">
 
                     <div class="changeDivId">
                         <div class="form-group has-feedback" id="divId">
@@ -151,8 +151,8 @@
 
 
                     <div class="modal-footer">
-                        <input id="save1" type="submit" class="btn btn-primary" value="Выполнить">
-                        <button type="button" class="btn btn-primary" data-dismiss="modal">Завершить</button>
+                        <input id="save1" type="submit" class="btn btn-primary" value="Начать">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Отмена</button>
                     </div>
                 </form>
             </div>

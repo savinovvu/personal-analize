@@ -8,7 +8,7 @@ public interface SurveyService {
 
     List<Survey> getAllSurveys();
 
-    void addSurvey(Survey survey);
+    Survey addSurvey(Survey survey);
 
     void deleteSurvey(Survey survey);
 }

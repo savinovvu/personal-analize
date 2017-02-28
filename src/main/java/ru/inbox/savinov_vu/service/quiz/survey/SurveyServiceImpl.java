@@ -23,8 +23,8 @@ public class SurveyServiceImpl implements SurveyService {
     }
 
     @Override
-    public void addSurvey(Survey survey) {
-        repository.saveAndFlush(survey);
+    public Survey addSurvey(Survey survey) {
+        return repository.saveAndFlush(survey);
     }
 
     @Override
@@ -35,7 +35,7 @@ public class SurveyServiceImpl implements SurveyService {
 
     private List<Survey> getQuestionnaireCountOfSurvey(List<Survey> surveys) {
         surveys.forEach(survey -> {
-          survey.setCount(questionnaireRepository.countQuestionnairesWithSurvey(survey.getId()));
+            survey.setCount(questionnaireRepository.countQuestionnairesWithSurvey(survey.getId()));
         });
         return surveys;
     }
