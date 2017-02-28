@@ -24,6 +24,12 @@ public class SurveyRestController {
         return service.getAllSurveys();
     }
 
+    @GetMapping("/{id}")
+    public Survey getSurveyById(@PathVariable("id") Integer id) {
+        LOG.info("get Survey By id = {}", id);
+        return service.getSurveyByID(id);
+    }
+
     @PutMapping
     public List<Survey> addSurvey(@RequestBody Survey survey) {
         LOG.info("add survey with {}", survey);

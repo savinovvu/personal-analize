@@ -23,6 +23,11 @@ public class SurveyServiceImpl implements SurveyService {
     }
 
     @Override
+    public Survey getSurveyByID(Integer id) {
+        return repository.findOne(id);
+    }
+
+    @Override
     public Survey addSurvey(Survey survey) {
         return repository.saveAndFlush(survey);
     }

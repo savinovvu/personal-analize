@@ -8,7 +8,11 @@ public interface SurveyService {
 
     List<Survey> getAllSurveys();
 
+    Survey getSurveyByID(Integer id);
+
     Survey addSurvey(Survey survey);
 
     void deleteSurvey(Survey survey);
+
+
 }
