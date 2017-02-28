@@ -22,7 +22,7 @@
     <script src="/public/js/quiz/questionnaire/util/util.js" type="text/javascript"></script>
 
 </head>
-<body onload=downloadPage()>
+<body onload=downloadPage(${survey_id})>
 <nav class="navbar navbar-form">
 
     <label class="btn btn-info mynav" for="start"><i class="glyphicon glyphicon-home label-info "></i>&nbsp
@@ -41,19 +41,14 @@
     </form>
 </nav>
 
-<div class="right-position">
-    <select id="kit" class="form-control" name="group"
-            onchange="getQuestionVarsWithQuestionKit()">
-        <option disabled selected>Выберете анкету</option>
-    </select>
-</div>
+
 <br>
 <br>
 <br>
 
 
 <form id="surveyForm">
-    <input type="submit" class="btn btn-primary right-position" value="Готово">
+
     <br>
     <br>
 
@@ -61,6 +56,7 @@
 
     </ol>
 
+    <input type="submit" class="btn btn-primary right-position" value="Готово">
 
 </form>
 

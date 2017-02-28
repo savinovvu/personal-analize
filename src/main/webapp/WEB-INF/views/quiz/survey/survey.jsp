@@ -87,7 +87,6 @@
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
                                 <select id="questionKit" name="questionKit" class="form-control" required>
-                                    <option disabled selected>выберете методику</option>
                                 </select>
                             </div>
 

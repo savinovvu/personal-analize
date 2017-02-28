@@ -43,9 +43,8 @@ public class SurveyController {
                 .setDepartment(getSurveyDepartment(request))
                 .setGroup(getSurveyGroup(request))
                 .setComment(getSurveyComment(request));
-        service.addSurvey(survey);
+        survey = service.addSurvey(survey);
         model.addAttribute("survey_id", survey.getId());
-
         return "quiz/questionnaire/questionnaire";
     }
 
@@ -54,28 +53,37 @@ public class SurveyController {
     }
 
     private QuestionKit getSurveyQuestionKit(HttpServletRequest request) {
-
+        if ("".equals(request.getParameter("questionKit"))){
+            throw new IllegalArgumentException("this parameter must be don't null");
+        }
         return new QuestionKit().setId(Integer.valueOf(request.getParameter("questionKit")));
     }
 
     private LocalDate getSurveyDate(HttpServletRequest request) {
-        String dateString = request.getParameter("createDate");
-        if(Objects.isNull(dateString)) {return LocalDate.now();}
+        if ("".equals(request.getParameter("createDate"))){
+            return LocalDate.now();
+        }
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        return LocalDate.parse(dateString, dtf);
+        return LocalDate.parse(request.getParameter("createDate"), dtf);
     }
 
 
     private Department getSurveyDepartment(HttpServletRequest request) {
+        if (Objects.isNull(request.getParameter("department"))){
+            return null;
+        }
         return new Department().setId(Integer.valueOf(request.getParameter("department")));
     }
 
     private Group getSurveyGroup(HttpServletRequest request) {
+        if (Objects.isNull(request.getParameter("group"))){
+            return null;
+        }
         return new Group().setId(Integer.valueOf(request.getParameter("group")));
     }
 
     private String getSurveyComment(HttpServletRequest request) {
-        return request.getParameter("comment");
+             return request.getParameter("comment");
     }
 
 
