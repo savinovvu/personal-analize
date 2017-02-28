@@ -43,8 +43,9 @@ public class Department  implements Persistable<Integer> {
         return id;
     }
 
-    public void setId(Integer id) {
+    public Department setId(Integer id) {
         this.id = id;
+        return this;
     }
 
     public String getName() {

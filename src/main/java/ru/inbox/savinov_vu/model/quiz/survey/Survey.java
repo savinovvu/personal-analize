@@ -64,8 +64,9 @@ public class Survey implements Persistable<Integer> {
     public Survey() {
     }
 
-    public void setId(Integer id) {
+    public Survey setId(Integer id) {
         this.id = id;
+        return this;
     }
 
     public Integer getId() {
@@ -78,7 +79,66 @@ public class Survey implements Persistable<Integer> {
         return (getId() == null);
     }
 
-    public void setCount(Long count) {
+    public Survey setCount(Long count) {
         this.count = count;
+        return this;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public Survey setComment(String comment) {
+        this.comment = comment;
+        return this;
+    }
+
+    public Long getCount() {
+        return count;
+    }
+
+    public List<Questionnaire> getQuestionnaire() {
+        return questionnaire;
+    }
+
+    public Survey setQuestionnaire(List<Questionnaire> questionnaire) {
+        this.questionnaire = questionnaire;
+        return this;
+    }
+
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public Survey setDate(LocalDate date) {
+        this.date = date;
+        return this;
+    }
+
+    public QuestionKit getQuestionKit() {
+        return questionKit;
+    }
+
+    public Survey setQuestionKit(QuestionKit questionKit) {
+        this.questionKit = questionKit;
+        return this;
+    }
+
+    public Department getDepartment() {
+        return department;
+    }
+
+    public Survey setDepartment(Department department) {
+        this.department = department;
+        return this;
+    }
+
+    public Group getGroup() {
+        return group;
+    }
+
+    public Survey setGroup(Group group) {
+        this.group = group;
+        return this;
     }
 }

@@ -33,7 +33,7 @@ public class QuestionKit implements Persistable<Integer> {
     private List<QuestionVar> questionVars;
 
 
-    QuestionKit() {
+    public QuestionKit() {
     }
 
 
@@ -42,13 +42,14 @@ public class QuestionKit implements Persistable<Integer> {
     }
 
 
-
-
     @Override
     public boolean isNew() {
         return (getId() == null);
 
     }
 
-
+    public QuestionKit setId(Integer id) {
+        this.id = id;
+        return this;
+    }
 }

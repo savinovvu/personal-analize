@@ -47,8 +47,9 @@ public class Group implements Persistable<Integer> {
         return id;
     }
 
-    public void setId(Integer id) {
+    public Group setId(Integer id) {
         this.id = id;
+        return this;
     }
 
     public String getName() {
