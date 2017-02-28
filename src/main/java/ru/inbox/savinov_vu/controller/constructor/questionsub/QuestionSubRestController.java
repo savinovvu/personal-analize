@@ -20,13 +20,13 @@ public class QuestionSubRestController {
 
     @GetMapping("/{id}")
     public List<QuestionSub> getQuestionSubWithQuestionVar(@PathVariable("id") Integer id) {
-        LOG.info("get questionSub with questionVar_id={}", id);
+        LOG.debug("get questionSub with questionVar_id={}", id);
         return service.getQuestionSubWithQuestionVar(id);
     }
 
     @PutMapping
     public List<QuestionSub> addQuestionSub(@RequestBody QuestionSub questionSub) {
-        LOG.info("add questionSub with {}", questionSub);
+        LOG.debug("add questionSub with {}", questionSub);
         service.addQuestionSub(questionSub);
         return service.getQuestionSubWithQuestionVar(questionSub.getQuestionVar().getId());
 
@@ -34,7 +34,7 @@ public class QuestionSubRestController {
 
     @DeleteMapping
     public List<QuestionSub> deleteQuestionSub(@RequestBody QuestionSub questionSub) {
-        LOG.info("delete questionSub with id = {}", questionSub.getId());
+        LOG.debug("delete questionSub with id = {}", questionSub.getId());
         service.deleteQuestionSub(questionSub);
         return service.getQuestionSubWithQuestionVar(questionSub.getQuestionVar().getId());
     }

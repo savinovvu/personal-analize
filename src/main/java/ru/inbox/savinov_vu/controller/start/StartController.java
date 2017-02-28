@@ -16,7 +16,7 @@ public class StartController {
 
     @GetMapping("/")
     public String start(Model model) {
-        LOG.info("get startPage");
+        LOG.debug("get startPage");
         return "start/start";
     }
 

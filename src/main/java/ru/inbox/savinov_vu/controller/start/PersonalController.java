@@ -13,19 +13,19 @@ public class PersonalController {
 
     @GetMapping("editDepartment")
     public String personalDepartment(Model model) {
-        LOG.info("get editDepartment page");
+        LOG.debug("get editDepartment page");
         return "personal/department/department";
     }
 
     @GetMapping("editGroup")
     public String personalGroup(Model model) {
-        LOG.info("get editGroup page");
+        LOG.debug("get editGroup page");
         return "personal/group/group";
     }
 
     @GetMapping("editPerson")
     public String personalPerson(Model model) {
-        LOG.info("get editPerson page");
+        LOG.debug("get editPerson page");
         return "personal/person/person";
     }
 }

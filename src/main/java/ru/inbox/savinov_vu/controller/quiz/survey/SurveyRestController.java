@@ -20,26 +20,26 @@ public class SurveyRestController {
 
     @GetMapping("/all")
     public List<Survey> getAllSurveys() {
-        LOG.info("get all Surveys");
+        LOG.debug("get all Surveys");
         return service.getAllSurveys();
     }
 
     @GetMapping("/{id}")
     public Survey getSurveyById(@PathVariable("id") Integer id) {
-        LOG.info("get Survey By id = {}", id);
+        LOG.debug("get Survey By id = {}", id);
         return service.getSurveyByID(id);
     }
 
     @PutMapping
     public List<Survey> addSurvey(@RequestBody Survey survey) {
-        LOG.info("add survey with {}", survey);
+        LOG.debug("add survey with {}", survey);
         service.addSurvey(survey);
         return service.getAllSurveys();
     }
 
     @DeleteMapping
     public List<Survey> deleteSurvey(@RequestBody Survey survey) {
-        LOG.info("delete survey with id = {}", survey.getId());
+        LOG.debug("delete survey with id = {}", survey.getId());
         service.deleteSurvey(survey);
         return service.getAllSurveys();
     }

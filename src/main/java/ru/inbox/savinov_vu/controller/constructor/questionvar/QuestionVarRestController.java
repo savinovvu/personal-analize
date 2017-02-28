@@ -25,14 +25,14 @@ public class QuestionVarRestController {
 
     @PutMapping
     public List<QuestionVar> addQuestionVar(@RequestBody QuestionVar questionVar) {
-        LOG.info("add questionVar with {}", questionVar);
+        LOG.debug("add questionVar with {}", questionVar);
         service.addQuestionVar(questionVar);
         return service.getQuestionVarWithQuestionKit(questionVar.getQuestionKit().getId());
     }
 
     @DeleteMapping
     public List<QuestionVar> deleteQuestionVar(@RequestBody QuestionVar questionVar) {
-        LOG.info("delete questionVar with id = {}", questionVar.getId());
+        LOG.debug("delete questionVar with id = {}", questionVar.getId());
         service.deleteQuestionVar(questionVar);
         return service.getQuestionVarWithQuestionKit(questionVar.getQuestionKit().getId());
     }

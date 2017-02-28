@@ -28,13 +28,13 @@ public class SurveyController {
 
     @GetMapping("conductSurvey")
     public String start(Model model) {
-        LOG.info("get quiz page");
+        LOG.debug("get quiz page");
         return "quiz/survey/survey";
     }
 
     @GetMapping("beginNewSurvey")
     public String beginNewSurvey(HttpServletRequest request, Model model) {
-        LOG.info("get beginSurveyPage");
+        LOG.debug("get beginSurveyPage");
         ObjectMapper mapper = new ObjectMapper();
         Survey survey = new Survey();
         survey.setId(getSurveyId(request))

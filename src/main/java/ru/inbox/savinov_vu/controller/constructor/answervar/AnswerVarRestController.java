@@ -22,20 +22,20 @@ public class AnswerVarRestController {
 
     @GetMapping("/{id}")
     public List<AnswerVar> getAnswerVarWithAnswerKit(@PathVariable("id") Integer id) {
-        LOG.info("get answerVars with answerKit_id = {}", id);
+        LOG.debug("get answerVars with answerKit_id = {}", id);
         return service.getAnswerVarWithAnswerKit(id);
     }
 
     @PutMapping
     public List<AnswerVar> addAnswerVar(@RequestBody AnswerVar answerVar) {
-        LOG.info("add answerVar with {}", answerVar);
+        LOG.debug("add answerVar with {}", answerVar);
         service.addAnswerVar(answerVar);
         return service.getAnswerVarWithAnswerKit(answerVar.getAnswerKit().getId());
     }
 
     @DeleteMapping
     public List<AnswerVar> deleteAnswerVar(@RequestBody AnswerVar answerVar) {
-        LOG.info("delete answerVar with id = {}", answerVar.getId());
+        LOG.debug("delete answerVar with id = {}", answerVar.getId());
         service.deleteAnswerVar(answerVar);
         return service.getAnswerVarWithAnswerKit(answerVar.getAnswerKit().getId());
     }

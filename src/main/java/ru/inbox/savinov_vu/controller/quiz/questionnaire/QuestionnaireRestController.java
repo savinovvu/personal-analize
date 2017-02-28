@@ -21,32 +21,32 @@ public class QuestionnaireRestController {
 
     @GetMapping("/all")
     public List<Questionnaire> getAllQuestionnaire() {
-        LOG.info("get all Questionnaires");
+        LOG.debug("get all Questionnaires");
         return service.getAllQuestionnaires();
     }
 
     @GetMapping("/{id}")
     public List<Questionnaire> getQuestionnairesWithSurvey(@PathVariable("id") Integer id) {
-        LOG.info("get Questionnaires with Survey id = {}", id);
+        LOG.debug("get Questionnaires with Survey id = {}", id);
         return service.getQuestionnairesWithSurvey(id);
     }
 
     @GetMapping("/count/{id}")
     public Long getcountQuestionnairesWithSurvey(@PathVariable("id") Integer id) {
-        LOG.info("get countQuestionnaires with Survey id = {}", id);
+        LOG.debug("get countQuestionnaires with Survey id = {}", id);
         return service.countQuestionnairesWithSurvey(id);
     }
 
     @PutMapping
     public List<Questionnaire> addQuestionnaire(@RequestBody Questionnaire questionnaire) {
-        LOG.info("add questionnaire with {}", questionnaire);
+        LOG.debug("add questionnaire with {}", questionnaire);
         service.addQuestionnaire(questionnaire);
         return service.getAllQuestionnaires();
     }
 
     @DeleteMapping
     public List<Questionnaire> deleteQuestionnaire(@RequestBody Questionnaire questionnaire) {
-        LOG.info("delete questionnaire with id = {}", questionnaire.getId());
+        LOG.debug("delete questionnaire with id = {}", questionnaire.getId());
         service.deleteQuestionnaire(questionnaire);
         return service.getAllQuestionnaires();
     }

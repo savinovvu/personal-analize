@@ -19,20 +19,20 @@ public class ConstructorController {
 
     @GetMapping("editQuestionKit")
     public String editQuestionKit(Model model) {
-        LOG.info("get editQuestionKit");
+        LOG.debug("get editQuestionKit");
         return "constructor/questionKit/questionKit";
     }
 
     @GetMapping("editQuestionVar")
     public String editQuestionVar(Model model) {
-        LOG.info("get editQuestionVar");
+        LOG.debug("get editQuestionVar");
         return "constructor/questionVar/questionVar";
     }
 
     @GetMapping("editQuestionSub")
     public String editQuestionSub(HttpServletRequest request, Model model ) {
         int id = Integer.parseInt(request.getParameter("id"));
-        LOG.info("get editQuestionSub with id ={}", id);
+        LOG.debug("get editQuestionSub with id ={}", id);
         model.addAttribute("id", id);
         model.addAttribute("question", service.findById(id).getName());
         return "constructor/questionSub/questionSub";
@@ -40,13 +40,13 @@ public class ConstructorController {
 
     @GetMapping("editAnswerKit")
     public String editAnswerKit(Model model) {
-        LOG.info("get editAnswerKit");
+        LOG.debug("get editAnswerKit");
         return "constructor/answerKit/answerKit";
     }
 
     @GetMapping("editAnswerVar")
     public String editAnswerVar(Model model) {
-        LOG.info("get editAnswerVar");
+        LOG.debug("get editAnswerVar");
         return "constructor/answerVar/answerVar";
     }
 }

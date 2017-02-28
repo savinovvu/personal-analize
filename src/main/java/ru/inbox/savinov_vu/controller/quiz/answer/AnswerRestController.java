@@ -21,26 +21,26 @@ public class AnswerRestController {
 
     @GetMapping("/all")
     public List<Answer> getAllQuestionnaire() {
-        LOG.info("get all Answers");
+        LOG.debug("get all Answers");
         return service.getAllAnswers();
     }
 
     @GetMapping("/{id}")
     public List<Answer> getAnswerVarWithAnswerKit(@PathVariable("id") Integer id) {
-        LOG.info("get Questionnaires with Survey id = {}", id);
+        LOG.debug("get Questionnaires with Survey id = {}", id);
         return service.getAnswersWithQuestion(id);
     }
 
     @PutMapping
     public List<Answer> addAnswerVar(@RequestBody Answer answer) {
-        LOG.info("add answer with {}", answer);
+        LOG.debug("add answer with {}", answer);
         service.addAnswer(answer);
         return service.getAllAnswers();
     }
 
     @DeleteMapping
     public List<Answer> deleteAnswerVar(@RequestBody Answer answer) {
-        LOG.info("delete answer with id = {}", answer.getId());
+        LOG.debug("delete answer with id = {}", answer.getId());
         service.deleteAnswer(answer);
         return service.getAllAnswers();
     }
