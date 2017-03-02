@@ -7,6 +7,7 @@ import ru.inbox.savinov_vu.repository.quiz.QuestionnaireRepository;
 import ru.inbox.savinov_vu.repository.quiz.SurveyRepository;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class SurveyServiceImpl implements SurveyService {
@@ -18,8 +19,10 @@ public class SurveyServiceImpl implements SurveyService {
 
     @Override
     public List<Survey> getAllSurveys() {
-        return getQuestionnaireCountOfSurvey(repository.findAll());
-
+        return repository.findAll().stream()
+                .map(survey -> survey.setCount(questionnaireRepository
+                        .countQuestionnairesWithSurvey(survey.getId())))
+                .collect(Collectors.toList());
     }
 
     @Override
@@ -37,12 +40,5 @@ public class SurveyServiceImpl implements SurveyService {
         repository.delete(survey.getId());
     }
 
-
-    private List<Survey> getQuestionnaireCountOfSurvey(List<Survey> surveys) {
-        surveys.forEach(survey -> {
-            survey.setCount(questionnaireRepository.countQuestionnairesWithSurvey(survey.getId()));
-        });
-        return surveys;
-    }
 
 }
