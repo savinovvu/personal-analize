@@ -41,6 +41,7 @@
     </form>
 </nav>
 
+<p>Ориентировочный номер анкеты: ${numberOfQuestionnaire}</p>
 
 <br>
 <br>
@@ -48,7 +49,7 @@
 
 
 <form id="surveyForm">
-
+    <input type="hidden" name="survey_id" value="${survey_id}">
     <br>
     <br>
 

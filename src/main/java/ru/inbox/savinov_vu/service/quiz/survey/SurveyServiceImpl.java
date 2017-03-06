@@ -33,7 +33,9 @@ public class SurveyServiceImpl implements SurveyService {
 
     @Override
     public Survey addSurvey(Survey survey) {
-        return repository.saveAndFlush(survey);
+        survey = repository.saveAndFlush(survey);
+        return survey.setCount(questionnaireRepository
+                .countQuestionnairesWithSurvey(survey.getId()));
     }
 
     @Override

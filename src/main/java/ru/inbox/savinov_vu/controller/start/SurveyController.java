@@ -1,12 +1,12 @@
 package ru.inbox.savinov_vu.controller.start;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import ru.inbox.savinov_vu.model.constructor.question.QuestionKit;
 import ru.inbox.savinov_vu.model.personal.Department;
 import ru.inbox.savinov_vu.model.personal.Group;
@@ -33,9 +33,10 @@ public class SurveyController {
     }
 
     @GetMapping("beginNewSurvey")
-    public String beginNewSurvey(HttpServletRequest request, Model model) {
+    public String beginNewSurvey (HttpServletRequest request,
+                                  RedirectAttributes redirectAttributes, Model model){
         LOG.debug("get beginSurveyPage");
-        ObjectMapper mapper = new ObjectMapper();
+
         Survey survey = new Survey();
         survey.setId(getSurveyId(request))
                 .setQuestionKit(getSurveyQuestionKit(request))
@@ -44,7 +45,14 @@ public class SurveyController {
                 .setGroup(getSurveyGroup(request))
                 .setComment(getSurveyComment(request));
         survey = service.addSurvey(survey);
-        model.addAttribute("survey_id", survey.getId());
+        return "redirect:continueSurvey?id=" + survey.getId();
+    }
+
+    @GetMapping("continueSurvey")
+    public String continueSurvey(HttpServletRequest request, Model model) {
+        int id = getSurveyId(request);
+        model.addAttribute("survey_id", id);
+        model.addAttribute("numberOfQuestionnaire", service.getSurveyByID(id).getCount()+1);
         return "quiz/questionnaire/questionnaire";
     }
 
