@@ -1,4 +1,4 @@
-package ru.inbox.savinov_vu.controller.start;
+package ru.inbox.savinov_vu.controller.page;
 
 
 import org.slf4j.Logger;

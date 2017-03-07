@@ -1,4 +1,4 @@
-package ru.inbox.savinov_vu.controller.start;
+package ru.inbox.savinov_vu.controller.page;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,11 +19,11 @@ import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
 @Controller
-public class SurveyController {
+public class QuizController {
     @Autowired
     SurveyService service;
 
-    private static final Logger LOG = LoggerFactory.getLogger(SurveyController.class);
+    private static final Logger LOG = LoggerFactory.getLogger(QuizController.class);
 
 
     @GetMapping("conductSurvey")

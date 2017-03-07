@@ -1,4 +1,4 @@
-package ru.inbox.savinov_vu.controller.personal.person;
+package ru.inbox.savinov_vu.controller.rest.personal.person;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

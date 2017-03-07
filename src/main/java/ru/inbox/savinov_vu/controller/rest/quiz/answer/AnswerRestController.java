@@ -1,4 +1,4 @@
-package ru.inbox.savinov_vu.controller.quiz.answer;
+package ru.inbox.savinov_vu.controller.rest.quiz.answer;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;

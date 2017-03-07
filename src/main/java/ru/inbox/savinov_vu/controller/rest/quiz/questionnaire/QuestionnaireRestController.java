@@ -1,4 +1,4 @@
-package ru.inbox.savinov_vu.controller.quiz.questionnaire;
+package ru.inbox.savinov_vu.controller.rest.quiz.questionnaire;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

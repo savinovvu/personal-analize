@@ -24,9 +24,9 @@ function view(data) {
             {
                 "data": "count",
                 "render": function (row, data, dataIndex) {
-                    var output ='<label class="btn btn-link" for="form-' + dataIndex.id + '" id="count-' + dataIndex.id + '">' + row + '</label>';
+                    var output = '<label class="btn btn-link" for="form-' + dataIndex.id + '" id="count-' + dataIndex.id + '">' + row + '</label>';
 
-                    output += '<form class="hidden"  action="quiz/pdf/' + id + '" method="get">';
+                    output += '<form class="hidden"  action="quiz/survey/' + dataIndex.id + '" method="get">';
                     output += '<input id="form-' + dataIndex.id + '" type="submit">';
                     output += '<form>';
                     return output;
@@ -44,7 +44,7 @@ function view(data) {
                         return '<p id="department-' + dataIndex.id + '">' + row.name + '</p>';
                     }
                     return '<p id="department-' + dataIndex.id + '">' + row.name + '</p>' +
-                        '<p id="group-' + dataIndex.id + '">' + dataIndex.group.name+ '</p>';
+                        '<p id="group-' + dataIndex.id + '">' + dataIndex.group.name + '</p>';
 
                 }
             },
@@ -77,12 +77,12 @@ function view(data) {
 }
 
 function viewQuestionKits(data) {
-        $(".delquestionKit").remove();
-        var output = "";
-        $.each(data, function (key, val) {
-            output += "<option class='delquestionKit' value='" + val.id + "'>" + val.name + "</option>";
-        });
-        $("#questionKit").append(output);
+    $(".delquestionKit").remove();
+    var output = "";
+    $.each(data, function (key, val) {
+        output += "<option class='delquestionKit' value='" + val.id + "'>" + val.name + "</option>";
+    });
+    $("#questionKit").append(output);
 }
 
 function viewDepartment(data) {

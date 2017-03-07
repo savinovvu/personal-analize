@@ -1,4 +1,4 @@
-package ru.inbox.savinov_vu.controller.constructor.questionkit;
+package ru.inbox.savinov_vu.controller.rest.constructor.questionkit;
 
 
 import org.slf4j.Logger;

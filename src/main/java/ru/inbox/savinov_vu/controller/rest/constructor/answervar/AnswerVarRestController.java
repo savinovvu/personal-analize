@@ -1,4 +1,4 @@
-package ru.inbox.savinov_vu.controller.constructor.answervar;
+package ru.inbox.savinov_vu.controller.rest.constructor.answervar;
 
 
 import org.slf4j.Logger;
