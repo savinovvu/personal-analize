@@ -5,12 +5,14 @@ import org.springframework.stereotype.Service;
 import ru.inbox.savinov_vu.model.quiz.questionnaire.Questionnaire;
 import ru.inbox.savinov_vu.repository.quiz.QuestionnaireRepository;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
 public class QuestionnaireServiceImpl implements QuestionnaireService {
     @Autowired
     QuestionnaireRepository repository;
+
 
     @Override
     public List<Questionnaire> getAllQuestionnaires() {
@@ -28,8 +30,19 @@ public class QuestionnaireServiceImpl implements QuestionnaireService {
     }
 
     @Override
-    public void addQuestionnaire(Questionnaire questionnaire) {
-        repository.saveAndFlush(questionnaire);
+    public Questionnaire addQuestionnaire(Questionnaire questionnaire) {
+        if (questionnaire.getNumber() == null || questionnaire.getNumber() < 1) {
+            getNumberOfQuestionnaire(questionnaire);
+        }
+        if (questionnaire.getDate() == null) {
+            questionnaire.setDate(LocalDate.now());
+        }
+
+        return repository.saveAndFlush(questionnaire);
+    }
+
+    private void getNumberOfQuestionnaire(Questionnaire questionnaire) {
+        questionnaire.setNumber((int) (countQuestionnairesWithSurvey(questionnaire.getSurvey().getId()) + 1));
     }
 
     @Override

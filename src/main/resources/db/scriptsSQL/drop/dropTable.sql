@@ -1,7 +1,5 @@
 DROP TABLE answers
 IF EXISTS;
-DROP TABLE questions
-IF EXISTS;
 DROP TABLE questionnaires
 IF EXISTS;
 DROP TABLE surveys
@@ -10,8 +8,6 @@ DROP SEQUENCE SURVEY_SEQ
 IF EXISTS;
 
 DROP TABLE answervars
-IF EXISTS;
-DROP TABLE questionsubs
 IF EXISTS;
 DROP TABLE questionvars
 IF EXISTS;

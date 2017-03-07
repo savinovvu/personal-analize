@@ -34,18 +34,30 @@ function AnswerVar(id, name, answerKit) {
     this.answerKit = answerKit;
 }
 
-function QuestionVar(id, name, answerKit, questionKit) {
+function QuestionVar(id, name, answerKit, questionKit, questionVar) {
     this.id = Number(id);
     this.name = name;
     this.answerKit = answerKit;
     this.questionKit = questionKit;
+    this.questionVar = questionVar;
 }
 
-function QuestionSub(id, name, answerKit, questionVar) {
+function Survey(id) {
+    this.id = Number(id);
+}
+
+function Questionnaire(id, number, createDate, survey) {
+    this.id = Number(id);
+    this.number = Number(number);
+    this.createDate = createDate;
+    this.survey = survey;
+}
+
+function Answer(id, name, questionVar, questionnaire) {
     this.id = Number(id);
     this.name = name;
-    this.answerKit = answerKit;
     this.questionVar = questionVar;
+    this.questionnaire = questionnaire;
 }
 
 

@@ -8,9 +8,11 @@ public interface AnswerService {
 
     List<Answer> getAllAnswers();
 
-    List<Answer> getAnswersWithQuestion(Integer id);
+    List<Answer> getAnswersWithQuestionnaire(Integer id);
 
     void addAnswer(Answer answer);
+
+    Integer addAnswer(List<Answer> answer);
 
     void deleteAnswer(Answer answer);
 }

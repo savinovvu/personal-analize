@@ -26,7 +26,7 @@ var ajaxAPI = {
         "questionAll": "/quiz/question/all",
         "answer": "/quiz/answer",
         "answerAll": "/quiz/answer/all",
-    }
+    },
 
 
 };

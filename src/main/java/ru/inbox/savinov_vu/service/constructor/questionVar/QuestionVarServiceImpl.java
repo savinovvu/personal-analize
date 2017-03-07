@@ -31,4 +31,9 @@ public class QuestionVarServiceImpl implements QuestionVarService {
     public void deleteQuestionVar(QuestionVar questionVar) {
         repository.delete(questionVar.getId());
     }
+
+    @Override
+    public List<QuestionVar> getQuestionVarWithSuperQuestionVar(Integer id) {
+        return repository.getQuestionVarWithSuperQuestionVar(id);
+    }
 }

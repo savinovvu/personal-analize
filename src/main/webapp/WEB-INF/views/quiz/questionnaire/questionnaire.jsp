@@ -58,7 +58,10 @@
     </ol>
 
     <input type="submit" class="btn btn-primary right-position" value="Готово">
-
+    <br>
+    <br>
+    <br>
+    <br>
 </form>
 
 

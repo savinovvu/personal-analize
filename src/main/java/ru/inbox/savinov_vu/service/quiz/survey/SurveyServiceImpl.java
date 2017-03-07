@@ -3,8 +3,8 @@ package ru.inbox.savinov_vu.service.quiz.survey;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.inbox.savinov_vu.model.quiz.survey.Survey;
-import ru.inbox.savinov_vu.repository.quiz.QuestionnaireRepository;
 import ru.inbox.savinov_vu.repository.quiz.SurveyRepository;
+import ru.inbox.savinov_vu.service.quiz.questionnaire.QuestionnaireService;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -15,27 +15,32 @@ public class SurveyServiceImpl implements SurveyService {
     SurveyRepository repository;
 
     @Autowired
-    QuestionnaireRepository questionnaireRepository;
+    QuestionnaireService questionnaireService;
 
     @Override
     public List<Survey> getAllSurveys() {
         return repository.findAll().stream()
-                .map(survey -> survey.setCount(questionnaireRepository
+                .map(survey -> survey.setCount(questionnaireService
                         .countQuestionnairesWithSurvey(survey.getId())))
                 .collect(Collectors.toList());
     }
 
     @Override
     public Survey getSurveyByID(Integer id) {
-        return repository.findOne(id).setCount(questionnaireRepository
+        return repository.findOne(id).setCount(questionnaireService
                 .countQuestionnairesWithSurvey(id));
     }
 
     @Override
     public Survey addSurvey(Survey survey) {
         survey = repository.saveAndFlush(survey);
-        return survey.setCount(questionnaireRepository
+        return survey.setCount(questionnaireService
                 .countQuestionnairesWithSurvey(survey.getId()));
+    }
+
+    @Override
+    public Integer getCountofQuestionnaire(Integer id) {
+        return null;
     }
 
     @Override

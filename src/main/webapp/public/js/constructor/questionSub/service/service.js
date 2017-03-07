@@ -15,7 +15,8 @@ jQuery(function ($) {
     $("#delEntity").submit(function (e) {
         e.preventDefault();
         $("#dismissButton").click();
-        var question = new QuestionSub($("#delId").val(), null, null, getQuestionVar());
+        var question = new QuestionVar($("#delId").val(), null, null, null, questionVarId);
+        alert(JSON.stringify(question));
         send(ajaxAPI.constructor.questionSub, "DELETE", question, view);
     });
 });
@@ -25,13 +26,14 @@ jQuery(function ($) {
     $("#putEntity").submit(function (e) {
         e.preventDefault();
 
-        var questionSub = new QuestionSub(
+        var question = new QuestionVar(
             $('#id').val(),
             $("#name").val(),
             getSelectedAnswerKit(),
-            getQuestionVar()
+            null,
+            questionVarId
         );
-        send(ajaxAPI.constructor.questionSub, "PUT", questionSub, view);
+        send(ajaxAPI.constructor.questionSub, "PUT", question, view);
         document.getElementById('name').value = "";
     });
 });
@@ -44,8 +46,5 @@ function getSelectedAnswerKit() {
     return answerKit;
 }
 
-function getQuestionVar() {
-    var questionVar = new QuestionVar(questionVarId);
-    return questionVar;
-}
+
 

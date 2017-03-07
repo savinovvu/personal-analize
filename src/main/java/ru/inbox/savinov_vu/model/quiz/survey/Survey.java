@@ -142,5 +142,45 @@ public class Survey implements Persistable<Integer> {
         return this;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
 
+        Survey survey = (Survey) o;
+
+        if (id != null ? !id.equals(survey.id) : survey.id != null) return false;
+        if (comment != null ? !comment.equals(survey.comment) : survey.comment != null) return false;
+        if (count != null ? !count.equals(survey.count) : survey.count != null) return false;
+
+        if (date != null ? !date.equals(survey.date) : survey.date != null) return false;
+        if (questionKit != null ? !questionKit.equals(survey.questionKit) : survey.questionKit != null) return false;
+        if (department != null ? !department.equals(survey.department) : survey.department != null) return false;
+        return group != null ? group.equals(survey.group) : survey.group == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (comment != null ? comment.hashCode() : 0);
+        result = 31 * result + (count != null ? count.hashCode() : 0);
+        result = 31 * result + (date != null ? date.hashCode() : 0);
+        result = 31 * result + (questionKit != null ? questionKit.hashCode() : 0);
+        result = 31 * result + (department != null ? department.hashCode() : 0);
+        result = 31 * result + (group != null ? group.hashCode() : 0);
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Survey{" +
+                "id=" + id +
+                ", comment='" + comment + '\'' +
+                ", count=" + count +
+                ", date=" + date +
+                ", questionKit=" + questionKit +
+                ", department=" + department +
+                ", group=" + group +
+                '}';
+    }
 }

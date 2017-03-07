@@ -12,4 +12,6 @@ public interface QuestionVarService {
     void addQuestionVar(QuestionVar questionVar);
 
     void deleteQuestionVar(QuestionVar questionVar);
+
+    List<QuestionVar> getQuestionVarWithSuperQuestionVar(Integer id);
 }

@@ -10,7 +10,7 @@ public interface QuestionnaireService {
 
     List<Questionnaire> getQuestionnairesWithSurvey(Integer id);
 
-    void addQuestionnaire(Questionnaire questionnaire);
+    Questionnaire addQuestionnaire(Questionnaire questionnaire);
 
     void deleteQuestionnaire(Questionnaire questionnaire);
 

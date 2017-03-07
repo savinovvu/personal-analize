@@ -14,5 +14,6 @@ public interface SurveyService {
 
     void deleteSurvey(Survey survey);
 
+    Integer getCountofQuestionnaire(Integer id);
 
 }

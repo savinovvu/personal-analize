@@ -8,7 +8,7 @@ function getQuestionVarsWithQuestionKit(id) {
 }
 
 function getQuestionSubsWithQuestionVar(id) {
-    send(ajaxAPI.constructor.questionSub + "/" + id, "GET", null, viewQuestionSub);
+      send(ajaxAPI.constructor.questionSub + "/" + id, "GET", null, viewQuestionSub);
 }
 
 
@@ -40,8 +40,9 @@ function getPerson(question) {
 jQuery(function ($) {
     $('#surveyForm').submit(function (e) {
         e.preventDefault();
-        alert(JSON.stringify($('#surveyForm').serializeArray()));
-
+        var data = $('#surveyForm').serializeArray();
+        data = JSON.stringify(getAnswerList(data));
+        send(ajaxAPI.quiz.answer, "PUT", data, viewMessage )
     });
 });
 

@@ -5,8 +5,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
-import ru.inbox.savinov_vu.model.constructor.question.QuestionSub;
-import ru.inbox.savinov_vu.service.constructor.questionSub.QuestionSubService;
+import ru.inbox.savinov_vu.model.constructor.question.QuestionVar;
+import ru.inbox.savinov_vu.service.constructor.questionVar.QuestionVarService;
 
 import java.util.List;
 
@@ -15,28 +15,28 @@ import java.util.List;
 public class QuestionSubRestController {
 
     @Autowired
-    private QuestionSubService service;
+    private QuestionVarService service;
     private static final Logger LOG = LoggerFactory.getLogger(QuestionSubRestController.class);
 
     @GetMapping("/{id}")
-    public List<QuestionSub> getQuestionSubWithQuestionVar(@PathVariable("id") Integer id) {
-        LOG.debug("get questionSub with questionVar_id={}", id);
-        return service.getQuestionSubWithQuestionVar(id);
+    public List<QuestionVar> getQuestionSubWithQuestionVar(@PathVariable("id") Integer id) {
+        LOG.debug("get questonVar with questionVar_id={}", id);
+        return service.getQuestionVarWithSuperQuestionVar(id);
     }
 
     @PutMapping
-    public List<QuestionSub> addQuestionSub(@RequestBody QuestionSub questionSub) {
-        LOG.debug("add questionSub with {}", questionSub);
-        service.addQuestionSub(questionSub);
-        return service.getQuestionSubWithQuestionVar(questionSub.getQuestionVar().getId());
+    public List<QuestionVar> addQuestionSub(@RequestBody QuestionVar questionVar) {
+        LOG.debug("add questonVar with {}", questionVar);
+        service.addQuestionVar(questionVar);
+        return service.getQuestionVarWithSuperQuestionVar(questionVar.getSuperQuestionVarId());
 
     }
 
     @DeleteMapping
-    public List<QuestionSub> deleteQuestionSub(@RequestBody QuestionSub questionSub) {
-        LOG.debug("delete questionSub with id = {}", questionSub.getId());
-        service.deleteQuestionSub(questionSub);
-        return service.getQuestionSubWithQuestionVar(questionSub.getQuestionVar().getId());
+    public List<QuestionVar> deleteQuestionSub(@RequestBody QuestionVar questionVar) {
+        LOG.debug("delete questonVar with id = {}", questionVar.getId());
+        service.deleteQuestionVar(questionVar);
+        return service.getQuestionVarWithSuperQuestionVar(questionVar.getSuperQuestionVarId());
     }
 
 }

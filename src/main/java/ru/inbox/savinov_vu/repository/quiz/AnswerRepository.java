@@ -11,6 +11,6 @@ import java.util.List;
 
 @Repository
 public interface AnswerRepository extends JpaRepository<Answer,Integer> {
-    @Query("SELECT p FROM Answer p WHERE p.question.id=:question_id")
-    List<Answer> getAnswerWithQuestion(@Param("question_id") Integer id);
+    @Query("SELECT p FROM Answer p WHERE p.questionnaire.id=:questionnaire_id")
+    List<Answer> getAnswerWithQuestionnaire(@Param("questionnaire_id") Integer id);
 }
