@@ -1,9 +1,10 @@
 function deleteFlashVariants(checkBoxClass) {
-    $("." + checkBoxClass).prop("checked",false);
+    $("." + checkBoxClass).prop("checked", false);
 }
 
-function viewMessage(data) {
+function viewMessage(data, id) {
     alert(data);
+    getNumberOfQuestionnaire(id);
 }
 
 
@@ -22,3 +23,15 @@ function getAnswerList(formData) {
 
 }
 
+
+function deleteNoAnswer(id) {
+    if (document.getElementById(id).value === "Нет ответа") {
+        document.getElementById(id).value = '';
+    }
+}
+
+function getNoAnswer(id) {
+    if (document.getElementById(id).value === "") {
+        document.getElementById(id).value = 'Нет ответа';
+    }
+}

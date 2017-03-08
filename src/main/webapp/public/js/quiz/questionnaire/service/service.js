@@ -1,4 +1,16 @@
+var surveyId;
+
 function downloadPage(id) {
+    getNumberOfQuestionnaire(id);
+    constructQuestionnaire(id);
+    surveyId = id;
+}
+
+function getNumberOfQuestionnaire(id) {
+    send(ajaxAPI.quiz.questionnaireCount + "/" + id, "GET", null, viewQuestionnaireCount);
+}
+
+function constructQuestionnaire(id) {
     send(ajaxAPI.quiz.survey + "/" + id, "GET", null, viewSurvey);
 }
 
@@ -42,7 +54,7 @@ jQuery(function ($) {
         e.preventDefault();
         var data = $('#surveyForm').serializeArray();
         data = JSON.stringify(getAnswerList(data));
-        send(ajaxAPI.quiz.answer, "PUT", data, viewMessage )
+        send(ajaxAPI.quiz.answer, "PUT", data, viewMessage, surveyId);
     });
 });
 

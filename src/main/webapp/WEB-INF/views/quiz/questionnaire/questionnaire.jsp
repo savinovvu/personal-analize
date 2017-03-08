@@ -36,12 +36,12 @@
     </form>
 
 
-    <form action="conductSurvey" method="get">
+    <form action="page/quiz/conductSurvey" method="get">
         <input id="survey" class="hidden" type="submit" name="viewAllUsers">
     </form>
 </nav>
 
-<p>Ориентировочный номер анкеты: ${numberOfQuestionnaire}</p>
+<p>Ориентировочный номер анкеты: <span id="numberOfQuestionnaire"></span></p>
 
 <br>
 <br>
@@ -57,7 +57,7 @@
 
     </ol>
 
-    <input type="submit" class="btn btn-primary right-position" value="Готово">
+    <input type="submit" class="btn btn-primary right-position" value="Готово" onclick="getNumberOfQuestionnaire(${survey_id})">
     <br>
     <br>
     <br>

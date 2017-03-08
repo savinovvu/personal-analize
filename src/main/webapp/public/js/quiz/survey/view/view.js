@@ -26,7 +26,7 @@ function view(data) {
                 "render": function (row, data, dataIndex) {
                     var output = '<label class="btn btn-link" for="form-' + dataIndex.id + '" id="count-' + dataIndex.id + '">' + row + '</label>';
 
-                    output += '<form class="hidden"  action="quiz/survey/' + dataIndex.id + '" method="get">';
+                    output += '<form class="hidden"  action="questionnaireMenu/' + dataIndex.id + '" method="get">';
                     output += '<input id="form-' + dataIndex.id + '" type="submit">';
                     output += '<form>';
                     return output;
