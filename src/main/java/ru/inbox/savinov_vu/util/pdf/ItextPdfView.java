@@ -1,13 +1,15 @@
 package ru.inbox.savinov_vu.util.pdf;
 
 import com.itextpdf.text.*;
-import com.itextpdf.text.pdf.BaseFont;
-import com.itextpdf.text.pdf.PdfPCell;
-import com.itextpdf.text.pdf.PdfWriter;
+import com.itextpdf.text.pdf.*;
+import ru.inbox.savinov_vu.model.quiz.questionnaire.Questionnaire;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 
@@ -43,12 +45,13 @@ public class ItextPdfView extends AbstractITextPdfView {
 
     @Override
     protected void buildPdfDocument(Map<String, Object> model, Document document, PdfWriter writer, HttpServletRequest request, HttpServletResponse response) throws Exception {
-      /*  ProductOrder order = (ProductOrder) model.get("order");
-
-        // Font font1 = FontFactory.getFont(FontFactory.COURIER, 14, Font.BOLD,	new CMYKColor(0, 255, 0, 0));
+        List<Questionnaire> questionnaires = new ArrayList(Arrays.asList(model.get("questionnaires")));
 
 
-        Paragraph title = new Paragraph("Заказ №"+ order.getOrder_id(), font1);
+        Font font1 = FontFactory.getFont(FontFactory.COURIER, 14, Font.BOLD, new CMYKColor(0, 255, 0, 0));
+
+
+        Paragraph title = new Paragraph("Тестирование №", font1);
         title.setAlignment(Element.ALIGN_CENTER);
         document.add(title);
 
@@ -56,23 +59,12 @@ public class ItextPdfView extends AbstractITextPdfView {
         BarcodeEAN barcodeEAN = new BarcodeEAN();
         barcodeEAN.setCodeType(BarcodeEAN.EAN13);
 
-        //build code for barcode- start
-        String barcode = "0000000000000";
-        int lengthId = String.valueOf(order.getOrder_id()).length();
-        barcode = barcode.substring(0, barcode.length() - lengthId) + order.getOrder_id();
-        //  build code for barcode - end
-        PdfContentByte pdfContentByte = writer.getDirectContent();
-        barcodeEAN.setCode(String.valueOf(barcode));
-        Image codeEANImage = barcodeEAN.createImageWithBarcode(pdfContentByte, null, null);
-        codeEANImage.scalePercent(100);
-        codeEANImage.setAlignment(Element.ALIGN_RIGHT);
-        document.add(codeEANImage);
 
         // параграф с текстом
-        Paragraph purpose = new Paragraph("Дата оформления: " + order.getStartDate(), fontSmall);
+        Paragraph purpose = new Paragraph("Дата оформления: ", fontSmall);
         purpose.setSpacingAfter(sizeSpacingAfter);
         document.add(purpose);
-
+/*
         Paragraph customerNamePr = new Paragraph("Заказчик: " + order.getCustomerName(), fontSmall);
         customerNamePr.setSpacingAfter(sizeSpacingAfter);
         document.add(customerNamePr);
@@ -100,21 +92,23 @@ public class ItextPdfView extends AbstractITextPdfView {
             table.addCell(getNormalCell(product.getProduct_name(),60));
             table.addCell(getNormalCell(String.valueOf(product.getCountProducts()),30));
             table.addCell(getNormalCell(String.valueOf(product.getPrepayment()), 30));
-        }
+        }*/
 
     
+/*
 
         document.add(table);
-
-
-        Paragraph comment = new Paragraph("Примечание: " + order.getOrderComment(), fontSmall);
-        customerPhonePr.setSpacingAfter(sizeSpacingAfter);
-        document.add(comment);
-
 */
+
+
+       /* Paragraph comment = new Paragraph("Примечание: " + order.getOrderComment(), fontSmall);
+        customerPhonePr.setSpacingAfter(sizeSpacingAfter);
+        document.add(comment);*/
+
+
     }
 
-    private PdfPCell getNormalCell(String string,  float size)
+/*    private PdfPCell getNormalCell(String string,  float size)
             throws DocumentException, IOException {
         if (string != null && "".equals(string)) {
             return new PdfPCell();
@@ -124,12 +118,12 @@ public class ItextPdfView extends AbstractITextPdfView {
             f.setColor(BaseColor.RED);
             size = -size;
         }
-       /* f.setSize(size);*/
+       *//* f.setSize(size);*//*
         PdfPCell cell = new PdfPCell(new Phrase(string, f));
         cell.setHorizontalAlignment(Element.ALIGN_CENTER);
         cell.setVerticalAlignment(Element.ALIGN_CENTER);
         return cell;
-    }
+    }*/
 
 
 }
