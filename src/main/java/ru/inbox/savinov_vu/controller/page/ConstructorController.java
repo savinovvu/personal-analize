@@ -18,13 +18,13 @@ public class ConstructorController {
     private static final Logger LOG = LoggerFactory.getLogger(StartController.class);
 
     @GetMapping("editQuestionKit")
-    public String editQuestionKit(Model model) {
+    public String editQuestionKit() {
         LOG.debug("get editQuestionKit");
         return "constructor/questionKit/questionKit";
     }
 
     @GetMapping("editQuestionVar")
-    public String editQuestionVar(Model model) {
+    public String editQuestionVar() {
         LOG.debug("get editQuestionVar");
         return "constructor/questionVar/questionVar";
     }
@@ -39,13 +39,13 @@ public class ConstructorController {
     }
 
     @GetMapping("editAnswerKit")
-    public String editAnswerKit(Model model) {
+    public String editAnswerKit() {
         LOG.debug("get editAnswerKit");
         return "constructor/answerKit/answerKit";
     }
 
     @GetMapping("editAnswerVar")
-    public String editAnswerVar(Model model) {
+    public String editAnswerVar() {
         LOG.debug("get editAnswerVar");
         return "constructor/answerVar/answerVar";
     }

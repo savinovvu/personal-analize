@@ -7,7 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import ru.inbox.savinov_vu.model.constructor.question.QuestionKit;
 import ru.inbox.savinov_vu.model.personal.Department;
 import ru.inbox.savinov_vu.model.personal.Group;
@@ -28,21 +27,20 @@ public class QuizController {
 
 
     @GetMapping("conductSurvey")
-    public String start(Model model) {
+    public String start() {
         LOG.debug("get quiz page");
         return "quiz/survey/survey";
     }
 
     @GetMapping("questionnaireMenu/{id}")
-    public String getQuestionnaireMenu(HttpServletRequest request, Model model, @PathVariable("id") Integer surveyId) {
+    public String getQuestionnaireMenu(Model model, @PathVariable("id") Integer surveyId) {
         model.addAttribute("surveyId", surveyId);
         return "quiz/questionnaireMenu/questionnaireMenu";
     }
 
 
     @GetMapping("beginNewSurvey")
-    public String beginNewSurvey(HttpServletRequest request,
-                                 RedirectAttributes redirectAttributes, Model model) {
+    public String beginNewSurvey(HttpServletRequest request) {
         LOG.debug("get beginSurveyPage");
 
         Survey survey = new Survey();
