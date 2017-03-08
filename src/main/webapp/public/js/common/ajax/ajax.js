@@ -22,6 +22,7 @@ var ajaxAPI = {
         "surveyAll": "/quiz/survey/all",
         "questionnaire": "/quiz/questionnaire",
         "questionnaireAll": "/quiz/questionnaire/all",
+        "questionnaireCount": "/quiz/questionnaire/count",
         "question": "/quiz/question",
         "questionAll": "/quiz/question/all",
         "answer": "/quiz/answer",
