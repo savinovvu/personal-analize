@@ -17,9 +17,9 @@
     <script src="/public/js/common/model/model.js" type="text/javascript"></script>
     <script src="/public/js/common/ajax/ajax.js" type="text/javascript"></script>
 
-    <script src="/public/js/quiz/questionnaire/service/service.js" type="text/javascript"></script>
-    <script src="/public/js/quiz/questionnaire/view/view.js" type="text/javascript"></script>
-    <script src="/public/js/quiz/questionnaire/util/util.js" type="text/javascript"></script>
+    <script src="/public/js/quiz/quiz/service/service.js" type="text/javascript"></script>
+    <script src="/public/js/quiz/quiz/view/view.js" type="text/javascript"></script>
+    <script src="/public/js/quiz/quiz/util/util.js" type="text/javascript"></script>
 
 </head>
 <body onload=downloadPage(${survey_id})>
@@ -36,7 +36,7 @@
     </form>
 
 
-    <form action="page/quiz/conductSurvey" method="get">
+    <form action="conductSurvey" method="get">
         <input id="survey" class="hidden" type="submit" name="viewAllUsers">
     </form>
 </nav>
@@ -57,7 +57,8 @@
 
     </ol>
 
-    <input type="submit" class="btn btn-primary right-position" value="Готово" onclick="getNumberOfQuestionnaire(${survey_id})">
+    <input type="submit" class="btn btn-primary right-position" value="Готово"
+           onclick="getNumberOfQuestionnaire(${survey_id})">
     <br>
     <br>
     <br>

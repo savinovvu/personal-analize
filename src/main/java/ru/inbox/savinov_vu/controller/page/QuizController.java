@@ -32,14 +32,14 @@ public class QuizController {
         return "quiz/survey/survey";
     }
 
-    @GetMapping("questionnaireMenu/{id}")
+    @GetMapping("questionnaire/{id}")
     public String getQuestionnaireMenu(Model model, @PathVariable("id") Integer surveyId) {
         model.addAttribute("surveyId", surveyId);
-        return "quiz/questionnaireMenu/questionnaireMenu";
+        return "quiz/questionnaire/questionnaire";
     }
 
 
-    @GetMapping("beginNewSurvey")
+    @GetMapping("newQuiz")
     public String beginNewSurvey(HttpServletRequest request) {
         LOG.debug("get beginSurveyPage");
 
@@ -51,14 +51,14 @@ public class QuizController {
                 .setGroup(getSurveyGroup(request))
                 .setComment(getSurveyComment(request));
         survey = service.addSurvey(survey);
-        return "redirect:continueSurvey?id=" + survey.getId();
+        return "redirect:continueQuiz?id=" + survey.getId();
     }
 
-    @GetMapping("continueSurvey")
+    @GetMapping("continueQuiz")
     public String continueSurvey(HttpServletRequest request, Model model) {
         int id = getSurveyId(request);
         model.addAttribute("survey_id", id);
-        return "quiz/questionnaire/questionnaire";
+        return "quiz/quiz/quiz";
     }
 
     private Integer getSurveyId(HttpServletRequest request) {

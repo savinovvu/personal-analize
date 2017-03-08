@@ -68,7 +68,7 @@
                 <h4 class="modal-title text-center" id="myModalLabel">Начать новое тестирование</h4>
             </div>
             <div class="modal-body">
-                <form role="form" class="form-horizontal" method="get" action="beginNewSurvey">
+                <form role="form" class="form-horizontal" method="get" action="newQuiz">
 
                     <div class="changeDivId">
                         <div class="form-group has-feedback" id="divId">

@@ -64,10 +64,12 @@ function view(data) {
                 "render": function (row, data, dataIndex) {
 
 
-                    return '<a class="btn btn-xs btn-primary cuctombtnwithoutshadow" onclick="getModal(' + dataIndex.id + ')" data-toggle="modal" data-target="#myModal">Продолжить</a>' +
+                    return '<label for="continue-' + dataIndex.id + '" class="btn btn-xs btn-primary cuctombtnwithoutshadow">Продолжить</label>' +
                         '<a  class="btn btn-xs btn-info cuctombtnwithoutshadow" onclick="getDelModal(' + dataIndex.id + ')" data-toggle="modal" data-target="#myDelModal">PDF</a>' +
-                        '<a  class="btn btn-xs btn-warning cuctombtnwithoutshadow" onclick="getDelModal(' + dataIndex.id + ')" data-toggle="modal" data-target="#myDelModal">Обновить</a>' +
-                        '<a  class="btn btn-xs btn-danger cuctombtnwithoutshadow" onclick="getDelModal(' + dataIndex.id + ')" data-toggle="modal" data-target="#myDelModal">Удалить</a>';
+                        '<a  class="btn btn-xs btn-warning cuctombtnwithoutshadow" onclick="getDelModal(' + dataIndex.id + ')" data-toggle="modal" data-target="#myDelModal">Обновить данные</a>' +
+                        '<a  class="btn btn-xs btn-danger cuctombtnwithoutshadow" onclick="getDelModal(' + dataIndex.id + ')" data-toggle="modal" data-target="#myDelModal">Удалить</a>' +
+                        '<form method="get" action="continueQuiz"><input class="hidden" name="id" value="' + dataIndex.id + '"> <input type="submit" class="hidden" id="continue-' + dataIndex.id + '"></form>';
+
 
                 }
             },
