@@ -1,16 +1,19 @@
 package ru.inbox.savinov_vu.util.pdf;
 
 import com.itextpdf.text.*;
-import com.itextpdf.text.pdf.*;
+import com.itextpdf.text.pdf.BaseFont;
+import com.itextpdf.text.pdf.PdfWriter;
+import ru.inbox.savinov_vu.model.constructor.question.QuestionVar;
+import ru.inbox.savinov_vu.model.quiz.answer.Answer;
 import ru.inbox.savinov_vu.model.quiz.questionnaire.Questionnaire;
+import ru.inbox.savinov_vu.model.quiz.survey.Survey;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.time.format.DateTimeFormatter;
+import java.util.*;
 import java.util.List;
-import java.util.Map;
 
 
 /**
@@ -45,25 +48,55 @@ public class ItextPdfView extends AbstractITextPdfView {
 
     @Override
     protected void buildPdfDocument(Map<String, Object> model, Document document, PdfWriter writer, HttpServletRequest request, HttpServletResponse response) throws Exception {
-        List<Questionnaire> questionnaires = new ArrayList(Arrays.asList(model.get("questionnaires")));
-
-
-        Font font1 = FontFactory.getFont(FontFactory.COURIER, 14, Font.BOLD, new CMYKColor(0, 255, 0, 0));
-
-
-        Paragraph title = new Paragraph("Тестирование №", font1);
+        Survey survey = (Survey) model.get("survey");
+        Paragraph title = new Paragraph("Id Тестирования = " + survey.getId(), fontSmall);
         title.setAlignment(Element.ALIGN_CENTER);
         document.add(title);
 
 
-        BarcodeEAN barcodeEAN = new BarcodeEAN();
-        barcodeEAN.setCodeType(BarcodeEAN.EAN13);
+        Paragraph methodicals = new Paragraph("Используемая методика: " + survey.getQuestionKit().getName(), fontSmall);
+        methodicals.setSpacingAfter(sizeSpacingAfter);
+        document.add(methodicals);
+
+        Paragraph dateParagraph = new Paragraph("Дата Тестирования: " + survey.getDate().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")), fontSmall);
+        dateParagraph.setSpacingAfter(sizeSpacingAfter);
+        document.add(dateParagraph);
+
+        List<Questionnaire> questionnaires = new ArrayList(Arrays.asList(model.get("questionnaires")));
+        Paragraph countQuestionnaire = new Paragraph("Количество анкет: " + questionnaires.size(), fontSmall);
+        dateParagraph.setSpacingAfter(sizeSpacingAfter);
+        document.add(dateParagraph);
 
 
-        // параграф с текстом
-        Paragraph purpose = new Paragraph("Дата оформления: ", fontSmall);
-        purpose.setSpacingAfter(sizeSpacingAfter);
-        document.add(purpose);
+        if (Objects.nonNull(survey.getDepartment())) {
+            Paragraph departmentParagraph = new Paragraph("Подразделение: " + survey.getDepartment().getName(), fontSmall);
+            document.add(departmentParagraph);
+            if (Objects.nonNull(survey.getGroup())) {
+                Paragraph groupParagraph = new Paragraph("Группа: " + survey.getGroup().getName(), fontSmall);
+                document.add(groupParagraph);
+            }
+        }
+
+        if (Objects.nonNull(survey.getComment()) && !"".equals(survey.getComment())) {
+            Paragraph commentParagraph = new Paragraph("комментарий: " + survey.getComment(), fontSmall);
+            document.add(commentParagraph);
+
+        }
+
+
+        Map<QuestionVar, Map<Answer, Long>> questionAnswerCountMap = (Map<QuestionVar, Map<Answer, Long>>) model.get("countAnswerByQuestionMap");
+
+        for (Map.Entry<QuestionVar, Map<Answer, Long>> questionVarMapEntry : questionAnswerCountMap.entrySet()) {
+            Paragraph questionParagraph = new Paragraph(questionVarMapEntry.getKey().getName(), fontSmall);
+            document.add(questionParagraph);
+            for (Map.Entry<Answer, Long> answerLongEntry : questionVarMapEntry.getValue().entrySet()) {
+                Paragraph answerParagraph = new Paragraph( answerLongEntry.getKey().getName() + " - " + answerLongEntry.getValue(), fontSmall);
+                document.add(answerParagraph);
+            }
+
+        }
+
+
 /*
         Paragraph customerNamePr = new Paragraph("Заказчик: " + order.getCustomerName(), fontSmall);
         customerNamePr.setSpacingAfter(sizeSpacingAfter);

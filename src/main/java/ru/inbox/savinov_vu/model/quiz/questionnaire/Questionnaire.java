@@ -48,6 +48,9 @@ public class Questionnaire implements Persistable<Integer> {
     public Questionnaire() {
     }
 
+    public Questionnaire(LocalDate date) {
+        this.date = date;
+    }
 
     public Integer getId() {
         return id;

@@ -13,7 +13,7 @@ import javax.persistence.*;
                 @UniqueConstraint(columnNames = {"questionvar_id"}, name = "answers_unique_questionvar_idx")
         })
 @Access(value = AccessType.FIELD)
-public class Answer implements Persistable<Integer> {
+public class Answer implements Persistable<Integer>, Comparable<Answer> {
     @Id
     @SequenceGenerator(name = "GLOBAL_SEQ", sequenceName = "GLOBAL_SEQ", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "GLOBAL_SEQ")
@@ -37,6 +37,11 @@ public class Answer implements Persistable<Integer> {
     public Answer() {
     }
 
+    public Answer(String name, Questionnaire questionnaire, QuestionVar questionVar) {
+        this.name = name;
+        this.questionnaire = questionnaire;
+        this.questionVar = questionVar;
+    }
 
     public void setId(Integer id) {
         this.id = id;
@@ -84,29 +89,21 @@ public class Answer implements Persistable<Integer> {
 
         Answer answer = (Answer) o;
 
-        if (id != null ? !id.equals(answer.id) : answer.id != null) return false;
         if (name != null ? !name.equals(answer.name) : answer.name != null) return false;
-        if (questionnaire != null ? !questionnaire.equals(answer.questionnaire) : answer.questionnaire != null)
-            return false;
+
         return questionVar != null ? questionVar.equals(answer.questionVar) : answer.questionVar == null;
     }
 
     @Override
     public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (name != null ? name.hashCode() : 0);
-        result = 31 * result + (questionnaire != null ? questionnaire.hashCode() : 0);
+        int result = (name != null ? name.hashCode() : 0);
         result = 31 * result + (questionVar != null ? questionVar.hashCode() : 0);
         return result;
     }
 
+
     @Override
-    public String toString() {
-        return "Answer{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", questionnaire=" + questionnaire +
-                ", questionVar=" + questionVar +
-                '}';
+    public int compareTo(Answer o) {
+        return this.id > o.id ? 1 : 0;
     }
 }

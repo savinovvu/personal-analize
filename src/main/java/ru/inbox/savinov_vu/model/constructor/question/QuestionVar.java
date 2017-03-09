@@ -16,7 +16,7 @@ import java.util.List;
                 @UniqueConstraint(columnNames = {"answerkit_id"}, name = "questionvar_unique_answerkit_idx")
         })
 @Access(value = AccessType.FIELD)
-public class QuestionVar implements Persistable<Integer> {
+public class QuestionVar implements Persistable<Integer>, Comparable<QuestionVar> {
 
 
     @Id
@@ -24,9 +24,9 @@ public class QuestionVar implements Persistable<Integer> {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "CONSTRUCTOR_SEQ")
     protected Integer id;
 
-   // @NotEmpty
+    // @NotEmpty
     @Column(name = "name", nullable = true)
-   // @SafeHtml
+    // @SafeHtml
     @JsonProperty("name")
     protected String name;
 
@@ -51,9 +51,11 @@ public class QuestionVar implements Persistable<Integer> {
     private Integer superQuestionVarId;
 
 
-
-
     public QuestionVar() {
+    }
+
+    public QuestionVar(String name) {
+        this.name = name;
     }
 
     public Integer getId() {
@@ -90,29 +92,21 @@ public class QuestionVar implements Persistable<Integer> {
 
         QuestionVar that = (QuestionVar) o;
 
-        if (id != null ? !id.equals(that.id) : that.id != null) return false;
         if (name != null ? !name.equals(that.name) : that.name != null) return false;
-        if (answerKit != null ? !answerKit.equals(that.answerKit) : that.answerKit != null) return false;
-        return questionKit != null ? questionKit.equals(that.questionKit) : that.questionKit == null;
+        return questionKit != null ? questionKit.getName().equals(that.questionKit.getName()) : that.questionKit == null;
     }
 
     @Override
     public int hashCode() {
         int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (name != null ? name.hashCode() : 0);
-        result = 31 * result + (answerKit != null ? answerKit.hashCode() : 0);
         result = 31 * result + (questionKit != null ? questionKit.hashCode() : 0);
+        result = 31 * result + (superQuestionVarId != null ? superQuestionVarId.hashCode() : 0);
         return result;
     }
 
-
     @Override
-    public String toString() {
-        return "QuestionVar{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", answerKit=" + answerKit +
-                ", questionKit=" + questionKit +
-                '}';
+    public int compareTo(QuestionVar o) {
+        return this.id > o.id ? 1 : 0;
     }
 }

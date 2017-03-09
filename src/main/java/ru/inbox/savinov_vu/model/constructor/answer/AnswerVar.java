@@ -44,4 +44,25 @@ public class AnswerVar implements Persistable<Integer> {
     public boolean isNew() {
         return (getId() == null);
     }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        AnswerVar answerVar = (AnswerVar) o;
+
+        if (id != null ? !id.equals(answerVar.id) : answerVar.id != null) return false;
+        if (name != null ? !name.equals(answerVar.name) : answerVar.name != null) return false;
+        return answerKit != null ? answerKit.equals(answerVar.answerKit) : answerVar.answerKit == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + (answerKit != null ? answerKit.hashCode() : 0);
+        return result;
+    }
 }

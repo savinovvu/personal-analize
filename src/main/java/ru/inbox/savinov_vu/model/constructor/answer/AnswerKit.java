@@ -44,5 +44,27 @@ public class AnswerKit {
         return id;
     }
 
+    public String getName() {
+        return name;
+    }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        AnswerKit answerKit = (AnswerKit) o;
+
+        if (id != null ? !id.equals(answerKit.id) : answerKit.id != null) return false;
+        if (name != null ? !name.equals(answerKit.name) : answerKit.name != null) return false;
+        return answerType == answerKit.answerType;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + (answerType != null ? answerType.hashCode() : 0);
+        return result;
+    }
 }
