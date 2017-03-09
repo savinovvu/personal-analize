@@ -12,6 +12,7 @@ import ru.inbox.savinov_vu.service.quiz.answer.AnswerService;
 import ru.inbox.savinov_vu.service.quiz.questionnaire.QuestionnaireService;
 import ru.inbox.savinov_vu.service.quiz.survey.SurveyService;
 
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
@@ -45,8 +46,8 @@ public class SurveyPdfController {
                 .map(questionnaire -> answerService.getAnswersWithQuestionnaire(questionnaire.getId()))
                 .flatMap(List::stream)
                 .collect(Collectors.
-                        groupingBy(Answer::getQuestionVar,
-                                Collectors.groupingBy(Function.identity(), Collectors.counting())));
+                        groupingBy(Answer::getQuestionVar,LinkedHashMap::new,
+                                Collectors.groupingBy(Function.identity(), LinkedHashMap::new, Collectors.counting())));
     }
 
 }
