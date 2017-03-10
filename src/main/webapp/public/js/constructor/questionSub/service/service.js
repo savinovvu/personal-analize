@@ -16,7 +16,6 @@ jQuery(function ($) {
         e.preventDefault();
         $("#dismissButton").click();
         var question = new QuestionVar($("#delId").val(), null, null, null, questionVarId);
-        alert(JSON.stringify(question));
         send(ajaxAPI.constructor.questionSub, "DELETE", question, view);
     });
 });
