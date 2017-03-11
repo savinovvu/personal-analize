@@ -5,7 +5,7 @@ function view(data) {
     $('#entityT').DataTable({
         "data": data,
         "columns": [
-            {"data": "id"},
+            {"data": "number"},
             {
                 "data": "name",
                 "render": function (row, data, dataIndex) {
