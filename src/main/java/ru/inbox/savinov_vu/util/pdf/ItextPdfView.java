@@ -86,36 +86,56 @@ public class ItextPdfView extends AbstractITextPdfView {
 
         Map<QuestionVar, Map<Answer, Long>> questionAnswerCountMap = (Map<QuestionVar, Map<Answer, Long>>) model.get("countAnswerByQuestionMap");
 
-        QuestionVar savedSuperQuestion = null;
-        for (Map.Entry<QuestionVar, Map<Answer, Long>> questionVarMapEntry : questionAnswerCountMap.entrySet()) {
-            QuestionVar question = questionVarMapEntry.getKey();
-            AddSuperQuestion(savedSuperQuestion, question, document);
+        writeQuestionAndAnswer(document, questionAnswerCountMap);
 
-                Paragraph questionparagraph = new Paragraph(question.getName(), font14);
-                document.add(questionparagraph);
-                for (Map.Entry<Answer, Long> answerLongEntry : questionVarMapEntry.getValue().entrySet()) {
-                    Paragraph answerParagrapg = new Paragraph("                " + answerLongEntry.getKey().getName() + " - " + answerLongEntry.getValue(), font14);
-                    document.add(answerParagrapg);
-                }
-                Paragraph emptyParagraph = new Paragraph(" ");
-                emptyParagraph.setSpacingAfter(sizeSpacingAfter);
-                document.add(emptyParagraph);
-            }
-
-
-        }
-        private void AddSuperQuestion(QuestionVar savedSuperQuestion, QuestionVar currentQuestion , Document document) throws DocumentException {
-
-            if (Objects.nonNull(currentQuestion.getSuperQuestionVarId())) {
-                if (Objects.isNull(savedSuperQuestion) || !savedSuperQuestion.getId().equals(currentQuestion.getSuperQuestionVarId())) {
-                    savedSuperQuestion = service.findById(currentQuestion.getSuperQuestionVarId());
-                    Paragraph questionParagraph = new Paragraph(savedSuperQuestion.getName(), font14);
-                    document.add(questionParagraph);
-
-                }
-            }
-        }
 
     }
+
+    private void writeQuestionAndAnswer(Document document, Map<QuestionVar, Map<Answer, Long>> questionAnswerCountMap) throws DocumentException {
+        QuestionVar savedSuperQuestion = new QuestionVar();
+        for (Map.Entry<QuestionVar, Map<Answer, Long>> questionVarMapEntry : questionAnswerCountMap.entrySet()) {
+            writeQuestion(document, savedSuperQuestion, questionVarMapEntry);
+            for (Map.Entry<Answer, Long> answerLongEntry : questionVarMapEntry.getValue().entrySet()) {
+                writeAnswer(document, answerLongEntry);
+            }
+            Paragraph emptyParagraph = new Paragraph(" ");
+            emptyParagraph.setSpacingAfter(sizeSpacingAfter);
+            document.add(emptyParagraph);
+        }
+    }
+
+    private void writeQuestion(Document document, QuestionVar savedSuperQuestion, Map.Entry<QuestionVar, Map<Answer, Long>> questionVarMapEntry) throws DocumentException {
+        QuestionVar question = questionVarMapEntry.getKey();
+        AddSuperQuestion(savedSuperQuestion, question, document);
+        document.add(getQuestionParagraph(question));
+    }
+
+    private Paragraph getQuestionParagraph(QuestionVar question) {
+        if (Objects.isNull(question.getSuperQuestionVarId())) {
+            return new Paragraph( question.getNumber() + ". " + question.getName(), font14);
+        } else {
+            return new Paragraph("     " + question.getNumber() + ". " + question.getName(), font14);
+        }
+    }
+
+    private void writeAnswer(Document document, Map.Entry<Answer, Long> answerLongEntry) throws DocumentException {
+        Paragraph answerParagrapg = new Paragraph("                " + answerLongEntry.getKey().getName() + " - " + answerLongEntry.getValue(), font14);
+        document.add(answerParagrapg);
+    }
+
+
+    private void AddSuperQuestion(QuestionVar savedSuperQuestion, QuestionVar currentQuestion, Document document) throws DocumentException {
+
+        if (Objects.nonNull(currentQuestion.getSuperQuestionVarId())) {
+            if (!currentQuestion.getSuperQuestionVarId().equals(savedSuperQuestion.getId())) {
+                QuestionVar byId = service.findById(currentQuestion.getSuperQuestionVarId());
+                savedSuperQuestion.setId(byId.getId()).setName(byId.getName()).setNumber(byId.getNumber());
+                Paragraph questionParagraph = new Paragraph(savedSuperQuestion.getNumber() + ". " + savedSuperQuestion.getName(), font14);
+                document.add(questionParagraph);
+            }
+        }
+    }
+
+}
 
 
