@@ -6,6 +6,7 @@ import ru.inbox.savinov_vu.model.constructor.question.QuestionVar;
 import ru.inbox.savinov_vu.repository.constructor.QuestionVarRepository;
 
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class QuestionVarServiceImpl implements QuestionVarService {
@@ -23,17 +24,49 @@ public class QuestionVarServiceImpl implements QuestionVarService {
     }
 
     @Override
-    public void addQuestionVar(QuestionVar questionVar) {
-        repository.saveAndFlush(questionVar);
-    }
-
-    @Override
-    public void deleteQuestionVar(QuestionVar questionVar) {
-        repository.delete(questionVar.getId());
-    }
-
-    @Override
     public List<QuestionVar> getQuestionVarWithSuperQuestionVar(Integer id) {
         return repository.getQuestionVarWithSuperQuestionVar(id);
     }
+
+    @Override
+    public void addQuestionVar(QuestionVar questionVar) {
+        repository.saveAndFlush(setCount(questionVar));
+    }
+
+    private QuestionVar setCount(QuestionVar questionVar) {
+        if (Objects.isNull(questionVar.getId()))
+            if (Objects.isNull(questionVar.getSuperQuestionVarId())) {
+                questionVar.setNumber(Math.toIntExact(repository.getCountQuestionVarWithQuestionKit(questionVar.getQuestionKit().getId())) + 1);
+            } else {
+                questionVar.setNumber(Math.toIntExact(repository.getCountQuestionVarWithSuperQuestionVar(questionVar.getSuperQuestionVarId())) + 1);
+            }
+        return questionVar;
+    }
+
+
+    @Override
+    public void deleteQuestionVar(QuestionVar questionVar) {
+        changeCountBecauseDeleteInMiddle(questionVar);
+        repository.delete(questionVar.getId());
+    }
+
+    private void changeCountBecauseDeleteInMiddle(QuestionVar questionVar) {
+        if (Objects.isNull(questionVar.getSuperQuestionVarId())) {
+            List<QuestionVar> listWithIdMoreThat = repository.getListWithIdMoreThat(questionVar.getId());
+            setNumberAfterDelete(listWithIdMoreThat);
+        } else {
+            List<QuestionVar> listWithIdMoreThat = repository.getListWithIdMoreThat(questionVar.getId(), questionVar.getSuperQuestionVarId());
+            setNumberAfterDelete(listWithIdMoreThat);
+        }
+
+    }
+
+    private void setNumberAfterDelete(List<QuestionVar> listWithIdMoreThat) {
+        for (QuestionVar questionVar : listWithIdMoreThat) {
+            repository.saveAndFlush(questionVar.setNumber(questionVar.getNumber() - 1));
+
+        }
+    }
+
+
 }
