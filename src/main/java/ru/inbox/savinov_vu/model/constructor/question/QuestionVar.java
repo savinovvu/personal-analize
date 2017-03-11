@@ -22,13 +22,15 @@ public class QuestionVar implements Persistable<Integer>, Comparable<QuestionVar
     @Id
     @SequenceGenerator(name = "CONSTRUCTOR_SEQ", sequenceName = "CONSTRUCTOR_SEQ", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "CONSTRUCTOR_SEQ")
-    protected Integer id;
+    private Integer id;
 
-    // @NotEmpty
+    @Column(name = "number")
+    @JsonProperty("number")
+    private Integer number;
+
     @Column(name = "name", nullable = true)
-    // @SafeHtml
     @JsonProperty("name")
-    protected String name;
+    private String name;
 
 
     @JsonProperty("answerKit")
@@ -62,6 +64,16 @@ public class QuestionVar implements Persistable<Integer>, Comparable<QuestionVar
         return id;
     }
 
+    public QuestionVar setId(Integer id) {
+        this.id = id;
+        return this;
+    }
+
+    public QuestionVar setName(String name) {
+        this.name = name;
+        return this;
+    }
+
     public String getName() {
         return name;
     }
@@ -77,6 +89,20 @@ public class QuestionVar implements Persistable<Integer>, Comparable<QuestionVar
 
     public void setSuperQuestionVarId(Integer superQuestionVarId) {
         this.superQuestionVarId = superQuestionVarId;
+    }
+
+    public Integer getNumber() {
+        return number;
+    }
+
+    public QuestionVar setNumber(Integer number) {
+        this.number = number;
+        return this;
+    }
+
+    public QuestionVar setQuestionKit(QuestionKit questionKit) {
+        this.questionKit = questionKit;
+        return this;
     }
 
     @Override
