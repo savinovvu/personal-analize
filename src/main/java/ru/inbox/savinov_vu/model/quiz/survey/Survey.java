@@ -20,8 +20,8 @@ import java.util.List;
 public class Survey implements Persistable<Integer> {
 
     @Id
-    @SequenceGenerator(name = "GLOBAL_SEQ", sequenceName = "GLOBAL_SEQ", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "GLOBAL_SEQ")
+    @SequenceGenerator(name = "SURVEY_SEQ", sequenceName = "SURVEY_SEQ", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SURVEY_SEQ")
     private Integer id;
 
     @Column(name = "comment", nullable = false)

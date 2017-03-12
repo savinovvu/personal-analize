@@ -15,8 +15,8 @@ import javax.persistence.*;
 @Access(value = AccessType.FIELD)
 public class Answer implements Persistable<Integer>, Comparable<Answer> {
     @Id
-    @SequenceGenerator(name = "GLOBAL_SEQ", sequenceName = "GLOBAL_SEQ", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "GLOBAL_SEQ")
+    @SequenceGenerator(name = "SURVEY_SEQ", sequenceName = "SURVEY_SEQ", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SURVEY_SEQ")
     protected Integer id;
 
     @Column(name = "name", nullable = false)
