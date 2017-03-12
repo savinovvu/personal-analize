@@ -16,7 +16,7 @@ public interface QuestionVarRepository extends JpaRepository<QuestionVar, Intege
     List<QuestionVar> getQuestionVarWithQuestionKit(@Param("questionKit_id") Integer id);
 
     @Query("SELECT count(p) FROM QuestionVar p WHERE p.questionKit.id=:questionKit_id AND p.superQuestionVarId=NULL")
-    Long getCountQuestionVarWithQuestionKit(@Param("questionKit_id") Integer id);
+    Long getCountQuestionVarWithQuestionKit(@Param("questionKit_id") Integer questionKit_id);
 
     @Query("SELECT p FROM QuestionVar p WHERE p.superQuestionVarId=:superQuestionVarId")
     List<QuestionVar> getQuestionVarWithSuperQuestionVar(@Param("superQuestionVarId") Integer superQuestionVarId);
@@ -24,11 +24,11 @@ public interface QuestionVarRepository extends JpaRepository<QuestionVar, Intege
     @Query("SELECT count(p) FROM QuestionVar p WHERE p.superQuestionVarId=:superQuestionVarId")
     Long getCountQuestionVarWithSuperQuestionVar(@Param("superQuestionVarId") Integer superQuestionVarId);
 
-    @Query("Select p FROM QuestionVar p WHERE p.id >:id AND p.superQuestionVarId=NULL")
-    List<QuestionVar> getListWithIdMoreThat(@Param("id") Integer id);
+    @Query("Select p FROM QuestionVar p WHERE p.id >:id AND p.superQuestionVarId=NULL AND p.questionKit.id=:questionKit_id")
+    List<QuestionVar> getListWithIdMoreThatWithQuestionKit(@Param("id") Integer id, @Param("questionKit_id") Integer questionKit_id);
 
     @Query("Select p FROM QuestionVar p WHERE p.id >:id AND p.superQuestionVarId=:superQuestionVarId")
-    List<QuestionVar> getListWithIdMoreThat(@Param("id") Integer id, @Param("superQuestionVarId") Integer superQuestionVarId);
+    List<QuestionVar> getListWithIdMoreThatWithQuestionVar(@Param("id") Integer id, @Param("superQuestionVarId") Integer superQuestionVarId);
 
 
 }

@@ -52,10 +52,10 @@ public class QuestionVarServiceImpl implements QuestionVarService {
 
     private void changeCountBecauseDeleteInMiddle(QuestionVar questionVar) {
         if (Objects.isNull(questionVar.getSuperQuestionVarId())) {
-            List<QuestionVar> listWithIdMoreThat = repository.getListWithIdMoreThat(questionVar.getId());
+            List<QuestionVar> listWithIdMoreThat = repository.getListWithIdMoreThatWithQuestionKit(questionVar.getId(), questionVar.getQuestionKit().getId());
             setNumberAfterDelete(listWithIdMoreThat);
         } else {
-            List<QuestionVar> listWithIdMoreThat = repository.getListWithIdMoreThat(questionVar.getId(), questionVar.getSuperQuestionVarId());
+            List<QuestionVar> listWithIdMoreThat = repository.getListWithIdMoreThatWithQuestionVar(questionVar.getId(), questionVar.getSuperQuestionVarId());
             setNumberAfterDelete(listWithIdMoreThat);
         }
 
