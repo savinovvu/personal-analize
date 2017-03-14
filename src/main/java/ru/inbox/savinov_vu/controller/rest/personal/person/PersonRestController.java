@@ -1,7 +1,6 @@
 package ru.inbox.savinov_vu.controller.rest.personal.person;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -12,23 +11,23 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "/personal/person", consumes = MediaType.ALL_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+@Slf4j
 public class PersonRestController {
 
-    private static final Logger LOG = LoggerFactory.getLogger(PersonRestController.class);
 
     @Autowired
     PersonService service;
 
     @GetMapping(value = "/all")
     public List<Person> getAllPerson() {
-        LOG.debug("get all persons");
+        log.debug("get all persons");
         return service.getAllPersons();
 
     }
 
     @GetMapping("/{id}")
     public List<Person> getPersonWithGroup(@PathVariable("id") Integer id) {
-        LOG.debug("get all persons where group id= {}", id);
+        log.debug("get all persons where group id= {}", id);
         return service.getPersonWithGroup(id);
 
     }
@@ -36,7 +35,7 @@ public class PersonRestController {
 
     @PutMapping
     public List<Person> putPerson(@RequestBody Person person) {
-        LOG.debug("put person {}", person);
+        log.debug("put person {}", person);
         service.addPerson(person);
         return service.getAllPersons();
 
@@ -44,7 +43,7 @@ public class PersonRestController {
 
     @DeleteMapping
     public List<Person> deletePerson(@RequestBody Person person) {
-        LOG.debug("delete person {}", person);
+        log.debug("delete person {}", person);
         service.deletePerson(person);
         return service.getAllPersons();
 

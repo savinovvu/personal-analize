@@ -1,7 +1,6 @@
 package ru.inbox.savinov_vu.controller.rest.constructor.answerkit;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -12,22 +11,22 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "/constructor/answerKit", produces = MediaType.APPLICATION_JSON_VALUE)
+@Slf4j
 public class AnswerKitRestController {
 
     @Autowired
     private AnswerKitService service;
-    private static final Logger LOG = LoggerFactory.getLogger(AnswerKitRestController.class);
 
     @GetMapping(value = "/all")
     public List<AnswerKit> getAllAnswerKits() {
-        LOG.debug("get all questionkits");
+        log.debug("get all questionkits");
         return service.getAllAnswerKits();
 
     }
 
     @PutMapping
     public List<AnswerKit> addAnswerKit(@RequestBody AnswerKit answerKit) {
-        LOG.debug("put questionKit {}", answerKit);
+        log.debug("put questionKit {}", answerKit);
         service.addAnswerKit(answerKit);
         return service.getAllAnswerKits();
 
@@ -35,7 +34,7 @@ public class AnswerKitRestController {
 
     @DeleteMapping
     public List<AnswerKit> deleteAnswerKit(@RequestBody AnswerKit answerKit) {
-        LOG.debug("delete questionKit {}", answerKit);
+        log.debug("delete questionKit {}", answerKit);
         service.deleteAnswerKit(answerKit);
         return service.getAllAnswerKits();
 

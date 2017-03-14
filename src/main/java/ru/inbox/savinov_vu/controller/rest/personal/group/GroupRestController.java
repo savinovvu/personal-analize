@@ -1,8 +1,7 @@
 package ru.inbox.savinov_vu.controller.rest.personal.group;
 
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -14,22 +13,21 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "/personal/group", produces = MediaType.APPLICATION_JSON_VALUE)
+@Slf4j
 public class GroupRestController {
     @Autowired
     GroupService service;
 
-    private static final Logger LOG = LoggerFactory.getLogger(GroupRestController.class);
-
     @GetMapping(value = "/all")
     public List<Group> getAllGroups() {
-        LOG.debug("get all groups");
+        log.debug("get all groups");
         return service.getAllGroups();
 
     }
 
     @GetMapping("/{id}")
     public List<Group> getGroupsWithDepartment(@PathVariable("id") Integer id) {
-        LOG.debug("get all groups where department id= {}", id);
+        log.debug("get all groups where department id= {}", id);
         return service.getGroupsWithDepartment(id);
 
     }
@@ -37,7 +35,7 @@ public class GroupRestController {
 
     @PutMapping
     public List<Group> putGroup(@RequestBody Group group) throws IOException {
-        LOG.debug("put group {}", group);
+        log.debug("put group {}", group);
         service.addGroup(group);
         return service.getAllGroups();
 
@@ -46,7 +44,7 @@ public class GroupRestController {
 
     @DeleteMapping
     public List<Group> deleteGroup(@RequestBody Group group) throws IOException {
-        LOG.debug("delete group {}", group);
+        log.debug("delete group {}", group);
         service.deleteGroup(group);
         return service.getAllGroups();
 

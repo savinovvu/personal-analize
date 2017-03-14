@@ -1,7 +1,6 @@
 package ru.inbox.savinov_vu.controller.page;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,16 +18,14 @@ import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
 @Controller
+@Slf4j
 public class QuizController {
     @Autowired
     SurveyService service;
 
-    private static final Logger LOG = LoggerFactory.getLogger(QuizController.class);
-
-
     @GetMapping("conductSurvey")
     public String start() {
-        LOG.debug("get quiz page");
+        log.debug("get quiz page");
         return "quiz/survey/survey";
     }
 
@@ -41,7 +38,7 @@ public class QuizController {
 
     @GetMapping("newQuiz")
     public String beginNewSurvey(HttpServletRequest request) {
-        LOG.debug("get beginSurveyPage");
+        log.debug("get beginSurveyPage");
 
         Survey survey = new Survey();
         survey.setId(getSurveyId(request))
