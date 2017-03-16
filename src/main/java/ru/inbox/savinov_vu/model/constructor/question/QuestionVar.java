@@ -1,13 +1,10 @@
 package ru.inbox.savinov_vu.model.constructor.question;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.data.domain.Persistable;
 import ru.inbox.savinov_vu.model.constructor.answer.AnswerKit;
-import ru.inbox.savinov_vu.model.quiz.answer.Answer;
 
 import javax.persistence.*;
-import java.util.List;
 
 
 @Entity
@@ -37,10 +34,6 @@ public class QuestionVar implements Persistable<Integer>, Comparable<QuestionVar
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "answerkit_id", nullable = false)
     private AnswerKit answerKit;
-
-    @JsonIgnore
-    @OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY, mappedBy = "questionVar")
-    private List<Answer> answers;
 
 
     @JsonProperty("questionKit")
@@ -134,5 +127,17 @@ public class QuestionVar implements Persistable<Integer>, Comparable<QuestionVar
     @Override
     public int compareTo(QuestionVar o) {
         return this.id > o.id ? 1 : 0;
+    }
+
+    @Override
+    public String toString() {
+        return "\nQuestionVar{" +
+                "id=" + id +
+                ", number=" + number +
+                ", name='" + name + '\'' +
+                ", answerKit=" + answerKit +
+                ", questionKit=" + questionKit +
+                ", superQuestionVarId=" + superQuestionVarId +
+                "}";
     }
 }
