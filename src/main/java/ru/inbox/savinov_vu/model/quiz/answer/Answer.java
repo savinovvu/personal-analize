@@ -1,8 +1,9 @@
 package ru.inbox.savinov_vu.model.quiz.answer;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.NoArgsConstructor;
 import org.springframework.data.domain.Persistable;
-import ru.inbox.savinov_vu.model.constructor.question.QuestionVar;
+import ru.inbox.savinov_vu.model.quiz.question.Question;
 import ru.inbox.savinov_vu.model.quiz.questionnaire.Questionnaire;
 
 import javax.persistence.*;
@@ -10,9 +11,10 @@ import javax.persistence.*;
 @Entity
 @Table(name = "answers", uniqueConstraints =
         {@UniqueConstraint(columnNames = {"questionnaire_id"}, name = "answers_unique_questionnaire_idx"),
-                @UniqueConstraint(columnNames = {"questionvar_id"}, name = "answers_unique_questionvar_idx")
+                @UniqueConstraint(columnNames = {"question_id"}, name = "answers_unique_question_idx")
         })
 @Access(value = AccessType.FIELD)
+@NoArgsConstructor
 public class Answer implements Persistable<Integer>, Comparable<Answer> {
     @Id
     @SequenceGenerator(name = "SURVEY_SEQ", sequenceName = "SURVEY_SEQ", allocationSize = 1)
@@ -28,19 +30,18 @@ public class Answer implements Persistable<Integer>, Comparable<Answer> {
     @JoinColumn(name = "questionnaire_id", nullable = false)
     private Questionnaire questionnaire;
 
-    @JsonProperty("questionVar")
+    @JsonProperty("question")
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "questionVar_id", nullable = false)
-    private QuestionVar questionVar;
+    @JoinColumn(name = "question_id", nullable = false)
+    private Question question;
 
-
-    public Answer() {
+    public Question getQuestion() {
+        return question;
     }
 
-    public Answer(String name, Questionnaire questionnaire, QuestionVar questionVar) {
-        this.name = name;
-        this.questionnaire = questionnaire;
-        this.questionVar = questionVar;
+    public Answer setQuestion(Question question) {
+        this.question = question;
+        return this;
     }
 
     public void setId(Integer id) {
@@ -61,9 +62,6 @@ public class Answer implements Persistable<Integer>, Comparable<Answer> {
         return questionnaire;
     }
 
-    public QuestionVar getQuestionVar() {
-        return questionVar;
-    }
 
     public String getName() {
         return name;
@@ -73,9 +71,6 @@ public class Answer implements Persistable<Integer>, Comparable<Answer> {
         this.name = name;
     }
 
-    public void setQuestionVar(QuestionVar questionVar) {
-        this.questionVar = questionVar;
-    }
 
     public Answer setQuestionnaire(Questionnaire questionnaire) {
         this.questionnaire = questionnaire;
@@ -91,13 +86,13 @@ public class Answer implements Persistable<Integer>, Comparable<Answer> {
 
         if (name != null ? !name.equals(answer.name) : answer.name != null) return false;
 
-        return questionVar != null ? questionVar.equals(answer.questionVar) : answer.questionVar == null;
+        return question != null ? question.equals(answer.question) : answer.question == null;
     }
 
     @Override
     public int hashCode() {
         int result = (name != null ? name.hashCode() : 0);
-        result = 31 * result + (questionVar != null ? questionVar.hashCode() : 0);
+        result = 31 * result + (question != null ? question.hashCode() : 0);
         return result;
     }
 
@@ -105,5 +100,17 @@ public class Answer implements Persistable<Integer>, Comparable<Answer> {
     @Override
     public int compareTo(Answer o) {
         return this.id > o.id ? 1 : 0;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Answer{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", questionnaire=" + questionnaire +
+                ", question=" + question +
+                ", question=" + question +
+                '}';
     }
 }
