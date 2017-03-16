@@ -49,10 +49,12 @@
 
 
 <form id="surveyForm">
+
     <input type="hidden" name="survey_id" value="${survey_id}">
     <br>
     <br>
-
+    <input type="submit" class="btn btn-primary right-position" value="Готово"
+           onclick="getNumberOfQuestionnaire(${survey_id})">
     <ol id="questionList">
 
     </ol>
