@@ -4,11 +4,11 @@ import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.BaseFont;
 import com.itextpdf.text.pdf.PdfWriter;
 import org.springframework.beans.factory.annotation.Autowired;
-import ru.inbox.savinov_vu.model.constructor.question.QuestionVar;
 import ru.inbox.savinov_vu.model.quiz.answer.Answer;
+import ru.inbox.savinov_vu.model.quiz.question.Question;
 import ru.inbox.savinov_vu.model.quiz.questionnaire.Questionnaire;
 import ru.inbox.savinov_vu.model.quiz.survey.Survey;
-import ru.inbox.savinov_vu.service.constructor.questionVar.QuestionVarService;
+import ru.inbox.savinov_vu.service.quiz.question.QuestionService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,7 +20,7 @@ import java.util.List;
 
 public class ItextPdfView extends AbstractITextPdfView {
     @Autowired
-    QuestionVarService service;
+    QuestionService service;
 
 
     static final int FONT_SIZE_SMALL = 16;
@@ -84,18 +84,18 @@ public class ItextPdfView extends AbstractITextPdfView {
         }
 
 
-        Map<QuestionVar, Map<Answer, Long>> questionAnswerCountMap = (Map<QuestionVar, Map<Answer, Long>>) model.get("countAnswerByQuestionMap");
+        Map<Question, Map<Answer, Long>> questionAnswerCountMap = (Map<Question, Map<Answer, Long>>) model.get("countAnswerByQuestionMap");
 
         writeQuestionAndAnswer(document, questionAnswerCountMap);
 
 
     }
 
-    private void writeQuestionAndAnswer(Document document, Map<QuestionVar, Map<Answer, Long>> questionAnswerCountMap) throws DocumentException {
-        QuestionVar savedSuperQuestion = new QuestionVar();
-        for (Map.Entry<QuestionVar, Map<Answer, Long>> questionVarMapEntry : questionAnswerCountMap.entrySet()) {
-            writeQuestion(document, savedSuperQuestion, questionVarMapEntry);
-            for (Map.Entry<Answer, Long> answerLongEntry : questionVarMapEntry.getValue().entrySet()) {
+    private void writeQuestionAndAnswer(Document document, Map<Question, Map<Answer, Long>> questionAnswerCountMap) throws DocumentException {
+        Question savedSuperQuestion = new Question();
+        for (Map.Entry<Question, Map<Answer, Long>> questionMapEntry : questionAnswerCountMap.entrySet()) {
+            writeQuestion(document, savedSuperQuestion, questionMapEntry);
+            for (Map.Entry<Answer, Long> answerLongEntry : questionMapEntry.getValue().entrySet()) {
                 writeAnswer(document, answerLongEntry);
             }
             Paragraph emptyParagraph = new Paragraph(" ");
@@ -104,14 +104,14 @@ public class ItextPdfView extends AbstractITextPdfView {
         }
     }
 
-    private void writeQuestion(Document document, QuestionVar savedSuperQuestion, Map.Entry<QuestionVar, Map<Answer, Long>> questionVarMapEntry) throws DocumentException {
-        QuestionVar question = questionVarMapEntry.getKey();
+    private void writeQuestion(Document document, Question savedSuperQuestion, Map.Entry<Question, Map<Answer, Long>> questionMapEntry) throws DocumentException {
+        Question question = questionMapEntry.getKey();
         AddSuperQuestion(savedSuperQuestion, question, document);
         document.add(getQuestionParagraph(question));
     }
 
-    private Paragraph getQuestionParagraph(QuestionVar question) {
-        if (Objects.isNull(question.getSuperQuestionVarId())) {
+    private Paragraph getQuestionParagraph(Question question) {
+        if (Objects.isNull(question.getSuperQuestionId())) {
             return new Paragraph( question.getNumber() + ". " + question.getName(), font14);
         } else {
             return new Paragraph("     " + question.getNumber() + ". " + question.getName(), font14);
@@ -124,11 +124,11 @@ public class ItextPdfView extends AbstractITextPdfView {
     }
 
 
-    private void AddSuperQuestion(QuestionVar savedSuperQuestion, QuestionVar currentQuestion, Document document) throws DocumentException {
+    private void AddSuperQuestion(Question savedSuperQuestion, Question currentQuestion, Document document) throws DocumentException {
 
-        if (Objects.nonNull(currentQuestion.getSuperQuestionVarId())) {
-            if (!currentQuestion.getSuperQuestionVarId().equals(savedSuperQuestion.getId())) {
-                QuestionVar byId = service.findById(currentQuestion.getSuperQuestionVarId());
+        if (Objects.nonNull(currentQuestion.getSuperQuestionId())) {
+            if (!currentQuestion.getSuperQuestionId().equals(savedSuperQuestion.getId())) {
+                Question byId = service.findOne(currentQuestion.getSuperQuestionId());
                 savedSuperQuestion.setId(byId.getId()).setName(byId.getName()).setNumber(byId.getNumber());
                 Paragraph questionParagraph = new Paragraph(savedSuperQuestion.getNumber() + ". " + savedSuperQuestion.getName(), font14);
                 document.add(questionParagraph);

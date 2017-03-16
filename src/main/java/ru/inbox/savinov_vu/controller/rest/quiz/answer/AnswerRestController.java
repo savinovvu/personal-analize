@@ -26,13 +26,13 @@ public class AnswerRestController {
 
     @GetMapping("/all")
     public List<Answer> getAllAnswers() {
-        log.debug("get all Answers");
+        log.debug("\nget all Answers");
         return service.getAllAnswers();
     }
 
     @GetMapping("/{id}")
     public List<Answer> getAnswersWithQuestionnaire(@PathVariable("id") Integer id) {
-        log.debug("get Questionnaires with Survey id = {}", id);
+        log.debug("\nget Questionnaires with Survey id = {}", id);
         return service.getAnswersWithQuestionnaire(id);
     }
 
@@ -40,14 +40,14 @@ public class AnswerRestController {
     public String addAnswer(@RequestBody String json) throws IOException {
         List<Answer> answers = new ObjectMapper().readValue(json, new TypeReference<List<Answer>>() {
         });
-        log.debug("add answers with= {}", answers);
+        log.debug("\nadd answers with= {}", answers);
        Integer questionnaireNumber =  service.addAnswer(answers);
         return "Анкета № " + questionnaireNumber + " добавлена" ;
     }
 
     @DeleteMapping
     public List<Answer> deleteAnswer(@RequestBody Answer answer) {
-        log.debug("delete answer with id = {}", answer.getId());
+        log.debug("\ndelete answer with id = {}", answer.getId());
         service.deleteAnswer(answer);
         return service.getAllAnswers();
     }
