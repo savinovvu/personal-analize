@@ -10,7 +10,7 @@ public interface AnswerService {
 
     List<Answer> getAnswersWithQuestionnaire(Integer id);
 
-    void addAnswer(Answer answer);
+    Answer addAnswer(Answer answer);
 
     Integer addAnswer(List<Answer> answer);
 
