@@ -7,7 +7,6 @@ function viewMessage(data, id) {
     getNumberOfQuestionnaire(id);
 }
 
-
 function getAnswerList(formData) {
     var survey_id = formData[0].value;
     formData.splice(0, 1);
@@ -15,8 +14,8 @@ function getAnswerList(formData) {
     var questionnaire = new Questionnaire(null, null, null, survey);
     var answerList = [];
     $.each(formData, function (key, val) {
-        var questionVar = new QuestionVar(val.name);
-        var answer = new Answer(null, val.value, questionVar, questionnaire);
+        var question = new Question(null, null, null, val.name);
+        var answer = new Answer(null, val.value, question, questionnaire);
         answerList.push(answer);
     });
     return answerList;

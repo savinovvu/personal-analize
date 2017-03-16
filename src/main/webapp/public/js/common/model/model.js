@@ -53,10 +53,19 @@ function Questionnaire(id, number, createDate, survey) {
     this.survey = survey;
 }
 
-function Answer(id, name, questionVar, questionnaire) {
+function Question(id, name, number, questionVarId, superQuestionId) {
     this.id = Number(id);
     this.name = name;
-    this.questionVar = questionVar;
+    this.number = Number(number);
+    this.questionVarId = Number(questionVarId);
+    this.superQuestionId = Number(superQuestionId);
+
+}
+
+function Answer(id, name, question, questionnaire) {
+    this.id = Number(id);
+    this.name = name;
+    this.question = question;
     this.questionnaire = questionnaire;
 }
 
