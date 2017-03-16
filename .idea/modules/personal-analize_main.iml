@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module external.linked.project.id="personal-analize:main" external.linked.project.path="$MODULE_DIR$/../.." external.root.project.path="$MODULE_DIR$/../.." external.system.id="GRADLE" external.system.module.group="ru.inbox.savinov_vu" external.system.module.type="sourceSet" external.system.module.version="1.0-SNAPSHOT" type="JAVA_MODULE" version="4">
   <component name="FacetManager">
+    <facet type="Spring" name="Spring">
+      <configuration />
+    </facet>
     <facet type="web" name="Web Gradle : personal-analize-1.0-SNAPSHOT.war">
       <configuration>
         <descriptors>
@@ -10,9 +13,6 @@
           <root url="file://$MODULE_DIR$/../../src/main/webapp" relative="/" />
         </webroots>
       </configuration>
-    </facet>
-    <facet type="Spring" name="Spring">
-      <configuration />
     </facet>
   </component>
   <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8" inherit-compiler-output="false">
@@ -30,7 +30,6 @@
     <orderEntry type="library" name="Gradle: com.fasterxml.jackson.core:jackson-core:2.8.4" level="project" />
     <orderEntry type="library" name="Gradle: com.fasterxml.jackson.core:jackson-databind:2.8.4" level="project" />
     <orderEntry type="library" name="Gradle: com.fasterxml.jackson.core:jackson-annotations:2.8.4" level="project" />
-    <orderEntry type="library" name="Gradle: com.googlecode.json-simple:json-simple:1.1.1" level="project" />
     <orderEntry type="library" name="Gradle: org.hibernate:hibernate-core:5.2.3.Final" level="project" />
     <orderEntry type="library" name="Gradle: org.hibernate:hibernate-entitymanager:5.2.3.Final" level="project" />
     <orderEntry type="library" name="Gradle: org.hibernate:hibernate-validator:5.2.3.Final" level="project" />
@@ -51,9 +50,10 @@
     <orderEntry type="library" name="Gradle: org.webjars:datetimepicker:2.5.1" level="project" />
     <orderEntry type="library" name="Gradle: org.webjars:noty:2.2.4" level="project" />
     <orderEntry type="library" name="Gradle: org.webjars:datatables:1.10.12-1" level="project" />
-    <orderEntry type="library" name="Gradle: org.jsoup:jsoup:1.10.2" level="project" />
+    <orderEntry type="library" name="Gradle: org.projectlombok:lombok:1.16.14" level="project" />
+    <orderEntry type="library" name="Gradle: com.google.guava:guava:21.0" level="project" />
+    <orderEntry type="library" name="Gradle: one.util:streamex:0.6.5" level="project" />
     <orderEntry type="library" name="Gradle: ch.qos.logback:logback-core:1.1.7" level="project" />
-    <orderEntry type="library" name="Gradle: junit:junit:4.10" level="project" />
     <orderEntry type="library" name="Gradle: org.jboss.logging:jboss-logging:3.3.0.Final" level="project" />
     <orderEntry type="library" name="Gradle: org.javassist:javassist:3.20.0-GA" level="project" />
     <orderEntry type="library" name="Gradle: antlr:antlr:2.7.7" level="project" />
@@ -74,7 +74,6 @@
     <orderEntry type="library" name="Gradle: org.springframework.data:spring-data-commons-core:1.4.0.RELEASE" level="project" />
     <orderEntry type="library" name="Gradle: org.aspectj:aspectjrt:1.6.12" level="project" />
     <orderEntry type="library" name="Gradle: org.apache.tomcat:tomcat-juli:9.0.0.M11" level="project" />
-    <orderEntry type="library" name="Gradle: org.hamcrest:hamcrest-core:1.1" level="project" />
     <orderEntry type="library" name="Gradle: javax.el:el-api:2.2" level="project" />
     <orderEntry type="library" name="Gradle: org.jboss.spec.javax.interceptor:jboss-interceptors-api_1.1_spec:1.0.0.Beta1" level="project" />
     <orderEntry type="library" name="Gradle: javax.annotation:jsr250-api:1.0" level="project" />

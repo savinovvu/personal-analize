@@ -43,7 +43,8 @@
           <element id="library" level="project" name="Gradle: org.webjars:datetimepicker:2.5.1" />
           <element id="library" level="project" name="Gradle: org.webjars:noty:2.2.4" />
           <element id="library" level="project" name="Gradle: org.webjars:datatables:1.10.12-1" />
-          <element id="library" level="project" name="Gradle: org.jsoup:jsoup:1.10.2" />
+          <element id="library" level="project" name="Gradle: org.projectlombok:lombok:1.16.14" />
+          <element id="library" level="project" name="Gradle: com.google.guava:guava:21.0" />
           <element id="library" level="project" name="Gradle: ch.qos.logback:logback-core:1.1.7" />
           <element id="library" level="project" name="Gradle: org.jboss.logging:jboss-logging:3.3.0.Final" />
           <element id="library" level="project" name="Gradle: org.javassist:javassist:3.20.0-GA" />
@@ -69,9 +70,7 @@
           <element id="library" level="project" name="Gradle: org.jboss.spec.javax.interceptor:jboss-interceptors-api_1.1_spec:1.0.0.Beta1" />
           <element id="library" level="project" name="Gradle: javax.annotation:jsr250-api:1.0" />
           <element id="library" level="project" name="Gradle: javax.inject:javax.inject:1" />
-          <element id="file-copy" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.googlecode.json-simple/json-simple/1.1.1/c9ad4a0850ab676c5c64461a05ca524cdfff59f1/json-simple-1.1.1.jar" />
-          <element id="file-copy" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/junit/junit/4.10/e4f1766ce7404a08f45d859fb9c226fc9e41a861/junit-4.10.jar" />
-          <element id="file-copy" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.hamcrest/hamcrest-core/1.1/860340562250678d1a344907ac75754e259cdb14/hamcrest-core-1.1.jar" />
+          <element id="file-copy" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/one.util/streamex/0.6.5/aa690f593d97df7c9de3a0a53088c4b99bd252e/streamex-0.6.5.jar" />
         </element>
       </element>
     </root>

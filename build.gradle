@@ -94,8 +94,9 @@ dependencies {
     compile "org.webjars:datatables:1.10.12-1"
     /*Lombok*/
     compile "org.projectlombok:lombok:1.16.14"
-    /*Guava*/
+    /*util*/
     compile "com.google.guava:guava:21.0"
+    compile "one.util:streamex:0.6.5"
 
 
 
