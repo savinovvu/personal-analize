@@ -30,10 +30,10 @@ public class QuestionVarServiceImpl implements QuestionVarService {
 
     @Override
     public void addQuestionVar(QuestionVar questionVar) {
-        repository.saveAndFlush(setCount(questionVar));
+        repository.saveAndFlush(setNumber(questionVar));
     }
 
-    private QuestionVar setCount(QuestionVar questionVar) {
+    private QuestionVar setNumber(QuestionVar questionVar) {
         if (Objects.isNull(questionVar.getId()))
             if (Objects.isNull(questionVar.getSuperQuestionVarId())) {
                 questionVar.setNumber(Math.toIntExact(repository.getCountQuestionVarWithQuestionKit(questionVar.getQuestionKit().getId())) + 1);
