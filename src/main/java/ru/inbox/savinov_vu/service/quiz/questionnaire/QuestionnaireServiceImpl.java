@@ -25,7 +25,7 @@ public class QuestionnaireServiceImpl implements QuestionnaireService {
     }
 
     @Override
-    public Long countQuestionnairesWithSurvey(Integer id) {
+    public Long getCountQuestionnairesWithSurvey(Integer id) {
         return repository.countQuestionnairesWithSurvey(id);
     }
 
@@ -42,7 +42,7 @@ public class QuestionnaireServiceImpl implements QuestionnaireService {
     }
 
     private void getNumberOfQuestionnaire(Questionnaire questionnaire) {
-        questionnaire.setNumber((int) (countQuestionnairesWithSurvey(questionnaire.getSurvey().getId()) + 1));
+        questionnaire.setNumber((int) (getCountQuestionnairesWithSurvey(questionnaire.getSurvey().getId()) + 1));
     }
 
     @Override

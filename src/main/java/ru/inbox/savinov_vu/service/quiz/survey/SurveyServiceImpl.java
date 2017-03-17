@@ -21,21 +21,21 @@ public class SurveyServiceImpl implements SurveyService {
     public List<Survey> getAllSurveys() {
         return repository.findAll().stream()
                 .map(survey -> survey.setCount(questionnaireService
-                        .countQuestionnairesWithSurvey(survey.getId())))
+                        .getCountQuestionnairesWithSurvey(survey.getId())))
                 .collect(Collectors.toList());
     }
 
     @Override
     public Survey getSurveyByID(Integer id) {
         return repository.findOne(id).setCount(questionnaireService
-                .countQuestionnairesWithSurvey(id));
+                .getCountQuestionnairesWithSurvey(id));
     }
 
     @Override
     public Survey addSurvey(Survey survey) {
         survey = repository.saveAndFlush(survey);
         return survey.setCount(questionnaireService
-                .countQuestionnairesWithSurvey(survey.getId()));
+                .getCountQuestionnairesWithSurvey(survey.getId()));
     }
 
     @Override

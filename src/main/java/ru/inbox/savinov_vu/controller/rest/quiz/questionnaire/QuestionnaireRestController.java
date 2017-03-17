@@ -33,7 +33,7 @@ public class QuestionnaireRestController {
     @GetMapping("/count/{id}")
     public Long getcountQuestionnairesWithSurvey(@PathVariable("id") Integer id) {
         log.debug("get countQuestionnaires with Survey id = {}", id);
-        return service.countQuestionnairesWithSurvey(id);
+        return service.getCountQuestionnairesWithSurvey(id);
     }
 
     @PutMapping

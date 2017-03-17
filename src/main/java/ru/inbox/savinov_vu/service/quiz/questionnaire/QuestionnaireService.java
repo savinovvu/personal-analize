@@ -14,6 +14,6 @@ public interface QuestionnaireService {
 
     void deleteQuestionnaire(Questionnaire questionnaire);
 
-    Long countQuestionnairesWithSurvey(Integer id);
+    Long getCountQuestionnairesWithSurvey(Integer id);
 
 }
