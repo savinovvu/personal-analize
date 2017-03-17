@@ -34,14 +34,17 @@ function AnswerVar(id, name, answerKit) {
     this.answerKit = answerKit;
 }
 
-function QuestionVar(id, name, answerKit, questionKit, questionVar) {
+function QuestionVar(id, name, answerKit, questionKit, questionVar, number) {
     this.id = Number(id);
     this.name = name;
     this.answerKit = answerKit;
     this.questionKit = questionKit;
     this.questionVar = questionVar;
+    if (typeof number == "undefined")
+        this.number = null;
+    else
+        this.number = number;
 }
-
 function Survey(id) {
     this.id = Number(id);
 }

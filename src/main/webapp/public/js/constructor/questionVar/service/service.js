@@ -32,11 +32,13 @@ jQuery(function ($) {
             $('#id').val(),
             $("#name").val(),
             getSelectedAnswerKit(),
-            getSelectedQuestionKit()
+            getSelectedQuestionKit(),
+            null,
+            $('#number').val()
         );
-
         send(ajaxAPI.constructor.questionVar, "PUT", questionVar);
         document.getElementById('name').value = "";
+        document.getElementById('number').value = null;
     });
 });
 
