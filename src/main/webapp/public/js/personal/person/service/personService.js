@@ -25,7 +25,7 @@ function getGroupWithDepartment() {
     );
 
 
-    send(ajaxAPI.personal.group +"/"+ department.id , "GET", null, viewGroupAndDepartment);
+    send(ajaxAPI.personal.group + "/" + department.id, "GET", null, viewGroup);
 }
 
 

@@ -33,7 +33,7 @@ function view(data) {
                 "render": function (row, data, dataIndex) {
 
 
-                    return '<a class="btn btn-xs btn-primary" onclick="getModal(' + dataIndex.id + ')" data-toggle="modal" data-target="#myModal">Обновить</a>' +
+                    return '<a class="btn btn-xs btn-primary" onclick="getModal(' + dataIndex.id + ','+dataIndex.number +')" data-toggle="modal" data-target="#myModal">Обновить</a>' +
                         '<a  class="btn btn-xs btn-danger" onclick="getDelModal(' + dataIndex.id + ')" data-toggle="modal" data-target="#myDelModal">Удалить</a>';
                 }
             },
