@@ -117,6 +117,16 @@
                         </div>
                     </div>
 
+                    <div class="changeDivId">
+                        <div class="form-group has-feedback" id="divNumber">
+                            <div class="col-xs-6">
+                                <div class="input-group">
+                                    <input type="hidden" class="form-control" id="number" name="number" required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="form-group has-feedback">
                         <label for="name" class="control-label col-xs-3">Наименование:</label>
                         <div class="col-xs-6">
