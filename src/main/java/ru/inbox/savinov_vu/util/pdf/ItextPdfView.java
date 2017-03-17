@@ -6,7 +6,6 @@ import com.itextpdf.text.pdf.PdfWriter;
 import org.springframework.beans.factory.annotation.Autowired;
 import ru.inbox.savinov_vu.model.quiz.answer.Answer;
 import ru.inbox.savinov_vu.model.quiz.question.Question;
-import ru.inbox.savinov_vu.model.quiz.questionnaire.Questionnaire;
 import ru.inbox.savinov_vu.model.quiz.survey.Survey;
 import ru.inbox.savinov_vu.service.quiz.question.QuestionService;
 
@@ -14,8 +13,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.time.format.DateTimeFormatter;
-import java.util.*;
-import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 
 
 public class ItextPdfView extends AbstractITextPdfView {
@@ -62,8 +61,8 @@ public class ItextPdfView extends AbstractITextPdfView {
         Paragraph dateParagraph = new Paragraph("Дата Тестирования: " + survey.getDate().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")), font14);
         document.add(dateParagraph);
 
-        List<Questionnaire> questionnaires = new ArrayList(Arrays.asList(model.get("questionnaires")));
-        Paragraph countQuestionnaire = new Paragraph("Количество анкет: " + questionnaires.size(), font14);
+        Integer countQuestionnaires = (Integer)model.get("countQuestionnaires");
+        Paragraph countQuestionnaire = new Paragraph("Количество анкет: " + countQuestionnaires, font14);
         document.add(countQuestionnaire);
 
 

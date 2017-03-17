@@ -24,32 +24,32 @@ import java.util.stream.Collectors;
 @Slf4j
 public class SurveyPdfController {
 
-  @Autowired
-  SurveyService surveyService;
+    @Autowired
+    SurveyService surveyService;
 
-  @Autowired
-  QuestionnaireService questionnaireService;
+    @Autowired
+    QuestionnaireService questionnaireService;
 
-  @Autowired
-  AnswerService answerService;
+    @Autowired
+    AnswerService answerService;
 
-  @GetMapping(value = "pdf/quiz/survey/{id}")
-  public void editOrder(Model model, @PathVariable("id") int id) {
-    model.addAttribute("survey", surveyService.getSurveyByID(id));
-    List<Questionnaire> questionnairesWithSurvey = questionnaireService.getQuestionnairesWithSurvey(id);
-    model.addAttribute("questionnaires", questionnairesWithSurvey);
-    model.addAttribute("countAnswerByQuestionMap", getCountAnswerByQuestion(questionnairesWithSurvey));
+    @GetMapping(value = "pdf/quiz/survey/{id}")
+    public void editOrder(Model model, @PathVariable("id") int id) {
+        model.addAttribute("survey", surveyService.getSurveyByID(id));
+        List<Questionnaire> questionnairesWithSurvey = questionnaireService.getQuestionnairesWithSurvey(id);
+        model.addAttribute("countQuestionnaires", questionnairesWithSurvey.size());
+        model.addAttribute("countAnswerByQuestionMap", getCountAnswerByQuestion(questionnairesWithSurvey));
 
-  }
+    }
 
-  private Map<Question, Map<Answer, Long>> getCountAnswerByQuestion(List<Questionnaire>
-                                                                            questionnairesWithSurvey) {
-    return questionnairesWithSurvey.stream()
-            .map(questionnaire -> answerService.getAnswersWithQuestionnaire(questionnaire.getId()))
-            .flatMap(List::stream)
-            .collect(Collectors.
-                    groupingBy(Answer::getQuestion, LinkedHashMap::new,
-                            Collectors.groupingBy(Function.identity(), LinkedHashMap::new, Collectors.counting())));
-  }
+    private Map<Question, Map<Answer, Long>> getCountAnswerByQuestion(List<Questionnaire>
+                                                                              questionnairesWithSurvey) {
+        return questionnairesWithSurvey.stream()
+                .map(questionnaire -> answerService.getAnswersWithQuestionnaire(questionnaire.getId()))
+                .flatMap(List::stream)
+                .collect(Collectors.
+                        groupingBy(Answer::getQuestion, LinkedHashMap::new,
+                                Collectors.groupingBy(Function.identity(), LinkedHashMap::new, Collectors.counting())));
+    }
 
 }
