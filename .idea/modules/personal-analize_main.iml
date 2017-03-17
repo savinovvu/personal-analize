@@ -51,6 +51,7 @@
     <orderEntry type="library" name="Gradle: org.webjars:noty:2.2.4" level="project" />
     <orderEntry type="library" name="Gradle: org.webjars:datatables:1.10.12-1" level="project" />
     <orderEntry type="library" name="Gradle: org.projectlombok:lombok:1.16.14" level="project" />
+    <orderEntry type="library" name="Gradle: org.jsoup:jsoup:1.10.2" level="project" />
     <orderEntry type="library" name="Gradle: com.google.guava:guava:21.0" level="project" />
     <orderEntry type="library" name="Gradle: one.util:streamex:0.6.5" level="project" />
     <orderEntry type="library" name="Gradle: ch.qos.logback:logback-core:1.1.7" level="project" />
