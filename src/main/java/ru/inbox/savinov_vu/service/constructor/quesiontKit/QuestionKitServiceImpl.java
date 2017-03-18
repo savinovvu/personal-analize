@@ -14,6 +14,11 @@ public class QuestionKitServiceImpl implements QuestionKitService {
     QuestionKitRepository repository;
 
     @Override
+    public QuestionKit getById(Integer id) {
+        return repository.findOne(id);
+    }
+
+    @Override
     public List<QuestionKit> getAllQuestionKits() {
         return repository.findAll();
     }
