@@ -13,15 +13,15 @@
 
 
     <link href="/public/css/personal/admin.css" rel="stylesheet">
-    <script type="text/javascript" src="webjars/jquery/3.1.1-1/jquery.min.js"></script>
-    <script type="text/javascript" src="webjars/bootstrap/3.3.7-1/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="webjars/datatables/1.10.12/js/jquery.dataTables.min.js"></script>
-    <script type="text/javascript" src="webjars/datatables/1.10.12/js/dataTables.bootstrap.min.js"></script>
-    <script src="/public/js/common/model/model.js" type="text/javascript"></script>
-    <script src="/public/js/common/ajax/ajax.js" type="text/javascript"></script>
+    <script type="text/javascript" src="webjars/jquery/3.1.1-1/jquery.min.js" defer></script>
+    <script type="text/javascript" src="webjars/bootstrap/3.3.7-1/js/bootstrap.min.js" defer></script>
+    <script type="text/javascript" src="webjars/datatables/1.10.12/js/jquery.dataTables.min.js" defer></script>
+    <script type="text/javascript" src="webjars/datatables/1.10.12/js/dataTables.bootstrap.min.js" defer></script>
+    <script src="/public/js/common/model/model.js" type="text/javascript" defer></script>
+    <script src="/public/js/common/ajax/ajax.js" type="text/javascript" defer></script>
 
-    <script src="/public/js/personal/person/service/personService.js" type="text/javascript"></script>
-    <script src="/public/js/personal/person/view/personView.js" type="text/javascript"></script>
+    <script src="/public/js/personal/person/service/personService.js" type="text/javascript" defer></script>
+    <script src="/public/js/personal/person/view/personView.js" type="text/javascript" defer></script>
 
 </head>
 
