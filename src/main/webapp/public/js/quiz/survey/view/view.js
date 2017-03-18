@@ -69,7 +69,7 @@ function view(data) {
                         '<a   class="btn btn-xs btn-warning cuctombtnwithoutshadow" onclick="getDelModal(' + dataIndex.id + ')" data-toggle="modal" data-target="#myDelModal">Обновить данные</a>' +
                         '<a  class="btn btn-xs btn-danger cuctombtnwithoutshadow" onclick="getDelModal(' + dataIndex.id + ')" data-toggle="modal" data-target="#myDelModal">Удалить</a>' +
                         '<form method="get" action="continueQuiz"><input class="hidden" name="id" value="' + dataIndex.id + '"> <input type="submit" class="hidden" id="continue-' + dataIndex.id + '"></form>' +
-                        '<form method="get" action="/pdf/quiz/survey/'+dataIndex.id+'.pdf"><input type="submit" id="pdf-' + dataIndex.id + '" class="hidden"></form> ';
+                        '<form method="get" action="/pdf/quiz/survey/' + dataIndex.id + '.pdf"><input type="submit" id="pdf-' + dataIndex.id + '" class="hidden"></form> ';
 
                 }
             },
@@ -91,7 +91,7 @@ function viewDepartment(data) {
     $(".delDepartment").remove();
     var output = "";
     $.each(data, function (key, val) {
-        output += "<option class='delDepartment' id='"+val.id+"' value='" + val.name + "'>" + val.name + "</option>";
+        output += "<option class='delDepartment' id='" + val.id + "' value='" + val.name + "'>" + val.name + "</option>";
     });
     $("#department").append(output);
 
