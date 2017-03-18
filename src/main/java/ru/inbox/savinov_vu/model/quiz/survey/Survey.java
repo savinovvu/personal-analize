@@ -5,8 +5,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.NoArgsConstructor;
 import org.springframework.data.domain.Persistable;
-import ru.inbox.savinov_vu.model.personal.Department;
-import ru.inbox.savinov_vu.model.personal.Group;
 import ru.inbox.savinov_vu.model.quiz.question.Question;
 import ru.inbox.savinov_vu.model.quiz.questionnaire.Questionnaire;
 import ru.inbox.savinov_vu.util.json.JsonDateSerializer;
@@ -53,14 +51,12 @@ public class Survey implements Persistable<Integer> {
     private LocalDate date;
 
     @JsonProperty("department")
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "department_id", nullable = true)
-    private Department department;
+    @Column(name = "department")
+    private String department;
 
     @JsonProperty("group")
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "group_id", nullable = true)
-    private Group group;
+    @Column(name = "groupName")
+    private String group;
 
     @JsonProperty("questionKitId")
     @JoinColumn(name = "questionKitId", nullable = true)
@@ -119,20 +115,20 @@ public class Survey implements Persistable<Integer> {
     }
 
 
-    public Department getDepartment() {
+    public String getDepartment() {
         return department;
     }
 
-    public Survey setDepartment(Department department) {
+    public Survey setDepartment(String department) {
         this.department = department;
         return this;
     }
 
-    public Group getGroup() {
+    public String getGroup() {
         return group;
     }
 
-    public Survey setGroup(Group group) {
+    public Survey setGroup(String group) {
         this.group = group;
         return this;
     }
