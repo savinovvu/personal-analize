@@ -10,15 +10,10 @@ CREATE TABLE surveys
   comment       VARCHAR(1000),
   createDate    DATE NOT NULL,
   questionKitId INTEGER,
-  department_id INTEGER,
-  group_id      INTEGER,
+  department    VARCHAR(255),
+  groupName         VARCHAR(255)
 
 
-  FOREIGN KEY (department_id) REFERENCES department (id)
-    ON DELETE CASCADE,
-
-  FOREIGN KEY (group_id) REFERENCES groups (id)
-    ON DELETE CASCADE
 );
 
 

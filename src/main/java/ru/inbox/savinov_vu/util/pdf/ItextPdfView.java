@@ -67,10 +67,10 @@ public class ItextPdfView extends AbstractITextPdfView {
 
 
         if (Objects.nonNull(survey.getDepartment())) {
-            Paragraph departmentParagraph = new Paragraph("Подразделение: " + survey.getDepartment().getName(), font14);
+            Paragraph departmentParagraph = new Paragraph("Подразделение: " + survey.getDepartment(), font14);
             document.add(departmentParagraph);
             if (Objects.nonNull(survey.getGroup())) {
-                Paragraph groupParagraph = new Paragraph("Группа: " + survey.getGroup().getName(), font14);
+                Paragraph groupParagraph = new Paragraph("Группа: " + survey.getGroup(), font14);
                 document.add(groupParagraph);
             }
         }

@@ -19,7 +19,7 @@ function getDepartments() {
 
 function getGroupWithDepartment() {
     var department = new Department(
-        $('#department').val(),
+       Number($('#department').children(':selected').attr('id')),
         $('#department option:selected').text()
     );
 

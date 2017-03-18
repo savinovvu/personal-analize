@@ -41,10 +41,10 @@ function view(data) {
                         return null;
                     }
                     if (dataIndex.group === null) {
-                        return '<p id="department-' + dataIndex.id + '">' + row.name + '</p>';
+                        return '<p id="department-' + dataIndex.id + '">' + row + '</p>';
                     }
-                    return '<p id="department-' + dataIndex.id + '">' + row.name + '</p>' +
-                        '<p id="group-' + dataIndex.id + '">' + dataIndex.group.name + '</p>';
+                    return '<p id="department-' + dataIndex.id + '">' + row + '</p>' +
+                        '<p id="group-' + dataIndex.id + '">' + dataIndex.group + '</p>';
 
                 }
             },
@@ -91,7 +91,7 @@ function viewDepartment(data) {
     $(".delDepartment").remove();
     var output = "";
     $.each(data, function (key, val) {
-        output += "<option class='delDepartment' value='" + val.id + "'>" + val.name + "</option>";
+        output += "<option class='delDepartment' id='"+val.id+"' value='" + val.name + "'>" + val.name + "</option>";
     });
     $("#department").append(output);
 
@@ -101,7 +101,7 @@ function viewGroupWithDepartment(data) {
     $(".delGroup").remove();
     var output = "";
     $.each(data, function (key, val) {
-        output += "<option class='delGroup' value='" + val.id + "'>" + val.name + "</option>";
+        output += "<option class='delGroup' value='" + val.name + "'>" + val.name + "</option>";
     });
     $("#group").append(output);
 }

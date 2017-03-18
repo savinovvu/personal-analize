@@ -7,8 +7,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import ru.inbox.savinov_vu.model.constructor.question.QuestionKit;
-import ru.inbox.savinov_vu.model.personal.Department;
-import ru.inbox.savinov_vu.model.personal.Group;
 import ru.inbox.savinov_vu.model.quiz.survey.Survey;
 import ru.inbox.savinov_vu.service.constructor.quesiontKit.QuestionKitService;
 import ru.inbox.savinov_vu.service.quiz.survey.SurveyService;
@@ -83,18 +81,18 @@ public class QuizController {
     }
 
 
-    private Department getSurveyDepartment(HttpServletRequest request) {
+    private String getSurveyDepartment(HttpServletRequest request) {
         if (Objects.isNull(request.getParameter("department"))) {
             return null;
         }
-        return new Department().setId(Integer.valueOf(request.getParameter("department")));
+        return request.getParameter("department");
     }
 
-    private Group getSurveyGroup(HttpServletRequest request) {
+    private String getSurveyGroup(HttpServletRequest request) {
         if (Objects.isNull(request.getParameter("group"))) {
             return null;
         }
-        return new Group().setId(Integer.valueOf(request.getParameter("group")));
+        return request.getParameter("group");
     }
 
     private String getSurveyComment(HttpServletRequest request) {
