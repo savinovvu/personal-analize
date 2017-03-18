@@ -55,7 +55,7 @@ public class ItextPdfView extends AbstractITextPdfView {
         document.add(title);
 
 
-        Paragraph methodicals = new Paragraph("Используемая методика: " + survey.getQuestionKit().getName(), font14);
+        Paragraph methodicals = new Paragraph("Используемая методика: " + survey.getName(), font14);
         document.add(methodicals);
 
         Paragraph dateParagraph = new Paragraph("Дата Тестирования: " + survey.getDate().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")), font14);
