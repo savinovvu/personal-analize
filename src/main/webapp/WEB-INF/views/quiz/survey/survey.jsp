@@ -16,6 +16,7 @@
     <script type="text/javascript" src="webjars/datatables/1.10.12/js/dataTables.bootstrap.min.js" defer></script>
     <script src="/public/js/common/model/model.js" type="text/javascript" defer></script>
     <script src="/public/js/common/ajax/ajax.js" type="text/javascript" defer></script>
+    <script src="/public/js/common/view/view.js" type="text/javascript" defer></script>
 
     <script src="/public/js/quiz/survey/service/service.js" type="text/javascript" defer></script>
     <script src="/public/js/quiz/survey/view/view.js" type="text/javascript" defer></script>
@@ -173,11 +174,21 @@
 
 
                     <div class="form-group has-feedback">
-                        <label for="delName" class="control-label col-xs-3">ФИО:</label>
+                        <label for="delName" class="control-label col-xs-3">Id:</label>
                         <div class="col-xs-6">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-info-sign"></i></span>
-                                <input type="hidden" class="form-control" id="delId" name="id" readonly required>
+                                <input type="text" class="form-control" id="delId" name="id" readonly required>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="form-group has-feedback">
+                        <label for="delName" class="control-label col-xs-3">Методика:</label>
+                        <div class="col-xs-6">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-info-sign"></i></span>
                                 <input type="text" class="form-control" id="delName" name="name" readonly required/>
                             </div>
 

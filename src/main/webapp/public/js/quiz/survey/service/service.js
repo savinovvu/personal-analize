@@ -24,5 +24,16 @@ function getGroupWithDepartment() {
     );
 
     send(ajaxAPI.personal.group + "/" + department.id, "GET", null, viewGroupWithDepartment);
-
 }
+
+
+jQuery(function ($) {
+    $("#delEntity").submit(function (e) {
+        e.preventDefault();
+        $("#dismissButton").click();
+        var survey = new Survey(
+            $("#delId").val()
+        );
+        send(ajaxAPI.quiz.survey, "DELETE", survey, view);
+    });
+});
