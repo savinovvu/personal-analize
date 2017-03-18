@@ -20,8 +20,8 @@
     <script src="/public/js/common/ajax/ajax.js" type="text/javascript" defer></script>
 
 
-    <script src="/public/js/personal/department/service/departmentService.js" type="text/javascript"></script>
-    <script src="/public/js/personal/department/view/departmentView.js" type="text/javascript"></script>
+    <script src="/public/js/personal/department/service/departmentService.js" type="text/javascript" defer></script>
+    <script src="/public/js/personal/department/view/departmentView.js" type="text/javascript" defer></script>
 
 </head>
 
