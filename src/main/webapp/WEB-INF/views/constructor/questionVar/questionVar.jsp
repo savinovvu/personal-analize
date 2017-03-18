@@ -82,10 +82,10 @@
 
     </div>
 
-    <table id="entityT">
+    <table id="entityT" class="table table-bordered table-stripped table-condensed">
 
         <thead>
-        <tr>
+        <tr class="success">
             <td>№</td>
             <td>вопрос</td>
             <td>Набор ответов</td>

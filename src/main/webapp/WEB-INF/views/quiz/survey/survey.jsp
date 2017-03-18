@@ -43,17 +43,17 @@
 
     </div>
 
-    <table id="entityT" class="table table-bordered table-stripped table-hover table-condensed">
+    <table id="entityT" class="table table-bordered table-stripped table-condensed">
 
         <thead>
         <tr class="success">
-            <td>id</td>
-            <td>Методика</td>
-            <td>Дата</td>
-            <td>Заполнено</td>
-            <td>Подразделение</td>
-            <td>Комментарий</td>
-            <td>Действие</td>
+            <td style="width:5%;">id</td>
+            <td style="width:20%;">Методика</td>
+            <td style="width:20%;">Дата</td>
+            <td style="width:5%;">Заполнено</td>
+            <td style="width:20%;">Подразделение</td>
+            <td style="width:40%;">Комментарий</td>
+            <td style="width:20%;">Действие</td>
         </tr>
         </thead>
     </table>

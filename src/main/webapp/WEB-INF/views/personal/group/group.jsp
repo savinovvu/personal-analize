@@ -68,10 +68,10 @@
         </div>
     </div>
 
-    <table id="entityT">
+    <table id="entityT" class="table table-bordered table-stripped table-condensed">
 
         <thead>
-        <tr>
+        <tr class="success">
             <td>id</td>
             <td>Группа</td>
             <td>Подразделение</td>
