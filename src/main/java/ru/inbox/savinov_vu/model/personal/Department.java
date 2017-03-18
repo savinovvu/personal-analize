@@ -1,10 +1,10 @@
 package ru.inbox.savinov_vu.model.personal;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.hibernate.validator.constraints.SafeHtml;
 import org.springframework.data.domain.Persistable;
-import ru.inbox.savinov_vu.model.quiz.survey.Survey;
 
 import javax.persistence.*;
 import java.util.List;
@@ -12,6 +12,7 @@ import java.util.List;
 @Entity
 @Table(name = "department")
 @Access(value = AccessType.FIELD)
+@NoArgsConstructor
 public class Department  implements Persistable<Integer> {
 
     @Id
@@ -27,15 +28,6 @@ public class Department  implements Persistable<Integer> {
     @JsonIgnore
     @OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY, mappedBy = "department")
     private List<Group> groups;
-
-
-    @JsonIgnore
-    @OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY, mappedBy = "department")
-    private List<Survey> surveys;
-
-
-    public Department() {
-    }
 
 
     @Override
