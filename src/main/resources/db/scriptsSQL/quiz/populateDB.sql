@@ -4,10 +4,10 @@ DELETE FROM questionnaires;
 DELETE FROM surveys;
 
 
-INSERT INTO surveys (id, comment, createDate, questionkit_id, department_id, group_id) VALUES
+INSERT INTO surveys (id, comment, createDate, name, department_id, group_id, questionKitId) VALUES
   (1, 'Самый большой в мире комментарий призванный обрадовать любителя читать самые большие в мире комментарии',
-   '2011-01-11', 1, NULL, NULL),
-  (2, 'комментарий2', '2012-02-12', 2, 2, 2);
+   '2011-01-11', 'набор вопросов 1', NULL, NULL, 1),
+  (2, 'комментарий2', '2012-02-12', 'набор вопросов 2', 2, 2, 2);
 
 
 INSERT INTO questionnaires (id, number, createDate, survey_id) VALUES
@@ -35,7 +35,6 @@ INSERT INTO questions (id, number, NAME, questionVarId, survey_id, superQuestion
   (16, 1, 'выберете животное', 16, 1, 6),
   (17, 2, 'Согласны что вопрос нормальный?', 17, 2, 6),
   (18, 3, 'Что вы сейчас чувствуете?', 18, 1, 6);
-
 
 
 INSERT INTO answers (id, name, questionnaire_id, question_id) VALUES

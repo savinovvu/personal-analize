@@ -10,6 +10,7 @@ import ru.inbox.savinov_vu.model.constructor.question.QuestionKit;
 import ru.inbox.savinov_vu.model.personal.Department;
 import ru.inbox.savinov_vu.model.personal.Group;
 import ru.inbox.savinov_vu.model.quiz.survey.Survey;
+import ru.inbox.savinov_vu.service.constructor.quesiontKit.QuestionKitService;
 import ru.inbox.savinov_vu.service.quiz.survey.SurveyService;
 
 import javax.servlet.http.HttpServletRequest;
@@ -22,6 +23,8 @@ import java.util.Objects;
 public class QuizController {
     @Autowired
     SurveyService service;
+    @Autowired
+    QuestionKitService questionKitService;
 
     @GetMapping("conductSurvey")
     public String start() {
@@ -41,12 +44,14 @@ public class QuizController {
         log.debug("get beginSurveyPage");
 
         Survey survey = new Survey();
+        QuestionKit questionKit = getSurveyQuestionKit(request);
         survey.setId(getSurveyId(request))
-                .setQuestionKit(getSurveyQuestionKit(request))
+                .setName(questionKit.getName())
                 .setDate(getSurveyDate(request))
                 .setDepartment(getSurveyDepartment(request))
                 .setGroup(getSurveyGroup(request))
-                .setComment(getSurveyComment(request));
+                .setComment(getSurveyComment(request))
+                .setQuestionKitId(questionKit.getId());
         survey = service.addSurvey(survey);
         return "redirect:continueQuiz?id=" + survey.getId();
     }
@@ -66,7 +71,7 @@ public class QuizController {
         if ("".equals(request.getParameter("questionKit"))) {
             throw new IllegalArgumentException("this parameter must be don't null");
         }
-        return new QuestionKit().setId(Integer.valueOf(request.getParameter("questionKit")));
+        return questionKitService.getById(Integer.valueOf(request.getParameter("questionKit")));
     }
 
     private LocalDate getSurveyDate(HttpServletRequest request) {

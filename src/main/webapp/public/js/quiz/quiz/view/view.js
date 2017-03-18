@@ -1,5 +1,5 @@
 function viewSurvey(data) {
-    getQuestionVarsWithQuestionKit(data.questionKit.id);
+    getQuestionVarsWithQuestionKit(data.questionKitId);
 }
 
 

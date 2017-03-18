@@ -7,9 +7,9 @@ function view(data) {
         "columns": [
             {"data": "id"},
             {
-                "data": "questionKit",
+                "data": "name",
                 "render": function (row, data, dataIndex) {
-                    return '<p id="name-' + dataIndex.id + '">' + row.name + '</p>';
+                    return '<p id="name-' + dataIndex.id + '">' + row + '</p>';
                 }
             },
 
