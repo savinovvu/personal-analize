@@ -2,6 +2,7 @@ package ru.inbox.savinov_vu.model.personal;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.hibernate.validator.constraints.SafeHtml;
 import org.springframework.data.domain.Persistable;
@@ -12,6 +13,7 @@ import java.util.List;
 @Entity
 @Table(name = "groups", uniqueConstraints = {@UniqueConstraint(columnNames = {"department_id"}, name = "departments_unique_group_idx")})
 @Access(value = AccessType.FIELD)
+@NoArgsConstructor
 public class Group implements Persistable<Integer> {
 
     @Id

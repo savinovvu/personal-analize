@@ -1,6 +1,7 @@
 package ru.inbox.savinov_vu.model.personal;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.hibernate.validator.constraints.SafeHtml;
 import org.springframework.data.domain.Persistable;
@@ -11,6 +12,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "persons", uniqueConstraints = {@UniqueConstraint(columnNames = {"group_id"}, name = "persons_unique_group_idx")})
 @Access(value = AccessType.FIELD)
+@NoArgsConstructor
 public class Person  implements Persistable<Integer> {
     @Id
     @SequenceGenerator(name = "GLOBAL_SEQ", sequenceName = "GLOBAL_SEQ", allocationSize = 1)
@@ -28,8 +30,7 @@ public class Person  implements Persistable<Integer> {
     @JoinColumn(name = "group_id", nullable = false)
     private Group group;
 
-    public Person() {
-    }
+
     @Override
     public String toString() {
         return "Person{" +
