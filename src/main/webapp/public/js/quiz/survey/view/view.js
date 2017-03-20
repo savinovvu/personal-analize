@@ -5,7 +5,15 @@ function view(data) {
     $('#entityT').DataTable({
         "data": data,
         "columns": [
-            {"data": "id"},
+            {
+                "data": "id",
+                "render": function (row, data, dataIndex) {
+                    return '<p id="id-' + dataIndex.id + '">' + row + '</p>' +
+                        '<p  class="hidden" id="questionKitId-' + dataIndex.id + '">' + dataIndex.questionKitId + '</p>';
+
+                }
+            },
+
             {
                 "data": "name",
                 "render": function (row, data, dataIndex) {
@@ -53,7 +61,7 @@ function view(data) {
             {
                 "data": "comment",
                 "render": function (row, data, dataIndex) {
-                    return '<p id="name-' + dataIndex.id + '">' + row + '</p>';
+                    return '<p id="comment-' + dataIndex.id + '">' + row + '</p>';
 
                 }
             },
@@ -65,8 +73,8 @@ function view(data) {
 
                     return '<label for="continue-' + dataIndex.id + '" class="btn btn-xs btn-primary cuctombtnwithoutshadow">Продолжить</label>' +
                         '<label for="pdf-' + dataIndex.id + '" class="btn btn-xs btn-info cuctombtnwithoutshadow" >PDF</label>' +
-                        '<a   class="btn btn-xs btn-warning cuctombtnwithoutshadow" onclick="getModal(' + dataIndex.id + ')" data-toggle="modal" data-target="#myModal">Обновить данные</a>' +
-                        '<a  class="btn btn-xs btn-danger cuctombtnwithoutshadow" onclick="getDelModal(' + dataIndex.id +')" data-toggle="modal" data-target="#myDelModal">Удалить</a>' +
+                        '<a   class="btn btn-xs btn-warning cuctombtnwithoutshadow" onclick="getUpdateModal(' + dataIndex.id + ')" data-toggle="modal" data-target="#myUpdateModal">Обновить данные</a>' +
+                        '<a  class="btn btn-xs btn-danger cuctombtnwithoutshadow" onclick="getDelModal(' + dataIndex.id + ')" data-toggle="modal" data-target="#myDelModal">Удалить</a>' +
                         '<form method="get" action="continueQuiz"><input class="hidden" name="id" value="' + dataIndex.id + '"> <input type="submit" class="hidden" id="continue-' + dataIndex.id + '"></form>' +
                         '<form method="get" action="/pdf/quiz/survey/' + dataIndex.id + '.pdf"><input type="submit" id="pdf-' + dataIndex.id + '" class="hidden"></form> ';
 
@@ -92,7 +100,7 @@ function viewDepartment(data) {
     $.each(data, function (key, val) {
         output += "<option class='delDepartment' id='" + val.id + "' value='" + val.name + "'>" + val.name + "</option>";
     });
-    $("#department").append(output);
+    $(".getDepartment").append(output);
 
 }
 
@@ -102,5 +110,5 @@ function viewGroupWithDepartment(data) {
     $.each(data, function (key, val) {
         output += "<option class='delGroup' value='" + val.name + "'>" + val.name + "</option>";
     });
-    $("#group").append(output);
+    $(".getGroup").append(output);
 }

@@ -113,9 +113,9 @@
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
 
-                                <select id="department" class="form-control" name="department"
-                                        onchange="getGroupWithDepartment()">
-                                    <option disabled selected>Подразделение</option>
+                                <select id="department" class="form-control getDepartment" name="department"
+                                        onchange="getGroupWithDepartment('department')">
+                                    <option value="" selected>Не выбрано</option>
                                 </select>
                             </div>
                         </div>
@@ -129,8 +129,8 @@
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
 
-                                <select id="group" class="form-control" name="group">
-                                    <option disabled selected>Группа</option>
+                                <select id="group" class="form-control getGroup" name="group">
+                                    <option value="" selected>Не выбран</option>
 
                                 </select>
                             </div>
@@ -210,6 +210,121 @@
 
 
 </form>
+
+<%--update model--%>
+<div class="modal fade" id="myUpdateModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">×</button>
+                <h4 class="modal-title text-center" id="myUpdateModalLabel">Обновить информацию</h4>
+            </div>
+            <div class="modal-body">
+                <form role="form" class="form-horizontal" id="updateEntity">
+
+                    <div class="form-group has-feedback">
+                        <label for="delName" class="control-label col-xs-3">Id:</label>
+                        <div class="col-xs-6">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-info-sign"></i></span>
+                                <input type="text" class="form-control" id="idUpdate" name="id" readonly required>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="form-group has-feedback hidden">
+                        <label for="delName" class="control-label col-xs-3">questionKitId:</label>
+                        <div class="col-xs-6">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-info-sign"></i></span>
+                                <input type="text" class="form-control" id="questionKitIdUpdate" name="questionKitId" readonly required>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="form-group has-feedback">
+                        <label for="delName" class="control-label col-xs-3">Методика:</label>
+                        <div class="col-xs-6">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-info-sign"></i></span>
+                                <input type="text" class="form-control" id="nameUpdate" name="name" readonly required/>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-group has-feedback">
+                        <label for="questionKit" class="control-label col-xs-3"> Дата:</label>
+                        <div class="col-xs-6">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+                                <input type="date" id="dateUpdate" name="createDate" class="form-control">
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                    <div class="form-group has-feedback">
+                        <label for="department" class="control-label col-xs-3">Подразделение:</label>
+
+                        <div class="col-xs-6">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+
+                                <select id="departmentUpdate" class="form-control getDepartment" name="department"
+                                        onchange="getGroupWithDepartment('departmentUpdate')">
+                                    <option value="noChange" selected>Не менять</option>
+                                    <option value="">Не выбрано</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group has-feedback">
+                        <label for="group" class="control-label col-xs-3">Отдел:</label>
+
+                        <div class="col-xs-6">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+
+                                <select id="groupUpdate" class="form-control getGroup" name="group">
+                                    <option value="noChange" selected>Не менять</option>
+                                    <option value="">Не выбран</option>
+
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group has-feedback">
+                        <label for="comment" class="control-label col-xs-3">Комментарий:</label>
+
+                        <div class="col-xs-6">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+                                <textarea name="comment" rows="10" class="form-control" id="commentUpdate"></textarea>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="modal-footer">
+                        <input id="update" type="submit" class="btn btn-primary"  value="Обновить">
+                        <button type="button" id="updateDismissButton" class="btn btn-primary" data-dismiss="modal">Отмена</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
 
 
 </body>
