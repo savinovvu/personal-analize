@@ -11,7 +11,7 @@ CREATE TABLE surveys
   createDate    DATE NOT NULL,
   questionKitId INTEGER,
   department    VARCHAR(255),
-  groupName         VARCHAR(255)
+  groupName     VARCHAR(255)
 
 
 );
