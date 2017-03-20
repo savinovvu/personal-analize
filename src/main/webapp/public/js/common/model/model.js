@@ -45,8 +45,14 @@ function QuestionVar(id, name, answerKit, questionKit, questionVar, number) {
     else
         this.number = number;
 }
-function Survey(id) {
+function Survey(id, name, createDate, department, group, comment, questionKitId) {
     this.id = Number(id);
+    this.name = name;
+    this.createDate = createDate;
+    this.department = department;
+    this.group = group;
+    this.comment = comment;
+    this.questionKitId = questionKitId;
 }
 
 function Questionnaire(id, number, createDate, survey) {
@@ -62,6 +68,7 @@ function Question(id, name, number, questionVarId, superQuestionId) {
     this.number = Number(number);
     this.questionVarId = Number(questionVarId);
     this.superQuestionId = Number(superQuestionId);
+
 
 }
 
