@@ -14,6 +14,7 @@ function view(data) {
                 }
             },
 
+
             {
                 "data": "name",
                 "render": function (row, data, dataIndex) {
@@ -34,8 +35,10 @@ function view(data) {
                 "render": function (row, data, dataIndex) {
                     var output = '<label class="btn btn-link" for="form-' + dataIndex.id + '" id="count-' + dataIndex.id + '">' + row + '</label>';
 
-                    output += '<form class="hidden"  action="questionnaireMenu/' + dataIndex.id + '" method="get">';
+                    output += '<form class="hidden"  action="questionnaire" method="get">';
+
                     output += '<input id="form-' + dataIndex.id + '" type="submit">';
+                    output += '<input name="id" value="' + dataIndex.id + '" type="text">';
                     output += '<form>';
                     return output;
 

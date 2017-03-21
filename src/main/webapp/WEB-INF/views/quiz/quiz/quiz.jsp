@@ -31,6 +31,13 @@
     <label class="btn btn-info mynav" for="survey"><i class="glyphicon glyphicon-list label-info "></i>&nbsp
         Тестирование</label>
 
+    <label class="btn btn-info mynav" for="questionnaires"><i class="glyphicon glyphicon-list label-info "></i>&nbsp
+        Список анкет</label>
+
+    <label class="btn btn-info mynav" for="pdf"><i class="glyphicon glyphicon-list label-info "></i>&nbsp
+        PDF</label>
+
+
     <form action="/" method="get">
         <input id="start" class="hidden" type="submit" name="viewAllUsers" value="Главная">
     </form>
@@ -39,12 +46,21 @@
     <form action="conductSurvey" method="get">
         <input id="survey" class="hidden" type="submit" name="viewAllUsers">
     </form>
+
+    <form class="hidden" action="questionnaire" method="get">';
+
+        <input id="questionnaires" type="submit">
+        <input name="id" value="${survey_id}" type="text">
+        <form>
+
+
+            <form method="get" action="/pdf/quiz/survey/${survey_id}.pdf">
+                <input type="submit" id="pdf" class="hidden">
+            </form>
+
 </nav>
 
 <p>Ориентировочный номер анкеты: <span id="numberOfQuestionnaire"></span></p>
-
-
-
 
 
 <form id="surveyForm">
