@@ -19,26 +19,26 @@ public class SurveyRestController {
 
     @GetMapping("/all")
     public List<Survey> getAllSurveys() {
-        log.debug("get all Surveys");
+        log.debug("\nget all Surveys");
         return service.getAllSurveys();
     }
 
     @GetMapping("/{id}")
     public Survey getSurveyById(@PathVariable("id") Integer id) {
-        log.debug("get Survey By id = {}", id);
+        log.debug("\nget Survey By id = {}", id);
         return service.getSurveyById(id);
     }
 
     @PutMapping
     public List<Survey> addSurvey(@RequestBody Survey survey) {
-        log.debug("add survey with {}", survey);
+        log.debug("\nadd survey with {}", survey);
         service.addSurvey(survey);
         return service.getAllSurveys();
     }
 
     @DeleteMapping
     public List<Survey> deleteSurvey(@RequestBody Survey survey) {
-        log.debug("delete survey with id = {}", survey.getId());
+        log.debug("\ndelete survey with id = {}", survey.getId());
         service.deleteSurvey(survey);
         return service.getAllSurveys();
     }

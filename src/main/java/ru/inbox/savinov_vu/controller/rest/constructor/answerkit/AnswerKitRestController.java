@@ -19,14 +19,14 @@ public class AnswerKitRestController {
 
     @GetMapping(value = "/all")
     public List<AnswerKit> getAllAnswerKits() {
-        log.debug("get all questionkits");
+        log.debug("\nget all questionkits");
         return service.getAllAnswerKits();
 
     }
 
     @PutMapping
     public List<AnswerKit> addAnswerKit(@RequestBody AnswerKit answerKit) {
-        log.debug("put questionKit {}", answerKit);
+        log.debug("\nput questionKit {}", answerKit);
         service.addAnswerKit(answerKit);
         return service.getAllAnswerKits();
 
@@ -34,7 +34,7 @@ public class AnswerKitRestController {
 
     @DeleteMapping
     public List<AnswerKit> deleteAnswerKit(@RequestBody AnswerKit answerKit) {
-        log.debug("delete questionKit {}", answerKit);
+        log.debug("\ndelete questionKit {}", answerKit);
         service.deleteAnswerKit(answerKit);
         return service.getAllAnswerKits();
 

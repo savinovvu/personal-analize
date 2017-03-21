@@ -19,19 +19,20 @@ public class QuestionVarRestController {
 
     @GetMapping("/{id}")
     public List<QuestionVar> getQuestionVarWithQuestionKit(@PathVariable("id") Integer id) {
+        log.debug("\nget QuestionVar with QuestionKit id = {}", id);
         return service.getQuestionVarWithQuestionKit(id);
     }
 
     @PutMapping
     public List<QuestionVar> addQuestionVar(@RequestBody QuestionVar questionVar) {
-        log.debug("add questionVar with {}", questionVar);
+        log.debug("\nadd questionVar with {}", questionVar);
         service.addQuestionVar(questionVar);
         return service.getQuestionVarWithQuestionKit(questionVar.getQuestionKit().getId());
     }
 
     @DeleteMapping
     public List<QuestionVar> deleteQuestionVar(@RequestBody QuestionVar questionVar) {
-        log.debug("delete questionVar with id = {}", questionVar.getId());
+        log.debug("\ndelete questionVar with id = {}", questionVar.getId());
         service.deleteQuestionVar(questionVar);
         return service.getQuestionVarWithQuestionKit(questionVar.getQuestionKit().getId());
     }

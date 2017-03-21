@@ -10,19 +10,19 @@ public class PersonalController {
 
     @GetMapping("editDepartment")
     public String personalDepartment() {
-        log.debug("get editDepartment page");
+        log.debug("\nget editDepartment page");
         return "personal/department/department";
     }
 
     @GetMapping("editGroup")
     public String personalGroup() {
-        log.debug("get editGroup page");
+        log.debug("\nget editGroup page");
         return "personal/group/group";
     }
 
     @GetMapping("editPerson")
     public String personalPerson() {
-        log.debug("get editPerson page");
+        log.debug("\nget editPerson page");
         return "personal/person/person";
     }
 }

@@ -20,33 +20,33 @@ public class QuestionnaireRestController {
 
     @GetMapping("/all")
     public List<Questionnaire> getAllQuestionnaire() {
-        log.debug("get all Questionnaires");
+        log.debug("\nget all Questionnaires");
         return service.getAllQuestionnaires();
     }
 
     @GetMapping("/{id}")
     public List<Questionnaire> getQuestionnairesWithSurvey(@PathVariable("id") Integer id) {
-        log.debug("get Questionnaires with Survey id = {}", id);
+        log.debug("\nget Questionnaires with Survey id = {}", id);
         return service.getQuestionnairesWithSurvey(id);
     }
 
     @GetMapping("/count/{id}")
     public Long getcountQuestionnairesWithSurvey(@PathVariable("id") Integer id) {
-        log.debug("get countQuestionnaires with Survey id = {}", id);
+        log.debug("\nget countQuestionnaires with Survey id = {}", id);
         return service.getCountQuestionnairesWithSurvey(id);
     }
 
     @PutMapping
     public List<Questionnaire> addQuestionnaire(@RequestBody Questionnaire questionnaire) {
-        log.debug("add questionnaire with {}", questionnaire);
+        log.debug("\nadd questionnaire with {}", questionnaire);
         service.addQuestionnaire(questionnaire);
         return service.getAllQuestionnaires();
     }
 
     @DeleteMapping
     public List<Questionnaire> deleteQuestionnaire(@RequestBody Questionnaire questionnaire) {
-        log.debug("delete questionnaire with id = {}", questionnaire.getId());
+        log.debug("\ndelete questionnaire with id = {}", questionnaire.getId());
         service.deleteQuestionnaire(questionnaire);
-        return service.getAllQuestionnaires();
+        return service.getQuestionnairesWithSurvey(questionnaire.getSurvey().getId());
     }
 }

@@ -21,14 +21,14 @@ public class DepartmentRestController {
 
     @GetMapping(value = "/all")
     public List<Department> getAllDepartments() {
-        log.debug("get all departments");
+        log.debug("\nget all departments");
         return service.getAllDepartments();
 
     }
 
     @PutMapping
     public List<Department> addDepartment(@RequestBody Department department) {
-        log.debug("put department {}", department);
+        log.debug("\nput department {}", department);
         service.addDepartment(department);
         return service.getAllDepartments();
 
@@ -36,7 +36,7 @@ public class DepartmentRestController {
 
     @DeleteMapping
     public List<Department> deleteDepartment(@RequestBody Department department) {
-        log.debug("delete department {}", department);
+        log.debug("\ndelete department {}", department);
         service.deleteDepartment(department);
         return service.getAllDepartments();
 

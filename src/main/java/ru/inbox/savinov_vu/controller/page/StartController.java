@@ -14,7 +14,7 @@ public class StartController {
 
     @GetMapping("/")
     public String start() {
-        log.debug("get startPage");
+        log.debug("\nget startPage");
         return "start/start";
     }
 

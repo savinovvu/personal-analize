@@ -19,13 +19,13 @@ public class QuestionSubRestController {
 
     @GetMapping("/{id}")
     public List<QuestionVar> getQuestionSubWithQuestionVar(@PathVariable("id") Integer id) {
-        log.debug("get questonVar with questionVar_id={}", id);
+        log.debug("\nget questonVar with questionVar_id={}", id);
         return service.getQuestionVarWithSuperQuestionVar(id);
     }
 
     @PutMapping
     public List<QuestionVar> addQuestionSub(@RequestBody QuestionVar questionVar) {
-        log.debug("add questonVar with {}", questionVar);
+        log.debug("\nadd questonVar with {}", questionVar);
         service.addQuestionVar(questionVar);
         return service.getQuestionVarWithSuperQuestionVar(questionVar.getSuperQuestionVarId());
 
@@ -33,7 +33,7 @@ public class QuestionSubRestController {
 
     @DeleteMapping
     public List<QuestionVar> deleteQuestionSub(@RequestBody QuestionVar questionVar) {
-        log.debug("delete questonVar with id = {}", questionVar.getId());
+        log.debug("\ndelete questonVar with id = {}", questionVar.getId());
         service.deleteQuestionVar(questionVar);
         return service.getQuestionVarWithSuperQuestionVar(questionVar.getSuperQuestionVarId());
     }

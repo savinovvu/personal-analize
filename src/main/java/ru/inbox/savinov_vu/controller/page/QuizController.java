@@ -25,7 +25,7 @@ public class QuizController {
 
     @GetMapping("conductSurvey")
     public String start() {
-        log.debug("get quiz page");
+        log.debug("\nget quiz page");
         return "quiz/survey/survey";
     }
 
@@ -43,7 +43,7 @@ public class QuizController {
 
     @GetMapping("newQuiz")
     public String beginNewSurvey(HttpServletRequest request) {
-        log.debug("get beginSurveyPage");
+        log.debug("\nget beginSurveyPage");
 
         Survey survey = new Survey();
         QuestionKit questionKit = getSurveyQuestionKit(request);

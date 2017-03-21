@@ -20,14 +20,14 @@ public class PersonRestController {
 
     @GetMapping(value = "/all")
     public List<Person> getAllPerson() {
-        log.debug("get all persons");
+        log.debug("\nget all persons");
         return service.getAllPersons();
 
     }
 
     @GetMapping("/{id}")
     public List<Person> getPersonWithGroup(@PathVariable("id") Integer id) {
-        log.debug("get all persons where group id= {}", id);
+        log.debug("\nget all persons where group id= {}", id);
         return service.getPersonWithGroup(id);
 
     }
@@ -35,7 +35,7 @@ public class PersonRestController {
 
     @PutMapping
     public List<Person> putPerson(@RequestBody Person person) {
-        log.debug("put person {}", person);
+        log.debug("\nput person {}", person);
         service.addPerson(person);
         return service.getAllPersons();
 
@@ -43,7 +43,7 @@ public class PersonRestController {
 
     @DeleteMapping
     public List<Person> deletePerson(@RequestBody Person person) {
-        log.debug("delete person {}", person);
+        log.debug("\ndelete person {}", person);
         service.deletePerson(person);
         return service.getAllPersons();
 
