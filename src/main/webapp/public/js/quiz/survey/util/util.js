@@ -8,3 +8,11 @@ function getUpdateModal(id) {
     document.getElementById('questionKitIdUpdate').value = $('#questionKitId-' + id).text();
 
 }
+
+function groupViewOptions(id) {
+    $(".delGroup2").remove();
+    if ($('#' + id).children(':selected').attr('value') == "noChange") {
+        var output = '<option value="noChange" class="delGroup2" selected>Не менять</option>';
+        $("#groupUpdate").append(output);
+    }
+}

@@ -278,8 +278,8 @@
 
                                 <select id="departmentUpdate" class="form-control getDepartment" name="department"
                                         onchange="getGroupWithDepartment('departmentUpdate')">
-                                    <option value="noChange" selected>Не менять</option>
-                                    <option value="">Не выбрано</option>
+                                    <option value="noChange"   selected>Не менять</option>
+                                    <option value="" >Не выбрано</option>
                                 </select>
                             </div>
                         </div>
@@ -294,7 +294,7 @@
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
 
                                 <select id="groupUpdate" class="form-control getGroup" name="group">
-                                    <option value="noChange" selected>Не менять</option>
+                                    <option value="noChange" class="delGroup2"selected>Не менять</option>
                                     <option value="">Не выбран</option>
 
                                 </select>
