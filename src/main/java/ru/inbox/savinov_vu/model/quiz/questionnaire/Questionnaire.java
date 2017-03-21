@@ -2,10 +2,12 @@ package ru.inbox.savinov_vu.model.quiz.questionnaire;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import org.springframework.data.domain.Persistable;
 import ru.inbox.savinov_vu.model.quiz.answer.Answer;
 import ru.inbox.savinov_vu.model.quiz.survey.Survey;
+import ru.inbox.savinov_vu.util.json.JsonDateDeserializer;
 import ru.inbox.savinov_vu.util.json.JsonDateSerializer;
 
 import javax.persistence.*;
@@ -32,6 +34,7 @@ public class Questionnaire implements Persistable<Integer> {
     @Column(name = "createDate")
     @JsonProperty("createDate")
     @JsonSerialize(using = JsonDateSerializer.class)
+    @JsonDeserialize(using = JsonDateDeserializer.class)
     private LocalDate date;
 
 
