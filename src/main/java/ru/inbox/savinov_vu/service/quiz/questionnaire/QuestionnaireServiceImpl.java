@@ -47,7 +47,10 @@ public class QuestionnaireServiceImpl implements QuestionnaireService {
 
     @Override
     public void deleteQuestionnaire(Questionnaire questionnaire) {
+        List<Questionnaire> questionnaires = repository.getQuestionnairesWithSurveyAndIdMoreThat(questionnaire.getSurvey().getId(), questionnaire.getId());
         repository.delete(questionnaire.getId());
+        questionnaires.stream().map(questionnaire1 -> questionnaire1.setNumber(questionnaire1.getNumber()-1))
+                .forEach(questionnaire1-> repository.saveAndFlush(questionnaire1));
     }
 
 

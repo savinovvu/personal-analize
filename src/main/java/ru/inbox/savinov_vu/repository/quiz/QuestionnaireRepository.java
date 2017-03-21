@@ -15,6 +15,9 @@ public interface QuestionnaireRepository extends JpaRepository<Questionnaire,Int
     @Query("SELECT p FROM Questionnaire p WHERE p.survey.id=:survey_id")
     List<Questionnaire> getQuestionnaireWithSurvey(@Param("survey_id") Integer id);
 
+    @Query("SELECT p FROM Questionnaire p WHERE p.survey.id=:survey_id AND p.id >:questionnaire_id")
+    List<Questionnaire> getQuestionnairesWithSurveyAndIdMoreThat(@Param("survey_id") Integer surveyId, @Param("questionnaire_id") Integer QuestionnaireId);
+
     @Query("SELECT count(p) FROM Questionnaire p WHERE p.survey.id=:survey_id")
     Long countQuestionnairesWithSurvey(@Param("survey_id") Integer id);
 
