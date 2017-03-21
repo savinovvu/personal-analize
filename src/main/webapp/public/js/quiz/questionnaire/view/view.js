@@ -38,7 +38,8 @@ function view(data) {
 
                 }
             },
-        ]
+        ],
+        "order": [[ 2, "desc" ]]
     });
 
 }
