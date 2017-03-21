@@ -35,7 +35,7 @@ public class SurveyPdfController {
 
     @GetMapping(value = "pdf/quiz/survey/{id}")
     public void editOrder(Model model, @PathVariable("id") int id) {
-        model.addAttribute("survey", surveyService.getSurveyByID(id));
+        model.addAttribute("survey", surveyService.getSurveyById(id));
         List<Questionnaire> questionnairesWithSurvey = questionnaireService.getQuestionnairesWithSurvey(id);
         model.addAttribute("countQuestionnaires", questionnairesWithSurvey.size());
         model.addAttribute("countAnswerByQuestionMap", getCountAnswerByQuestion(questionnairesWithSurvey));

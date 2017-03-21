@@ -8,7 +8,7 @@ public interface SurveyService {
 
     List<Survey> getAllSurveys();
 
-    Survey getSurveyByID(Integer id);
+    Survey getSurveyById(Integer id);
 
     Survey addSurvey(Survey survey);
 

@@ -26,7 +26,7 @@ public class SurveyServiceImpl implements SurveyService {
     }
 
     @Override
-    public Survey getSurveyByID(Integer id) {
+    public Survey getSurveyById(Integer id) {
         return repository.findOne(id).setCount(questionnaireService
                 .getCountQuestionnairesWithSurvey(id));
     }

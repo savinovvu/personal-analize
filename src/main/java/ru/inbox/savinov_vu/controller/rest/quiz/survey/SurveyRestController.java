@@ -26,7 +26,7 @@ public class SurveyRestController {
     @GetMapping("/{id}")
     public Survey getSurveyById(@PathVariable("id") Integer id) {
         log.debug("get Survey By id = {}", id);
-        return service.getSurveyByID(id);
+        return service.getSurveyById(id);
     }
 
     @PutMapping
