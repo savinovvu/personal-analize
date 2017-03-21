@@ -5,7 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import ru.inbox.savinov_vu.model.constructor.question.QuestionKit;
 import ru.inbox.savinov_vu.model.quiz.survey.Survey;
 import ru.inbox.savinov_vu.service.constructor.quesiontKit.QuestionKitService;
@@ -20,7 +19,7 @@ import java.util.Objects;
 @Slf4j
 public class QuizController {
     @Autowired
-    SurveyService service;
+    SurveyService surveyService;
     @Autowired
     QuestionKitService questionKitService;
 
@@ -30,9 +29,14 @@ public class QuizController {
         return "quiz/survey/survey";
     }
 
-    @GetMapping("questionnaire/{id}")
-    public String getQuestionnaireMenu(Model model, @PathVariable("id") Integer surveyId) {
-        model.addAttribute("surveyId", surveyId);
+    @GetMapping("questionnaire")
+    public String getQuestionnaire(HttpServletRequest request, Model model) {
+        int id = getSurveyId(request);
+        Survey survey = surveyService.getSurveyById(id);
+        model.addAttribute("surveyId", id);
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        model.addAttribute("surveyName", survey.getName());
+        model.addAttribute("surveyDate", dtf.format(survey.getDate()));
         return "quiz/questionnaire/questionnaire";
     }
 
@@ -50,7 +54,7 @@ public class QuizController {
                 .setGroup(getSurveyGroup(request))
                 .setComment(getSurveyComment(request))
                 .setQuestionKitId(questionKit.getId());
-        survey = service.addSurvey(survey);
+        survey = surveyService.addSurvey(survey);
         return "redirect:continueQuiz?id=" + survey.getId();
     }
 
