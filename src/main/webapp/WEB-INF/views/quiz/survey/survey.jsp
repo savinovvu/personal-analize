@@ -167,14 +167,14 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">×</button>
-                <h4 class="modal-title text-center" id="myDelModalLabel">Удаление Тестирвания</h4>
+                <h4 class="modal-title text-center" id="myDelModalLabel">Удаление Тестирования</h4>
             </div>
             <div class="modal-body">
                 <form role="form" class="form-horizontal" id="delEntity">
 
 
                     <div class="form-group has-feedback">
-                        <label for="delName" class="control-label col-xs-3">Id:</label>
+                        <label for="delId" class="control-label col-xs-3">Id:</label>
                         <div class="col-xs-6">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-info-sign"></i></span>
@@ -211,7 +211,7 @@
 
 </form>
 
-<%--update model--%>
+<%--update modal window--%>
 <div class="modal fade" id="myUpdateModal" tabindex="-1" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -238,7 +238,8 @@
                         <div class="col-xs-6">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-info-sign"></i></span>
-                                <input type="text" class="form-control" id="questionKitIdUpdate" name="questionKitId" readonly required>
+                                <input type="text" class="form-control" id="questionKitIdUpdate" name="questionKitId"
+                                       readonly required>
                             </div>
 
                         </div>
@@ -254,7 +255,6 @@
 
                         </div>
                     </div>
-
 
 
                     <div class="form-group has-feedback">
@@ -316,8 +316,10 @@
 
 
                     <div class="modal-footer">
-                        <input id="update" type="submit" class="btn btn-primary"  value="Обновить">
-                        <button type="button" id="updateDismissButton" class="btn btn-primary" data-dismiss="modal">Отмена</button>
+                        <input id="update" type="submit" class="btn btn-primary" value="Обновить">
+                        <button type="button" id="updateDismissButton" class="btn btn-primary" data-dismiss="modal">
+                            Отмена
+                        </button>
                     </div>
                 </form>
             </div>
