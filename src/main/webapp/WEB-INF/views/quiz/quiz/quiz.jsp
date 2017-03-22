@@ -48,7 +48,6 @@
     </form>
 
     <form class="hidden" action="questionnaire" method="get">'
-
         <input id="questionnaires" type="submit">
         <input name="id" value="${survey_id}" type="text">
     </form>

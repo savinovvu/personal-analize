@@ -55,12 +55,13 @@ function send(url, type, jsonData, viewFunction, additionData) {
 }
 
 function sendSynch(url, type, jsonData, viewFunction) {
- return  $.ajax({
+    return $.ajax({
 
         url: url,
         type: type,
         contentType: 'application/json',
         data: JSON.stringify(jsonData),
+        async: false,
         success: function (data) {
 
             viewFunction(data);

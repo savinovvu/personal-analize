@@ -10,9 +10,12 @@ function view(data) {
             {
                 "data": "number",
                 "render": function (row, data, dataIndex) {
-                    return '<p id="id-' + dataIndex.id + '">' + row + '</p>' +
+                    return '<label class="btn btn-link" for="answerAndQuestionSubmit'+dataIndex.id+'" id="id-' + dataIndex.id + '">' + row + '</label>' +
                         '<p  class="hidden" id="questionKitId-' + dataIndex.id + '">' + dataIndex.questionKitId + '</p>' +
-                         '<p id="id-' + dataIndex.id + '" class="hidden">' + dataIndex.id + '</p>';
+                        '<p id="id-' + dataIndex.id + '" class="hidden">' + dataIndex.id + '</p>' +
+                        '<form class="hidden" action="answerAndQuestion" method="get">' +
+                        '<input type="text" name="id" value="'+dataIndex.id+'">' +
+                        '<input type="submit" id="answerAndQuestionSubmit'+dataIndex.id+'">';
 
                 }
             },
@@ -39,7 +42,7 @@ function view(data) {
                 }
             },
         ],
-        "order": [[ 2, "desc" ]]
+        "order": [[2, "desc"]]
     });
 
 }

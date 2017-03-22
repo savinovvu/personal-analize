@@ -49,6 +49,6 @@ public class AnswerRestController {
     public List<Answer> deleteAnswer(@RequestBody Answer answer) {
         log.debug("\ndelete answer with id = {}", answer.getId());
         service.deleteAnswer(answer);
-        return service.getAllAnswers();
+        return service.getAnswersWithQuestionnaire(answer.getQuestionnaire().getId());
     }
 }
