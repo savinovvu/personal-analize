@@ -14,12 +14,12 @@
     <script src="/public/js/common/ajax/ajax.js" type="text/javascript" defer></script>
     <script src="/public/js/common/view/view.js" type="text/javascript" defer></script>
 
-    <script src="/public/js/quiz/questionnaire/service/service.js" type="text/javascript" defer></script>
-    <script src="/public/js/quiz/questionnaire/view/view.js" type="text/javascript" defer></script>
-    <script src="/public/js/quiz/questionnaire/util/util.js" type="text/javascript" defer></script>
+    <script src="/public/js/quiz/answerAndQuestions/service/service.js" type="text/javascript" defer></script>
+    <script src="/public/js/quiz/answerAndQuestions/view/view.js" type="text/javascript" defer></script>
+    <script src="/public/js/quiz/answerAndQuestions/util/util.js" type="text/javascript" defer></script>
 </head>
 
-<body onload=downloadPage(${surveyId})>
+<body onload=downloadPage(${questionnaireId})>
 
 <nav class="navbar navbar-form">
 
@@ -28,6 +28,9 @@
 
     <label class="btn btn-info mynav" for="survey"><i class="glyphicon glyphicon-list label-info "></i>&nbsp
         Тестирование</label>
+
+    <label class="btn btn-info mynav" for="questionnaires"><i class="glyphicon glyphicon-list label-info "></i>&nbsp
+        Список анкет</label>
 
     <label class="btn btn-info mynav" for="continueQuiz"><i class="glyphicon glyphicon-list label-info "></i>&nbsp
         Продолжить</label>
@@ -43,6 +46,11 @@
         <input id="survey" class="hidden" type="submit" name="viewAllUsers">
     </form>
 
+    <form class="hidden" action="questionnaire" method="get">'
+        <input id="questionnaires" type="submit">
+        <input name="id" value="${surveyId}" type="text">
+    </form>
+
     <form action="continueQuiz" method="get">
         <input id="continueQuiz" class="hidden" type="submit" name="viewAllUsers">
         <input type="hidden" name="id" value="${surveyId}">
@@ -54,7 +62,10 @@
 
 
 </nav>
-<p style="font-size: 20px">Список анкет для тестирования №<span id="surveyId">${surveyId}</span>, методика: ${surveyName}, от: ${surveyDate} </p>
+<p style="font-size: 20px"> Тестирование № <span id="surveyId">${surveyId}</span>, методика: ${surveyName}, Дата начала
+    тестирования: ${surveyDate} </p>
+<p style="font-size: 20px"> Анкета №<span id="questionnaireNumber">${questionnaireNumber}</span>, Дата заполнения
+    анкеты: ${questionnaireDate} </p> <span class="hidden" id="questionnaireId">${questionnaireId}</span>
 
 <div class="view-box menu2">
     <table id="entityT" class="table table-bordered table-stripped table-condensed">
@@ -62,8 +73,9 @@
         <thead>
         <tr class="success">
 
-            <td>Анкета №</td>
-            <td>Дата заполнения</td>
+            <td>id</td>
+            <td>Вопрос</td>
+            <td>Ответ</td>
             <td>Действие</td>
         </tr>
         </thead>
@@ -75,9 +87,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">×</button>
-                <h4 class="modal-title text-center" id="myDelModalLabel">Удаление Анкеты</h4>
-                <p class="text-center">Внимание, после удаления порядок следующих анкет будет изменен.</p>
-                <p class="text-center">Для редактирования воспользуйтесь меню ответов конкретной анкеты.</p>
+                <h4 class="modal-title text-center" id="myDelModalLabel">Удаление ответа</h4>
             </div>
             <div class="modal-body">
                 <form role="form" class="form-horizontal" id="delEntity">
@@ -95,11 +105,22 @@
                     </div>
 
                     <div class="form-group has-feedback">
-                        <label for="delNumber" class="control-label col-xs-3">Методика:</label>
+                        <label for="delQuestion" class="control-label col-xs-3">Вопрос:</label>
                         <div class="col-xs-6">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-info-sign"></i></span>
-                                <input type="text" class="form-control" id="delNumber" name="name" readonly required/>
+                                <input type="text" class="form-control" id="delQuestion" name="name" readonly required/>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="form-group has-feedback">
+                        <label for="delAnswer" class="control-label col-xs-3">Ответ:</label>
+                        <div class="col-xs-6">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-info-sign"></i></span>
+                                <input type="text" class="form-control" id="delAnswer" name="name" readonly required/>
                             </div>
 
                         </div>

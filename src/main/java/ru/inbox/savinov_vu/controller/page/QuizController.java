@@ -6,8 +6,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import ru.inbox.savinov_vu.model.constructor.question.QuestionKit;
+import ru.inbox.savinov_vu.model.quiz.questionnaire.Questionnaire;
 import ru.inbox.savinov_vu.model.quiz.survey.Survey;
 import ru.inbox.savinov_vu.service.constructor.quesiontKit.QuestionKitService;
+import ru.inbox.savinov_vu.service.quiz.questionnaire.QuestionnaireService;
 import ru.inbox.savinov_vu.service.quiz.survey.SurveyService;
 
 import javax.servlet.http.HttpServletRequest;
@@ -20,6 +22,10 @@ import java.util.Objects;
 public class QuizController {
     @Autowired
     SurveyService surveyService;
+
+    @Autowired
+    QuestionnaireService questionnaireService;
+
     @Autowired
     QuestionKitService questionKitService;
 
@@ -31,18 +37,22 @@ public class QuizController {
 
     @GetMapping("answerAndQuestion")
     public String getAnswersAndQuestions(HttpServletRequest request, Model model) {
-        int id = getSurveyId(request);
-        Survey survey = surveyService.getSurveyById(id);
-        model.addAttribute("surveyId", id);
+        Integer questionnaireId = getId(request);
+        Questionnaire questionnaire = questionnaireService.getQuestionnaireById(questionnaireId);
+        Survey survey = questionnaire.getSurvey();
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        model.addAttribute("surveyId", survey.getId());
         model.addAttribute("surveyName", survey.getName());
         model.addAttribute("surveyDate", dtf.format(survey.getDate()));
-        return "quiz/questionnaire/answersAndQuestions";
+        model.addAttribute("questionnaireId", questionnaireId);
+        model.addAttribute("questionnaireNumber", questionnaire.getNumber());
+        model.addAttribute("questionnaireDate", dtf.format(questionnaire.getDate()));
+        return "quiz/answersAndQuestions/answersAndQuestions";
     }
 
     @GetMapping("questionnaire")
     public String getQuestionnaire(HttpServletRequest request, Model model) {
-        int id = getSurveyId(request);
+        int id = getId(request);
         Survey survey = surveyService.getSurveyById(id);
         model.addAttribute("surveyId", id);
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd-MM-yyyy");
@@ -58,7 +68,7 @@ public class QuizController {
 
         Survey survey = new Survey();
         QuestionKit questionKit = getSurveyQuestionKit(request);
-        survey.setId(getSurveyId(request))
+        survey.setId(getId(request))
                 .setName(questionKit.getName())
                 .setDate(getSurveyDate(request))
                 .setDepartment(getSurveyDepartment(request))
@@ -71,12 +81,12 @@ public class QuizController {
 
     @GetMapping("continueQuiz")
     public String continueSurvey(HttpServletRequest request, Model model) {
-        int id = getSurveyId(request);
+        int id = getId(request);
         model.addAttribute("survey_id", id);
         return "quiz/quiz/quiz";
     }
 
-    private Integer getSurveyId(HttpServletRequest request) {
+    private Integer getId(HttpServletRequest request) {
         return Integer.valueOf(request.getParameter("id"));
     }
 
