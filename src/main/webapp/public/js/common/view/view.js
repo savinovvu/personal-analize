@@ -13,6 +13,6 @@ function getModal(id, number) {
 
 function getDelModal(id) {
     document.getElementById('delId').value = id;
-    document.getElementById('delName').value = ($('#name-' + id).text());
-    document.getElementById('delNumber').value = ($('#number-' + id).text());
+    document.getElementById('delName').value = $('#name-' + id).text();
+    document.getElementById('delNumber').value = $('#number-' + id).text();
 }
