@@ -45,6 +45,13 @@ public class AnswerRestController {
         return "Анкета № " + questionnaireNumber + " добавлена";
     }
 
+    @PostMapping
+    public List<Answer> updateAnswer(@RequestBody Answer answer) throws IOException {
+        log.debug("\nadd answers with= {}", answer);
+        service.addAnswer(answer);
+        return service.getAnswersWithQuestionnaire(answer.getQuestionnaire().getId());
+    }
+
     @DeleteMapping
     public List<Answer> deleteAnswer(@RequestBody Answer answer) {
         log.debug("\ndelete answer with id = {}", answer.getId());

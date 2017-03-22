@@ -1,7 +1,5 @@
 function view(data) {
 
-
-    // alert(JSON.stringify(data));
     var table = $('#entityT').DataTable();
     table.destroy();
 
@@ -26,11 +24,12 @@ function view(data) {
                     var superQuestion = "";
 
                     if (row.superQuestionId != null) {
-                        var superQuestion = JSON.parse(sendSynch( ajaxAPI.quiz.question + "/" + row.superQuestionId, "GET", null, getData));
+                        var superQuestion = JSON.parse(sendSynch(ajaxAPI.quiz.question + "/" + row.superQuestionId, "GET", null, getData));
 
                         superQuestion = superQuestion.name;
                     }
-                    output += '<p id="question-' + dataIndex.id + '">'+superQuestion + ' <br> ' + row.name + '</p>';
+                    output += '<p id="question-' + dataIndex.id + '">' + superQuestion + ' <br> ' + row.name + '</p>';
+                    output += '<p class="hidden" id="questionId-' + dataIndex.id + '">' + row.id + '</p>';
                     return output;
 
                 }
@@ -51,14 +50,13 @@ function view(data) {
                 "orderable": false,
                 "render": function (row, data, dataIndex) {
 
-                    return '<a  class="btn btn-xs btn-danger cuctombtnwithoutshadow" onclick="getDelModal(' + dataIndex.id + ')" data-toggle="modal" data-target="#myDelModal">Удалить</a>' +
-                        '<form method="get" action="continueQuiz"><input class="hidden" name="id" value="' + dataIndex.id + '"> <input type="submit" class="hidden" id="continue-' + dataIndex.id + '"></form>' +
-                        '<form method="get" action="/pdf/quiz/survey/' + dataIndex.id + '.pdf"><input type="submit" id="pdf-' + dataIndex.id + '" class="hidden"></form> ';
+                    return '<a class="btn btn-xs btn-primary cuctombtnwithoutshadow"  onclick="getModal(' + dataIndex.id + ')" data-toggle="modal" data-target="#myModal">Обновить</a>' +
+                        '<a  class="btn btn-xs btn-danger cuctombtnwithoutshadow" onclick="getDelModal(' + dataIndex.id + ')" data-toggle="modal" data-target="#myDelModal">Удалить</a>';
+
 
                 }
             },
         ],
-        //   "order": [[2, "desc"]]
     });
 
 }

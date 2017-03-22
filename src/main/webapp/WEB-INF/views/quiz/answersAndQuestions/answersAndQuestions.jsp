@@ -76,11 +76,71 @@
             <td>id</td>
             <td>Вопрос</td>
             <td>Ответ</td>
-            <td>Действие</td>
+            <td style="width: 10%">Действие</td>
         </tr>
         </thead>
     </table>
 </div>
+
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">×</button>
+                <h4 class="modal-title text-center" id="myModalLabel">Обновление ответа</h4>
+            </div>
+            <div class="modal-body">
+
+                <form role="form" class="form-horizontal" id="putEntity">
+
+                    <div class="form-group has-feedback">
+                        <label for="delId" class="control-label col-xs-3">Id:</label>
+                        <div class="col-xs-6">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-info-sign"></i></span>
+                                <input type="text" class="form-control" id="id" name="id" readonly required>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="form-group has-feedback">
+                        <label for="question" class="control-label col-xs-3">Вопрос:</label>
+                        <div class="col-xs-6">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-info-sign"></i></span>
+                                <input type="text" class="form-control" id="question" name="question" readonly required/>
+                                <input class="hidden" type="text" class="form-control" id="questionId" name="questionId" readonly required/>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="form-group has-feedback">
+                        <label for="answer" class="control-label col-xs-3">Ответ:</label>
+                        <div class="col-xs-6">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                <input type="text" class="form-control" id="answer" name="name"  required />
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                    <div class="modal-footer">
+                        <input id="save" type="submit" class="btn btn-primary" value="Выполнить">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Завершить</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
 
 <div class="modal fade" id="myDelModal" tabindex="-1" role="dialog">
     <div class="modal-dialog">
