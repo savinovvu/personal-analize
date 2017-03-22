@@ -12,6 +12,8 @@ public interface QuestionnaireService {
 
     Questionnaire addQuestionnaire(Questionnaire questionnaire);
 
+    Questionnaire getQuestionnaireById(Integer id);
+
     void deleteQuestionnaire(Questionnaire questionnaire);
 
     Long getCountQuestionnairesWithSurvey(Integer id);

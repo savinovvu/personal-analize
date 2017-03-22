@@ -30,6 +30,11 @@ public class QuestionnaireServiceImpl implements QuestionnaireService {
     }
 
     @Override
+    public Questionnaire getQuestionnaireById(Integer id) {
+        return repository.findOne(id);
+    }
+
+    @Override
     public Questionnaire addQuestionnaire(Questionnaire questionnaire) {
         if (questionnaire.getNumber() == null || questionnaire.getNumber() < 1) {
             getNumberOfQuestionnaire(questionnaire);
