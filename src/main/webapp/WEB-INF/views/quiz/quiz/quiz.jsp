@@ -47,16 +47,16 @@
         <input id="survey" class="hidden" type="submit" name="viewAllUsers">
     </form>
 
-    <form class="hidden" action="questionnaire" method="get">';
+    <form class="hidden" action="questionnaire" method="get">'
 
         <input id="questionnaires" type="submit">
         <input name="id" value="${survey_id}" type="text">
-        <form>
+    </form>
 
 
-            <form method="get" action="/pdf/quiz/survey/${survey_id}.pdf">
-                <input type="submit" id="pdf" class="hidden">
-            </form>
+    <form method="get" action="/pdf/quiz/survey/${survey_id}.pdf">
+        <input type="submit" id="pdf" class="hidden">
+    </form>
 
 </nav>
 

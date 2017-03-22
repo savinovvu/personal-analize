@@ -29,6 +29,17 @@ public class QuizController {
         return "quiz/survey/survey";
     }
 
+    @GetMapping("answerAndQuestion")
+    public String getAnswersAndQuestions(HttpServletRequest request, Model model) {
+        int id = getSurveyId(request);
+        Survey survey = surveyService.getSurveyById(id);
+        model.addAttribute("surveyId", id);
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        model.addAttribute("surveyName", survey.getName());
+        model.addAttribute("surveyDate", dtf.format(survey.getDate()));
+        return "quiz/questionnaire/answersAndQuestions";
+    }
+
     @GetMapping("questionnaire")
     public String getQuestionnaire(HttpServletRequest request, Model model) {
         int id = getSurveyId(request);

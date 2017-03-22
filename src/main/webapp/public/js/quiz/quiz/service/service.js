@@ -54,6 +54,7 @@ jQuery(function ($) {
         e.preventDefault();
         var data = $('#surveyForm').serializeArray();
         data = JSON.stringify(getAnswerList(data));
+
         send(ajaxAPI.quiz.answer, "PUT", data, viewMessage, surveyId);
     });
 });

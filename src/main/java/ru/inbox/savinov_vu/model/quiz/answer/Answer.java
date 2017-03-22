@@ -105,7 +105,7 @@ public class Answer implements Persistable<Integer>, Comparable<Answer> {
 
     @Override
     public String toString() {
-        return "Answer{" +
+        return "\nAnswer{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", questionnaire=" + questionnaire +

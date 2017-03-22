@@ -39,7 +39,7 @@ function view(data) {
 
                     output += '<input id="form-' + dataIndex.id + '" type="submit">';
                     output += '<input name="id" value="' + dataIndex.id + '" type="text">';
-                    output += '<form>';
+                    output += '</form>';
                     return output;
 
                 }

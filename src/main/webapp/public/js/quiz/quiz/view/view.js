@@ -73,12 +73,12 @@ function viewAnswerDiv(question, prefixId) {
 
 
 function viewAnswerCheckbox(answerVars, question, prefix) {
-    var input = "<input type='checkbox' onclick='deleteFlashVariants(\"checkboxVar\"+" + question.id + ")'  name='" + question.id + "' value='нет ответа' class='checkboxNoVar" + question.id + "' checked>";
+    var input = "<input type='checkbox' onclick='deleteFlashVariants(\"checkboxVar\"+" + question.id + "," + question.id + ")'  name='" + question.id + "' value='нет ответа' class='checkboxNoVar" + question.id + " myCheckbox" + question.id + "' checked>";
+
     var output = "<div class='checkbox'><label>" + input + "Нет ответа</label></div>";
     $.each(answerVars, function (key, val) {
-        input = "<input type='checkbox' onclick='deleteFlashVariants(\"checkboxNoVar\"+" + question.id + ")' class='checkboxVar" + question.id + "' name='" + question.id + "' value='" + val.name + "'>";
+        input = "<input type='checkbox' onclick='deleteFlashVariants(\"checkboxNoVar\"+" + question.id + "," + question.id + ")' class='checkboxVar" + question.id + " myCheckbox" + question.id + "' name='" + question.id + "' value='" + val.name + "'>";
         output += "<div class='checkbox'><label>" + input + val.name + " </label></div>";
-
     });
     $("#answerDiv" + prefix + question.id).append(output);
 }
@@ -108,7 +108,7 @@ function viewAnswerSelect(answerVars, question, prefix) {
 
 function viewAnswerFree(question, prefix) {
     var input = '<span class="input-group-addon"><i class="glyphicon glyphicon-question-sign"></i></span>';
-    input += '<textarea class="form-control" id="textArea-'+question.id+'" rows="2" name="' + question.id + '" onfocus="deleteNoAnswer(\'textArea-'+question.id+'\')" onblur="getNoAnswer(\'textArea-'+question.id+'\')" >Нет ответа</textarea>';
+    input += '<textarea class="form-control" id="textArea-' + question.id + '" rows="2" name="' + question.id + '" onfocus="deleteNoAnswer(\'textArea-' + question.id + '\')" onblur="getNoAnswer(\'textArea-' + question.id + '\')" >Нет ответа</textarea>';
     var output = '<div><div class="input-group">' + input + '</div></div>';
     $("#answerDiv" + prefix + question.id).append(output);
 }

@@ -74,7 +74,11 @@ function Question(id, name, number, questionVarId, superQuestionId) {
 
 function Answer(id, name, question, questionnaire) {
     this.id = Number(id);
-    this.name = name;
+    if (name === "" || name === null || name === undefined) {
+        this.name = "нет ответа";
+    } else {
+        this.name = name;
+    }
     this.question = question;
     this.questionnaire = questionnaire;
 }
