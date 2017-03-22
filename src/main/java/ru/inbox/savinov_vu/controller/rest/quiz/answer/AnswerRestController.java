@@ -41,8 +41,8 @@ public class AnswerRestController {
         List<Answer> answers = new ObjectMapper().readValue(json, new TypeReference<List<Answer>>() {
         });
         log.debug("\nadd answers with= {}", answers);
-       Integer questionnaireNumber =  service.addAnswer(answers);
-        return "Анкета № " + questionnaireNumber + " добавлена" ;
+        Integer questionnaireNumber = service.addAnswer(answers);
+        return "Анкета № " + questionnaireNumber + " добавлена";
     }
 
     @DeleteMapping
