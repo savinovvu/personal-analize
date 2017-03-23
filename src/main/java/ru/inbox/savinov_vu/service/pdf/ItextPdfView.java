@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import ru.inbox.savinov_vu.model.quiz.answer.Answer;
 import ru.inbox.savinov_vu.model.quiz.question.Question;
 import ru.inbox.savinov_vu.model.quiz.survey.Survey;
+import ru.inbox.savinov_vu.service.ParentService;
 import ru.inbox.savinov_vu.service.constructor.AnswerKit.AnswerKitService;
 import ru.inbox.savinov_vu.service.constructor.AnswerVar.AnswerVarService;
 import ru.inbox.savinov_vu.service.constructor.quesiontKit.QuestionKitService;
@@ -72,6 +73,7 @@ public class ItextPdfView extends AbstractITextPdfView {
                     BaseFont.IDENTITY_H, BaseFont.NOT_EMBEDDED);
 
     final Font font14 = new Font(timesNewRoman, 14);
+    final Font font11 = new Font(timesNewRoman, 11);
 
 
     final int sizeSpacingAfter = 8;
@@ -184,27 +186,58 @@ public class ItextPdfView extends AbstractITextPdfView {
     }
 
     private void buildDataBasePdfDocument(Map<String, Object> model, Document document) throws DocumentException {
+        List<String> tableNames = Arrays.asList("department", "groups", "persons", "answerkits",
+                "questionkits", "answervars", "questionvars", "surveys", "questionnaires", "questions", "answers");
+        Map<String, String> tableFieldsMap = initializeTableFieldsMap(tableNames);
+        Map<String, ParentService> tableServiceMap = initializeTableServiceMap(tableNames);
 
-        Map<String, List<String>> tableFieldsMap = new LinkedHashMap<>();
-        tableFieldsMap.put("department", Arrays.asList("id", "name"));
-        tableFieldsMap.put("groups", Arrays.asList("id", "name", "department_id"));
-        tableFieldsMap.put("persons", Arrays.asList("id", "name", "group_id"));
-
-        tableFieldsMap.put("answerkits", Arrays.asList("id", "name", "answerType"));
-        tableFieldsMap.put("questionkits", Arrays.asList("id", "name"));
-        tableFieldsMap.put("answervars", Arrays.asList("id", "name", "answerkit_id"));
-        tableFieldsMap.put("questionvars", Arrays.asList("id", "number", "name", "superQuestionVarId", "answerkit_id", "questionkit_id"));
-
-        tableFieldsMap.put("surveys", Arrays.asList("id", "name", "comment", "createDate", "questionKitId", "department", "groupName"));
-        tableFieldsMap.put("questionnaires", Arrays.asList("id", "number", "createDate", "survey_id"));
-        tableFieldsMap.put("questions", Arrays.asList("id", "number", "name", "questionVarId", "superQuestionVarId", "survey_id"));
-        tableFieldsMap.put("answers", Arrays.asList("id", "name", "questionnaire_id", "question_id"));
-
-
-        Paragraph countQuestionnaire = new Paragraph("INSERT INTO questionKits: ", font14);
-        document.add(countQuestionnaire);
+        for (Map.Entry<String, String> pair : tableFieldsMap.entrySet()) {
+            StringBuilder builder = new StringBuilder(String.format("INSERT INTO %s (%s)", pair.getKey(), pair.getValue()));
+            String values = String.valueOf(tableServiceMap.get(pair.getKey()).getAll()
+                    .stream().map(value -> value.toString())
+                    .reduce((t, u) -> t.toString() + "," + u.toString()).orElse(";"));
+            builder.append(values + ";");
+            Paragraph paragraph = new Paragraph("\n" + builder.toString(), font11);
+            document.add(paragraph);
+        }
 
 
+    }
+
+    private Map<String, ParentService> initializeTableServiceMap(List<String> tableNames) {
+        Map<String, ParentService> tableServiceMap = new LinkedHashMap<>();
+        tableServiceMap.put(tableNames.get(0), departmentService);
+        tableServiceMap.put(tableNames.get(1), groupService);
+        tableServiceMap.put(tableNames.get(2), personService);
+
+        tableServiceMap.put(tableNames.get(3), answerKitService);
+        tableServiceMap.put(tableNames.get(4), questionKitService);
+        tableServiceMap.put(tableNames.get(5), answerVarService);
+        tableServiceMap.put(tableNames.get(6), questionVarService);
+
+        tableServiceMap.put(tableNames.get(7), surveyService);
+        tableServiceMap.put(tableNames.get(8), questionnaireService);
+        tableServiceMap.put(tableNames.get(9), questionService);
+        tableServiceMap.put(tableNames.get(10), answerService);
+        return tableServiceMap;
+    }
+
+    private Map<String, String> initializeTableFieldsMap(List<String> tableNames) {
+        Map<String, String> tableFieldsMap = new LinkedHashMap<>();
+        tableFieldsMap.put(tableNames.get(0), "id, name");
+        tableFieldsMap.put(tableNames.get(1), "id, name, department_id");
+        tableFieldsMap.put(tableNames.get(2), "id, name, group_id");
+
+        tableFieldsMap.put(tableNames.get(3), "id, name, answerType");
+        tableFieldsMap.put(tableNames.get(4), "id, name");
+        tableFieldsMap.put(tableNames.get(5), "id, name, answerkit_id");
+        tableFieldsMap.put(tableNames.get(6), "id, number, name, superQuestionVarId, answerkit_id, questionkit_id");
+
+        tableFieldsMap.put(tableNames.get(7), "id, name, comment, createDate, questionKitId, department, groupName");
+        tableFieldsMap.put(tableNames.get(8), "id, number, createDate, survey_id");
+        tableFieldsMap.put(tableNames.get(9), "id, number, name, questionVarId, superQuestionVarId, survey_id");
+        tableFieldsMap.put(tableNames.get(10), "id, name, questionnaire_id, question_id");
+        return tableFieldsMap;
     }
 
 
