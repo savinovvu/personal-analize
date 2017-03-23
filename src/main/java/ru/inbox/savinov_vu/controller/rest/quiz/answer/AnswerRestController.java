@@ -27,7 +27,7 @@ public class AnswerRestController {
     @GetMapping("/all")
     public List<Answer> getAllAnswers() {
         log.debug("\nget all Answers");
-        return service.getAllAnswers();
+        return service.getAll();
     }
 
     @GetMapping("/{id}")

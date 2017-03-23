@@ -21,7 +21,7 @@ public class PersonRestController {
     @GetMapping(value = "/all")
     public List<Person> getAllPerson() {
         log.debug("\nget all persons");
-        return service.getAllPersons();
+        return service.getAll();
 
     }
 
@@ -37,7 +37,7 @@ public class PersonRestController {
     public List<Person> putPerson(@RequestBody Person person) {
         log.debug("\nput person {}", person);
         service.addPerson(person);
-        return service.getAllPersons();
+        return service.getAll();
 
     }
 
@@ -45,7 +45,7 @@ public class PersonRestController {
     public List<Person> deletePerson(@RequestBody Person person) {
         log.debug("\ndelete person {}", person);
         service.deletePerson(person);
-        return service.getAllPersons();
+        return service.getAll();
 
     }
 

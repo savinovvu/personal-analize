@@ -20,7 +20,7 @@ public class SurveyRestController {
     @GetMapping("/all")
     public List<Survey> getAllSurveys() {
         log.debug("\nget all Surveys");
-        return service.getAllSurveys();
+        return service.getAll();
     }
 
     @GetMapping("/{id}")
@@ -33,13 +33,13 @@ public class SurveyRestController {
     public List<Survey> addSurvey(@RequestBody Survey survey) {
         log.debug("\nadd survey with {}", survey);
         service.addSurvey(survey);
-        return service.getAllSurveys();
+        return service.getAll();
     }
 
     @DeleteMapping
     public List<Survey> deleteSurvey(@RequestBody Survey survey) {
         log.debug("\ndelete survey with id = {}", survey.getId());
         service.deleteSurvey(survey);
-        return service.getAllSurveys();
+        return service.getAll();
     }
 }

@@ -21,7 +21,7 @@ public class GroupRestController {
     @GetMapping(value = "/all")
     public List<Group> getAllGroups() {
         log.debug("\nget all groups");
-        return service.getAllGroups();
+        return service.getAll();
 
     }
 
@@ -37,7 +37,7 @@ public class GroupRestController {
     public List<Group> putGroup(@RequestBody Group group) throws IOException {
         log.debug("\nput group {}", group);
         service.addGroup(group);
-        return service.getAllGroups();
+        return service.getAll();
 
     }
 
@@ -46,7 +46,7 @@ public class GroupRestController {
     public List<Group> deleteGroup(@RequestBody Group group) throws IOException {
         log.debug("\ndelete group {}", group);
         service.deleteGroup(group);
-        return service.getAllGroups();
+        return service.getAll();
 
     }
 

@@ -21,7 +21,7 @@ public class QuestionnaireRestController {
     @GetMapping("/all")
     public List<Questionnaire> getAllQuestionnaire() {
         log.debug("\nget all Questionnaires");
-        return service.getAllQuestionnaires();
+        return service.getAll();
     }
 
     @GetMapping("/{id}")
@@ -40,7 +40,7 @@ public class QuestionnaireRestController {
     public List<Questionnaire> addQuestionnaire(@RequestBody Questionnaire questionnaire) {
         log.debug("\nadd questionnaire with {}", questionnaire);
         service.addQuestionnaire(questionnaire);
-        return service.getAllQuestionnaires();
+        return service.getAll();
     }
 
     @DeleteMapping

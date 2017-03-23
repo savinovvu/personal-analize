@@ -22,7 +22,7 @@ public class DepartmentRestController {
     @GetMapping(value = "/all")
     public List<Department> getAllDepartments() {
         log.debug("\nget all departments");
-        return service.getAllDepartments();
+        return service.getAll();
 
     }
 
@@ -30,7 +30,7 @@ public class DepartmentRestController {
     public List<Department> addDepartment(@RequestBody Department department) {
         log.debug("\nput department {}", department);
         service.addDepartment(department);
-        return service.getAllDepartments();
+        return service.getAll();
 
     }
 
@@ -38,7 +38,7 @@ public class DepartmentRestController {
     public List<Department> deleteDepartment(@RequestBody Department department) {
         log.debug("\ndelete department {}", department);
         service.deleteDepartment(department);
-        return service.getAllDepartments();
+        return service.getAll();
 
     }
 
