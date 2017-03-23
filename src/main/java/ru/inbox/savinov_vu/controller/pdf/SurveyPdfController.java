@@ -12,6 +12,7 @@ import ru.inbox.savinov_vu.model.quiz.questionnaire.Questionnaire;
 import ru.inbox.savinov_vu.service.quiz.answer.AnswerService;
 import ru.inbox.savinov_vu.service.quiz.questionnaire.QuestionnaireService;
 import ru.inbox.savinov_vu.service.quiz.survey.SurveyService;
+import ru.inbox.savinov_vu.service.pdf.PdfPrint;
 
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -34,7 +35,8 @@ public class SurveyPdfController {
     AnswerService answerService;
 
     @GetMapping(value = "pdf/quiz/survey/{id}")
-    public void editOrder(Model model, @PathVariable("id") int id) {
+    public void getPdfSurvey(Model model, @PathVariable("id") int id) {
+        model.addAttribute("action", PdfPrint.Survey);
         model.addAttribute("survey", surveyService.getSurveyById(id));
         List<Questionnaire> questionnairesWithSurvey = questionnaireService.getQuestionnairesWithSurvey(id);
         model.addAttribute("countQuestionnaires", questionnairesWithSurvey.size());
