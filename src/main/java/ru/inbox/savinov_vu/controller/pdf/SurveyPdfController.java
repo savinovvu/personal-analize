@@ -12,7 +12,7 @@ import ru.inbox.savinov_vu.model.quiz.questionnaire.Questionnaire;
 import ru.inbox.savinov_vu.service.quiz.answer.AnswerService;
 import ru.inbox.savinov_vu.service.quiz.questionnaire.QuestionnaireService;
 import ru.inbox.savinov_vu.service.quiz.survey.SurveyService;
-import ru.inbox.savinov_vu.service.pdf.PdfPrint;
+import ru.inbox.savinov_vu.util.pdf.PdfPrint;
 
 import java.util.LinkedHashMap;
 import java.util.List;

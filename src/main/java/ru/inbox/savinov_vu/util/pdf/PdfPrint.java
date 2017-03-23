@@ -1,4 +1,4 @@
-package ru.inbox.savinov_vu.service.pdf;
+package ru.inbox.savinov_vu.util.pdf;
 
 public enum PdfPrint {
     Survey, DataBase

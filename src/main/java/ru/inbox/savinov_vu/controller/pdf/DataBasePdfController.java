@@ -4,7 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import ru.inbox.savinov_vu.service.pdf.PdfPrint;
+import ru.inbox.savinov_vu.util.pdf.PdfPrint;
 
 @Controller
 @Slf4j
