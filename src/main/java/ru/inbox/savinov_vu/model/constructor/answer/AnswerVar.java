@@ -65,4 +65,13 @@ public class AnswerVar implements Persistable<Integer> {
         result = 31 * result + (answerKit != null ? answerKit.hashCode() : 0);
         return result;
     }
+
+    @Override
+    public String toString() {
+        return "\n(" +
+                "" + id +
+                ", '" + name + '\'' +
+                ", " + answerKit.getId() +
+                ")";
+    }
 }

@@ -55,13 +55,6 @@ public class Department  implements Persistable<Integer> {
         return (getId() == null);
     }
 
-    @Override
-    public String toString() {
-        return "Department{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                '}';
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -81,5 +74,13 @@ public class Department  implements Persistable<Integer> {
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (groups != null ? groups.hashCode() : 0);
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "\n(" +
+                "" + id +
+                ", '" + name + '\'' +
+                ")";
     }
 }

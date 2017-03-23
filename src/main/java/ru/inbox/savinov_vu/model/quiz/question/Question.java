@@ -131,13 +131,13 @@ public class Question {
 
     @Override
     public String toString() {
-        return "\nQuestion{" +
-                "id=" + id +
-                ", number=" + number +
-                ", name='" + name + '\'' +
-                ", questionVarId=" + questionVarId +
-                ", superQuestionId=" + superQuestionId +
-                ", survey=" + survey +
-                "}";
+        return "\n(" +
+                "" + id +
+                ", " + number +
+                ", '" + name + '\'' +
+                ", " + questionVarId +
+                ", " + superQuestionId +
+                ", " + survey.getId() +
+                ")";
     }
 }

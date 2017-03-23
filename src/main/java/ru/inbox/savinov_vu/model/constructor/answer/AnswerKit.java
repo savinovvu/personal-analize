@@ -67,4 +67,13 @@ public class AnswerKit {
         result = 31 * result + (answerType != null ? answerType.hashCode() : 0);
         return result;
     }
+
+    @Override
+    public String toString() {
+        return "\n(" +
+                "" + id +
+                ", '" + name + '\'' +
+                ", " + answerType +
+                ")";
+    }
 }

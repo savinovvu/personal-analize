@@ -105,12 +105,11 @@ public class Answer implements Persistable<Integer>, Comparable<Answer> {
 
     @Override
     public String toString() {
-        return "\nAnswer{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", questionnaire=" + questionnaire +
-                ", question=" + question +
-                ", question=" + question +
-                '}';
+        return "\n(" +
+                "" + id +
+                ", '" + name + '\'' +
+                ", " + questionnaire.getId() +
+                ", " + question.getId() +
+                ")";
     }
 }

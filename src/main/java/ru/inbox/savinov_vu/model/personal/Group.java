@@ -67,13 +67,7 @@ public class Group implements Persistable<Integer> {
         return (getId() == null);
     }
 
-    @Override
-    public String toString() {
-        return "Group{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                '}';
-    }
+
 
     @Override
     public boolean equals(Object o) {
@@ -91,5 +85,14 @@ public class Group implements Persistable<Integer> {
         int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (name != null ? name.hashCode() : 0);
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "\n(" +
+                "" + id +
+                ", '" + name + '\'' +
+                ", " + department.getId() +
+                ")";
     }
 }

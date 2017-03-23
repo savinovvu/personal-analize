@@ -31,14 +31,7 @@ public class Person  implements Persistable<Integer> {
     private Group group;
 
 
-    @Override
-    public String toString() {
-        return "Person{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", group=" + group +
-                '}';
-    }
+
 
     public Group getGroup() {
         return group;
@@ -86,5 +79,14 @@ public class Person  implements Persistable<Integer> {
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (group != null ? group.hashCode() : 0);
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "\n(" +
+                "" + id +
+                ", '" + name + '\'' +
+                ", " + group.getId() +
+                ")";
     }
 }

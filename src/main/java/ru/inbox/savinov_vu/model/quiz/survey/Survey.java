@@ -53,6 +53,10 @@ public class Survey implements Persistable<Integer> {
     @JsonDeserialize(using = JsonDateDeserializer.class)
     private LocalDate date;
 
+    @JsonProperty("questionKitId")
+    @JoinColumn(name = "questionKitId", nullable = true)
+    private Integer questionKitId;
+
     @JsonProperty("department")
     @Column(name = "department")
     private String department;
@@ -61,9 +65,7 @@ public class Survey implements Persistable<Integer> {
     @Column(name = "groupName")
     private String group;
 
-    @JsonProperty("questionKitId")
-    @JoinColumn(name = "questionKitId", nullable = true)
-    private Integer questionKitId;
+
 
     public Survey setId(Integer id) {
         this.id = id;
@@ -175,14 +177,14 @@ public class Survey implements Persistable<Integer> {
 
     @Override
     public String toString() {
-        return "\nSurvey{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", comment='" + comment + '\'' +
-                ", count=" + count +
-                ", date=" + date +
-                ", department=" + department +
-                ", group=" + group +
-                "}";
+        return "\n(" +
+                "" + id +
+                ", '" + name + '\'' +
+                ", '" + comment + '\'' +
+                ", " + date +
+                ", " + questionKitId +
+                ", '" + department + '\'' +
+                ", '" + group + '\'' +
+                ")";
     }
 }

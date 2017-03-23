@@ -121,11 +121,11 @@ public class Questionnaire implements Persistable<Integer> {
 
     @Override
     public String toString() {
-        return "Questionnaire{" +
-                "id=" + id +
-                ", number=" + number +
-                ", date=" + date +
-                ", survey=" + survey +
-                '}';
+        return "\n(" +
+                "" + id +
+                ", " + number +
+                ", " + date +
+                ", " + survey.getId() +
+                ")";
     }
 }

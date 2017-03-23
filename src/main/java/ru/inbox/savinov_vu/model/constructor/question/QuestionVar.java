@@ -29,6 +29,10 @@ public class QuestionVar implements Persistable<Integer>, Comparable<QuestionVar
     @JsonProperty("name")
     private String name;
 
+    @JsonProperty("questionVar")
+    @Column(name = "superQuestionVarId", nullable = true)
+    private Integer superQuestionVarId;
+
 
     @JsonProperty("answerKit")
     @ManyToOne(fetch = FetchType.EAGER)
@@ -40,10 +44,6 @@ public class QuestionVar implements Persistable<Integer>, Comparable<QuestionVar
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "questionkit_id", nullable = true)
     private QuestionKit questionKit;
-
-    @JsonProperty("questionVar")
-    @Column(name = "superQuestionVarId", nullable = true)
-    private Integer superQuestionVarId;
 
 
     public QuestionVar() {
@@ -131,13 +131,13 @@ public class QuestionVar implements Persistable<Integer>, Comparable<QuestionVar
 
     @Override
     public String toString() {
-        return "\nQuestionVar{" +
-                "id=" + id +
-                ", number=" + number +
-                ", name='" + name + '\'' +
-                ", answerKit=" + answerKit +
-                ", questionKit=" + questionKit +
-                ", superQuestionVarId=" + superQuestionVarId +
-                "}";
+        return "\n(" +
+                "" + id +
+                ", " + number +
+                ", '" + name + '\'' +
+                ", " + superQuestionVarId +
+                ", " + answerKit.getId() +
+                ", " + questionKit.getId() +
+                ")";
     }
 }
