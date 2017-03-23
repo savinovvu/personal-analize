@@ -18,7 +18,7 @@ public class SurveyServiceImpl implements SurveyService {
     QuestionnaireService questionnaireService;
 
     @Override
-    public List<Survey> getAllSurveys() {
+    public List<Survey> getAll() {
         return repository.findAll().stream()
                 .map(survey -> survey.setCount(questionnaireService
                         .getCountQuestionnairesWithSurvey(survey.getId())))

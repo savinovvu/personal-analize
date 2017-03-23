@@ -13,7 +13,7 @@ public class GroupServiceImpl implements GroupService {
     GroupRepository repository;
 
     @Override
-    public List<Group> getAllGroups() {
+    public List<Group> getAll() {
         return repository.findAll();
     }
 

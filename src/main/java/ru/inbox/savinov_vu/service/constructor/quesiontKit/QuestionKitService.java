@@ -1,12 +1,13 @@
 package ru.inbox.savinov_vu.service.constructor.quesiontKit;
 
 import ru.inbox.savinov_vu.model.constructor.question.QuestionKit;
+import ru.inbox.savinov_vu.service.ParentService;
 
 import java.util.List;
 
-public interface QuestionKitService {
+public interface QuestionKitService extends ParentService<QuestionKit> {
 
-    List<QuestionKit> getAllQuestionKits();
+    List<QuestionKit> getAll();
 
     QuestionKit getById( Integer id);
 

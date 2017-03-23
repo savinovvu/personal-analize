@@ -19,7 +19,7 @@ public class PersonServiceImpl implements PersonService {
     GroupRepository groupRepository;
 
     @Override
-    public List<Person> getAllPersons() {
+    public List<Person> getAll() {
         return repository.findAll();
     }
 

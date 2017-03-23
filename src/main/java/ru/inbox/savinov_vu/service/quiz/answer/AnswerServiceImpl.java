@@ -25,7 +25,7 @@ public class AnswerServiceImpl implements AnswerService {
 
 
     @Override
-    public List<Answer> getAllAnswers() {
+    public List<Answer> getAll() {
         return repository.findAll();
     }
 

@@ -13,9 +13,10 @@ public class AnswerKitServiceImpl implements AnswerKitService {
     AnswerKitRepository repository;
 
     @Override
-    public List<AnswerKit> getAllAnswerKits() {
+    public List<AnswerKit> getAll() {
         return repository.findAll();
     }
+
 
     @Override
     public void addAnswerKit(AnswerKit answerKit) {
@@ -27,4 +28,6 @@ public class AnswerKitServiceImpl implements AnswerKitService {
     public void deleteAnswerKit(AnswerKit answerKit) {
         repository.delete(answerKit.getId());
     }
+
+
 }

@@ -8,6 +8,7 @@ import ru.inbox.savinov_vu.model.quiz.question.Question;
 import ru.inbox.savinov_vu.repository.quiz.QuestionRepository;
 import ru.inbox.savinov_vu.service.constructor.questionVar.QuestionVarService;
 
+import java.util.List;
 import java.util.Objects;
 
 @Service
@@ -17,6 +18,11 @@ public class QuestionServiceImpl implements QuestionService {
 
     @Autowired
     QuestionVarService questionVarService;
+
+    @Override
+    public List<Question> getAll() {
+        return repository.findAll();
+    }
 
     @Override
     public Question findOne(Integer id) {

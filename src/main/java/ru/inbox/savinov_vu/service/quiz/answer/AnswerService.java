@@ -1,12 +1,13 @@
 package ru.inbox.savinov_vu.service.quiz.answer;
 
 import ru.inbox.savinov_vu.model.quiz.answer.Answer;
+import ru.inbox.savinov_vu.service.ParentService;
 
 import java.util.List;
 
-public interface AnswerService {
+public interface AnswerService extends ParentService<Answer> {
 
-    List<Answer> getAllAnswers();
+    List<Answer> getAll();
 
     List<Answer> getAnswersWithQuestionnaire(Integer id);
 

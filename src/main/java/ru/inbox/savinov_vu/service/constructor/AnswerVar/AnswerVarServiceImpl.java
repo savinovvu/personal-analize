@@ -14,6 +14,11 @@ public class AnswerVarServiceImpl implements AnswerVarService {
     AnswerVarRepository repository;
 
     @Override
+    public List<AnswerVar> getAll() {
+        return repository.findAll();
+    }
+
+    @Override
     public List<AnswerVar> getAnswerVarWithAnswerKit(Integer id) {
         return repository.getAnswerVarWithAnswerKit(id);
     }

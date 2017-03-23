@@ -14,6 +14,11 @@ public class QuestionVarServiceImpl implements QuestionVarService {
     QuestionVarRepository repository;
 
     @Override
+    public List<QuestionVar> getAll() {
+        return repository.findAll();
+    }
+
+    @Override
     public QuestionVar findById(Integer id) {
         return repository.findOne(id);
     }

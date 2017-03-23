@@ -19,7 +19,7 @@ public class QuestionKitServiceImpl implements QuestionKitService {
     }
 
     @Override
-    public List<QuestionKit> getAllQuestionKits() {
+    public List<QuestionKit> getAll() {
         return repository.findAll();
     }
 

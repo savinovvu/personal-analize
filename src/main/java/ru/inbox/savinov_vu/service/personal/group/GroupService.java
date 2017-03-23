@@ -1,12 +1,13 @@
 package ru.inbox.savinov_vu.service.personal.group;
 
 import ru.inbox.savinov_vu.model.personal.Group;
+import ru.inbox.savinov_vu.service.ParentService;
 
 import java.util.List;
 
-public interface GroupService {
+public interface GroupService extends ParentService<Group> {
 
-    List<Group> getAllGroups();
+    List<Group> getAll();
 
     List<Group> getGroupsWithDepartment(Integer department);
 

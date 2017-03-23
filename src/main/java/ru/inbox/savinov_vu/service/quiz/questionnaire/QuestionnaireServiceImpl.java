@@ -15,7 +15,7 @@ public class QuestionnaireServiceImpl implements QuestionnaireService {
 
 
     @Override
-    public List<Questionnaire> getAllQuestionnaires() {
+    public List<Questionnaire> getAll() {
         return repository.findAll();
     }
 
