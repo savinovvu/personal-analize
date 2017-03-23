@@ -1,4 +1,4 @@
-package ru.inbox.savinov_vu.util.pdf;
+package ru.inbox.savinov_vu.service.pdf;
 
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.BaseFont;
@@ -7,24 +7,63 @@ import org.springframework.beans.factory.annotation.Autowired;
 import ru.inbox.savinov_vu.model.quiz.answer.Answer;
 import ru.inbox.savinov_vu.model.quiz.question.Question;
 import ru.inbox.savinov_vu.model.quiz.survey.Survey;
+import ru.inbox.savinov_vu.service.constructor.AnswerKit.AnswerKitService;
+import ru.inbox.savinov_vu.service.constructor.AnswerVar.AnswerVarService;
+import ru.inbox.savinov_vu.service.constructor.quesiontKit.QuestionKitService;
+import ru.inbox.savinov_vu.service.constructor.questionVar.QuestionVarService;
+import ru.inbox.savinov_vu.service.personal.department.DepartmentService;
+import ru.inbox.savinov_vu.service.personal.group.GroupService;
+import ru.inbox.savinov_vu.service.personal.person.PersonService;
+import ru.inbox.savinov_vu.service.quiz.answer.AnswerService;
 import ru.inbox.savinov_vu.service.quiz.question.QuestionService;
+import ru.inbox.savinov_vu.service.quiz.questionnaire.QuestionnaireService;
+import ru.inbox.savinov_vu.service.quiz.survey.SurveyService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.time.format.DateTimeFormatter;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
+import java.util.List;
 
 
 public class ItextPdfView extends AbstractITextPdfView {
+
+
     @Autowired
-    QuestionService service;
+    DepartmentService departmentService;
+
+    @Autowired
+    GroupService groupService;
+
+    @Autowired
+    PersonService personService;
+
+    @Autowired
+    QuestionKitService questionKitService;
+
+    @Autowired
+    AnswerKitService answerKitService;
+
+    @Autowired
+    QuestionVarService questionVarService;
+
+    @Autowired
+    AnswerVarService answerVarService;
+
+    @Autowired
+    SurveyService surveyService;
+
+    @Autowired
+    QuestionnaireService questionnaireService;
+
+    @Autowired
+    QuestionService questionService;
+
+    @Autowired
+    AnswerService answerService;
 
 
-    static final int FONT_SIZE_SMALL = 16;
-    static final int FONT_SIZE_BIG = 32;
-    static final int OFFSET = 40;
     static final String FONT_LOCATION = "/Fonts/TIMCYR_TTF/TIMCYR.TTF";
 
     final BaseFont timesNewRoman =
@@ -32,16 +71,11 @@ public class ItextPdfView extends AbstractITextPdfView {
                     FONT_LOCATION,
                     BaseFont.IDENTITY_H, BaseFont.NOT_EMBEDDED);
 
-    final Font fontBig = new Font(timesNewRoman, FONT_SIZE_BIG);
     final Font font14 = new Font(timesNewRoman, 14);
-    final Font font12 = new Font(timesNewRoman, 12);
-    final Font font8 = new Font(timesNewRoman, 8);
+
 
     final int sizeSpacingAfter = 8;
-    final Font font1 = new Font(timesNewRoman,
-            FONT_SIZE_BIG, Font.BOLD);
-    final Font font2 = new Font(timesNewRoman,
-            FONT_SIZE_SMALL, Font.ITALIC | Font.UNDERLINE);
+
 
     public ItextPdfView() throws IOException, DocumentException {
     }
@@ -49,6 +83,22 @@ public class ItextPdfView extends AbstractITextPdfView {
 
     @Override
     protected void buildPdfDocument(Map<String, Object> model, Document document, PdfWriter writer, HttpServletRequest request, HttpServletResponse response) throws Exception {
+        switch ((PdfPrint) model.get("action")) {
+            case Survey:
+                buildSurveyPdfDocument(model, document);
+                break;
+            case DataBase:
+                buildDataBasePdfDocument(model, document);
+                break;
+            default:
+                throw new IllegalArgumentException();
+        }
+
+
+    }
+
+
+    private void buildSurveyPdfDocument(Map<String, Object> model, Document document) throws DocumentException {
         Survey survey = (Survey) model.get("survey");
         Paragraph title = new Paragraph("Id Тестирования = " + survey.getId(), font14);
         title.setAlignment(Element.ALIGN_CENTER);
@@ -61,7 +111,7 @@ public class ItextPdfView extends AbstractITextPdfView {
         Paragraph dateParagraph = new Paragraph("Дата Тестирования: " + survey.getDate().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")), font14);
         document.add(dateParagraph);
 
-        Integer countQuestionnaires = (Integer)model.get("countQuestionnaires");
+        Integer countQuestionnaires = (Integer) model.get("countQuestionnaires");
         Paragraph countQuestionnaire = new Paragraph("Количество анкет: " + countQuestionnaires, font14);
         document.add(countQuestionnaire);
 
@@ -86,8 +136,6 @@ public class ItextPdfView extends AbstractITextPdfView {
         Map<Question, Map<Answer, Long>> questionAnswerCountMap = (Map<Question, Map<Answer, Long>>) model.get("countAnswerByQuestionMap");
 
         writeQuestionAndAnswer(document, questionAnswerCountMap);
-
-
     }
 
     private void writeQuestionAndAnswer(Document document, Map<Question, Map<Answer, Long>> questionAnswerCountMap) throws DocumentException {
@@ -111,7 +159,7 @@ public class ItextPdfView extends AbstractITextPdfView {
 
     private Paragraph getQuestionParagraph(Question question) {
         if (Objects.isNull(question.getSuperQuestionId())) {
-            return new Paragraph( question.getNumber() + ". " + question.getName(), font14);
+            return new Paragraph(question.getNumber() + ". " + question.getName(), font14);
         } else {
             return new Paragraph("     " + question.getNumber() + ". " + question.getName(), font14);
         }
@@ -127,13 +175,38 @@ public class ItextPdfView extends AbstractITextPdfView {
 
         if (Objects.nonNull(currentQuestion.getSuperQuestionId())) {
             if (!currentQuestion.getSuperQuestionId().equals(savedSuperQuestion.getId())) {
-                Question byId = service.findOne(currentQuestion.getSuperQuestionId());
+                Question byId = questionService.findOne(currentQuestion.getSuperQuestionId());
                 savedSuperQuestion.setId(byId.getId()).setName(byId.getName()).setNumber(byId.getNumber());
                 Paragraph questionParagraph = new Paragraph(savedSuperQuestion.getNumber() + ". " + savedSuperQuestion.getName(), font14);
                 document.add(questionParagraph);
             }
         }
     }
+
+    private void buildDataBasePdfDocument(Map<String, Object> model, Document document) throws DocumentException {
+
+        Map<String, List<String>> tableFieldsMap = new LinkedHashMap<>();
+        tableFieldsMap.put("department", Arrays.asList("id", "name"));
+        tableFieldsMap.put("groups", Arrays.asList("id", "name", "department_id"));
+        tableFieldsMap.put("persons", Arrays.asList("id", "name", "group_id"));
+
+        tableFieldsMap.put("answerkits", Arrays.asList("id", "name", "answerType"));
+        tableFieldsMap.put("questionkits", Arrays.asList("id", "name"));
+        tableFieldsMap.put("answervars", Arrays.asList("id", "name", "answerkit_id"));
+        tableFieldsMap.put("questionvars", Arrays.asList("id", "number", "name", "superQuestionVarId", "answerkit_id", "questionkit_id"));
+
+        tableFieldsMap.put("surveys", Arrays.asList("id", "name", "comment", "createDate", "questionKitId", "department", "groupName"));
+        tableFieldsMap.put("questionnaires", Arrays.asList("id", "number", "createDate", "survey_id"));
+        tableFieldsMap.put("questions", Arrays.asList("id", "number", "name", "questionVarId", "superQuestionVarId", "survey_id"));
+        tableFieldsMap.put("answers", Arrays.asList("id", "name", "questionnaire_id", "question_id"));
+
+
+        Paragraph countQuestionnaire = new Paragraph("INSERT INTO questionKits: ", font14);
+        document.add(countQuestionnaire);
+
+
+    }
+
 
 }
 

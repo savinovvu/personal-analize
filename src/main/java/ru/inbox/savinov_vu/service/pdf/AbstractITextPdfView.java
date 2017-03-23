@@ -1,4 +1,4 @@
-package ru.inbox.savinov_vu.util.pdf;
+package ru.inbox.savinov_vu.service.pdf;
 
 
 import com.itextpdf.text.Document;

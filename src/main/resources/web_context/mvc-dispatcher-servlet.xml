@@ -57,7 +57,7 @@
     <mvc:view-resolvers>
         <mvc:content-negotiation>
             <mvc:default-views>
-                <bean class="ru.inbox.savinov_vu.util.pdf.ItextPdfView"/>
+                <bean class="ru.inbox.savinov_vu.service.pdf.ItextPdfView"/>
             </mvc:default-views>
         </mvc:content-negotiation>
         <mvc:jsp prefix="/WEB-INF/views/" suffix=".jsp"/>
