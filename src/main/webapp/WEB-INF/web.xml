@@ -23,6 +23,10 @@
 
     </servlet-mapping>
 
+    <context-param>
+        <param-name>spring.profiles.default</param-name>
+        <param-value>initialize,infile</param-value>
+    </context-param>
 
     <context-param>
         <param-name>contextConfigLocation</param-name>

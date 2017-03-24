@@ -15,23 +15,10 @@
     <context:annotation-config/>
     <context:property-placeholder location="classpath:db/settings/db.properties"/>
 
-    <jdbc:initialize-database data-source="dataSource" enabled="${database.init}" >
-        <jdbc:script encoding="utf-8" location="${jdbc.dropTableLocation}"/>
-
-        <jdbc:script encoding="utf-8" location="${jdbc.initPersonalLocation}"/>
-        <jdbc:script encoding="utf-8" location="${jdbc.populatePersonalLocation}"/>
-
-        <jdbc:script encoding="utf-8" location="${jdbc.initLocationConstructor}"/>
-        <jdbc:script encoding="utf-8" location="${jdbc.populateLocationConstructor}"/>
-
-        <jdbc:script encoding="utf-8" location="${jdbc.initLocationQuiz}"/>
-        <jdbc:script encoding="utf-8" location="${jdbc.populateLocationQuiz}"/>
-    </jdbc:initialize-database>
-
 
     <context:component-scan base-package="ru.inbox.savinov_vu.repository"/>
     <jpa:repositories base-package="ru.inbox.savinov_vu.repository" entity-manager-factory-ref="entityManagerFactory"
-    transaction-manager-ref="transactionManager"/>
+                      transaction-manager-ref="transactionManager"/>
 
 
     <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
@@ -52,21 +39,12 @@
                 <prop key="hibernate.dialect">org.hibernate.dialect.HSQLDialect</prop>
                 <prop key="hibernate.hbm2ddl.auto">update</prop>
                 <prop key="#{T(org.hibernate.cfg.AvailableSettings).FORMAT_SQL}">${hibernate.format_sql}</prop>
-                <prop key="#{T(org.hibernate.cfg.AvailableSettings).USE_SQL_COMMENTS}">${hibernate.use_sql_comments}</prop>
+                <prop key="#{T(org.hibernate.cfg.AvailableSettings).USE_SQL_COMMENTS}">${hibernate.use_sql_comments}
+                </prop>
             </props>
         </property>
 
     </bean>
-
-
-    <bean id="dataSource" class="org.apache.tomcat.jdbc.pool.DataSource">
-        <property name="driverClassName" value="org.hsqldb.jdbcDriver"/>
-        <property name="url" value="${database.url}"/>
-        <property name="username" value="${database.username}"/>
-        <property name="password" value="${database.password}"/>
-    </bean>
-
-
 
 
     <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
@@ -77,6 +55,48 @@
 
     <bean id="persistenceExceptionTranslationPostProcessor"
           class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>
+
+    <beans profile="populate">
+        <jdbc:initialize-database data-source="dataSource" enabled="${database.init}">
+            <jdbc:script encoding="utf-8" location="${jdbc.dropTableLocation}"/>
+
+            <jdbc:script encoding="utf-8" location="${jdbc.initPersonalLocation}"/>
+            <jdbc:script encoding="utf-8" location="${jdbc.populatePersonalLocation}"/>
+
+            <jdbc:script encoding="utf-8" location="${jdbc.initLocationConstructor}"/>
+            <jdbc:script encoding="utf-8" location="${jdbc.populateLocationConstructor}"/>
+
+            <jdbc:script encoding="utf-8" location="${jdbc.initLocationQuiz}"/>
+            <jdbc:script encoding="utf-8" location="${jdbc.populateLocationQuiz}"/>
+        </jdbc:initialize-database>
+    </beans>
+
+    <beans profile="initialize">
+        <jdbc:initialize-database data-source="dataSource" enabled="${database.init}">
+            <jdbc:script encoding="utf-8" location="${jdbc.initPersonalLocation}"/>
+            <jdbc:script encoding="utf-8" location="${jdbc.initLocationConstructor}"/>
+            <jdbc:script encoding="utf-8" location="${jdbc.initLocationQuiz}"/>
+        </jdbc:initialize-database>
+    </beans>
+
+
+    <beans profile="inmemory">
+        <bean id="dataSource" class="org.apache.tomcat.jdbc.pool.DataSource">
+            <property name="driverClassName" value="org.hsqldb.jdbcDriver"/>
+            <property name="url" value="${database.memory.url}"/>
+            <property name="username" value="${database.username}"/>
+            <property name="password" value="${database.password}"/>
+        </bean>
+    </beans>
+
+    <beans profile="infile">
+        <bean id="dataSource" class="org.apache.tomcat.jdbc.pool.DataSource">
+            <property name="driverClassName" value="org.hsqldb.jdbcDriver"/>
+            <property name="url" value="${database.file.url}"/>
+            <property name="username" value="${database.username}"/>
+            <property name="password" value="${database.password}"/>
+        </bean>
+    </beans>
 
 
 </beans>
