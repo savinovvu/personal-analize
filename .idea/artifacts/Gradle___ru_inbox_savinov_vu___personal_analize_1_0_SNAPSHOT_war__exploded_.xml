@@ -44,6 +44,7 @@
           <element id="library" level="project" name="Gradle: org.webjars:noty:2.2.4" />
           <element id="library" level="project" name="Gradle: org.webjars:datatables:1.10.12-1" />
           <element id="library" level="project" name="Gradle: org.projectlombok:lombok:1.16.14" />
+          <element id="library" level="project" name="Gradle: org.jsoup:jsoup:1.10.2" />
           <element id="library" level="project" name="Gradle: com.google.guava:guava:21.0" />
           <element id="library" level="project" name="Gradle: one.util:streamex:0.6.5" />
           <element id="library" level="project" name="Gradle: ch.qos.logback:logback-core:1.1.7" />
@@ -71,7 +72,6 @@
           <element id="library" level="project" name="Gradle: org.jboss.spec.javax.interceptor:jboss-interceptors-api_1.1_spec:1.0.0.Beta1" />
           <element id="library" level="project" name="Gradle: javax.annotation:jsr250-api:1.0" />
           <element id="library" level="project" name="Gradle: javax.inject:javax.inject:1" />
-          <element id="file-copy" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jsoup/jsoup/1.10.2/33ee82e324f4b1e40167f3dc5e01234a1c5cab61/jsoup-1.10.2.jar" />
         </element>
       </element>
     </root>
