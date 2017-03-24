@@ -25,7 +25,7 @@
 
     <context-param>
         <param-name>spring.profiles.default</param-name>
-        <param-value>initialize,infile</param-value>
+        <param-value>populate,inmemory</param-value>
     </context-param>
 
     <context-param>
