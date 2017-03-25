@@ -1,0 +1,2 @@
+set SPRING_PROFILES_ACTIVE=inmemory,populate
+start gradlew tomcatRunWar
