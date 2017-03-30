@@ -177,7 +177,7 @@
                 <form role="form" class="form-horizontal" id="delEntity">
 
                     <div class="form-group has-feedback">
-                        <label for="name" class="control-label col-xs-3">Наименование:</label>
+                        <label for="delName" class="control-label col-xs-3">Наименование:</label>
                         <div class="col-xs-6">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-info-sign"></i></span>
