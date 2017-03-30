@@ -34,7 +34,7 @@
 
     <label class="btn btn-info mynav icon-prev" for="navQuestionKit"><i
             class="glyphicon glyphicon-lock label-info"></i>&nbsp
-        Типы анкет</label>
+        Методики</label>
 
     <label class="btn btn-info mynav icon-prev" for="navQuestionVar"><i
             class="glyphicon glyphicon-question-sign label-info"></i>&nbsp
@@ -97,11 +97,11 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">×</button>
-                <h4 class="modal-title text-center" id="myModalLabel">Добавление/Обновление типа анкеты</h4>
+                <h4 class="modal-title text-center" id="myModalLabel">Добавление/Обновление методики</h4>
             </div>
             <div class="modal-body">
 
-                <form role="form" class="form-horizontal" id="putEntity">
+                <form role="form" class="form-horizontal" action="newQuestionKit" method="get">
 
                     <div class="changeDivId">
                         <div class="form-group has-feedback" id="divId">
@@ -120,7 +120,6 @@
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
                                 <input type="text" class="form-control" id="name" name="name" required/>
                             </div>
-
                         </div>
                     </div>
 

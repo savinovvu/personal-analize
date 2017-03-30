@@ -34,7 +34,7 @@
 
     <label class="btn btn-info mynav icon-prev" for="navQuestionKit"><i
             class="glyphicon glyphicon-lock label-info"></i>&nbsp
-        Типы анкет</label>
+        Методики</label>
 
     <label class="btn btn-info mynav icon-prev" for="navQuestionVar"><i
             class="glyphicon glyphicon-question-sign label-info"></i>&nbsp
