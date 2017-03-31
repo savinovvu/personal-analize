@@ -2,6 +2,7 @@ package ru.inbox.savinov_vu.model.constructor.answer;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.hibernate.validator.constraints.SafeHtml;
 import ru.inbox.savinov_vu.model.constructor.question.QuestionVar;
@@ -13,6 +14,7 @@ import java.util.List;
 @Entity
 @Table(name = "answerkits")
 @Access(value = AccessType.FIELD)
+@NoArgsConstructor
 public class AnswerKit {
 
     @Id
@@ -39,6 +41,11 @@ public class AnswerKit {
     @JsonIgnore
     @OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER, mappedBy = "answerKit")
     private List<AnswerVar> answerVars;
+
+    public AnswerKit(String name, AnswerType answerType) {
+        this.name = name;
+        this.answerType = answerType;
+    }
 
     public Integer getId() {
         return id;
