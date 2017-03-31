@@ -33,8 +33,8 @@ CREATE TABLE IF NOT EXISTS questionvars
   number        INTEGER,
   name           VARCHAR(255),
   superQuestionVarId INTEGER,
-  answerkit_id   INTEGER,
-  questionkit_id INTEGER,
+  answerkit_id   INTEGER NULL,
+  questionkit_id   INTEGER,
 
   FOREIGN KEY (answerkit_id) REFERENCES answerkits (id)
     ON DELETE CASCADE,
