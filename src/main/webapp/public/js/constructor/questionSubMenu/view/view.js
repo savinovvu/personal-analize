@@ -16,12 +16,9 @@ function view(data) {
             {
                 "data": "name",
                 "render": function (row, data, dataIndex) {
-                    var output = '<label class="btn btn-link" for="form-' + dataIndex.id + '" id="name-' + dataIndex.id + '">' + dataIndex.name + '</label>';
-                    output += '<form class="hidden"  action="questionSubMenu" method="get">';
+                    var output = '<p id="name-' + dataIndex.id + '">' + dataIndex.name + '</p>';
+                    output += '<form class="hidden">';
                     output += '<input name="id" value="' + dataIndex.id + '">';
-                    output += '<input name="name" value="' + row + '">';
-                    output += '<input name="questionKitId" value="' + dataIndex.questionKit.id + '">';
-                    output += '<input id="form-' + dataIndex.id + '" type="submit">';
                     output += '<form>';
                     return output;
                 }
