@@ -35,7 +35,7 @@ function view(data) {
                         '<input type="text" name="id" id="answerKitId-' + dataIndex.id + '" value="' + row.id + '">' +
                         '<input type="text" name="questionKitId" value="' + dataIndex.questionKit.id+ '">' +
                         '<input type="submit" id="nameAnswerKitSubmit-' + dataIndex.id + '">' +
-                        '</form>';
+                        '</form>' + convertAnswerTypeToText(row.answerType, dataIndex);
 
                 }
             },

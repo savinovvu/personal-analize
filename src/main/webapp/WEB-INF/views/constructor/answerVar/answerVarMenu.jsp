@@ -17,7 +17,7 @@
     <script src="/public/js/common/model/model.js" type="text/javascript" defer></script>
 
     <script src="/public/js/common/ajax/ajax.js" type="text/javascript" defer></script>
-    <script src="/public/js/common/service/service.js" type="text/javascript" defer></script>
+    <script src="/public/js/common/util/util.js" type="text/javascript" defer></script>
     <script src="/public/js/common/view/view.js" type="text/javascript" defer></script>
 
     <script src="/public/js/constructor/answerVarMenu/service/service.js" type="text/javascript" defer></script>

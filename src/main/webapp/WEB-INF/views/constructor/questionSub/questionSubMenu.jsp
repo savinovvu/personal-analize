@@ -16,7 +16,7 @@
     <script src="/public/js/common/model/model.js" type="text/javascript" defer></script>
 
     <script src="/public/js/common/ajax/ajax.js" type="text/javascript" defer></script>
-    <script src="/public/js/common/service/service.js" type="text/javascript" defer></script>
+    <script src="/public/js/common/util/util.js" type="text/javascript" defer></script>
     <script src="/public/js/common/view/view.js" type="text/javascript" defer></script>
 
     <script src="/public/js/constructor/questionSubMenu/service/service.js" type="text/javascript" defer></script>
@@ -34,6 +34,10 @@
             class="glyphicon glyphicon-lock label-info"></i>&nbsp
         Методики</label>
 
+    <label class="btn btn-info mynav icon-prev" for="navQuestionVar"><i
+            class="glyphicon glyphicon-question-sign label-info"></i>&nbsp
+        Вопросы</label>
+
 
     <form action="/" method="get">
         <input id="start" class="hidden" type="submit" name="viewAllUsers" value="Главная">
@@ -41,6 +45,11 @@
 
     <form action="editQuestionKit" method="get">
         <input id="navQuestionKit" class="hidden" type="submit" name="viewAllUsers" value="методики">
+    </form>
+
+    <form class="hidden" action="questionVarMenu" method="get">
+        <input type="text" name="id" value="${questionKit_id}">
+        <input id="navQuestionVar" type="submit" name="viewAllUsers" value="Вопросы">
     </form>
 
 </nav>
@@ -89,22 +98,23 @@
                         <div class="form-group has-feedback" id="divId">
                             <div class="col-xs-6">
                                 <div class="input-group">
-                                    <input type="hidden" class="form-control"  name="superQuestionVarId" value="${question_id}" required>
-                                    <input type="hidden" class="form-control"  name="questionKitId" value="${questionKit_id}" required>
-                                    <input type="hidden" class="form-control"  name="id" required>
+                                    <input type="hidden" class="form-control" name="superQuestionVarId"
+                                           value="${question_id}" required>
+                                    <input type="hidden" class="form-control" name="questionKitId"
+                                           value="${questionKit_id}" required>
+                                    <input type="hidden" class="form-control" name="id" required>
                                 </div>
                             </div>
                         </div>
                     </div>
 
 
-
                     <div class="form-group has-feedback">
-                        <label  class="control-label col-xs-3">Наименование:</label>
+                        <label class="control-label col-xs-3">Наименование:</label>
                         <div class="col-xs-6">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                <input type="text" class="form-control"  name="name" required/>
+                                <input type="text" class="form-control" name="name" required/>
                             </div>
 
                         </div>
@@ -173,16 +183,18 @@
                         <div class="form-group has-feedback">
                             <div class="col-xs-6">
                                 <div class="input-group">
-                                    <input type="text" class="form-control"  name="superQuestionVarId" id="superQuestionVarIdUpdate" value="${question_id}"  required>
-                                    <input type="text" class="form-control"  name="questionKitId" id="questionKit_idUpdate" value="${questionKit_id}" required>
-                                    <input type="text" class="form-control"  name="answerKitIdUpdate" id="answerKitIdUpdate" required>
+                                    <input type="text" class="form-control" name="superQuestionVarId"
+                                           id="superQuestionVarIdUpdate" value="${question_id}" required>
+                                    <input type="text" class="form-control" name="questionKitId"
+                                           id="questionKit_idUpdate" value="${questionKit_id}" required>
+                                    <input type="text" class="form-control" name="answerKitIdUpdate"
+                                           id="answerKitIdUpdate" required>
                                     <input type="text" class="form-control" id="idUpdate" name="id" required>
                                     <input type="text" class="form-control" id="numberUpdate" name="number" required>
                                 </div>
                             </div>
                         </div>
                     </div>
-
 
 
                     <div class="form-group has-feedback">
@@ -205,7 +217,6 @@
         </div>
     </div>
 </div>
-
 
 
 </body>
