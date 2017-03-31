@@ -9,8 +9,10 @@ public interface AnswerKitService extends ParentService<AnswerKit> {
 
     List<AnswerKit> getAll();
 
-    void addAnswerKit(AnswerKit answerKit);
+    AnswerKit addAnswerKit(AnswerKit answerKit);
 
     void deleteAnswerKit(AnswerKit answerKit);
+
+    AnswerKit getById(Integer id);
 
 }

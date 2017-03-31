@@ -19,8 +19,9 @@ public class AnswerKitServiceImpl implements AnswerKitService {
 
 
     @Override
-    public void addAnswerKit(AnswerKit answerKit) {
-        repository.saveAndFlush(answerKit);
+    public AnswerKit addAnswerKit(AnswerKit answerKit) {
+        return repository.saveAndFlush(answerKit);
+
 
     }
 
@@ -29,5 +30,8 @@ public class AnswerKitServiceImpl implements AnswerKitService {
         repository.delete(answerKit.getId());
     }
 
-
+    @Override
+    public AnswerKit getById(Integer id) {
+        return repository.findOne(id);
+    }
 }

@@ -24,8 +24,9 @@ public class QuestionKitServiceImpl implements QuestionKitService {
     }
 
     @Override
-    public void addQuestionKit(QuestionKit questionKit) {
-        repository.saveAndFlush(questionKit);
+    public QuestionKit addQuestionKit(QuestionKit questionKit) {
+        return repository.saveAndFlush(questionKit);
+
     }
 
     @Override

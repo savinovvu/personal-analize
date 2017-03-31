@@ -11,7 +11,7 @@ public interface QuestionKitService extends ParentService<QuestionKit> {
 
     QuestionKit getById( Integer id);
 
-    void addQuestionKit(QuestionKit questionKit);
+    QuestionKit addQuestionKit(QuestionKit questionKit);
 
     void deleteQuestionKit(QuestionKit questionKit);
 }
