@@ -5,7 +5,14 @@ function view(data) {
     $('#entityT').DataTable({
         "data": data,
         "columns": [
-            {"data": "number"},
+            {
+                "data": "number",
+                "render": function (row, data, dataIndex) {
+                    return "<p id='number-" + dataIndex.id + "'>"+row+"</p>" +
+                        "<p class='hidden' id='superQuestionVarId-"+dataIndex.id+"'>"+dataIndex.questionVar+"</p>";
+                }
+            },
+
             {
                 "data": "name",
                 "render": function (row, data, dataIndex) {
@@ -21,7 +28,12 @@ function view(data) {
             {
                 "data": "answerKit",
                 "render": function (row, data, dataIndex) {
-                    return '<p id="nameAnswerKit-' + dataIndex.id + '">' + row.name + '</p>';
+                    return '<label  class="btn btn-link" for="nameAnswerKitSubmit-' + dataIndex.id + '" id="nameAnswerKit-' + dataIndex.id + '">' + row.name + '</label>' +
+                        '<form class="hidden" method="get" action="answerVarMenu">' +
+                        '<input type="text" name="id" id="answerKitId-' + dataIndex.id + '" value="' + row.id + '">' +
+                        '<input type="text" name="questionKitId" value="' + dataIndex.questionKit.id+ '">' +
+                        '<input type="submit" id="nameAnswerKitSubmit-' + dataIndex.id + '">' +
+                        '</form>';
 
                 }
             },
@@ -33,7 +45,7 @@ function view(data) {
                 "render": function (row, data, dataIndex) {
 
 
-                    return '<a class="btn btn-xs btn-primary" onclick="getModal(' + dataIndex.id + ','+dataIndex.number +')" data-toggle="modal" data-target="#myModal">Обновить</a>' +
+                    return '<a class="btn btn-xs btn-primary" onclick="getUpdateModal(' + dataIndex.id + ',' + dataIndex.number + ')" data-toggle="modal" data-target="#myUpdateModal">Обновить</a>' +
                         '<a  class="btn btn-xs btn-danger" onclick="getDelModal(' + dataIndex.id + ')" data-toggle="modal" data-target="#myDelModal">Удалить</a>';
                 }
             },
@@ -42,24 +54,4 @@ function view(data) {
 
 }
 
-function viewGetQuestionKits(data) {
 
-    $(".delSuperEntity").remove();
-    var output = "";
-    $.each(data, function (key, val) {
-        output += "<option class='delSuperEntity' value='" + val.id + "'>" + val.name + "</option>";
-    });
-    $("#superEntity").append(output);
-
-}
-
-function viewGetAnswerKits(data) {
-
-    $(".delAnswerKits").remove();
-    var output = "";
-    $.each(data, function (key, val) {
-        output += "<option class='delAnswerKits' value='" + val.id + "'>" + val.name + "</option>";
-    });
-    $("#answerKits").append(output);
-
-}

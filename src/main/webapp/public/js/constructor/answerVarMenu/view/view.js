@@ -9,9 +9,8 @@ function view(data) {
             {
                 "data": "name",
                 "render": function (row, data, dataIndex) {
-                    return '<label class="btn btn-link" for="questionVarMenu-' + dataIndex.id + '" id="name-' + dataIndex.id + '">' + dataIndex.name + '</label>' +
-                        '<form class="hidden" action="questionVarMenu" method="get"><input type="submit" id="questionVarMenu-' + dataIndex.id + '">' +
-                        '<input type="text" name="id" value="' + dataIndex.id + '"></form>';
+                    return '<p id="name-' + dataIndex.id + '">' + dataIndex.name + '</p>';
+
                 }
             },
 
@@ -27,5 +26,21 @@ function view(data) {
             },
         ]
     });
+
+}
+
+function viewGetAnswerKits(data) {
+
+        $(".delSuperEntity").remove();
+        var output = "";
+        $.each(data, function (key, val) {
+            output += "<option class='delSuperEntity' value='" + val.id + "'>" + val.name + "</option>";
+        });
+        $("#superEntity").append(output);
+
+}
+
+function successUpdateAnswerKit() {
+    alert("Отображение ответов изменено.");
 
 }
