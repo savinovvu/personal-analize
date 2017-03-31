@@ -64,7 +64,7 @@ public class ConstructorController {
         Integer questionKitId = Integer.valueOf(request.getParameter("questionKitId"));
         AnswerKit answerKit = answerKitService.addAnswerKit(new AnswerKit("ответы для: " + questionName, AnswerType.RADIO));
         questionVarService.addQuestionVar(new QuestionVar(questionName, superQuestionVarId ,answerKit, new QuestionKit(questionKitId, null)));
-        return String.format("redirect:answerVarMenu?id=%s",answerKit.getId());
+        return String.format("redirect:answerVarMenu?id=%s&questionKitId=%s",answerKit.getId(),questionKitId);
     }
 
 
@@ -87,6 +87,18 @@ public class ConstructorController {
         model.addAttribute("id", id);
         model.addAttribute("question", questionVarService.findById(id).getName());
         return "constructor/questionSub/questionSub";
+    }
+
+    @GetMapping("questionSubMenu")
+    public String questionSubMenu(HttpServletRequest request, Model model) {
+        int id = Integer.parseInt(request.getParameter("id"));
+        int questionKitId = Integer.parseInt(request.getParameter("questionKitId"));
+        String name = request.getParameter("name");
+        log.debug("\nget editQuestionSubMenu with id ={}", id);
+        model.addAttribute("question_id", id);
+        model.addAttribute("question_name",name);
+        model.addAttribute("questionKit_id", questionKitId);
+        return "constructor/questionSub/questionSubMenu";
     }
 
 
