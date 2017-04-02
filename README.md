@@ -41,6 +41,7 @@ To achieve this goal, the following tasks were identified and implemented:
 
 10.1 The first group of profiles determines whether to save(infile) or not to save (inmemory,for the demo) the test results.
   
+  
 10.2 The second group of profiles determines whether to populate(populate) or not to populate(inizialize) the database from popularization scripts.
 
 11. Implementation of scripts to run the program of all 4 configurations under Windows (*. Bat) and Linux (bash).
