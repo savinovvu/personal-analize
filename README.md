@@ -37,18 +37,31 @@ To achieve this goal, the following tasks were identified and implemented:
 
    To run the program will require a minimum of pre installed programs on the computer (JRE 8 and a modern browser), when you first switch on, you will also need the Internet.
         
-    Technologies used:
-    Back-end:
-    Tomcat, Spring MVC, Spring context, Stream API, java 8 DateTime API, logback-classic, SLF4J-API, Lombook.
-    Work with the database: HSQLDB, Hibernate / Spring-data-JPA.
-    PDF: Itext.
-    WEB: webjars, jsp.
+  
+  Technologies used:
+  
+  Back-end:
+  
+  Tomcat, Spring MVC, Spring context, Stream API, java 8 DateTime API, logback-classic, SLF4J-API, Lombook.
+
+Work with the database: HSQLDB, Hibernate / Spring-data-JPA.
+ 
+ PDF: Itext.
+   
+ 
+ WEB: webjars, jsp.
+   
+   
+   Front-end:
+   
+  
+  JS (ECMASCRIPT 6), html 5, CSS, Bootstrap 3, jQuery 3, DataTables 1.
     
-    Front-end:
-    JS (ECMASCRIPT 6), html 5, CSS, Bootstrap 3, jQuery 3, DataTables 1.
-    
-    Build the project: gradle.
-    To start Tomcat is used 'com.bmuschko.tomcat' plugin.
+   
+   Build the project: gradle.
+   
+  
+  To start Tomcat is used 'com.bmuschko.tomcat' plugin.
 
 RUS
 
