@@ -14,15 +14,25 @@ To achieve this goal, the following tasks were identified and implemented:
 
 6.1 Automated text erase "no answer" when focusing on the window.
   
-  6.2 Automating the addition of "no answer" text when leaving a window without text.
   
-  6.3 Automated removal of the "no answer" flag CHECKBOX when selecting any other answer.
+ 
+ 6.2 Automating the addition of "no answer" text when leaving a window without text.
   
-  6.4 Automatically removing other flags of the CHECKBOX question if the "no answer" flag is selected.
+ 
+ 
+ 6.3 Automated removal of the "no answer" flag CHECKBOX when selecting any other answer.
   
-  6.5 Automatically adding the "no answer" flag to CHECKBOX if the other questions are not selected in the question.
   
-  6.6 When the new test starts, the answers "no answer" are automatically placed.
+ 
+ 6.4 Automatically removing other flags of the CHECKBOX question if the "no answer" flag is selected.
+  
+ 
+ 
+ 6.5 Automatically adding the "no answer" flag to CHECKBOX if the other questions are not selected in the question.
+  
+ 
+ 
+ 6.6 When the new test starts, the answers "no answer" are automatically placed.
   
 7. Ability to edit the questionnaire after filling out.
 8. Output of test results in pdf format.
